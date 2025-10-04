@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Catálogo de Productos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<!-- Header -->
+<header>
+  <div class="container">
+    <h1>Mi Catálogo</h1>
+    <p>Los mejores productos para ti</p>
+  </div>
+</header>
+
+<!-- Filtros -->
+<section class="filters">
+  <div class="container">
+    <input type="text" id="searchInput" placeholder="Buscar productos..." class="search-bar">
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="categoria1">Categoría 1</button>
+      <button class="filter-btn" data-filter="categoria2">Categoría 2</button>
+      <button class="filter-btn" data-filter="categoria3">Categoría 3</button>
+    </div>
+  </div>
+</section>
+
+<!-- Catálogo de productos -->
+<main class="container">
+  <div class="products-grid" id="productsGrid">
+    <!-- Los productos se cargarán aquí dinámicamente -->
+  </div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>&copy; 2024 Mi Catálogo. Todos los derechos reservados.</p>
+    <p>Contacto: tu-email@ejemplo.com | Tel: +XX XXX XXX XXX</p>
+  </div>
+</footer>
+
+<!-- Modal para vista detallada -->
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script src="./js/script.js"></script>
+</body>
+</html>
