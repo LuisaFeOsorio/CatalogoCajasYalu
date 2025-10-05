@@ -19,14 +19,15 @@ const products = [
   },
   {
     id: 2,
-    name: "Cilindro Forrado",
+    name: "Corazon Forrado",
     description: "Base en cartón rigido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos... ",
     price: "Desde",
     category: "Los mas llevados",
-    image: "img/CilindroForrado6.jpeg",
+    image: "img/CorazónForrado1.jpg",
     images: [
-      "img/CilindroForrado6.jpeg",
-      "img/CilindroForrado"
+      "img/CorazónForrado1.jpg",
+      "img/CorazonForrado4.jpeg",
+      "img/CorazonForrado5.jpeg"
     ],
     variants: [
       { size: "20cm", price: "$8,500" },
@@ -35,33 +36,37 @@ const products = [
   },
   {
     id: 3,
-    name: "Cajón Corazón",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    name: "Corazon Forrado",
+    description: "Base en cartón rigido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos... ",
     price: "Desde",
     category: "Los mas llevados",
-    image: "img/cajoncorazon1.png",
+    image: "img/CorazónForrado1.jpg",
     images: [
-      "img/cajoncorazon1.png",
-      "img/cajoncorazon2.png",
-      "img/cajoncorazon3.png"
+      "img/CorazónForrado1.jpg",
+      "img/CorazonForrado4.jpeg",
+      "img/CorazonForrado5.jpeg"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }]
+      { size: "20cm", price: "$8,500" },
+      { size: "25cm", price: "$19.99" },
+      { size: "30cm", price: "$24.99" }]
   },
   {
     id: 4,
-    name: "Libro Corazón",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    name: "Corazon Forrado",
+    description: "Base en cartón rigido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos... ",
     price: "Desde",
     category: "Los mas llevados",
-    image: "img/librocorazon2.jpeg",
+    image: "img/CorazónForrado1.jpg",
     images: [
-      "img/librocorazon2.jpeg",
-      "img/librocorazon1.jpeg",
-      "img/librocorazon3.jpeg"
+      "img/CorazónForrado1.jpg",
+      "img/CorazonForrado4.jpeg",
+      "img/CorazonForrado5.jpeg"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }]
+      { size: "20cm", price: "$8,500" },
+      { size: "25cm", price: "$19.99" },
+      { size: "30cm", price: "$24.99" }]
   },
 
 
