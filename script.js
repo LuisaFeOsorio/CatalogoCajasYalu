@@ -63,8 +63,49 @@ const products = [
     variants: [
       { size: "20cm", price: "$8,500" }]
   },
-
-
+  {
+    id: 5,
+    name: "Dulcera",
+    description: " ",
+    price: "Desde",
+    category: "Los mas llevados",
+    image: "img/dulcera1.jpeg",
+    images: [
+      "img/dulcera1.jpeg",
+      "img/dulcera2.png"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }]
+  },
+  {
+    id: 6,
+    name: "Mom",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "Los mas llevados",
+    image: "img/mom1.jpeg",
+    images: [
+      "img/mom1.jpeg",
+      "img/mom2.jpeg",
+      "img/mom3.jpeg"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }]
+  },
+  {
+    id: 7,
+    name: "I love u",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "Los mas llevados",
+    image: "img/loveu1.jpeg",
+    images: [
+      "img/loveu1.jpeg",
+      "img/loveu2.jpeg"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }]
+  },
 ];
 
 // Elementos del DOM
