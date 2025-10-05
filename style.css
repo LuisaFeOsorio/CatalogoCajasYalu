@@ -411,84 +411,93 @@ footer {
 }
 
 /* Responsive */
+/* Grid de productos - Versión móvil mejorada */
 @media (max-width: 768px) {
-  header h1 {
-    font-size: 2rem;
-  }
-
   .products-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
+    grid-template-columns: 1fr; /* ✅ Una sola columna en móviles */
+    gap: 2rem; /* ✅ Más espacio vertical entre tarjetas */
+    padding: 1.5rem 0;
   }
 
-  .filter-buttons {
-    flex-direction: column;
-    align-items: center;
+  .product-card {
+    height: 500px; /* ✅ CONTENEDOR MÁS ALTO en móviles */
+    margin: 0 0.5rem; /* ✅ Pequeño margen a los lados */
   }
 
-  .filter-btn {
-    width: 200px;
+  .product-image-container {
+    height: 300px; /* ✅ IMAGEN MÁS ALTA en móviles */
   }
 
-  /* Modal responsive */
-  .modal-content, .image-modal-content {
-    padding: 1rem;
-    margin: 5% auto;
-    width: 98%;
+  .product-info {
+    padding: 1.5rem;
+    gap: 1rem; /* ✅ Más espacio entre elementos de info */
   }
 
-  .main-image-section {
-    flex-direction: column;
+  .product-title {
+    font-size: 1.3rem; /* ✅ Texto más grande y legible */
+    margin-bottom: 0.8rem;
   }
 
-  .thumbnail-scroll {
-    max-width: 100%;
-    max-height: 100px;
+  .product-description {
+    font-size: 1rem; /* ✅ Texto más legible */
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
   }
 
-  .thumbnails {
-    flex-direction: row;
-    max-height: 100px;
-    overflow-x: auto;
-    overflow-y: hidden;
+  .product-price {
+    font-size: 1.4rem; /* ✅ Precio más destacado */
   }
 
-  .thumbnail-item {
-    min-width: 80px;
-  }
-
-  .main-image-container {
-    min-height: 300px;
-  }
-
-  #mainModalImage {
-    max-height: 300px;
-  }
-
-  .modal-product {
-    flex-direction: column;
+  .multi-image-badge {
+    padding: 10px 14px; /* ✅ Badge más grande */
+    font-size: 0.9rem;
   }
 }
 
+/* Para móviles más pequeños (menos de 480px) */
 @media (max-width: 480px) {
-  .main-image-container {
-    min-height: 250px;
+  .products-grid {
+    gap: 1.5rem; /* ✅ Espacio consistente */
   }
 
-  #mainModalImage {
-    max-height: 250px;
+  .product-card {
+    height: 480px; /* ✅ Altura ligeramente menor */
+    border-radius: 15px; /* ✅ Bordes más redondeados */
   }
 
-  .product-info-modal h2 {
-    font-size: 1.3rem;
+  .product-image-container {
+    height: 280px; /* ✅ Proporción optimizada */
   }
 
+  .product-info {
+    padding: 1.2rem;
+  }
+
+  /* Header más compacto para móviles */
   header {
     padding: 2rem 0;
   }
 
   header h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 1.1rem;
+  }
+
+  /* Filtros mejor adaptados */
+  .filters {
+    padding: 1.5rem 0;
+  }
+
+  .filter-buttons {
+    gap: 0.5rem;
+  }
+
+  .filter-btn {
+    padding: 10px 16px;
+    font-size: 0.9rem;
   }
 }
 
