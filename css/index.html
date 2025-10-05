@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Catálogo de Productos</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <title>Cajas y empaques YALU</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <!-- Header -->
 <header>
   <div class="container">
-    <h1>Mi Catálogo</h1>
+    <h1>Nuestro Catálogo</h1>
     <p>Los mejores productos para ti</p>
   </div>
 </header>
@@ -22,9 +21,9 @@
     <input type="text" id="searchInput" placeholder="Buscar productos..." class="search-bar">
     <div class="filter-buttons">
       <button class="filter-btn active" data-filter="all">Todos</button>
-      <button class="filter-btn" data-filter="categoria1">Categoría 1</button>
-      <button class="filter-btn" data-filter="categoria2">Categoría 2</button>
-      <button class="filter-btn" data-filter="categoria3">Categoría 3</button>
+      <button class="filter-btn" data-filter="amoryamistad">Amor y amistar</button>
+      <button class="filter-btn" data-filter="joyeria">Joyeria</button>
+      <button class="filter-btn" data-filter="hombres">Hombres</button>
     </div>
   </div>
 </section>
@@ -39,19 +38,30 @@
 <!-- Footer -->
 <footer>
   <div class="container">
-    <p>&copy; 2024 Mi Catálogo. Todos los derechos reservados.</p>
-    <p>Contacto: tu-email@ejemplo.com | Tel: +XX XXX XXX XXX</p>
+    <p>&copy; 2025 CatalogoCajasYalu. Contacto: 3007276599</p>
   </div>
 </footer>
 
-<!-- Modal para vista detallada -->
+<!-- Modal para vista detallada del producto -->
 <div id="productModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <div id="modalContent"></div>
+    <div id="productModalContent">
+      <!-- Aquí va la información detallada del producto -->
+    </div>
   </div>
 </div>
 
-<script src="./js/script.js"></script>
+<!-- Modal para galería de imágenes -->
+<div id="imageModal" class="modal">
+  <div class="image-modal-content">
+    <span class="close-image">&times;</span>
+    <div id="imageModalContent">
+      <!-- Aquí va la galería de imágenes -->
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
