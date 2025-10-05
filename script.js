@@ -16,60 +16,7 @@ const products = [
       { size: "20cm", price: "$8,500" },
       { size: "25cm", price: "$19.99" },
       { size: "30cm", price: "$24.99" }]
-  },
-  {
-    id: 2,
-    name: "Corazon Forrado",
-    description: "Base en cartón rigido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos... ",
-    price: "Desde",
-    category: "Los mas llevados",
-    image: "img/CorazónForrado1.jpg",
-    images: [
-      "img/CorazónForrado1.jpg",
-      "img/CorazonForrado4.jpeg",
-      "img/CorazonForrado5.jpeg"
-    ],
-    variants: [
-      { size: "20cm", price: "$8,500" },
-      { size: "25cm", price: "$19.99" },
-      { size: "30cm", price: "$24.99" }]
-  },
-  {
-    id: 3,
-    name: "Corazon Forrado",
-    description: "Base en cartón rigido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos... ",
-    price: "Desde",
-    category: "Los mas llevados",
-    image: "img/CorazónForrado1.jpg",
-    images: [
-      "img/CorazónForrado1.jpg",
-      "img/CorazonForrado4.jpeg",
-      "img/CorazonForrado5.jpeg"
-    ],
-    variants: [
-      { size: "20cm", price: "$8,500" },
-      { size: "25cm", price: "$19.99" },
-      { size: "30cm", price: "$24.99" }]
-  },
-  {
-    id: 4,
-    name: "Corazon Forrado",
-    description: "Base en cartón rigido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos... ",
-    price: "Desde",
-    category: "Los mas llevados",
-    image: "img/CorazónForrado1.jpg",
-    images: [
-      "img/CorazónForrado1.jpg",
-      "img/CorazonForrado4.jpeg",
-      "img/CorazonForrado5.jpeg"
-    ],
-    variants: [
-      { size: "20cm", price: "$8,500" },
-      { size: "25cm", price: "$19.99" },
-      { size: "30cm", price: "$24.99" }]
-  },
-
-
+  }
 ];
 
 // Elementos del DOM
