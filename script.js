@@ -5,7 +5,7 @@ const products = [
     name: "Corazon Forrado",
     description: "Base en cartón rigido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos... ",
     price: "Desde",
-    category: "Los mas llevados",
+    category: "popular",
     image: "img/CorazónForrado1.jpg",
     images: [
       "img/CorazónForrado1.jpg",
@@ -22,7 +22,7 @@ const products = [
     name: "Cilindro Forrado",
     description: "Base en cartón rigido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos... ",
     price: "Desde",
-    category: "Los mas llevados",
+    category: "popular",
     image: "img/CilindroForrado6.jpeg",
     images: [
       "img/CilindroForrado6.jpeg",
@@ -33,12 +33,25 @@ const products = [
       { size: "25cm", price: "$19.99" },
       { size: "30cm", price: "$24.99" }]
   },
+  {id: 24,
+    name: "Cuadrada",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "popular",
+    image: "img/cuadrada1.png",
+    images: [
+      "img/cuadrada2.jpeg",
+      "img/cuadrada3.jpeg"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }]
+  },
   {
     id: 3,
     name: "Cajón Corazón",
     description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
     price: "Desde",
-    category: "Los mas llevados",
+    category: "popular",
     image: "img/cajoncorazon1.png",
     images: [
       "img/cajoncorazon1.png",
@@ -53,12 +66,26 @@ const products = [
     name: "Libro Corazón",
     description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
     price: "Desde",
-    category: "Los mas llevados",
+    category: "popular",
     image: "img/librocorazon2.jpeg",
     images: [
       "img/librocorazon2.jpeg",
       "img/librocorazon1.jpeg",
       "img/librocorazon3.jpeg"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }]
+  },
+  {
+    id: 21,
+    name: "Libro Corazón #2",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "popular",
+    image: "img/librocorazon22.png",
+    images: [
+      "img/librocorazon22.png",
+      "img/librocorazon23.png"
     ],
     variants: [
       { size: "20cm", price: "$8,500" }]
@@ -106,6 +133,225 @@ const products = [
     variants: [
       { size: "20cm", price: "$8,500" }]
   },
+
+  {
+    id: 8,
+    name: "Buffet",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    image: "img/buffet.jpeg",
+    images: [
+      "img/buffet.jpeg",
+      "img/buffet2.jpeg"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }]
+  },
+  {
+    id: 10,
+    name: "Cofre",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "Los mas llevados",
+    image: "img/cofre1.jpeg",
+    images: [
+      "img/cofre1.jpeg",
+      "img/cofre2.jpeg"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }]
+  },
+
+  {
+    id: 11,
+    name: "Libro con broche iman",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "Los mas llevados",
+    image: "img/librobroche1.jpeg",
+    images: [
+      "img/librobroche1.jpeg",
+      "img/librobroche2.jpeg"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }],
+
+  },
+  {
+    id: 12,
+    name: "Cilindro sin forrar",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "Los mas llevados",
+    image: "img/cilindrosinforrar1.jpg",
+    images: [
+      "img/cilindrosinforrar1.jpg",
+      "img/cilindrosinforrar2.jpg"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }],
+
+  },
+
+  {
+    id: 13,
+    name: "Corazones sin forrar",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "Los mas llevados",
+    image: "img/corasinforrar2.jpeg",
+    images: [
+      "img/corasinforrar2.jpeg",
+      "img/corasinforrar1.jpeg"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }],
+
+  },
+  {
+    id: 14,
+    name: "Reloj ",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "joyeria",
+    image: "img/reloj.jpeg",
+    images: [
+      "img/reloj.jpeg",
+      "img/reloj2.jpeg"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }],
+
+  },
+  {
+    id: 15,
+    name: "Joyeros #1",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "joyeria",
+    image: "img/estilo1.jpeg",
+    images: [
+      "img/estilo1.jpeg",
+      "img/estilo12.jpeg"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }],
+
+  },
+  {
+    id: 16,
+    name: "Joyeros #2",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "joyeria",
+    image: "img/estilo2.png",
+    images: [
+      "img/estilo2.png",
+      "img/estilo21.png"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }],
+
+  },
+  {
+    id: 17,
+    name: "Joyeros #3",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "joyeria",
+    image: "img/estilo3.png",
+    images: [
+      "img/estilo3.png",
+      "img/estilo31.png"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }],
+
+  },
+  {
+    id: 18,
+    name: "Joyeros #4",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "joyeria",
+    image: "img/estilo4.png",
+    images: [
+      "img/estilo4.png"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }],
+
+  },
+  {
+    id: 9,
+    name: "Carrito Corona",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "hombres",
+    image: "img/corona1.jpeg",
+    images: [
+      "img/corona1.jpeg",
+      "img/corona2.jpeg",
+      "img/carritoejemplo.png"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }]
+  },
+  {id: 19,
+  name: "Ancheta",
+  description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+  price: "Desde",
+  image: "img/acheta1.png",
+  images: [
+  "img/acheta1.png",
+    "img/acheta2.png"
+
+],
+  variants: [
+  { size: "20cm", price: "$8,500" }],
+
+},
+  {id: 20,
+  name: "Ancheta Esmoquin",
+  description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+  price: "Desde",
+  category: "hombres",
+  image: "img/anchetahombre1.png",
+  images: [
+  "img/anchetahombre1.png",
+  "img/anchetahombre2.png"
+],
+  variants: [
+  { size: "20cm", price: "$8,500" }]
+},
+  {id: 22,
+    name: "Cilindro Esmoquin",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "hombres",
+    image: "img/cilindroesmoquin.jpg",
+    images: [
+      "img/cilindroesmoquin.jpg",
+      "img/cilindroesmoquin2.jpg"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }]
+  },
+  {id: 23,
+    name: "Ancheta Amor",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "amoryamistad",
+    image: "img/anchetaamor1.png",
+    images: [
+      "img/anchetaamor1.png",
+      "img/anchetaamor2.png"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }]
+  },
+
+
 ];
 
 // Elementos del DOM
