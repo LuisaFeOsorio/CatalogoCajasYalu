@@ -6,11 +6,11 @@ const products = [
     description: "Base en cartón rigido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos... ",
     price: "Desde",
     category: "Los mas llevados",
-    image: "/img/CorazónForrado1.jpg",
+    image: "img/CorazónForrado1.jpg",
     images: [
-      "/img/CorazónForrado1.jpg",
-      "/img/CorazonForrado4.jpeg",
-      "/img/CorazonForrado5.jpeg"
+      "img/CorazónForrado1.jpg",
+      "img/CorazonForrado4.jpeg",
+      "img/CorazonForrado5.jpeg"
     ],
     variants: [
       { size: "20cm", price: "$8,500" },
