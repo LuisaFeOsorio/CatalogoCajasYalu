@@ -23,7 +23,7 @@ const products = [
     description: "Base en cartón rigido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos... ",
     price: "Desde",
     category: "Los mas llevados",
-    image: "/img/CilindroForrado6.jpeg",
+    image: "img/CilindroForrado6.jpeg",
     images: [
       "img/CilindroForrado6.jpeg",
       "img/CilindroForrado"
@@ -41,9 +41,9 @@ const products = [
     category: "Los mas llevados",
     image: "img/cajoncorazon1.png",
     images: [
-      "img//cajoncorazon1.png",
-      "img//cajoncorazon2.png",
-      "img//cajoncorazon3.png"
+      "img/cajoncorazon1.png",
+      "img/cajoncorazon2.png",
+      "img/cajoncorazon3.png"
     ],
     variants: [
       { size: "20cm", price: "$8,500" }]
