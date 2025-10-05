@@ -25,9 +25,8 @@ const products = [
     category: "Los mas llevados",
     image: "/img/CilindroForrado6.jpeg",
     images: [
-      "/img/CilindroForrado6.jpeg",
-      "/img/CilindroForrado",
-      "img/laptop-pantalla.jpg"
+      "img/CilindroForrado6.jpeg",
+      "img/CilindroForrado"
     ],
     variants: [
       { size: "20cm", price: "$8,500" },
@@ -40,11 +39,11 @@ const products = [
     description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
     price: "Desde",
     category: "Los mas llevados",
-    image: "/img/cajoncorazon1.png",
+    image: "img/cajoncorazon1.png",
     images: [
-      "/img//cajoncorazon1.png",
-      "/img//cajoncorazon2.png",
-      "/img//cajoncorazon3.png"
+      "img//cajoncorazon1.png",
+      "img//cajoncorazon2.png",
+      "img//cajoncorazon3.png"
     ],
     variants: [
       { size: "20cm", price: "$8,500" }]
@@ -55,11 +54,11 @@ const products = [
     description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
     price: "Desde",
     category: "Los mas llevados",
-    image: "/img/librocorazon2.jpeg",
+    image: "img/librocorazon2.jpeg",
     images: [
-      "/img/librocorazon2.jpeg",
-      "/img/librocorazon1.jpeg",
-      "/img/librocorazon3.jpeg"
+      "img/librocorazon2.jpeg",
+      "img/librocorazon1.jpeg",
+      "img/librocorazon3.jpeg"
     ],
     variants: [
       { size: "20cm", price: "$8,500" }]
