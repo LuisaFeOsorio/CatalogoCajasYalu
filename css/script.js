@@ -3,15 +3,14 @@ const products = [
   {
     id: 1,
     name: "Corazon Forrado",
-    description: "Base en cartón rigido, variedad de colores, resistentes y elegantes ",
-    price: "$Desde",
-    category: "electronica",
+    description: "Base en cartón rigido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "Los mas llevados",
     image: "/img/CorazónForrado1.jpg",
     images: [
       "/img/CorazónForrado1.jpg",
-      "/img/CorazonForrado2.png",
-      "img/smartphone-atras.jpg",
-      "img/smartphone-pantalla.jpg"
+      "/img/CorazonForrado4.jpeg",
+      "/img/CorazonForrado5.jpeg"
     ],
     variants: [
       { size: "20cm", price: "$8,500" },
@@ -20,66 +19,53 @@ const products = [
   },
   {
     id: 2,
-    name: "Laptop Gamer",
-    description: "Laptop potente para gaming y trabajo con tarjeta gráfica dedicada, procesador de última generación y 16GB de RAM.",
-    price: "$899.99",
-    category: "electronica",
-    image: "img/laptop-principal.jpg",
+    name: "Cilindro Forrado",
+    description: "Base en cartón rigido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "Los mas llevados",
+    image: "/img/CilindroForrado6.jpeg",
     images: [
-      "img/laptop-principal.jpg",
-      "img/laptop-teclado.jpg",
+      "/img/CilindroForrado6.jpeg",
+      "/img/CilindroForrado",
       "img/laptop-pantalla.jpg"
-    ]
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" },
+      { size: "25cm", price: "$19.99" },
+      { size: "30cm", price: "$24.99" }]
   },
   {
     id: 3,
-    name: "Camiseta Básica",
-    description: "Camiseta de algodón 100% en varios colores. Tallas S-XL disponibles. Ideal para uso diario.",
-    price: "$19.99",
-    category: "ropa",
-    image: "img/camiseta-principal.jpg",
+    name: "Cajón Corazón",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "Los mas llevados",
+    image: "/img/cajoncorazon1.png",
     images: [
-      "img/camiseta-principal.jpg",
-      "img/camiseta-espalda.jpg"
-    ]
+      "/img//cajoncorazon1.png",
+      "/img//cajoncorazon2.png",
+      "/img//cajoncorazon3.png"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }]
   },
   {
     id: 4,
-    name: "Juego de Sábanas",
-    description: "Juego de sábanas de algodón egipcio para cama queen size. Incluye sábana ajustable, plana y 2 fundas de almohada.",
-    price: "$49.99",
-    category: "hogar",
-    image: "img/sabanas-principal.jpg",
+    name: "Libro Corazón",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "Los mas llevados",
+    image: "/img/librocorazon2.jpeg",
     images: [
-      "img/sabanas-principal.jpg",
-      "img/sabanas-detalle.jpg"
-    ]
+      "/img/librocorazon2.jpeg",
+      "/img/librocorazon1.jpeg",
+      "/img/librocorazon3.jpeg"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }]
   },
-  {
-    id: 5,
-    name: "Auriculares Bluetooth",
-    description: "Auriculares inalámbricos con cancelación de ruido activa, 30 horas de batería y calidad de sonido premium.",
-    price: "$79.99",
-    category: "electronica",
-    image: "img/auriculares-principal.jpg",
-    images: [
-      "img/auriculares-principal.jpg",
-      "img/auriculares-estuche.jpg"
-    ]
-  },
-  {
-    id: 6,
-    name: "Jeans Clásicos",
-    description: "Jeans de corte recto en color azul oscuro. Tallas disponibles del 28 al 42. Material duradero y cómodo.",
-    price: "$39.99",
-    category: "ropa",
-    image: "img/jeans-principal.jpg",
-    images: [
-      "img/jeans-principal.jpg",
-      "img/jeans-espalda.jpg",
-      "img/jeans-detalle.jpg"
-    ]
-  }
+
+
 ];
 
 // Elementos del DOM
