@@ -283,6 +283,50 @@ const products = [
 
   },
   {
+    id: 25,
+    name: "Empaques #1",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "empaques",
+    image: "img/empaque1.png",
+    images: [
+      "img/empaque1.png",
+      "img/empaque12.png"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }],
+
+  },{
+  id: 26,
+  name: "Empaques #2",
+  description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+  price: "Desde",
+  category: "empaques",
+  image: "img/empaque21.png",
+  images: [
+  "img/empaque21.png",
+  "img/empaque22.png"
+],
+  variants: [
+  { size: "20cm", price: "$8,500" }],
+
+},
+  {   id: 27,
+    name: "Empaques #3",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "empaques",
+    image: "img/Empaque31.png",
+    images: [
+      "img/Empaque31.png",
+      "img/Empaque32.png",
+      "img/empaque33.png"
+    ],
+    variants: [
+      { size: "20cm", price: "$8,500" }],
+
+  },
+  {
     id: 9,
     name: "Carrito Corona",
     description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
@@ -350,7 +394,6 @@ const products = [
     variants: [
       { size: "20cm", price: "$8,500" }]
   },
-
 
 ];
 
