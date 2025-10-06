@@ -3,15 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cajas y empaques YALU</title>
+  <title>CajasYempaquesYALU</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <!-- Header -->
 <header>
   <div class="container">
-    <h1>Cajas y empaques YALU</h1>
-    <p>Los mejores productos para ti</p>
+    <h1>CATÁLOGO AL POR MAYOR</h1>
+    <h2>Compra minima 12 unidades por referencia</h2>
+    <p>Personaliza tamaños y colores</p>
+    <p></p>
+
+    <a href="detal.html" class="footer-retail-link" style="color: white; text-decoration: none; font-weight: 600; margin-top: 0.5rem; display: inline-block;">
+      Ver catálogo al detal
+    </a>
   </div>
 </header>
 
@@ -22,7 +28,6 @@
     <div class="filter-buttons">
       <button class="filter-btn active" data-filter="all">Todos</button>
       <button class="filter-btn" data-filter="popular">Flores-Arreglos</button>
-      <button class="filter-btn" data-filter="amoryamistad">Amor y amistar</button>
       <button class="filter-btn" data-filter="empaques">Empaques</button>
       <button class="filter-btn" data-filter="joyeria">Joyeria</button>
       <button class="filter-btn" data-filter="hombres">Hombres</button>
@@ -65,5 +70,9 @@
 </div>
 
 <script src="script.js"></script>
+<!-- Agrega esto antes de cerrar el body -->
+<div id="cart-counter" class="cart-counter"></div>
+<button class="view-cart-btn" onclick="viewCart()">🛒 Ver Pedido</button>
+
 </body>
 </html>

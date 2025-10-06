@@ -13,9 +13,9 @@ const products = [
       "img/CorazonForrado5.jpeg"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" },
-      { size: "25cm", price: "$19.99" },
-      { size: "30cm", price: "$24.99" }]
+      { size: "20cm de ancho x 10 cm de alto", price: "$8,000" },
+      { size: "25cm de ancho x 10 cm de alto", price: "$10,000" },
+      { size: "30cm de ancho x 10 cm de alto", price: "$12,000" }]
   },
   {
     id: 2,
@@ -29,9 +29,10 @@ const products = [
       "img/CilindroForrado"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" },
-      { size: "25cm", price: "$19.99" },
-      { size: "30cm", price: "$24.99" }]
+      { size: "13cm de diametro x 10 cm de alto", price: "$6,000" },
+      { size: "16cm de diametro x 10 cm de alto", price: "$8,000" },
+      { size: "20cm de diametro x 10 cm de alto", price: "$10,000" },
+      { size: "25cm de diametro x 10 cm de alto", price: "$12,000" }]
   },
   {id: 24,
     name: "Cuadrada",
@@ -44,7 +45,10 @@ const products = [
       "img/cuadrada3.jpeg"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }]
+      { size: "Base 13cm x 13cm x 10 cm de alto", price: "$6,000" },
+      { size: "Base 16cm x 16cm x 10 cm de alto", price: "$8,000" },
+      { size: "Base 20cm x 20cm x 10 cm de alto", price: "$10,000" },
+      { size: "Base 25cm x 25cm x 10 cm de alto", price: "$12,000" }]
   },
   {
     id: 3,
@@ -59,11 +63,11 @@ const products = [
       "img/cajoncorazon3.png"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }]
+      { size: "Medida del cajon interno: 26cm x 18cm. Corazón de 24cm de diametro ", price: "$14,000" }]
   },
   {
     id: 4,
-    name: "Libro Corazón",
+    name: "Libro Corazón #1",
     description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
     price: "Desde",
     category: "popular",
@@ -74,7 +78,7 @@ const products = [
       "img/librocorazon3.jpeg"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }]
+      { size: "Corazón de 25cm de diametro", price: "$8,000" }]
   },
   {
     id: 21,
@@ -88,7 +92,7 @@ const products = [
       "img/librocorazon23.png"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }]
+      { size: "Corazón de 25cm de diametro", price: "$8,000" }]
   },
   {
     id: 5,
@@ -102,7 +106,7 @@ const products = [
       "img/dulcera2.png"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }]
+      { size: "Tamaño mediano", price: "$5,000" }]
   },
   {
     id: 6,
@@ -117,7 +121,7 @@ const products = [
       "img/mom3.jpeg"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }]
+      { size: "53cm x 18cm x 6 cm de alto", price: "$13,500" }]
   },
   {
     id: 7,
@@ -131,7 +135,7 @@ const products = [
       "img/loveu2.jpeg"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }]
+      { size: "50cm x 18cm x 6 cm de alto", price: "$13,500" }]
   },
 
   {
@@ -145,7 +149,7 @@ const products = [
       "img/buffet2.jpeg"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }]
+      { size: "34cm x 26cm x 6cm", price: "$9,000" }]
   },
   {
     id: 10,
@@ -159,7 +163,8 @@ const products = [
       "img/cofre2.jpeg"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }]
+      { size: "Mediano: 23cm x 17cm x 15cm alto total", price: "$13,000" },
+      { size: "Grande: 30cm x 20cm x 15 cm alto total", price: "$15,000" }]
   },
 
   {
@@ -396,7 +401,6 @@ const products = [
   },
 
 ];
-
 // Elementos del DOM
 const productsGrid = document.getElementById('productsGrid');
 const searchInput = document.getElementById('searchInput');
@@ -413,6 +417,9 @@ const closeImageModal = document.querySelector('.close-image');
 
 let currentFilter = 'all';
 let currentSearch = '';
+
+// Carrito de compras
+let cart = [];
 
 // Inicializar la página
 document.addEventListener('DOMContentLoaded', function() {
@@ -459,6 +466,316 @@ function setupEventListeners() {
   });
 }
 
+// FUNCIONES DEL CARRITO - CORREGIDAS
+
+function increaseQuantity(productId) {
+  const quantityInput = document.getElementById(`quantity-${productId}`);
+  quantityInput.value = parseInt(quantityInput.value) + 1;
+}
+
+function decreaseQuantity(productId) {
+  const quantityInput = document.getElementById(`quantity-${productId}`);
+  const currentValue = parseInt(quantityInput.value);
+  if (currentValue > 12) {
+    quantityInput.value = currentValue - 1;
+  }
+}
+
+function validateQuantity(productId) {
+  const quantityInput = document.getElementById(`quantity-${productId}`);
+  if (parseInt(quantityInput.value) < 12) {
+    quantityInput.value = 12;
+    showCartMessage(productId, '⚠️ La cantidad mínima es 12 unidades', 'warning');
+  }
+}
+
+function showCartMessage(productId, message, type) {
+  const messageElement = document.getElementById(`cart-message-${productId}`);
+  if (messageElement) {
+    messageElement.textContent = message;
+    messageElement.className = `cart-message ${type}`;
+
+    setTimeout(() => {
+      messageElement.textContent = '';
+      messageElement.className = 'cart-message';
+    }, 3000);
+  }
+}
+
+function addToCart(productId) {
+  console.log('🛒 Intentando añadir producto ID:', productId);
+
+  const product = products.find(p => p.id === productId);
+  if (!product) {
+    console.error('❌ Producto no encontrado');
+    showCartMessage(productId, '❌ Error: Producto no encontrado', 'error');
+    return;
+  }
+
+  const quantityInput = document.getElementById(`quantity-${productId}`);
+  if (!quantityInput) {
+    console.error('❌ Input de cantidad no encontrado');
+    showCartMessage(productId, '❌ Error en la cantidad', 'error');
+    return;
+  }
+
+  const quantity = parseInt(quantityInput.value);
+  console.log('📦 Cantidad seleccionada:', quantity);
+
+  if (quantity < 12) {
+    showCartMessage(productId, '❌ La cantidad mínima es 12 unidades', 'error');
+    return;
+  }
+
+  // OBTENER LA VARIANTE SELECCIONADA
+  let selectedVariant = null;
+  if (product.variants) {
+    const selectedVariantItem = document.querySelector(`#variantsList-${productId} .variant-item.selected`);
+    if (selectedVariantItem) {
+      selectedVariant = {
+        size: selectedVariantItem.dataset.size,
+        price: selectedVariantItem.dataset.price
+      };
+    }
+  }
+
+  console.log('🎯 Variante seleccionada:', selectedVariant);
+
+  // Buscar si el producto ya está en el carrito (ahora considerando la variante)
+  const existingItemIndex = cart.findIndex(item =>
+    item.product.id === productId &&
+    item.selectedVariant?.size === selectedVariant?.size
+  );
+
+  if (existingItemIndex !== -1) {
+    // Producto con misma variante ya existe, actualizar cantidad
+    cart[existingItemIndex].quantity += quantity;
+    console.log('✅ Producto actualizado en carrito');
+  } else {
+    // Producto nuevo o con diferente variante, agregar al carrito
+    cart.push({
+      product: product,
+      quantity: quantity,
+      selectedVariant: selectedVariant
+    });
+    console.log('✅ Nuevo producto añadido al carrito');
+  }
+
+  console.log('🛒 Carrito actual:', cart);
+  showCartMessage(productId, `✅ ${quantity} unidades añadidas al pedido`, 'success');
+
+  // Actualizar contador del carrito
+  updateCartCounter();
+
+  // Cerrar el modal después de añadir (opcional)
+  setTimeout(() => {
+    const modal = document.getElementById('productModal');
+    if (modal) {
+      modal.style.display = 'none';
+    }
+  }, 1500);
+}
+
+// Función para ver el carrito completo
+function viewCart() {
+  if (cart.length === 0) {
+    showEmptyCartMessage();
+    return;
+  }
+
+  showCartModal();
+}
+
+// Función para mostrar mensaje de carrito vacío
+function showEmptyCartMessage() {
+  alert('🛒 Tu pedido está vacío\n\nAgrega productos con el botón "Añadir al Pedido"');
+}
+
+// Función para mostrar el modal del carrito
+function showCartModal() {
+  const cartModalHTML = `
+    <div class="cart-modal">
+      <div class="cart-header">
+        <h2>📋 Resumen de Tu Pedido</h2>
+        <span class="close-cart">&times;</span>
+      </div>
+      <div class="cart-items" id="cartItems">
+        ${generateCartItemsHTML()}
+      </div>
+      <div class="cart-total">
+        <strong>💰 Total: $${calculateTotal().toLocaleString()}</strong>
+      </div>
+      <div class="cart-actions">
+        <button class="continue-shopping-btn" onclick="closeCartModal()">
+          ← Seguir Comprando
+        </button>
+        <button class="whatsapp-btn" onclick="sendToWhatsApp()">
+          💬 Confirmar Pedido por WhatsApp
+        </button>
+      </div>
+    </div>
+  `;
+
+  // Crear modal del carrito
+  const cartModal = document.createElement('div');
+  cartModal.className = 'modal';
+  cartModal.id = 'cartModal';
+  cartModal.innerHTML = cartModalHTML;
+  document.body.appendChild(cartModal);
+
+  // Configurar event listeners
+  setupCartModalListeners();
+
+  // Mostrar modal
+  cartModal.style.display = 'block';
+}
+
+// Generar HTML de los items del carrito
+function generateCartItemsHTML() {
+  return cart.map((item, index) => `
+    <div class="cart-item" data-index="${index}">
+      <div class="cart-item-image">
+        <img src="${item.product.image}" alt="${item.product.name}"
+             onerror="this.src='https://via.placeholder.com/60x60/667eea/white?text=Imagen'">
+      </div>
+      <div class="cart-item-details">
+        <h4>${item.product.name}</h4>
+        ${item.selectedVariant ? `
+          <p><strong>Tamaño:</strong> ${item.selectedVariant.size}</p>
+          <p><strong>Precio unitario:</strong> ${item.selectedVariant.price}</p>
+        ` : ''}
+        <p><strong>Cantidad:</strong> ${item.quantity} unidades</p>
+        ${item.selectedVariant ? `
+          <p class="cart-item-price">
+            <strong>Subtotal:</strong> $${(parsePrice(item.selectedVariant.price) * item.quantity).toLocaleString()}
+          </p>
+        ` : ''}
+      </div>
+      <button class="remove-item-btn" onclick="removeFromCart(${index})">
+        🗑️ Eliminar
+      </button>
+    </div>
+  `).join('');
+}
+
+// Calcular total
+function calculateTotal() {
+  return cart.reduce((total, item) => {
+    const price = item.selectedVariant ? parsePrice(item.selectedVariant.price) : 0;
+    return total + (price * item.quantity);
+  }, 0);
+}
+
+// Eliminar producto del carrito
+function removeFromCart(index) {
+  if (confirm('¿Estás seguro de que quieres eliminar este producto de tu pedido?')) {
+    cart.splice(index, 1);
+    updateCartCounter();
+    refreshCartModal();
+
+    if (cart.length === 0) {
+      closeCartModal();
+      showEmptyCartMessage();
+    }
+  }
+}
+
+// Actualizar modal del carrito
+function refreshCartModal() {
+  const cartItems = document.getElementById('cartItems');
+  const cartTotal = document.querySelector('.cart-total');
+
+  if (cartItems) {
+    cartItems.innerHTML = generateCartItemsHTML();
+  }
+
+  if (cartTotal) {
+    cartTotal.innerHTML = `<strong>💰 Total: $${calculateTotal().toLocaleString()}</strong>`;
+  }
+}
+
+// Cerrar modal del carrito
+function closeCartModal() {
+  const cartModal = document.getElementById('cartModal');
+  if (cartModal) {
+    cartModal.remove();
+  }
+}
+
+// Configurar event listeners del modal del carrito
+function setupCartModalListeners() {
+  const closeCart = document.querySelector('.close-cart');
+  if (closeCart) {
+    closeCart.addEventListener('click', closeCartModal);
+  }
+
+  // Cerrar al hacer clic fuera
+  const cartModal = document.getElementById('cartModal');
+  if (cartModal) {
+    cartModal.addEventListener('click', function(event) {
+      if (event.target === this) {
+        closeCartModal();
+      }
+    });
+  }
+}
+
+// Función para enviar a WhatsApp
+function sendToWhatsApp() {
+  if (cart.length === 0) {
+    alert('❌ No hay productos en el pedido');
+    return;
+  }
+
+  const phoneNumber = "573003331111"; // ⚠️ REEMPLAZA con tu número de WhatsApp
+  const message = generateWhatsAppMessage();
+  const encodedMessage = encodeURIComponent(message);
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+  // Abrir en nueva pestaña
+  window.open(whatsappURL, '_blank');
+}
+
+// Generar mensaje para WhatsApp
+function generateWhatsAppMessage() {
+  let message = "¡Hola! 👋\n\n";
+  message += "Quiero hacer el siguiente pedido:\n\n";
+
+  cart.forEach((item, index) => {
+    message += `📦 ${item.product.name}\n`;
+    if (item.selectedVariant) {
+      message += `   Tamaño: ${item.selectedVariant.size}\n`;
+    }
+    message += `   Cantidad: ${item.quantity} unidades\n`;
+    if (item.selectedVariant) {
+      const price = parsePrice(item.selectedVariant.price);
+      const subtotal = price * item.quantity;
+      message += `   Subtotal: $${subtotal.toLocaleString()}\n`;
+    }
+    message += "\n";
+  });
+
+  message += `💰 *TOTAL: $${calculateTotal().toLocaleString()}*\n\n`;
+  message += "Por favor confirmar disponibilidad y forma de pago. ¡Gracias! 🎉";
+
+  return message;
+}
+
+// Función auxiliar para convertir precios
+function parsePrice(priceString) {
+  return parseFloat(priceString.replace(/[$,]/g, ''));
+}
+
+// Actualizar contador del carrito
+function updateCartCounter() {
+  const cartCounter = document.getElementById('cart-counter');
+  if (cartCounter) {
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCounter.textContent = totalItems;
+    cartCounter.style.display = totalItems > 0 ? 'flex' : 'none';
+  }
+}
+
 // Mostrar productos
 function displayProducts(productsToShow) {
   productsGrid.innerHTML = '';
@@ -472,23 +789,23 @@ function displayProducts(productsToShow) {
     const productCard = document.createElement('div');
     productCard.className = 'product-card';
     productCard.innerHTML = `
-            <div class="product-image-container">
-                <img src="${product.image}" alt="${product.name}" class="product-image"
-                     onerror="this.src='https://via.placeholder.com/300x200/667eea/white?text=Imagen+No+Disponible'">
+      <div class="product-image-container">
+        <img src="${product.image}" alt="${product.name}" class="product-image"
+             onerror="this.src='https://via.placeholder.com/300x200/667eea/white?text=Imagen+No+Disponible'">
+        ${(product.images && product.images.length > 1) }
+      </div>
+      <div class="product-info">
+        <h3 class="product-title">${product.name}</h3>
+        <p class="product-description">${product.description.substring(0, 60)}...</p>
+        <div class="product-price">${product.variants ? 'Desde ' + product.variants[0].price : product.price}</div>
+      </div>
+    `;
 
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">${product.name}</h3>
-                <p class="product-description">${product.description.substring(0, 60)}...</p>
-                <div class="product-price">${product.variants ? 'Desde ' + product.variants[0].price : product.price}</div>
-            </div>
-        `;
-
-    // ✅ CAMBIO: Click en la imagen → Abre MISMO modal de descripción
+    // Click en la imagen → Abre modal de descripción
     const productImage = productCard.querySelector('.product-image');
     productImage.addEventListener('click', (e) => {
       e.stopPropagation();
-      openProductModal(product); // Misma función que el click en la tarjeta
+      openProductModal(product);
     });
 
     // Click en el resto de la tarjeta → Abre información del producto
@@ -518,7 +835,7 @@ function filterProducts() {
     filteredProducts = filteredProducts.filter(product =>
       product.name.toLowerCase().includes(currentSearch) ||
       product.description.toLowerCase().includes(currentSearch) ||
-      product.category.toLowerCase().includes(currentSearch)
+      (product.category && product.category.toLowerCase().includes(currentSearch))
     );
   }
 
@@ -527,46 +844,97 @@ function filterProducts() {
 
 // Función para abrir modal de producto (información)
 function openProductModal(product) {
-  // Construir HTML de variantes si existen
+  // Construir HTML de variantes con selección
   const variantsHTML = product.variants ? `
-        <div class="product-variants">
-            <h3>📏 Tamaños y Precios:</h3>
-            <div class="variants-list">
-                ${product.variants.map(variant => `
-                    <div class="variant-item">
-                        <span class="variant-size">${variant.size}</span>
-                        <span class="variant-price">${variant.price}</span>
-                    </div>
-                `).join('')}
-            </div>
-        </div>
-    ` : '';
+    <div class="product-variants">
+      <h3>📏 Selecciona Tamaño y Precio:</h3>
+      <div class="variants-list" id="variantsList-${product.id}">
+        ${product.variants.map((variant, index) => `
+          <div class="variant-item ${index === 0 ? 'selected' : ''}"
+               data-size="${variant.size}"
+               data-price="${variant.price}">
+            <span class="variant-size">${variant.size}</span>
+            <span class="variant-price">${variant.price}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  ` : '';
 
-  // Construir el badge de galería si hay múltiples imágenes
-  const galleryBadgeHTML = product.images && product.images.length > 1 ?
-    `<div class="modal-image-badge" onclick="openImageModal(${product.id})">📷 Ver ${product.images.length} fotos</div>` : '';
+  // HTML para el selector de cantidad
+  const quantitySelectorHTML = `
+    <div class="quantity-selector">
+      <h3>🛒 Cantidad:</h3>
+      <div class="quantity-controls">
+        <button class="quantity-btn minus-btn" onclick="decreaseQuantity(${product.id})">-</button>
+        <input type="number" id="quantity-${product.id}" class="quantity-input"
+               value="12" min="12" onchange="validateQuantity(${product.id})">
+        <button class="quantity-btn plus-btn" onclick="increaseQuantity(${product.id})">+</button>
+      </div>
+      <p class="min-quantity-notice">Mínimo 12 unidades por pedido</p>
+    </div>
+
+    <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
+      ✅ Añadir al Pedido
+    </button>
+
+    <div id="cart-message-${product.id}" class="cart-message"></div>
+  `;
 
   productModalContent.innerHTML = `
-        <div class="modal-product">
-            <div class="modal-image-container">
-                <img src="${product.image}" alt="${product.name}" class="modal-image"
-                     onclick="openImageModal(${product.id})"
-                     onerror="this.src='https://via.placeholder.com/500x300/667eea/white?text=Imagen+No+Disponible'">
-                ${galleryBadgeHTML}
-            </div>
-            <div class="modal-details">
-                <h2>${product.name}</h2>
-                <p class="modal-description">${product.description}</p>
+    <div class="modal-product">
+      <div class="modal-image-container">
+        <img src="${product.image}" alt="${product.name}" class="modal-image"
+             onclick="openImageModal(${product.id})"
+             onerror="this.src='https://via.placeholder.com/500x300/667eea/white?text=Imagen+No+Disponible'">
+        ${product.images && product.images.length > 1 ?
+    '<div class="modal-image-badge" onclick="openImageModal(' + product.id + ')">📷 Ver ' + product.images.length + ' fotos</div>' : ''}
+      </div>
+      <div class="modal-details">
+        <h2>${product.name}</h2>
+        <p class="modal-description">${product.description}</p>
 
-                ${variantsHTML}
-                <span class="product-category">${product.category}</span>
+        ${variantsHTML}
 
-                ${product.images && product.images.length > 1 ?
-    `<button class="view-gallery-btn" onclick="openImageModal(${product.id})">📷 Ver Galería Completa (${product.images.length} fotos)</button>` : ''}
-            </div>
+        <div class="modal-price" id="selectedPrice-${product.id}">
+          ${product.variants ? 'Precio: ' + product.variants[0].price : product.price}
         </div>
-    `;
+        <span class="product-category">${product.category || 'Sin categoría'}</span>
+
+        ${quantitySelectorHTML}
+
+        ${product.images && product.images.length > 1 ?
+    `<button class="view-gallery-btn" onclick="openImageModal(${product.id})">📷 Ver Galería Completa (${product.images.length} fotos)</button>` : ''}
+      </div>
+    </div>
+  `;
+
+  // Configurar event listeners para las variantes
+  if (product.variants) {
+    setupVariantSelection(product.id);
+  }
+
   productModal.style.display = 'block';
+}
+
+// Función para configurar la selección de variantes
+function setupVariantSelection(productId) {
+  const variantItems = document.querySelectorAll(`#variantsList-${productId} .variant-item`);
+  const priceElement = document.getElementById(`selectedPrice-${productId}`);
+
+  variantItems.forEach(item => {
+    item.addEventListener('click', function() {
+      // Remover selección anterior
+      variantItems.forEach(i => i.classList.remove('selected'));
+
+      // Agregar selección actual
+      this.classList.add('selected');
+
+      // Actualizar precio mostrado
+      const selectedPrice = this.querySelector('.variant-price').textContent;
+      priceElement.textContent = `Precio: ${selectedPrice}`;
+    });
+  });
 }
 
 // Función para abrir modal de imágenes
@@ -579,26 +947,26 @@ function openImageModal(productId) {
   const images = product.images || [product.image];
 
   imageModalContent.innerHTML = `
-        <div class="main-image-section">
-            <div class="main-image-container">
-                <img id="mainModalImage" src="${images[0]}" alt="${product.name}"
-                     onerror="this.src='https://via.placeholder.com/500x300/667eea/white?text=Imagen+No+Disponible'">
-            </div>
-            ${images.length > 1 ? `
-            <div class="thumbnail-scroll">
-                <div class="thumbnails" id="thumbnailsContainer">
-                    <!-- Las miniaturas se cargan aquí -->
-                </div>
-            </div>
-            ` : ''}
+    <div class="main-image-section">
+      <div class="main-image-container">
+        <img id="mainModalImage" src="${images[0]}" alt="${product.name}"
+             onerror="this.src='https://via.placeholder.com/500x300/667eea/white?text=Imagen+No+Disponible'">
+      </div>
+      ${images.length > 1 ? `
+      <div class="thumbnail-scroll">
+        <div class="thumbnails" id="thumbnailsContainer">
+          <!-- Las miniaturas se cargan aquí -->
         </div>
-        <div class="product-info-modal">
-            <h2>${product.name}</h2>
-            <div class="modal-price">${product.price}</div>
-            <p class="modal-description">${product.description}</p>
-            <button class="back-to-product-btn" onclick="closeImageModalAndOpenProduct(${product.id})">← Volver a información del producto</button>
-        </div>
-    `;
+      </div>
+      ` : ''}
+    </div>
+    <div class="product-info-modal">
+      <h2>${product.name}</h2>
+      <div class="modal-price">${product.price}</div>
+      <p class="modal-description">${product.description}</p>
+      <button class="back-to-product-btn" onclick="closeImageModalAndOpenProduct(${product.id})">← Volver a información del producto</button>
+    </div>
+  `;
 
   // Configurar miniaturas si hay más de una imagen
   if (images.length > 1) {
@@ -609,9 +977,9 @@ function openImageModal(productId) {
       const thumbnailItem = document.createElement('div');
       thumbnailItem.className = `thumbnail-item ${index === 0 ? 'active' : ''}`;
       thumbnailItem.innerHTML = `
-                <img src="${image}" alt="${product.name} - Vista ${index + 1}"
-                     onerror="this.src='https://via.placeholder.com/100x100/667eea/white?text=Imagen'">
-            `;
+        <img src="${image}" alt="${product.name} - Vista ${index + 1}"
+             onerror="this.src='https://via.placeholder.com/100x100/667eea/white?text=Imagen'">
+      `;
 
       thumbnailItem.addEventListener('click', () => {
         // Cambiar imagen principal
