@@ -13,9 +13,9 @@ const products = [
       "img/CorazonForrado5.jpeg"
     ],
     variants: [
-      { size: "20cm de ancho x 10 cm de alto", price: "$8,000" },
-      { size: "25cm de ancho x 10 cm de alto", price: "$10,000" },
-      { size: "30cm de ancho x 10 cm de alto", price: "$12,000" }]
+      {size: "20cm de ancho x 10 cm de alto", price: "$8,500"},
+      {size: "25cm de ancho x 10 cm de alto", price: "$10,000"},
+      {size: "30cm de ancho x 10 cm de alto", price: "$13,000"}]
   },
   {
     id: 2,
@@ -29,14 +29,15 @@ const products = [
       "img/CilindroForrado"
     ],
     variants: [
-      { size: "13cm de diametro x 10 cm de alto", price: "$6,000" },
-      { size: "16cm de diametro x 10 cm de alto", price: "$8,000" },
-      { size: "20cm de diametro x 10 cm de alto", price: "$10,000" },
-      { size: "25cm de diametro x 10 cm de alto", price: "$12,000" }]
+      {size: "13cm de diametro x 10 cm de alto", price: "$6,000"},
+      {size: "16cm de diametro x 13 cm de alto", price: "$7,500"},
+      {size: "20cm de diametro x 13 cm de alto", price: "$9,000"},
+      {size: "25cm de diametro x 13 cm de alto", price: "$11,000"}]
   },
-  {id: 24,
+  {
+    id: 24,
     name: "Cuadrada",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos... ",
     price: "Desde",
     category: "popular",
     image: "img/cuadrada1.png",
@@ -45,15 +46,15 @@ const products = [
       "img/cuadrada3.jpeg"
     ],
     variants: [
-      { size: "Base 13cm x 13cm x 10 cm de alto", price: "$6,000" },
-      { size: "Base 16cm x 16cm x 10 cm de alto", price: "$8,000" },
-      { size: "Base 20cm x 20cm x 10 cm de alto", price: "$10,000" },
-      { size: "Base 25cm x 25cm x 10 cm de alto", price: "$12,000" }]
+      {size: "Base 13cm x 13cm x 10 cm de alto", price: "$6,000"},
+      {size: "Base 16cm x 16cm x 10 cm de alto", price: "$7,500"},
+      {size: "Base 20cm x 20cm x 10 cm de alto", price: "$8,500"},
+      {size: "Base 25cm x 25cm x 10 cm de alto", price: "$10,000"}]
   },
   {
     id: 3,
     name: "Cajón Corazón",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos... ",
     price: "Desde",
     category: "popular",
     image: "img/cajoncorazon1.png",
@@ -63,12 +64,12 @@ const products = [
       "img/cajoncorazon3.png"
     ],
     variants: [
-      { size: "Medida del cajon interno: 26cm x 18cm. Corazón de 24cm de diametro ", price: "$14,000" }]
+      {size: "Medida del cajon interno: 26cm x 18cm. Corazón de 24cm de diametro ", price: "$14,000"}]
   },
   {
     id: 4,
     name: "Libro Corazón #1",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    description: "Base del corazón en cartón rígido, libro con doble capa de carton blanco de 300gr ",
     price: "Desde",
     category: "popular",
     image: "img/librocorazon2.jpeg",
@@ -78,12 +79,12 @@ const products = [
       "img/librocorazon3.jpeg"
     ],
     variants: [
-      { size: "Corazón de 25cm de diametro", price: "$8,000" }]
+      {size: "Corazón de 25cm de diametro", price: "$8,000"}]
   },
   {
     id: 21,
     name: "Libro Corazón #2",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    description: "Base del corazón en cartón rígido, libro con doble capa de carton blanco de 300gr ",
     price: "Desde",
     category: "popular",
     image: "img/librocorazon22.png",
@@ -92,12 +93,12 @@ const products = [
       "img/librocorazon23.png"
     ],
     variants: [
-      { size: "Corazón de 25cm de diametro", price: "$8,000" }]
+      {size: "Corazón de 25cm de diametro", price: "$8,000"}]
   },
   {
     id: 5,
     name: "Dulcera",
-    description: " ",
+    description: "Caja resistente con borde de 1cm y separadores ",
     price: "Desde",
     category: "Los mas llevados",
     image: "img/dulcera1.jpeg",
@@ -106,12 +107,12 @@ const products = [
       "img/dulcera2.png"
     ],
     variants: [
-      { size: "Tamaño mediano", price: "$5,000" }]
+      {size: "Tamaño mediano", price: "$5,000"}]
   },
   {
     id: 6,
     name: "Mom",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    description: "Base de letras en cartón rídigo, doble capa de cartón blanco en basey tapa",
     price: "Desde",
     category: "Los mas llevados",
     image: "img/mom1.jpeg",
@@ -121,12 +122,12 @@ const products = [
       "img/mom3.jpeg"
     ],
     variants: [
-      { size: "53cm x 18cm x 6 cm de alto", price: "$13,500" }]
+      {size: "53cm x 18cm x 6 cm de alto", price: "$13,500"}]
   },
   {
     id: 7,
     name: "I love u",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    description: "Base de letras en cartón rídigo, doble capa de cartón blanco en basey tapa",
     price: "Desde",
     category: "Los mas llevados",
     image: "img/loveu1.jpeg",
@@ -135,13 +136,13 @@ const products = [
       "img/loveu2.jpeg"
     ],
     variants: [
-      { size: "50cm x 18cm x 6 cm de alto", price: "$13,500" }]
+      {size: "50cm x 18cm x 6 cm de alto", price: "$13,500"}]
   },
 
   {
     id: 8,
     name: "Buffet",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    description: "Caja con borde de 1cm incluye separadores, salseros y tapa con ventana, ideal para desayunos sorpresa",
     price: "Desde",
     image: "img/buffet.jpeg",
     images: [
@@ -149,7 +150,7 @@ const products = [
       "img/buffet2.jpeg"
     ],
     variants: [
-      { size: "34cm x 26cm x 6cm", price: "$9,000" }]
+      {size: "34cm x 26cm x 6cm", price: "$9,000"}]
   },
   {
     id: 10,
@@ -163,8 +164,8 @@ const products = [
       "img/cofre2.jpeg"
     ],
     variants: [
-      { size: "Mediano: 23cm x 17cm x 15cm alto total", price: "$13,000" },
-      { size: "Grande: 30cm x 20cm x 15 cm alto total", price: "$15,000" }]
+      {size: "Mediano: 23cm x 17cm x 15cm alto total", price: "$13,000"},
+      {size: "Grande: 30cm x 20cm x 15 cm alto total", price: "$15,000"}]
   },
 
   {
@@ -179,22 +180,43 @@ const products = [
       "img/librobroche2.jpeg"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }],
+      {size: "Mediano: 25cm x 20cm x 8cm", price: "$9,500"},
+      {size: "Grande: 30cm x 25cm x 8cm", price: "$11,000"}],
 
   },
   {
     id: 12,
-    name: "Cilindro sin forrar",
+    name: "Cilindro sin forrar Alto",
     description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
     price: "Desde",
     category: "Los mas llevados",
-    image: "img/cilindrosinforrar1.jpg",
+    image: "img/cilindrosinforrar1.png",
     images: [
-      "img/cilindrosinforrar1.jpg",
-      "img/cilindrosinforrar2.jpg"
+      "img/cilindrosinforrar1.png",
+      "img/cilindrosinforrar2.png"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }],
+      {size: "13cm de diametro x 10 cm de alto", price: "$4,800"},
+      {size: "16cm de diametro x 13 cm de alto", price: "$5,500"},
+      {size: "20cm de diametro x 13 cm de alto", price: "$7,000"},
+      {size: "25cm de diametro x 13 cm de alto", price: "$9,000"}],
+
+  },
+  {
+    id: 28,
+    name: "Cilindro sin forrar Bajo",
+    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    price: "Desde",
+    category: "Los mas llevados",
+    image: "img/cilindrosinforrarbajos.png",
+    images: [
+      "img/cilindrosinforrarbajos.png"
+    ],
+    variants: [
+      {size: "13cm de diametro x 5 cm de alto", price: "$4,300"},
+      {size: "16cm de diametro x 7 cm de alto", price: "$5,000"},
+      {size: "20cm de diametro x 7 cm de alto", price: "$6,600"},
+      {size: "25cm de diametro x 7 cm de alto", price: "$8,500"}],
 
   },
 
@@ -210,14 +232,17 @@ const products = [
       "img/corasinforrar1.jpeg"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }],
+      {size: "20cm de ancho x 10 cm de alto", price: "$6,000"},
+      {size: "25cm de ancho x 10 cm de alto", price: "$7,000"},
+      {size: "30cm de ancho x 10 cm de alto", price: "$8,000"}],
 
   },
   {
     id: 14,
     name: "Reloj ",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
-    price: "Desde",
+    description: "Disponible en multiples colores. PRECIO SOLO LA CAJA, si quieres adicionar la almohadilla" +
+      "y el moño, aumenta $1,000",
+    price: "Precio",
     category: "joyeria",
     image: "img/reloj.jpeg",
     images: [
@@ -225,13 +250,13 @@ const products = [
       "img/reloj2.jpeg"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }],
+      {size: "7,5cm x 8,5cm x 7cm de alto", price: "$4,000"}],
 
   },
   {
     id: 15,
     name: "Joyeros #1",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    description: "Disponible en carton blanco, gris, rosa, vienen sin forrar ",
     price: "Desde",
     category: "joyeria",
     image: "img/estilo1.jpeg",
@@ -240,13 +265,19 @@ const products = [
       "img/estilo12.jpeg"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }],
+      {size: "Color blanco: 5cm x 5cm x 3cm", price: "$1,000"},
+      {size: "Color blanco: 7cm x 7cm x 4cm", price: "$1,400"},
+      {size: "Color blanco: 10cm x 10cm x 4cm", price: "$1,800"},
+
+      {size: "Color rosa o gris: 5cm x 5cm x 3cm", price: "$1,500"},
+      {size: "Color rosa o gris: 7cm x 7cm x 4cm", price: "$1,800"},
+      {size: "Color rosa o gris: 10cm x 10cm x 4cm", price: "$2,300"}],
 
   },
   {
     id: 16,
     name: "Joyeros #2",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    description: "Completamente forrada en cualquier color, elegante. ",
     price: "Desde",
     category: "joyeria",
     image: "img/estilo2.png",
@@ -255,13 +286,15 @@ const products = [
       "img/estilo21.png"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }],
+      {size: "5cm x 5cm x 3cm", price: "$2,800"},
+      {size: "7cm x 7cm x 4cm", price: "$3,200"},
+      {size: "10cm x 10cm x 4cm", price: "$3,800"}],
 
   },
   {
     id: 17,
     name: "Joyeros #3",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    description: "Disponible en color rosa, gris o blanco",
     price: "Desde",
     category: "joyeria",
     image: "img/estilo3.png",
@@ -270,13 +303,15 @@ const products = [
       "img/estilo31.png"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }],
+      {size: "5cm x 5cm x 3cm", price: "$2,400"},
+      {size: "7cm x 7cm x 4cm", price: "$2,800"},
+      {size: "10cm x 10cm x 4cm", price: "$3,300"}],
 
   },
   {
     id: 18,
     name: "Joyeros #4",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    description: "Base y tapas forradas en multiples colores",
     price: "Desde",
     category: "joyeria",
     image: "img/estilo4.png",
@@ -284,13 +319,15 @@ const products = [
       "img/estilo4.png"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }],
+      {size: "5cm x 5cm x 3cm", price: "$2,400"},
+      {size: "7cm x 7cm x 4cm", price: "$2,800"},
+      {size: "10cm x 10cm x 4cm", price: "$3,300"}],
 
   },
   {
     id: 25,
     name: "Empaques #1",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    description: "Puedes personalizar las medidas, cartón 300gr. PRECIO NO INCLUYE CINTA NI STICKER",
     price: "Desde",
     category: "empaques",
     image: "img/empaque1.png",
@@ -299,26 +336,31 @@ const products = [
       "img/empaque12.png"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }],
+      {size: "15cm x 15cm x 7cm ", price: "$2,200"},
+      {size: "20cm x 20cm x 7cm ", price: "$2,900"},
+      {size: "25cm x 25cm x 7cm ", price: "$3,500"}],
 
-  },{
-  id: 26,
-  name: "Empaques #2",
-  description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
-  price: "Desde",
-  category: "empaques",
-  image: "img/empaque21.png",
-  images: [
-  "img/empaque21.png",
-  "img/empaque22.png"
-],
-  variants: [
-  { size: "20cm", price: "$8,500" }],
+  }, {
+    id: 26,
+    name: "Empaques #2",
+    description: "Cartón de 300gr, con borde de 1cm. PRECIO CON VENTANA AUMENTA $600",
+    price: "Desde",
+    category: "empaques",
+    image: "img/empaque21.png",
+    images: [
+      "img/empaque21.png",
+      "img/empaque22.png"
+    ],
+    variants: [
+      {size: "20cm x 12cm x 6cm", price: "$4,000"},
+      {size: "25cm x 20cm x 6cm", price: "$5,400"},
+      {size: "30cm x 25cm x 6cm", price: "$6,400"}],
 
-},
-  {   id: 27,
+  },
+  {
+    id: 27,
     name: "Empaques #3",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    description: "Cartón de 300gr, con borde sencillo. PRECIO CON VENTANA AUMENTA $600",
     price: "Desde",
     category: "empaques",
     image: "img/Empaque31.png",
@@ -328,13 +370,15 @@ const products = [
       "img/empaque33.png"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }],
+      {size: "20cm x 12cm x 6cm", price: "$2,400"},
+      {size: "25cm x 20cm x 6cm", price: "$3,500"},
+      {size: "30cm x 25cm x 6cm", price: "$4,200"}],
 
   },
   {
     id: 9,
     name: "Carrito Corona",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    description: "Se puede personalizar la impresión",
     price: "Desde",
     category: "hombres",
     image: "img/corona1.jpeg",
@@ -344,38 +388,41 @@ const products = [
       "img/carritoejemplo.png"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }]
+      {size: "13cm x 18cm x 9cm", price: "$7,500"}]
   },
-  {id: 19,
-  name: "Ancheta",
-  description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
-  price: "Desde",
-  image: "img/acheta1.png",
-  images: [
-  "img/acheta1.png",
-    "img/acheta2.png"
+  {
+    id: 19,
+    name: "Ancheta",
+    description: "Base en cartón rigido, variedad de colores",
+    price: "Desde",
+    image: "img/acheta1.png",
+    images: [
+      "img/acheta1.png",
+      "img/acheta2.png"
 
-],
-  variants: [
-  { size: "20cm", price: "$8,500" }],
+    ],
+    variants: [
+      {size: "13cm x 13cm x 10cm ", price: "$4,500"}],
 
-},
-  {id: 20,
-  name: "Ancheta Esmoquin",
-  description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
-  price: "Desde",
-  category: "hombres",
-  image: "img/anchetahombre1.png",
-  images: [
-  "img/anchetahombre1.png",
-  "img/anchetahombre2.png"
-],
-  variants: [
-  { size: "20cm", price: "$8,500" }]
-},
-  {id: 22,
+  },
+  {
+    id: 20,
+    name: "Ancheta Esmoquin",
+    description: "Base en cartón rigido, sin forrar con decoración",
+    price: "Desde",
+    category: "hombres",
+    image: "img/anchetahombre1.png",
+    images: [
+      "img/anchetahombre1.png",
+      "img/anchetahombre2.png"
+    ],
+    variants: [
+      {size: "13cm x 13cm x 10cm ", price: "$4,000"}]
+  },
+  {
+    id: 22,
     name: "Cilindro Esmoquin",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    description: "Base en cartón rigido, forrados en variedad de colores",
     price: "Desde",
     category: "hombres",
     image: "img/cilindroesmoquin.jpg",
@@ -384,11 +431,12 @@ const products = [
       "img/cilindroesmoquin2.jpg"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }]
+      {size: "17cm de diametro x 13 cm de alto", price: "$7,000"}]
   },
-  {id: 23,
+  {
+    id: 23,
     name: "Ancheta Amor",
-    description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+    description: "Base en cartón rigido, forrados en variedad de colores",
     price: "Desde",
     category: "amoryamistad",
     image: "img/anchetaamor1.png",
@@ -397,7 +445,7 @@ const products = [
       "img/anchetaamor2.png"
     ],
     variants: [
-      { size: "20cm", price: "$8,500" }]
+      {size: "13cm x 15cm x 10cm de alto", price: "$5,500"}]
   },
 
 ];
@@ -422,7 +470,7 @@ let currentSearch = '';
 let cart = [];
 
 // Inicializar la página
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   displayProducts(products);
   setupEventListeners();
 });
@@ -431,7 +479,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function setupEventListeners() {
   // Filtros
   filterButtons.forEach(button => {
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function () {
       filterButtons.forEach(btn => btn.classList.remove('active'));
       this.classList.add('active');
       currentFilter = this.dataset.filter;
@@ -440,23 +488,23 @@ function setupEventListeners() {
   });
 
   // Búsqueda
-  searchInput.addEventListener('input', function() {
+  searchInput.addEventListener('input', function () {
     currentSearch = this.value.toLowerCase();
     filterProducts();
   });
 
   // Modal de producto
-  closeProductModal.addEventListener('click', function() {
+  closeProductModal.addEventListener('click', function () {
     productModal.style.display = 'none';
   });
 
   // Modal de imágenes
-  closeImageModal.addEventListener('click', function() {
+  closeImageModal.addEventListener('click', function () {
     imageModal.style.display = 'none';
   });
 
   // Cerrar modales al hacer clic fuera
-  window.addEventListener('click', function(event) {
+  window.addEventListener('click', function (event) {
     if (event.target === productModal) {
       productModal.style.display = 'none';
     }
@@ -712,7 +760,7 @@ function setupCartModalListeners() {
   // Cerrar al hacer clic fuera
   const cartModal = document.getElementById('cartModal');
   if (cartModal) {
-    cartModal.addEventListener('click', function(event) {
+    cartModal.addEventListener('click', function (event) {
       if (event.target === this) {
         closeCartModal();
       }
@@ -792,7 +840,7 @@ function displayProducts(productsToShow) {
       <div class="product-image-container">
         <img src="${product.image}" alt="${product.name}" class="product-image"
              onerror="this.src='https://via.placeholder.com/300x200/667eea/white?text=Imagen+No+Disponible'">
-        ${(product.images && product.images.length > 1) }
+        ${(product.images && product.images.length > 1)}
       </div>
       <div class="product-info">
         <h3 class="product-title">${product.name}</h3>
@@ -923,7 +971,7 @@ function setupVariantSelection(productId) {
   const priceElement = document.getElementById(`selectedPrice-${productId}`);
 
   variantItems.forEach(item => {
-    item.addEventListener('click', function() {
+    item.addEventListener('click', function () {
       // Remover selección anterior
       variantItems.forEach(i => i.classList.remove('selected'));
 
