@@ -978,8 +978,9 @@ footer a.footer-retail-link:hover {
 /* Contador del carrito */
 .cart-counter {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 80px; /* ✅ Más abajo */
+  left: 50%;
+  transform: translateX(-50%);
   background: #dc3545;
   color: white;
   border-radius: 50%;
@@ -990,36 +991,38 @@ footer a.footer-retail-link:hover {
   justify-content: center;
   font-size: 0.8rem;
   font-weight: bold;
-  z-index: 1000;
+  z-index: 1001;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
 .view-cart-btn {
-  position: fixed;
-  top: 60px;
-  right: 20px;
+  position: sticky;
+  top: 70px; /* ✅ Un poco más arriba que el counter */
+  left: 50%;
+  transform: translateX(-50%);
   background: #667eea;
   color: white;
   border: none;
-  padding: 12px 18px;
+  padding: 12px 24px;
   border-radius: 25px;
   cursor: pointer;
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
   font-weight: 600;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .view-cart-btn:hover {
   background: #764ba2;
-  transform: translateY(-2px);
+  transform: translateX(-50%) translateY(-2px);
 }
 
 /* Responsive */
 /* Grid de productos - Mejor responsive para móviles */
 @media (max-width: 768px) {
   .products-grid {
-    grid-template-columns: repeat(2, 1fr); /* ✅ 2 columnas en móviles */
+    grid-template-columns: repeat(1, 1fr); /* ✅ 2 columnas en móviles */
     gap: 1rem;
     padding: 1.5rem 0.5rem; /* ✅ Más espacio lateral */
   }

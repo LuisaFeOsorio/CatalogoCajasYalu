@@ -479,45 +479,45 @@ document.addEventListener('DOMContentLoaded', function () {
 // Configurar event listeners
 // Configurar event listeners
 function setupEventListeners() {
-  // Filtros
-  filterButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      filterButtons.forEach(btn => btn.classList.remove('active'));
-      this.classList.add('active');
-      currentFilter = this.dataset.filter;
-
-      // ✅ Ocultar combos inmediatamente si no es "all"
-      if (currentFilter !== 'all') {
-        hideCombosSection();
-      } else {
-        showCombosSection();
-      }
-
-      // Limpiar búsqueda cuando se cambia de filtro
-      searchInput.value = '';
-      currentSearch = '';
-
-      filterProducts();
-    });
+  // Modal de producto
+  closeProductModal.addEventListener('click', function() {
+    console.log('✅ Cerrando modal de producto'); // Para debug
+    productModal.style.display = 'none';
   });
 
-  // Búsqueda
-  searchInput.addEventListener('input', function() {
-    currentSearch = this.value.toLowerCase();
+  // Modal de imágenes
+  closeImageModal.addEventListener('click', function() {
+    console.log('✅ Cerrando modal de imágenes'); // Para debug
+    imageModal.style.display = 'none';
+  });
 
-    // ✅ Ocultar combos si hay búsqueda activa
-    if (currentSearch.trim() !== '') {
-      hideCombosSection();
-    } else if (currentFilter === 'all') {
-      // ✅ Mostrar combos solo si no hay búsqueda y está en "Todos"
-      showCombosSection();
+  // Cerrar modales al hacer clic fuera
+  window.addEventListener('click', function(event) {
+    console.log('🖱️ Click detectado:', event.target); // Para debug
+
+    if (event.target === productModal) {
+      console.log('✅ Cerrando modal de producto (click fuera)');
+      productModal.style.display = 'none';
     }
-
-    filterProducts();
+    if (event.target === imageModal) {
+      console.log('✅ Cerrando modal de imágenes (click fuera)');
+      imageModal.style.display = 'none';
+    }
   });
 
+  // También agregar escape key para cerrar modales
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      console.log('✅ Tecla Escape presionada');
+      if (productModal.style.display === 'block') {
+        productModal.style.display = 'none';
+      }
+      if (imageModal.style.display === 'block') {
+        imageModal.style.display = 'none';
+      }
+    }
+  });
 }
-
 // FUNCIONES DEL CARRITO - CORREGIDAS
 
 function increaseQuantity(productId) {
