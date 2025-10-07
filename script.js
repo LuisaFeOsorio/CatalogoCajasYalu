@@ -449,6 +449,7 @@ const products = [
   },
 
 ];
+
 // Elementos del DOM
 const productsGrid = document.getElementById('productsGrid');
 const searchInput = document.getElementById('searchInput');
@@ -476,42 +477,45 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Configurar event listeners
+// Configurar event listeners
 function setupEventListeners() {
   // Filtros
   filterButtons.forEach(button => {
-    button.addEventListener('click', function () {
+    button.addEventListener('click', function() {
       filterButtons.forEach(btn => btn.classList.remove('active'));
       this.classList.add('active');
       currentFilter = this.dataset.filter;
+
+      // ✅ Ocultar combos inmediatamente si no es "all"
+      if (currentFilter !== 'all') {
+        hideCombosSection();
+      } else {
+        showCombosSection();
+      }
+
+      // Limpiar búsqueda cuando se cambia de filtro
+      searchInput.value = '';
+      currentSearch = '';
+
       filterProducts();
     });
   });
 
   // Búsqueda
-  searchInput.addEventListener('input', function () {
+  searchInput.addEventListener('input', function() {
     currentSearch = this.value.toLowerCase();
+
+    // ✅ Ocultar combos si hay búsqueda activa
+    if (currentSearch.trim() !== '') {
+      hideCombosSection();
+    } else if (currentFilter === 'all') {
+      // ✅ Mostrar combos solo si no hay búsqueda y está en "Todos"
+      showCombosSection();
+    }
+
     filterProducts();
   });
 
-  // Modal de producto
-  closeProductModal.addEventListener('click', function () {
-    productModal.style.display = 'none';
-  });
-
-  // Modal de imágenes
-  closeImageModal.addEventListener('click', function () {
-    imageModal.style.display = 'none';
-  });
-
-  // Cerrar modales al hacer clic fuera
-  window.addEventListener('click', function (event) {
-    if (event.target === productModal) {
-      productModal.style.display = 'none';
-    }
-    if (event.target === imageModal) {
-      imageModal.style.display = 'none';
-    }
-  });
 }
 
 // FUNCIONES DEL CARRITO - CORREGIDAS
@@ -775,7 +779,7 @@ function sendToWhatsApp() {
     return;
   }
 
-  const phoneNumber = "573003331111"; // ⚠️ REEMPLAZA con tu número de WhatsApp
+  const phoneNumber = "573007276599";
   const message = generateWhatsAppMessage();
   const encodedMessage = encodeURIComponent(message);
   const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
@@ -867,9 +871,18 @@ function displayProducts(productsToShow) {
   });
 }
 
-// Filtrar productos
+// Filtrar productos - Versión robusta
 function filterProducts() {
   let filteredProducts = products;
+
+  // ✅ LÓGICA CLARA para combos
+  const shouldShowCombos = currentFilter === 'all' && currentSearch.trim() === '';
+
+  if (shouldShowCombos) {
+    showCombosSection();
+  } else {
+    hideCombosSection();
+  }
 
   // Filtrar por categoría
   if (currentFilter !== 'all') {
@@ -889,6 +902,35 @@ function filterProducts() {
 
   displayProducts(filteredProducts);
 }
+
+// ✅ Función para ocultar la sección de combos
+function hideCombosSection() {
+  const combosSection = document.querySelector('.combos-section');
+  if (combosSection) {
+    combosSection.style.display = 'none';
+  }
+}
+
+// ✅ Función para mostrar la sección de combos
+function showCombosSection() {
+  const combosSection = document.querySelector('.combos-section');
+  if (combosSection) {
+    combosSection.style.display = 'block';
+  }
+}
+
+// ✅ También ocultar combos cuando se escribe en la búsqueda
+searchInput.addEventListener('input', function() {
+  currentSearch = this.value.toLowerCase();
+
+  if (currentSearch.trim() !== '') {
+    hideCombosSection();
+  } else if (currentFilter === 'all') {
+    showCombosSection();
+  }
+
+  filterProducts();
+});
 
 // Función para abrir modal de producto (información)
 function openProductModal(product) {

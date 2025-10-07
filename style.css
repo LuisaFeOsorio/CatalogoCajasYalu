@@ -1016,67 +1016,80 @@ footer a.footer-retail-link:hover {
 }
 
 /* Responsive */
-@media (max-width: 1200px) {
-  .products-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 900px) {
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
+/* Grid de productos - Mejor responsive para móviles */
 @media (max-width: 768px) {
   .products-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding: 2.5rem 0;
+    grid-template-columns: repeat(2, 1fr); /* ✅ 2 columnas en móviles */
+    gap: 1rem;
+    padding: 1.5rem 0.5rem; /* ✅ Más espacio lateral */
   }
 
   .product-card {
-    height: 520px;
-    border-radius: 16px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    height: 380px; /* ✅ Un poco más compacto para móviles */
+    margin: 0.2rem;
   }
 
   .product-image-container {
-    height: 300px;
-    border-radius: 16px 16px 0 0;
-  }
-
-  .product-image {
-    border-radius: 16px 16px 0 0;
+    height: 180px; /* ✅ Imágenes más pequeñas pero con buen espacio */
   }
 
   .product-info {
-    padding: 1.8rem;
-    gap: 1rem;
+    padding: 1rem 0.8rem;
   }
 
   .product-title {
-    font-size: 1.35rem;
-    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
   }
 
   .product-description {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 1.2rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+    -webkit-line-clamp: 2; /* ✅ Menos líneas de descripción */
   }
 
   .product-price {
-    font-size: 1.45rem;
-    font-weight: 800;
+    font-size: 1.1rem;
   }
 
-  .multi-image-badge {
-    top: 15px;
-    right: 15px;
-    padding: 10px 15px;
-    font-size: 0.95rem;
+  /* ✅ Más espacio arriba de las imágenes en móviles */
+  .products-grid {
+    margin-top: 1rem;
   }
+}
+
+/* Para móviles más pequeños */
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    padding: 1rem 0.3rem;
+  }
+
+  .product-card {
+    height: 350px;
+  }
+
+  .product-image-container {
+    height: 160px;
+  }
+
+  .product-info {
+    padding: 0.8rem 0.6rem;
+  }
+
+  .product-title {
+    font-size: 0.9rem;
+  }
+}
+
+/* Para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr); /* ✅ 3 columnas en tablets */
+    gap: 1.2rem;
+  }
+
 
   /* Modal responsive */
   .modal-content, .image-modal-content {
