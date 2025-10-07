@@ -1,4 +1,3 @@
-// Tus productos - MODIFICA ESTOS DATOS CON TUS PRODUCTOS REALES
 const products = [
   {
     id: 1,
@@ -13,9 +12,8 @@ const products = [
       "img/CorazonForrado5.jpeg"
     ],
     variants: [
-      {size: "20cm de ancho x 10 cm de alto", price: "$8,500"},
-      {size: "25cm de ancho x 10 cm de alto", price: "$10,000"},
-      {size: "30cm de ancho x 10 cm de alto", price: "$13,000"}]
+      {size: "25cm de ancho x 10 cm de alto", price: "$12,000"},
+      {size: "30cm de ancho x 10 cm de alto", price: "$15,000"}]
   },
   {
     id: 2,
@@ -29,10 +27,9 @@ const products = [
       "img/CilindroForrado"
     ],
     variants: [
-      {size: "13cm de diametro x 10 cm de alto", price: "$6,000"},
-      {size: "16cm de diametro x 13 cm de alto", price: "$7,500"},
-      {size: "20cm de diametro x 13 cm de alto", price: "$9,000"},
-      {size: "25cm de diametro x 13 cm de alto", price: "$11,000"}]
+      {size: "16cm de diametro x 13 cm de alto", price: "$9,000"},
+      {size: "20cm de diametro x 13 cm de alto", price: "$10,500"},
+      {size: "25cm de diametro x 13 cm de alto", price: "$13,000"}]
   },
   {
     id: 24,
@@ -46,10 +43,9 @@ const products = [
       "img/cuadrada3.jpeg"
     ],
     variants: [
-      {size: "Base 13cm x 13cm x 10 cm de alto", price: "$6,000"},
-      {size: "Base 16cm x 16cm x 10 cm de alto", price: "$7,500"},
-      {size: "Base 20cm x 20cm x 10 cm de alto", price: "$8,500"},
-      {size: "Base 25cm x 25cm x 10 cm de alto", price: "$10,000"}]
+      {size: "Base 16cm x 16cm x 10 cm de alto", price: "$8,500"},
+      {size: "Base 20cm x 20cm x 10 cm de alto", price: "$10,500"},
+      {size: "Base 25cm x 25cm x 10 cm de alto", price: "$12,000"}]
   },
   {
     id: 3,
@@ -64,7 +60,7 @@ const products = [
       "img/cajoncorazon3.png"
     ],
     variants: [
-      {size: "Medida del cajon interno: 26cm x 18cm. Corazón de 24cm de diametro ", price: "$14,000"}]
+      {size: "Medida del cajon interno: 26cm x 18cm. Corazón de 24cm de diametro ", price: "$17,000"}]
   },
   {
     id: 4,
@@ -79,7 +75,7 @@ const products = [
       "img/librocorazon3.jpeg"
     ],
     variants: [
-      {size: "Corazón de 25cm de diametro", price: "$8,000"}]
+      {size: "Corazón de 25cm de diametro", price: "$10,000"}]
   },
   {
     id: 21,
@@ -93,7 +89,7 @@ const products = [
       "img/librocorazon23.png"
     ],
     variants: [
-      {size: "Corazón de 25cm de diametro", price: "$8,000"}]
+      {size: "Corazón de 25cm de diametro", price: "$10,000"}]
   },
   {
     id: 5,
@@ -107,7 +103,7 @@ const products = [
       "img/dulcera2.png"
     ],
     variants: [
-      {size: "Tamaño mediano", price: "$5,000"}]
+      {size: "Tamaño mediano", price: "$6,500"}]
   },
   {
     id: 6,
@@ -122,7 +118,7 @@ const products = [
       "img/mom3.jpeg"
     ],
     variants: [
-      {size: "53cm x 18cm x 6 cm de alto", price: "$13,500"}]
+      {size: "53cm x 18cm x 6 cm de alto", price: "$16,000"}]
   },
   {
     id: 7,
@@ -136,7 +132,7 @@ const products = [
       "img/loveu2.jpeg"
     ],
     variants: [
-      {size: "50cm x 18cm x 6 cm de alto", price: "$13,500"}]
+      {size: "50cm x 18cm x 6 cm de alto", price: "$16,000"}]
   },
 
   {
@@ -150,7 +146,7 @@ const products = [
       "img/buffet2.jpeg"
     ],
     variants: [
-      {size: "34cm x 26cm x 6cm", price: "$9,000"}]
+      {size: "34cm x 26cm x 6cm", price: "$12,000"}]
   },
   {
     id: 10,
@@ -164,8 +160,8 @@ const products = [
       "img/cofre2.jpeg"
     ],
     variants: [
-      {size: "Mediano: 23cm x 17cm x 15cm alto total", price: "$13,000"},
-      {size: "Grande: 30cm x 20cm x 15 cm alto total", price: "$15,000"}]
+      {size: "Mediano: 23cm x 17cm x 15cm alto total", price: "$15,000"},
+      {size: "Grande: 30cm x 20cm x 15 cm alto total", price: "$17,000"}]
   },
 
   {
@@ -180,8 +176,8 @@ const products = [
       "img/librobroche2.jpeg"
     ],
     variants: [
-      {size: "Mediano: 25cm x 20cm x 8cm", price: "$9,500"},
-      {size: "Grande: 30cm x 25cm x 8cm", price: "$11,000"}],
+      {size: "Mediano: 25cm x 20cm x 8cm", price: "$11,000"},
+      {size: "Grande: 30cm x 25cm x 8cm", price: "$13,000"}],
 
   },
   {
@@ -196,10 +192,9 @@ const products = [
       "img/cilindrosinforrar2.png"
     ],
     variants: [
-      {size: "13cm de diametro x 10 cm de alto", price: "$4,800"},
-      {size: "16cm de diametro x 13 cm de alto", price: "$5,500"},
-      {size: "20cm de diametro x 13 cm de alto", price: "$7,000"},
-      {size: "25cm de diametro x 13 cm de alto", price: "$9,000"}],
+      {size: "16cm de diametro x 13 cm de alto", price: "$6,500"},
+      {size: "20cm de diametro x 13 cm de alto", price: "$8,000"},
+      {size: "25cm de diametro x 13 cm de alto", price: "$10,000"}],
 
   },
   {
@@ -213,10 +208,9 @@ const products = [
       "img/cilindrosinforrarbajos.png"
     ],
     variants: [
-      {size: "13cm de diametro x 5 cm de alto", price: "$4,300"},
-      {size: "16cm de diametro x 7 cm de alto", price: "$5,000"},
-      {size: "20cm de diametro x 7 cm de alto", price: "$6,600"},
-      {size: "25cm de diametro x 7 cm de alto", price: "$8,500"}],
+      {size: "16cm de diametro x 7 cm de alto", price: "$6,000"},
+      {size: "20cm de diametro x 7 cm de alto", price: "$7,600"},
+      {size: "25cm de diametro x 7 cm de alto", price: "$10,000"}],
 
   },
 
@@ -232,9 +226,9 @@ const products = [
       "img/corasinforrar1.jpeg"
     ],
     variants: [
-      {size: "20cm de ancho x 10 cm de alto", price: "$6,000"},
-      {size: "25cm de ancho x 10 cm de alto", price: "$7,000"},
-      {size: "30cm de ancho x 10 cm de alto", price: "$8,000"}],
+      {size: "20cm de ancho x 10 cm de alto", price: "$7,500"},
+      {size: "25cm de ancho x 10 cm de alto", price: "$9,000"},
+      {size: "30cm de ancho x 10 cm de alto", price: "$10,000"}],
 
   },
   {
@@ -245,18 +239,17 @@ const products = [
     price: "Precio",
     category: "joyeria",
     image: "img/reloj.jpeg",
-    images: [
-      "img/reloj.jpeg",
+    images: ["img/reloj.jpeg",
       "img/reloj2.jpeg"
     ],
     variants: [
-      {size: "7,5cm x 8,5cm x 7cm de alto", price: "$4,000"}],
+      {size: "7,5cm x 8,5cm x 7cm de alto", price: "$5,000"}],
 
   },
   {
     id: 15,
     name: "Joyeros #1",
-    description: "Disponible en carton blanco, gris, rosa, vienen sin forrar, incluye nido en cartón ",
+    description: "Disponible en carton blanco, gris, rosa, vienen sin forrar ",
     price: "Desde",
     category: "joyeria",
     image: "img/estilo1.jpeg",
@@ -265,19 +258,19 @@ const products = [
       "img/estilo12.jpeg"
     ],
     variants: [
-      {size: "Color blanco: 5cm x 5cm x 3cm", price: "$1,000"},
-      {size: "Color blanco: 7cm x 7cm x 4cm", price: "$1,400"},
-      {size: "Color blanco: 10cm x 10cm x 4cm", price: "$1,800"},
+      {size: "Color blanco: 5cm x 5cm x 3cm", price: "$1,500"},
+      {size: "Color blanco: 7cm x 7cm x 4cm", price: "$2,000"},
+      {size: "Color blanco: 10cm x 10cm x 4cm", price: "$2,800"},
 
-      {size: "Color rosa o gris: 5cm x 5cm x 3cm", price: "$1,500"},
-      {size: "Color rosa o gris: 7cm x 7cm x 4cm", price: "$1,800"},
-      {size: "Color rosa o gris: 10cm x 10cm x 4cm", price: "$2,300"}],
+      {size: "Color rosa o gris: 5cm x 5cm x 3cm", price: "$2,000"},
+      {size: "Color rosa o gris: 7cm x 7cm x 4cm", price: "$2,700"},
+      {size: "Color rosa o gris: 10cm x 10cm x 4cm", price: "$3,400"}],
 
   },
   {
     id: 16,
     name: "Joyeros #2",
-    description: "Completamente forrada en cualquier color, elegante, incluye nido en cartón ",
+    description: "Completamente forrada en cualquier color, elegante. ",
     price: "Desde",
     category: "joyeria",
     image: "img/estilo2.png",
@@ -286,15 +279,15 @@ const products = [
       "img/estilo21.png"
     ],
     variants: [
-      {size: "5cm x 5cm x 3cm", price: "$2,800"},
-      {size: "7cm x 7cm x 4cm", price: "$3,200"},
-      {size: "10cm x 10cm x 4cm", price: "$3,800"}],
+      {size: "5cm x 5cm x 3cm", price: "$3,300"},
+      {size: "7cm x 7cm x 4cm", price: "$3,900"},
+      {size: "10cm x 10cm x 4cm", price: "$4,500"}],
 
   },
   {
     id: 17,
     name: "Joyeros #3",
-    description: "Disponible en color rosa, gris o blanco, incluye nido en cartón",
+    description: "Disponible en color rosa, gris o blanco",
     price: "Desde",
     category: "joyeria",
     image: "img/estilo3.png",
@@ -303,15 +296,15 @@ const products = [
       "img/estilo31.png"
     ],
     variants: [
-      {size: "5cm x 5cm x 3cm", price: "$2,400"},
-      {size: "7cm x 7cm x 4cm", price: "$2,800"},
-      {size: "10cm x 10cm x 4cm", price: "$3,300"}],
+      {size: "5cm x 5cm x 3cm", price: "$2,900"},
+      {size: "7cm x 7cm x 4cm", price: "$3,500"},
+      {size: "10cm x 10cm x 4cm", price: "$4,000"}],
 
   },
   {
     id: 18,
     name: "Joyeros #4",
-    description: "Base y tapas forradas en multiples colores, incluye nido en cartón",
+    description: "Base y tapas forradas en multiples colores",
     price: "Desde",
     category: "joyeria",
     image: "img/estilo4.png",
@@ -319,9 +312,9 @@ const products = [
       "img/estilo4.png"
     ],
     variants: [
-      {size: "5cm x 5cm x 3cm", price: "$2,400"},
-      {size: "7cm x 7cm x 4cm", price: "$2,800"},
-      {size: "10cm x 10cm x 4cm", price: "$3,300"}],
+      {size: "5cm x 5cm x 3cm", price: "$3,000"},
+      {size: "7cm x 7cm x 4cm", price: "$3,400"},
+      {size: "10cm x 10cm x 4cm", price: "$3,900"}],
 
   },
   {
@@ -336,9 +329,9 @@ const products = [
       "img/empaque12.png"
     ],
     variants: [
-      {size: "15cm x 15cm x 7cm ", price: "$2,200"},
-      {size: "20cm x 20cm x 7cm ", price: "$2,900"},
-      {size: "25cm x 25cm x 7cm ", price: "$3,500"}],
+      {size: "15cm x 15cm x 7cm ", price: "$2,600"},
+      {size: "20cm x 20cm x 7cm ", price: "$3,300"},
+      {size: "25cm x 25cm x 7cm ", price: "$3,900"}],
 
   }, {
     id: 26,
@@ -352,9 +345,9 @@ const products = [
       "img/empaque22.png"
     ],
     variants: [
-      {size: "20cm x 12cm x 6cm", price: "$4,000"},
-      {size: "25cm x 20cm x 6cm", price: "$5,400"},
-      {size: "30cm x 25cm x 6cm", price: "$6,400"}],
+      {size: "20cm x 12cm x 6cm", price: "$4,400"},
+      {size: "25cm x 20cm x 6cm", price: "$5,900"},
+      {size: "30cm x 25cm x 6cm", price: "$7,000"}],
 
   },
   {
@@ -370,9 +363,9 @@ const products = [
       "img/empaque33.png"
     ],
     variants: [
-      {size: "20cm x 12cm x 6cm", price: "$2,400"},
-      {size: "25cm x 20cm x 6cm", price: "$3,500"},
-      {size: "30cm x 25cm x 6cm", price: "$4,200"}],
+      {size: "20cm x 12cm x 6cm", price: "$2,800"},
+      {size: "25cm x 20cm x 6cm", price: "$3,900"},
+      {size: "30cm x 25cm x 6cm", price: "$4,600"}],
 
   },
   {
@@ -388,7 +381,7 @@ const products = [
       "img/carritoejemplo.png"
     ],
     variants: [
-      {size: "13cm x 18cm x 9cm", price: "$7,500"}]
+      {size: "13cm x 18cm x 9cm", price: "$9,500"}]
   },
   {
     id: 19,
@@ -402,7 +395,7 @@ const products = [
 
     ],
     variants: [
-      {size: "13cm x 13cm x 10cm ", price: "$4,500"}],
+      {size: "13cm x 13cm x 10cm ", price: "$6,000"}],
 
   },
   {
@@ -417,7 +410,7 @@ const products = [
       "img/anchetahombre2.png"
     ],
     variants: [
-      {size: "13cm x 13cm x 10cm ", price: "$4,000"}]
+      {size: "13cm x 13cm x 10cm ", price: "$5,000"}]
   },
   {
     id: 22,
@@ -431,7 +424,7 @@ const products = [
       "img/cilindroesmoquin2.jpg"
     ],
     variants: [
-      {size: "17cm de diametro x 13 cm de alto", price: "$7,000"}]
+      {size: "17cm de diametro x 13 cm de alto", price: "$9,000"}]
   },
   {
     id: 23,
@@ -445,7 +438,7 @@ const products = [
       "img/anchetaamor2.png"
     ],
     variants: [
-      {size: "13cm x 15cm x 10cm de alto", price: "$5,500"}]
+      {size: "13cm x 15cm x 10cm de alto", price: "$7,500"}]
   },
 
 ];
@@ -514,7 +507,7 @@ function setupEventListeners() {
   });
 }
 
-// FUNCIONES DEL CARRITO - CORREGIDAS
+// FUNCIONES DEL CARRITO - MODIFICADAS PARA DETAL
 
 function increaseQuantity(productId) {
   const quantityInput = document.getElementById(`quantity-${productId}`);
@@ -524,16 +517,20 @@ function increaseQuantity(productId) {
 function decreaseQuantity(productId) {
   const quantityInput = document.getElementById(`quantity-${productId}`);
   const currentValue = parseInt(quantityInput.value);
-  if (currentValue > 12) {
+  if (currentValue > 1) { // ✅ Mínimo 1 unidad en detal
     quantityInput.value = currentValue - 1;
   }
 }
 
 function validateQuantity(productId) {
   const quantityInput = document.getElementById(`quantity-${productId}`);
-  if (parseInt(quantityInput.value) < 12) {
-    quantityInput.value = 12;
-    showCartMessage(productId, '⚠️ La cantidad mínima es 12 unidades', 'warning');
+  if (parseInt(quantityInput.value) < 1) { // ✅ Mínimo 1 unidad en detal
+    quantityInput.value = 1;
+    showCartMessage(productId, '⚠️ La cantidad mínima es 1 unidad', 'warning');
+  }
+  if (parseInt(quantityInput.value) > 11) { // ✅ Máximo 11 unidades en detal
+    quantityInput.value = 11;
+    showCartMessage(productId, '⚠️ La cantidad máxima es 11 unidades', 'warning');
   }
 }
 
@@ -570,8 +567,14 @@ function addToCart(productId) {
   const quantity = parseInt(quantityInput.value);
   console.log('📦 Cantidad seleccionada:', quantity);
 
-  if (quantity < 12) {
-    showCartMessage(productId, '❌ La cantidad mínima es 12 unidades', 'error');
+  // ✅ VALIDACIONES PARA DETAL (1-11 unidades)
+  if (quantity < 1) {
+    showCartMessage(productId, '❌ La cantidad mínima es 1 unidad', 'error');
+    return;
+  }
+
+  if (quantity > 11) {
+    showCartMessage(productId, '❌ La cantidad máxima es 11 unidades', 'error');
     return;
   }
 
@@ -597,7 +600,12 @@ function addToCart(productId) {
 
   if (existingItemIndex !== -1) {
     // Producto con misma variante ya existe, actualizar cantidad
-    cart[existingItemIndex].quantity += quantity;
+    const newQuantity = cart[existingItemIndex].quantity + quantity;
+    if (newQuantity > 11) {
+      showCartMessage(productId, '❌ No puedes tener más de 11 unidades de este producto', 'error');
+      return;
+    }
+    cart[existingItemIndex].quantity = newQuantity;
     console.log('✅ Producto actualizado en carrito');
   } else {
     // Producto nuevo o con diferente variante, agregar al carrito
@@ -610,7 +618,7 @@ function addToCart(productId) {
   }
 
   console.log('🛒 Carrito actual:', cart);
-  showCartMessage(productId, `✅ ${quantity} unidades añadidas al pedido`, 'success');
+  showCartMessage(productId, `✅ ${quantity} unidad(es) añadida(s) al pedido`, 'success');
 
   // Actualizar contador del carrito
   updateCartCounter();
@@ -644,7 +652,7 @@ function showCartModal() {
   const cartModalHTML = `
     <div class="cart-modal">
       <div class="cart-header">
-        <h2>📋 Resumen de Tu Pedido</h2>
+        <h2>📋 Tu Pedido al Detal</h2>
         <span class="close-cart">&times;</span>
       </div>
       <div class="cart-items" id="cartItems">
@@ -692,7 +700,7 @@ function generateCartItemsHTML() {
           <p><strong>Tamaño:</strong> ${item.selectedVariant.size}</p>
           <p><strong>Precio unitario:</strong> ${item.selectedVariant.price}</p>
         ` : ''}
-        <p><strong>Cantidad:</strong> ${item.quantity} unidades</p>
+        <p><strong>Cantidad:</strong> ${item.quantity} unidad(es)</p>
         ${item.selectedVariant ? `
           <p class="cart-item-price">
             <strong>Subtotal:</strong> $${(parsePrice(item.selectedVariant.price) * item.quantity).toLocaleString()}
@@ -709,7 +717,7 @@ function generateCartItemsHTML() {
 // Calcular total
 function calculateTotal() {
   return cart.reduce((total, item) => {
-    const price = item.selectedVariant ? parsePrice(item.selectedVariant.price) : 0;
+    const price = item.selectedVariant ? parsePrice(item.selectedVariant.price) : parsePrice(item.product.price);
     return total + (price * item.quantity);
   }, 0);
 }
@@ -775,7 +783,7 @@ function sendToWhatsApp() {
     return;
   }
 
-  const phoneNumber = "573003331111"; // ⚠️ REEMPLAZA con tu número de WhatsApp
+  const phoneNumber = "573007276599"; // ⚠️ REEMPLAZA con tu número de WhatsApp
   const message = generateWhatsAppMessage();
   const encodedMessage = encodeURIComponent(message);
   const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
@@ -787,19 +795,19 @@ function sendToWhatsApp() {
 // Generar mensaje para WhatsApp
 function generateWhatsAppMessage() {
   let message = "¡Hola! 👋\n\n";
-  message += "Quiero hacer el siguiente pedido:\n\n";
+  message += "Quiero hacer el siguiente pedido al detal:\n\n";
 
   cart.forEach((item, index) => {
     message += `📦 ${item.product.name}\n`;
     if (item.selectedVariant) {
       message += `   Tamaño: ${item.selectedVariant.size}\n`;
     }
-    message += `   Cantidad: ${item.quantity} unidades\n`;
-    if (item.selectedVariant) {
-      const price = parsePrice(item.selectedVariant.price);
-      const subtotal = price * item.quantity;
-      message += `   Subtotal: $${subtotal.toLocaleString()}\n`;
-    }
+    message += `   Cantidad: ${item.quantity} unidad(es)\n`;
+
+    const price = item.selectedVariant ? parsePrice(item.selectedVariant.price) : parsePrice(item.product.price);
+    const subtotal = price * item.quantity;
+    message += `   Subtotal: $${subtotal.toLocaleString()}\n`;
+
     message += "\n";
   });
 
@@ -909,17 +917,17 @@ function openProductModal(product) {
     </div>
   ` : '';
 
-  // HTML para el selector de cantidad
+  // ✅ HTML para el selector de cantidad MODIFICADO PARA DETAL (1-11 unidades)
   const quantitySelectorHTML = `
     <div class="quantity-selector">
       <h3>🛒 Cantidad:</h3>
       <div class="quantity-controls">
         <button class="quantity-btn minus-btn" onclick="decreaseQuantity(${product.id})">-</button>
         <input type="number" id="quantity-${product.id}" class="quantity-input"
-               value="12" min="12" onchange="validateQuantity(${product.id})">
+               value="1" min="1" max="11" onchange="validateQuantity(${product.id})">
         <button class="quantity-btn plus-btn" onclick="increaseQuantity(${product.id})">+</button>
       </div>
-      <p class="min-quantity-notice">Mínimo 12 unidades por pedido</p>
+      <p class="min-quantity-notice">Compra de 1 a 11 unidades por producto</p>
     </div>
 
     <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
@@ -1052,128 +1060,4 @@ function closeImageModalAndOpenProduct(productId) {
   imageModal.style.display = 'none';
   const product = products.find(p => p.id === productId);
   openProductModal(product);
-}
-// Funciones para los combos
-function openComboModal(comboId) {
-  const comboData = getComboData(comboId);
-  const comboModalHTML = `
-        <div class="combo-modal">
-            <div class="combo-modal-header">
-                <h2>${comboData.title}</h2>
-                <span class="close-combo">&times;</span>
-            </div>
-            <div class="combo-modal-content">
-                <div class="combo-modal-image">
-                    <img src="${comboData.image}" alt="${comboData.title}"
-                         onerror="this.src='https://via.placeholder.com/500x400/667eea/white?text=Imagen+Combo'">
-                </div>
-                <div class="combo-modal-details">
-                    <h3>📦 Contenido del Combo:</h3>
-                    <ul>
-                        ${comboData.items.map(item => `<li>${item}</li>`).join('')}
-                    </ul>
-
-                    <div class="combo-modal-price">
-                        <span class="combo-modal-old-price">${comboData.oldPrice}</span>
-                        <span class="combo-modal-big-price">${comboData.newPrice}</span>
-                        <div class="combo-modal-savings">${comboData.savings}</div>
-                    </div>
-
-                    <button class="whatsapp-btn" onclick="contactForCombo('${comboData.title}')" style="width: 100%; margin-top: 1rem;">
-                        💬 Consultar por este Combo
-                    </button>
-                </div>
-            </div>
-        </div>
-    `;
-
-  const comboModal = document.createElement('div');
-  comboModal.className = 'modal';
-  comboModal.id = 'comboModal';
-  comboModal.innerHTML = comboModalHTML;
-  document.body.appendChild(comboModal);
-
-  // Configurar event listeners
-  const closeCombo = comboModal.querySelector('.close-combo');
-  closeCombo.addEventListener('click', () => {
-    comboModal.remove();
-  });
-
-  comboModal.addEventListener('click', (event) => {
-    if (event.target === comboModal) {
-      comboModal.remove();
-    }
-  });
-
-  comboModal.style.display = 'block';
-}
-
-function getComboData(comboId) {
-  const combos = {
-    'combo1': {
-      title: 'COMBO EMPRENDEDOR',
-      image: 'img/combo-detalle1.jpg',
-      items: [
-        '✓ 5 modelos diferentes de cajas',
-        '✓ 12 unidades de cada modelo (60 unidades total)',
-        '✓ Incluye: Corazón Forrado, Cilindro, Cuadrada, Cajón Corazón, Libro Corazón',
-        '✓ Material: Cartón rígido de alta calidad',
-        '✓ Forrado en papel craft premium',
-        '✓ Listo para personalizar'
-      ],
-      oldPrice: 'Precio normal: $450,000',
-      newPrice: '$382,500',
-      savings: '¡Ahorras $67,500! (15% OFF)'
-    },
-    'combo2': {
-      title: 'COMBO PROFESIONAL',
-      image: 'img/combo-detalle2.jpg',
-      items: [
-        '✓ 8 modelos diferentes de cajas',
-        '✓ 24 unidades de cada modelo (192 unidades total)',
-        '✓ Incluye modelos populares + joyeros',
-        '✓ Material: Cartón rígido reforzado',
-        '✓ Forrado en papel importado',
-        '✓ Acabados premium',
-        '✓ Prioridad en producción'
-      ],
-      oldPrice: 'Precio normal: $900,000',
-      newPrice: '$720,000',
-      savings: '¡Ahorras $180,000! (20% OFF)'
-    },
-    'combo3': {
-      title: 'COMBO CORPORATIVO',
-      image: 'img/combo-detalle3.jpg',
-      items: [
-        '✓ 12 modelos diferentes de cajas',
-        '✓ 50 unidades de cada modelo (600 unidades total)',
-        '✓ Incluye toda la gama de productos',
-        '✓ Material: Cartón de máxima resistencia',
-        '✓ Forrado en materiales premium',
-        '✓ Logística y almacenamiento incluido',
-        '✓ Asesoría personalizada',
-        '✓ Despacho nacional'
-      ],
-      oldPrice: 'Precio normal: $2,100,000',
-      newPrice: '$1,575,000',
-      savings: '¡Ahorras $525,000! (25% OFF)'
-    }
-  };
-
-  return combos[comboId] || combos['combo1'];
-}
-
-function contactForCombo(comboTitle) {
-  const phoneNumber = "573007276599"; // ⚠️ REEMPLAZA con tu número
-  const message = `¡Hola! 👋\n\nEstoy interesado en el: ${comboTitle}\n\nPor favor envíenme más información sobre este combo promocional. ¡Gracias! 🎉`;
-  const encodedMessage = encodeURIComponent(message);
-  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
-  window.open(whatsappURL, '_blank');
-
-  // Cerrar modal después de enviar
-  const comboModal = document.getElementById('comboModal');
-  if (comboModal) {
-    comboModal.remove();
-  }
 }

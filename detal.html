@@ -1,10 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo al Detal - Precios Unitarios</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- Banner Detal -->
+<div class="retail-banner">
+  <div class="container">
+    <br>
+    <h1>🛍️ PRECIOS AL DETAL</h1>
+    <p>Cajas joyas y empaques mínimo 3 unidades por referencia </p>
+    <div class="banner-actions">
+      <a href="index.html" class="wholesale-link">¿Eres negocio? Ver precios mayoristas →</a>
+    </div>
+  </div>
+</div>
 
+
+<!-- Filtros -->
+<section class="filters">
+  <div class="container">
+    <input type="text" id="searchInput" placeholder="Buscar productos..." class="search-bar">
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="popular">Popular</button>
+      <button class="filter-btn" data-filter="joyeria">Joyería</button>
+      <button class="filter-btn" data-filter="empaques">Empaques</button>
+      <button class="filter-btn" data-filter="hombres">Hombres</button>
+    </div>
+  </div>
+</section>
+
+<!-- Catálogo de productos -->
+<main class="container">
+  <div class="products-grid" id="productsGrid"></div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>&copy; 2024 Mi Catálogo - Precios al Detal</p>
+    <p>Envío gratis en compras mayores a $50 | Despacho en 48-72 horas</p>
+    <a href="index.html" class="footer-wholesale-link">Ver precios mayoristas</a>
+  </div>
+</footer>
+
+<!-- Modal para vista detallada del producto -->
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div id="productModalContent"></div>
+  </div>
+</div>
+
+<!-- Modal para galería de imágenes -->
+<div id="imageModal" class="modal">
+  <div class="image-modal-content">
+    <span class="close-image">&times;</span>
+    <div id="imageModalContent"></div>
+  </div>
+</div>
+
+<!-- Botones flotantes del carrito -->
+<div id="cart-counter" class="cart-counter"></div>
+<button class="view-cart-btn" onclick="viewCart()">🛒 Ver Mi Pedido</button>
+
+<script src="scriptDetal.js"></script>
 </body>
 </html>
