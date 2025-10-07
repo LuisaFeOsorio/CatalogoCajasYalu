@@ -477,35 +477,83 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Configurar event listeners
-// Configurar event listeners
+/// Configurar event listeners - VERSIÓN CORREGIDA
 function setupEventListeners() {
-  // Modal de producto
-  closeProductModal.addEventListener('click', function() {
-    console.log('✅ Cerrando modal de producto'); // Para debug
-    productModal.style.display = 'none';
+  // ✅ Configurar filtros primero (esto se estaba perdiendo)
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      this.classList.add('active');
+      currentFilter = this.dataset.filter;
+
+      // Limpiar búsqueda cuando se cambia de filtro
+      searchInput.value = '';
+      currentSearch = '';
+
+      // ✅ Ocultar combos inmediatamente si no es "all"
+      if (currentFilter !== 'all') {
+        hideCombosSection();
+      } else {
+        showCombosSection();
+      }
+
+      filterProducts();
+    });
   });
+
+  // ✅ Búsqueda
+  searchInput.addEventListener('input', function() {
+    currentSearch = this.value.toLowerCase();
+
+    // ✅ Ocultar combos si hay búsqueda activa
+    if (currentSearch.trim() !== '') {
+      hideCombosSection();
+    } else if (currentFilter === 'all') {
+      // ✅ Mostrar combos solo si no hay búsqueda y está en "Todos"
+      showCombosSection();
+    }
+
+    filterProducts();
+  });
+
+  // ✅ Event listeners específicos para cerrar modales (NO usar event delegation general)
+
+  // Modal de producto
+  if (closeProductModal) {
+    closeProductModal.addEventListener('click', function() {
+      console.log('✅ Cerrando modal de producto');
+      productModal.style.display = 'none';
+    });
+  }
 
   // Modal de imágenes
-  closeImageModal.addEventListener('click', function() {
-    console.log('✅ Cerrando modal de imágenes'); // Para debug
-    imageModal.style.display = 'none';
-  });
-
-  // Cerrar modales al hacer clic fuera
-  window.addEventListener('click', function(event) {
-    console.log('🖱️ Click detectado:', event.target); // Para debug
-
-    if (event.target === productModal) {
-      console.log('✅ Cerrando modal de producto (click fuera)');
-      productModal.style.display = 'none';
-    }
-    if (event.target === imageModal) {
-      console.log('✅ Cerrando modal de imágenes (click fuera)');
+  if (closeImageModal) {
+    closeImageModal.addEventListener('click', function() {
+      console.log('✅ Cerrando modal de imágenes');
       imageModal.style.display = 'none';
-    }
-  });
+    });
+  }
 
-  // También agregar escape key para cerrar modales
+  // ✅ Cerrar modales al hacer clic fuera - PERO solo en el fondo del modal
+  if (productModal) {
+    productModal.addEventListener('click', function(event) {
+      if (event.target === productModal) {
+        console.log('✅ Cerrando modal de producto (click fuera)');
+        productModal.style.display = 'none';
+      }
+    });
+  }
+
+  if (imageModal) {
+    imageModal.addEventListener('click', function(event) {
+      if (event.target === imageModal) {
+        console.log('✅ Cerrando modal de imágenes (click fuera)');
+        imageModal.style.display = 'none';
+      }
+    });
+  }
+
+  // ✅ Cerrar con tecla Escape
   document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
       console.log('✅ Tecla Escape presionada');
