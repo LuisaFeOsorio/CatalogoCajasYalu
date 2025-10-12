@@ -13,6 +13,7 @@ const products = [
       "img/CorazonForrado5.jpeg"
     ],
     variants: [
+
       {size: "20cm de ancho x 10 cm de alto", price: "$8,500"},
       {size: "25cm de ancho x 10 cm de alto", price: "$10,000"},
       {size: "30cm de ancho x 10 cm de alto", price: "$13,000"}]
@@ -626,7 +627,24 @@ function addToCart(productId) {
     showCartMessage(productId, '❌ La cantidad mínima es 12 unidades', 'error');
     return;
   }
+// Función para actualizar el estado visual del carrito
+  function updateCartVisual() {
+    const cartCounter = document.getElementById('cart-counter');
+    const viewCartBtn = document.querySelector('.view-cart-btn');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+    if (cart.length > 0) {
+      cartCounter.textContent = cart.length;
+      cartCounter.style.display = 'flex';
+      viewCartBtn.classList.add('has-items');
+    } else {
+      cartCounter.style.display = 'none';
+      viewCartBtn.classList.remove('has-items');
+    }
+  }
+
+// Llamar esta función cuando se cargue la página y cuando se actualice el carrito
+  document.addEventListener('DOMContentLoaded', updateCartVisual);
   // OBTENER LA VARIANTE SELECCIONADA
   let selectedVariant = null;
   if (product.variants) {
