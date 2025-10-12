@@ -3,7 +3,7 @@ const products = [
     id: 1,
     name: "Corazon Forrado",
     description: "Base en cartón rigido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos... ",
-    price: "Desde",
+
     category: "popular",
     image: "img/CorazónForrado1.jpg",
     images: [
@@ -19,7 +19,7 @@ const products = [
     id: 2,
     name: "Cilindro Forrado",
     description: "Base en cartón rigido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos... ",
-    price: "Desde",
+
     category: "popular",
     image: "img/CilindroForrado6.jpeg",
     images: [
@@ -36,7 +36,7 @@ const products = [
     id: 24,
     name: "Cuadrada",
     description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos... ",
-    price: "Desde",
+
     category: "popular",
     image: "img/cuadrada1.png",
     images: [
@@ -52,7 +52,7 @@ const products = [
     id: 3,
     name: "Cajón Corazón",
     description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos... ",
-    price: "Desde",
+
     category: "popular",
     image: "img/cajoncorazon1.png",
     images: [
@@ -67,7 +67,7 @@ const products = [
     id: 4,
     name: "Libro Corazón #1",
     description: "Base del corazón en cartón rígido, libro con doble capa de carton blanco de 300gr ",
-    price: "Desde",
+
     category: "popular",
     image: "img/librocorazon2.jpeg",
     images: [
@@ -82,7 +82,7 @@ const products = [
     id: 21,
     name: "Libro Corazón #2",
     description: "Base del corazón en cartón rígido, libro con doble capa de carton blanco de 300gr ",
-    price: "Desde",
+
     category: "popular",
     image: "img/librocorazon22.png",
     images: [
@@ -96,7 +96,6 @@ const products = [
     id: 5,
     name: "Dulcera",
     description: "Caja resistente con borde de 1cm y separadores ",
-    price: "Desde",
     category: "Los mas llevados",
     image: "img/dulcera1.jpeg",
     images: [
@@ -110,7 +109,6 @@ const products = [
     id: 6,
     name: "Mom",
     description: "Base de letras en cartón rídigo, doble capa de cartón blanco en basey tapa",
-    price: "Desde",
     category: "Los mas llevados",
     image: "img/mom1.jpeg",
     images: [
@@ -125,7 +123,6 @@ const products = [
     id: 7,
     name: "I love u",
     description: "Base de letras en cartón rídigo, doble capa de cartón blanco en basey tapa",
-    price: "Desde",
     category: "Los mas llevados",
     image: "img/loveu1.jpeg",
     images: [
@@ -140,7 +137,6 @@ const products = [
     id: 8,
     name: "Buffet",
     description: "Caja con borde de 1cm incluye separadores, salseros y tapa con ventana, ideal para desayunos sorpresa",
-    price: "Desde",
     image: "img/buffet.jpeg",
     images: [
       "img/buffet.jpeg",
@@ -153,7 +149,6 @@ const products = [
     id: 10,
     name: "Cofre",
     description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
-    price: "Desde",
     category: "Los mas llevados",
     image: "img/cofre1.jpeg",
     images: [
@@ -169,7 +164,6 @@ const products = [
     id: 11,
     name: "Libro con broche iman",
     description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
-    price: "Desde",
     category: "Los mas llevados",
     image: "img/librobroche1.jpeg",
     images: [
@@ -185,7 +179,6 @@ const products = [
     id: 12,
     name: "Cilindro sin forrar Alto",
     description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
-    price: "Desde",
     category: "Los mas llevados",
     image: "img/cilindrosinforrar1.png",
     images: [
@@ -202,7 +195,6 @@ const products = [
     id: 28,
     name: "Cilindro sin forrar Bajo",
     description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
-    price: "Desde",
     category: "Los mas llevados",
     image: "img/cilindrosinforrarbajos.png",
     images: [
@@ -219,7 +211,6 @@ const products = [
     id: 13,
     name: "Corazones sin forrar",
     description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
-    price: "Desde",
     category: "Los mas llevados",
     image: "img/corasinforrar2.jpeg",
     images: [
@@ -237,7 +228,6 @@ const products = [
     name: "Reloj ",
     description: "Disponible en multiples colores. PRECIO SOLO LA CAJA, si quieres adicionar la almohadilla" +
       "y el moño, aumenta $1,000",
-    price: "Precio",
     category: "joyeria",
     image: "img/reloj.jpeg",
     images: ["img/reloj.jpeg",
@@ -251,7 +241,6 @@ const products = [
     id: 15,
     name: "Joyeros #1",
     description: "Disponible en carton blanco, gris, rosa, vienen sin forrar ",
-    price: "Desde",
     category: "joyeria",
     image: "img/estilo1.jpeg",
     images: [
@@ -272,7 +261,6 @@ const products = [
     id: 16,
     name: "Joyeros #2",
     description: "Completamente forrada en cualquier color, elegante. ",
-    price: "Desde",
     category: "joyeria",
     image: "img/estilo2.png",
     images: [
@@ -289,7 +277,6 @@ const products = [
     id: 17,
     name: "Joyeros #3",
     description: "Disponible en color rosa, gris o blanco",
-    price: "Desde",
     category: "joyeria",
     image: "img/estilo3.png",
     images: [
@@ -306,7 +293,6 @@ const products = [
     id: 18,
     name: "Joyeros #4",
     description: "Base y tapas forradas en multiples colores",
-    price: "Desde",
     category: "joyeria",
     image: "img/estilo4.png",
     images: [
@@ -322,7 +308,6 @@ const products = [
     id: 25,
     name: "Empaques #1",
     description: "Puedes personalizar las medidas, cartón 300gr. PRECIO NO INCLUYE CINTA NI STICKER",
-    price: "Desde",
     category: "empaques",
     image: "img/empaque1.png",
     images: [
@@ -338,7 +323,6 @@ const products = [
     id: 26,
     name: "Empaques #2",
     description: "Cartón de 300gr, con borde de 1cm. PRECIO CON VENTANA AUMENTA $600",
-    price: "Desde",
     category: "empaques",
     image: "img/empaque21.png",
     images: [
@@ -355,7 +339,6 @@ const products = [
     id: 27,
     name: "Empaques #3",
     description: "Cartón de 300gr, con borde sencillo. PRECIO CON VENTANA AUMENTA $600",
-    price: "Desde",
     category: "empaques",
     image: "img/Empaque31.png",
     images: [
@@ -373,7 +356,6 @@ const products = [
     id: 9,
     name: "Carrito Corona",
     description: "Se puede personalizar la impresión",
-    price: "Desde",
     category: "hombres",
     image: "img/corona1.jpeg",
     images: [
@@ -388,7 +370,6 @@ const products = [
     id: 19,
     name: "Ancheta",
     description: "Base en cartón rigido, variedad de colores",
-    price: "Desde",
     image: "img/acheta1.png",
     images: [
       "img/acheta1.png",
@@ -403,7 +384,6 @@ const products = [
     id: 20,
     name: "Ancheta Esmoquin",
     description: "Base en cartón rigido, sin forrar con decoración",
-    price: "Desde",
     category: "hombres",
     image: "img/anchetahombre1.png",
     images: [
@@ -417,7 +397,6 @@ const products = [
     id: 22,
     name: "Cilindro Esmoquin",
     description: "Base en cartón rigido, forrados en variedad de colores",
-    price: "Desde",
     category: "hombres",
     image: "img/cilindroesmoquin.jpg",
     images: [
@@ -431,7 +410,6 @@ const products = [
     id: 23,
     name: "Ancheta Amor",
     description: "Base en cartón rigido, forrados en variedad de colores",
-    price: "Desde",
     category: "amoryamistad",
     image: "img/anchetaamor1.png",
     images: [
@@ -467,7 +445,7 @@ let cart = JSON.parse(localStorage.getItem('cart')) || [];
 document.addEventListener('DOMContentLoaded', function () {
   displayProducts(products);
   setupEventListeners();
-  updateCartCounter(); // ✅ Inicializar contador del carrito
+  updateCartCounter();
 });
 
 // Configurar event listeners
@@ -812,11 +790,6 @@ function updateCartCounter() {
     }
   }
 }
-
-// ELIMINAR FUNCIONES DUPLICADAS O INCOMPLETAS
-// Se han eliminado las funciones showCartModal(), generateCartItemsHTML(),
-// calculateTotal(), removeFromCart() duplicada, refreshCartModal(),
-// closeCartModal(), setupCartModalListeners() ya que viewCart() hace lo mismo
 
 // Resto del código se mantiene igual...
 function displayProducts(productsToShow) {
