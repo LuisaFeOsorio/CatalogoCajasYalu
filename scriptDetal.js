@@ -24,7 +24,8 @@ const products = [
     image: "img/CilindroForrado6.jpeg",
     images: [
       "img/CilindroForrado6.jpeg",
-      "img/CilindroForrado"
+      "img/Cilindro33.png",
+      "img/Cilindro44.png"
     ],
     variants: [
       {size: "16cm de diametro x 13 cm de alto", price: "$9,000"},
@@ -460,12 +461,13 @@ let currentFilter = 'all';
 let currentSearch = '';
 
 // Carrito de compras
-let cart = [];
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // Inicializar la página
 document.addEventListener('DOMContentLoaded', function () {
   displayProducts(products);
   setupEventListeners();
+  updateCartCounter(); // ✅ Inicializar contador del carrito
 });
 
 // Configurar event listeners
@@ -507,28 +509,34 @@ function setupEventListeners() {
   });
 }
 
-// FUNCIONES DEL CARRITO - MODIFICADAS PARA DETAL
+// FUNCIONES DEL CARRITO - CORREGIDAS
 
 function increaseQuantity(productId) {
   const quantityInput = document.getElementById(`quantity-${productId}`);
-  quantityInput.value = parseInt(quantityInput.value) + 1;
+  const currentValue = parseInt(quantityInput.value);
+  if (currentValue < 11) { // ✅ Máximo 11 unidades
+    quantityInput.value = currentValue + 1;
+  } else {
+    showCartMessage(productId, '⚠️ La cantidad máxima es 11 unidades', 'warning');
+  }
 }
 
 function decreaseQuantity(productId) {
   const quantityInput = document.getElementById(`quantity-${productId}`);
   const currentValue = parseInt(quantityInput.value);
-  if (currentValue > 1) { // ✅ Mínimo 1 unidad en detal
+  if (currentValue > 1) { // ✅ Mínimo 1 unidad
     quantityInput.value = currentValue - 1;
   }
 }
 
 function validateQuantity(productId) {
   const quantityInput = document.getElementById(`quantity-${productId}`);
-  if (parseInt(quantityInput.value) < 1) { // ✅ Mínimo 1 unidad en detal
+  let value = parseInt(quantityInput.value);
+
+  if (isNaN(value) || value < 1) {
     quantityInput.value = 1;
     showCartMessage(productId, '⚠️ La cantidad mínima es 1 unidad', 'warning');
-  }
-  if (parseInt(quantityInput.value) > 11) { // ✅ Máximo 11 unidades en detal
+  } else if (value > 11) {
     quantityInput.value = 11;
     showCartMessage(productId, '⚠️ La cantidad máxima es 11 unidades', 'warning');
   }
@@ -568,13 +576,8 @@ function addToCart(productId) {
   console.log('📦 Cantidad seleccionada:', quantity);
 
   // ✅ VALIDACIONES PARA DETAL (1-11 unidades)
-  if (quantity < 1) {
-    showCartMessage(productId, '❌ La cantidad mínima es 1 unidad', 'error');
-    return;
-  }
-
-  if (quantity > 11) {
-    showCartMessage(productId, '❌ La cantidad máxima es 11 unidades', 'error');
+  if (quantity < 1 || quantity > 11) {
+    showCartMessage(productId, '❌ La cantidad debe ser entre 1 y 11 unidades', 'error');
     return;
   }
 
@@ -592,9 +595,12 @@ function addToCart(productId) {
 
   console.log('🎯 Variante seleccionada:', selectedVariant);
 
-  // Buscar si el producto ya está en el carrito (ahora considerando la variante)
+  // Obtener precio final
+  const finalPrice = selectedVariant ? parsePrice(selectedVariant.price) : parsePrice(product.price);
+
+  // Buscar si el producto ya está en el carrito
   const existingItemIndex = cart.findIndex(item =>
-    item.product.id === productId &&
+    item.productId === productId &&
     item.selectedVariant?.size === selectedVariant?.size
   );
 
@@ -610,12 +616,19 @@ function addToCart(productId) {
   } else {
     // Producto nuevo o con diferente variante, agregar al carrito
     cart.push({
-      product: product,
+      productId: productId,
+      name: product.name,
+      image: product.image,
+      category: product.category,
+      price: finalPrice,
       quantity: quantity,
       selectedVariant: selectedVariant
     });
     console.log('✅ Nuevo producto añadido al carrito');
   }
+
+  // Guardar en localStorage
+  localStorage.setItem('cart', JSON.stringify(cart));
 
   console.log('🛒 Carrito actual:', cart);
   showCartMessage(productId, `✅ ${quantity} unidad(es) añadida(s) al pedido`, 'success');
@@ -625,193 +638,152 @@ function addToCart(productId) {
 
   // Cerrar el modal después de añadir (opcional)
   setTimeout(() => {
-    const modal = document.getElementById('productModal');
-    if (modal) {
-      modal.style.display = 'none';
-    }
+    productModal.style.display = 'none';
   }, 1500);
 }
 
-// Función para ver el carrito completo
+// Función para ver el carrito completo - CORREGIDA
 function viewCart() {
+  const modalContent = document.getElementById('productModalContent');
+
   if (cart.length === 0) {
-    showEmptyCartMessage();
+    modalContent.innerHTML = `
+      <div style="text-align: center; padding: 40px 20px;">
+        <div style="font-size: 48px; margin-bottom: 20px;">🛒</div>
+        <h3 style="margin-bottom: 15px; color: #666;">Tu pedido está vacío</h3>
+        <p style="color: #888; margin-bottom: 25px;">Agrega productos para verlos aquí</p>
+        <button onclick="closeModal()" class="continue-shopping" style="background: #667eea; color: white; border: none; padding: 12px 30px; border-radius: 8px; cursor: pointer;">
+          Seguir Comprando
+        </button>
+      </div>
+    `;
+  } else {
+    let cartHTML = `
+      <div style="border-bottom: 2px solid #667eea; padding-bottom: 15px; margin-bottom: 20px;">
+        <h3 style="margin: 0; color: #333; display: flex; align-items: center; gap: 10px;">
+          <span>📦</span> Tu Pedido (${cart.length} productos)
+        </h3>
+      </div>
+      <div class="cart-items-container">
+    `;
+
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      const itemTotal = item.price * item.quantity;
+      total += itemTotal;
+
+      cartHTML += `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}" class="cart-item-image"
+               style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+          <div class="cart-item-info">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-details">${item.category} • ${item.selectedVariant?.size || 'Tamaño único'}</div>
+            <div class="cart-item-price">$${item.price.toLocaleString()} c/u</div>
+          </div>
+          <div class="cart-item-actions">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="updateQuantity(${index}, ${item.quantity - 1})">-</button>
+              <span class="quantity-display">${item.quantity}</span>
+              <button class="quantity-btn" onclick="updateQuantity(${index}, ${item.quantity + 1})">+</button>
+            </div>
+            <button class="delete-btn" onclick="removeFromCart(${index})">
+              <span style="display: flex; align-items: center; gap: 5px;">
+                🗑️ <span class="delete-text">Eliminar</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      `;
+    });
+
+    cartHTML += `
+      </div>
+      <div class="cart-total">
+        <strong>Total: $${total.toLocaleString()}</strong>
+      </div>
+      <div class="cart-actions">
+        <button onclick="closeModal()" class="continue-shopping">Seguir Comprando</button>
+        <button onclick="proceedToCheckout()" class="checkout-btn">
+          <span style="display: flex; align-items: center; gap: 5px; justify-content: center;">
+            📱 Pedir por WhatsApp
+          </span>
+        </button>
+      </div>
+    `;
+
+    modalContent.innerHTML = cartHTML;
+  }
+
+  productModal.style.display = 'block';
+}
+
+// Función para actualizar cantidad - CORREGIDA
+function updateQuantity(index, newQuantity) {
+  if (newQuantity < 1) {
+    removeFromCart(index);
     return;
   }
 
-  showCartModal();
+  if (newQuantity > 11) {
+    alert('❌ La cantidad máxima por producto es 11 unidades');
+    return;
+  }
+
+  cart[index].quantity = newQuantity;
+  localStorage.setItem('cart', JSON.stringify(cart));
+  viewCart();
+  updateCartCounter();
 }
 
-// Función para mostrar mensaje de carrito vacío
-function showEmptyCartMessage() {
-  alert('🛒 Tu pedido está vacío\n\nAgrega productos con el botón "Añadir al Pedido"');
-}
-
-// Función para mostrar el modal del carrito
-function showCartModal() {
-  const cartModalHTML = `
-    <div class="cart-modal">
-      <div class="cart-header">
-        <h2>📋 Tu Pedido al Detal</h2>
-        <span class="close-cart">&times;</span>
-      </div>
-      <div class="cart-items" id="cartItems">
-        ${generateCartItemsHTML()}
-      </div>
-      <div class="cart-total">
-        <strong>💰 Total: $${calculateTotal().toLocaleString()}</strong>
-      </div>
-      <div class="cart-actions">
-        <button class="continue-shopping-btn" onclick="closeCartModal()">
-          ← Seguir Comprando
-        </button>
-        <button class="whatsapp-btn" onclick="sendToWhatsApp()">
-          💬 Confirmar Pedido por WhatsApp
-        </button>
-      </div>
-    </div>
-  `;
-
-  // Crear modal del carrito
-  const cartModal = document.createElement('div');
-  cartModal.className = 'modal';
-  cartModal.id = 'cartModal';
-  cartModal.innerHTML = cartModalHTML;
-  document.body.appendChild(cartModal);
-
-  // Configurar event listeners
-  setupCartModalListeners();
-
-  // Mostrar modal
-  cartModal.style.display = 'block';
-}
-
-// Generar HTML de los items del carrito
-function generateCartItemsHTML() {
-  return cart.map((item, index) => `
-    <div class="cart-item" data-index="${index}">
-      <div class="cart-item-image">
-        <img src="${item.product.image}" alt="${item.product.name}"
-             onerror="this.src='https://via.placeholder.com/60x60/667eea/white?text=Imagen'">
-      </div>
-      <div class="cart-item-details">
-        <h4>${item.product.name}</h4>
-        ${item.selectedVariant ? `
-          <p><strong>Tamaño:</strong> ${item.selectedVariant.size}</p>
-          <p><strong>Precio unitario:</strong> ${item.selectedVariant.price}</p>
-        ` : ''}
-        <p><strong>Cantidad:</strong> ${item.quantity} unidad(es)</p>
-        ${item.selectedVariant ? `
-          <p class="cart-item-price">
-            <strong>Subtotal:</strong> $${(parsePrice(item.selectedVariant.price) * item.quantity).toLocaleString()}
-          </p>
-        ` : ''}
-      </div>
-      <button class="remove-item-btn" onclick="removeFromCart(${index})">
-        🗑️ Eliminar
-      </button>
-    </div>
-  `).join('');
-}
-
-// Calcular total
-function calculateTotal() {
-  return cart.reduce((total, item) => {
-    const price = item.selectedVariant ? parsePrice(item.selectedVariant.price) : parsePrice(item.product.price);
-    return total + (price * item.quantity);
-  }, 0);
-}
-
-// Eliminar producto del carrito
+// Función para eliminar item - CORREGIDA
 function removeFromCart(index) {
-  if (confirm('¿Estás seguro de que quieres eliminar este producto de tu pedido?')) {
+  if (confirm('¿Estás seguro de eliminar este producto de tu pedido?')) {
     cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    viewCart();
     updateCartCounter();
-    refreshCartModal();
-
-    if (cart.length === 0) {
-      closeCartModal();
-      showEmptyCartMessage();
-    }
   }
 }
 
-// Actualizar modal del carrito
-function refreshCartModal() {
-  const cartItems = document.getElementById('cartItems');
-  const cartTotal = document.querySelector('.cart-total');
-
-  if (cartItems) {
-    cartItems.innerHTML = generateCartItemsHTML();
-  }
-
-  if (cartTotal) {
-    cartTotal.innerHTML = `<strong>💰 Total: $${calculateTotal().toLocaleString()}</strong>`;
-  }
+// Función para cerrar modal
+function closeModal() {
+  productModal.style.display = 'none';
 }
 
-// Cerrar modal del carrito
-function closeCartModal() {
-  const cartModal = document.getElementById('cartModal');
-  if (cartModal) {
-    cartModal.remove();
-  }
-}
-
-// Configurar event listeners del modal del carrito
-function setupCartModalListeners() {
-  const closeCart = document.querySelector('.close-cart');
-  if (closeCart) {
-    closeCart.addEventListener('click', closeCartModal);
-  }
-
-  // Cerrar al hacer clic fuera
-  const cartModal = document.getElementById('cartModal');
-  if (cartModal) {
-    cartModal.addEventListener('click', function (event) {
-      if (event.target === this) {
-        closeCartModal();
-      }
-    });
-  }
-}
-
-// Función para enviar a WhatsApp
-function sendToWhatsApp() {
+// Función para proceder al checkout
+function proceedToCheckout() {
   if (cart.length === 0) {
     alert('❌ No hay productos en el pedido');
     return;
   }
 
-  const phoneNumber = "573007276599"; // ⚠️ REEMPLAZA con tu número de WhatsApp
+  const phoneNumber = "573007276599";
   const message = generateWhatsAppMessage();
   const encodedMessage = encodeURIComponent(message);
   const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-  // Abrir en nueva pestaña
   window.open(whatsappURL, '_blank');
 }
 
-// Generar mensaje para WhatsApp
+// Generar mensaje para WhatsApp - CORREGIDA
 function generateWhatsAppMessage() {
   let message = "¡Hola! 👋\n\n";
   message += "Quiero hacer el siguiente pedido al detal:\n\n";
 
   cart.forEach((item, index) => {
-    message += `📦 ${item.product.name}\n`;
+    message += `📦 ${item.name}\n`;
     if (item.selectedVariant) {
       message += `   Tamaño: ${item.selectedVariant.size}\n`;
     }
     message += `   Cantidad: ${item.quantity} unidad(es)\n`;
-
-    const price = item.selectedVariant ? parsePrice(item.selectedVariant.price) : parsePrice(item.product.price);
-    const subtotal = price * item.quantity;
-    message += `   Subtotal: $${subtotal.toLocaleString()}\n`;
-
-    message += "\n";
+    message += `   Precio unitario: $${item.price.toLocaleString()}\n`;
+    message += `   Subtotal: $${(item.price * item.quantity).toLocaleString()}\n\n`;
   });
 
-  message += `💰 *TOTAL: $${calculateTotal().toLocaleString()}*\n\n`;
+  const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  message += `💰 *TOTAL: $${total.toLocaleString()}*\n\n`;
   message += "Por favor confirmar disponibilidad y forma de pago. ¡Gracias! 🎉";
 
   return message;
@@ -819,20 +791,34 @@ function generateWhatsAppMessage() {
 
 // Función auxiliar para convertir precios
 function parsePrice(priceString) {
+  if (typeof priceString === 'number') return priceString;
   return parseFloat(priceString.replace(/[$,]/g, ''));
 }
 
-// Actualizar contador del carrito
+// Actualizar contador del carrito - CORREGIDA
 function updateCartCounter() {
   const cartCounter = document.getElementById('cart-counter');
   if (cartCounter) {
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     cartCounter.textContent = totalItems;
     cartCounter.style.display = totalItems > 0 ? 'flex' : 'none';
+
+    // Actualizar estado visual del botón
+    const viewCartBtn = document.querySelector('.view-cart-btn');
+    if (totalItems > 0) {
+      viewCartBtn.classList.add('has-items');
+    } else {
+      viewCartBtn.classList.remove('has-items');
+    }
   }
 }
 
-// Mostrar productos
+// ELIMINAR FUNCIONES DUPLICADAS O INCOMPLETAS
+// Se han eliminado las funciones showCartModal(), generateCartItemsHTML(),
+// calculateTotal(), removeFromCart() duplicada, refreshCartModal(),
+// closeCartModal(), setupCartModalListeners() ya que viewCart() hace lo mismo
+
+// Resto del código se mantiene igual...
 function displayProducts(productsToShow) {
   productsGrid.innerHTML = '';
 
@@ -848,7 +834,7 @@ function displayProducts(productsToShow) {
       <div class="product-image-container">
         <img src="${product.image}" alt="${product.name}" class="product-image"
              onerror="this.src='https://via.placeholder.com/300x200/667eea/white?text=Imagen+No+Disponible'">
-        ${(product.images && product.images.length > 1)}
+        ${(product.images && product.images.length > 1) ? '<div class="image-badge">📷</div>' : ''}
       </div>
       <div class="product-info">
         <h3 class="product-title">${product.name}</h3>
@@ -898,7 +884,7 @@ function filterProducts() {
   displayProducts(filteredProducts);
 }
 
-// Función para abrir modal de producto (información)
+// Función para abrir modal de producto
 function openProductModal(product) {
   // Construir HTML de variantes con selección
   const variantsHTML = product.variants ? `
@@ -917,7 +903,6 @@ function openProductModal(product) {
     </div>
   ` : '';
 
-  // ✅ HTML para el selector de cantidad MODIFICADO PARA DETAL (1-11 unidades)
   const quantitySelectorHTML = `
     <div class="quantity-selector">
       <h3>🛒 Cantidad:</h3>

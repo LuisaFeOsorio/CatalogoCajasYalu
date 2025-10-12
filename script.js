@@ -27,7 +27,8 @@ const products = [
     image: "img/CilindroForrado6.jpeg",
     images: [
       "img/CilindroForrado6.jpeg",
-      "img/CilindroForrado"
+      "img/Cilindro33.png",
+      "img/Cilindro44.png"
     ],
     variants: [
       {size: "13cm de diametro x 10 cm de alto", price: "$6,000"},
