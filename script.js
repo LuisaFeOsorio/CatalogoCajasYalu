@@ -451,7 +451,6 @@ const products = [
   },
 
 ];
-
 // Elementos del DOM
 const productsGrid = document.getElementById('productsGrid');
 const searchInput = document.getElementById('searchInput');
@@ -469,126 +468,84 @@ const closeImageModal = document.querySelector('.close-image');
 let currentFilter = 'all';
 let currentSearch = '';
 
-// Carrito de compras
-let cart = [];
+// Carrito de compras - COMPRA MÍNIMA 12 UNIDADES
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // Inicializar la página
 document.addEventListener('DOMContentLoaded', function () {
   displayProducts(products);
   setupEventListeners();
+  updateCartCounter();
 });
 
 // Configurar event listeners
-/// Configurar event listeners - VERSIÓN CORREGIDA
 function setupEventListeners() {
-  // ✅ Configurar filtros primero (esto se estaba perdiendo)
+  // Filtros
   filterButtons.forEach(button => {
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function () {
       filterButtons.forEach(btn => btn.classList.remove('active'));
       this.classList.add('active');
       currentFilter = this.dataset.filter;
-
-      // Limpiar búsqueda cuando se cambia de filtro
-      searchInput.value = '';
-      currentSearch = '';
-
-      // ✅ Ocultar combos inmediatamente si no es "all"
-      if (currentFilter !== 'all') {
-        hideCombosSection();
-      } else {
-        showCombosSection();
-      }
-
       filterProducts();
     });
   });
 
-  // ✅ Búsqueda
-  searchInput.addEventListener('input', function() {
+  // Búsqueda
+  searchInput.addEventListener('input', function () {
     currentSearch = this.value.toLowerCase();
-
-    // ✅ Ocultar combos si hay búsqueda activa
-    if (currentSearch.trim() !== '') {
-      hideCombosSection();
-    } else if (currentFilter === 'all') {
-      // ✅ Mostrar combos solo si no hay búsqueda y está en "Todos"
-      showCombosSection();
-    }
-
     filterProducts();
   });
 
-  // ✅ Event listeners específicos para cerrar modales (NO usar event delegation general)
-
   // Modal de producto
-  if (closeProductModal) {
-    closeProductModal.addEventListener('click', function() {
-      console.log('✅ Cerrando modal de producto');
-      productModal.style.display = 'none';
-    });
-  }
+  closeProductModal.addEventListener('click', function () {
+    productModal.style.display = 'none';
+  });
 
   // Modal de imágenes
-  if (closeImageModal) {
-    closeImageModal.addEventListener('click', function() {
-      console.log('✅ Cerrando modal de imágenes');
+  closeImageModal.addEventListener('click', function () {
+    imageModal.style.display = 'none';
+  });
+
+  // Cerrar modales al hacer clic fuera
+  window.addEventListener('click', function (event) {
+    if (event.target === productModal) {
+      productModal.style.display = 'none';
+    }
+    if (event.target === imageModal) {
       imageModal.style.display = 'none';
-    });
-  }
-
-  // ✅ Cerrar modales al hacer clic fuera - PERO solo en el fondo del modal
-  if (productModal) {
-    productModal.addEventListener('click', function(event) {
-      if (event.target === productModal) {
-        console.log('✅ Cerrando modal de producto (click fuera)');
-        productModal.style.display = 'none';
-      }
-    });
-  }
-
-  if (imageModal) {
-    imageModal.addEventListener('click', function(event) {
-      if (event.target === imageModal) {
-        console.log('✅ Cerrando modal de imágenes (click fuera)');
-        imageModal.style.display = 'none';
-      }
-    });
-  }
-
-  // ✅ Cerrar con tecla Escape
-  document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-      console.log('✅ Tecla Escape presionada');
-      if (productModal.style.display === 'block') {
-        productModal.style.display = 'none';
-      }
-      if (imageModal.style.display === 'block') {
-        imageModal.style.display = 'none';
-      }
     }
   });
 }
-// FUNCIONES DEL CARRITO - CORREGIDAS
+
+// FUNCIONES DEL CARRITO - MODIFICADAS PARA MAYOREO (12+ UNIDADES)
 
 function increaseQuantity(productId) {
   const quantityInput = document.getElementById(`quantity-${productId}`);
-  quantityInput.value = parseInt(quantityInput.value) + 1;
+  const currentValue = parseInt(quantityInput.value);
+  quantityInput.value = currentValue + 1;
+  validateQuantity(productId); // Validar después de aumentar
 }
 
 function decreaseQuantity(productId) {
   const quantityInput = document.getElementById(`quantity-${productId}`);
   const currentValue = parseInt(quantityInput.value);
-  if (currentValue > 12) {
+  if (currentValue > 12) { // ✅ Mínimo 12 unidades en mayoreo
     quantityInput.value = currentValue - 1;
+  } else {
+    showCartMessage(productId, '⚠️ La cantidad mínima es 12 unidades', 'warning');
   }
+  validateQuantity(productId); // Validar después de disminuir
 }
 
 function validateQuantity(productId) {
   const quantityInput = document.getElementById(`quantity-${productId}`);
-  if (parseInt(quantityInput.value) < 12) {
+  let value = parseInt(quantityInput.value);
+
+  if (isNaN(value) || value < 12) {
     quantityInput.value = 12;
-    showCartMessage(productId, '⚠️ La cantidad mínima es 12 unidades', 'warning');
+    showCartMessage(productId, '⚠️ Compra mínima 12 unidades por referencia', 'warning');
   }
+  // No hay máximo en mayoreo, pueden comprar cientos
 }
 
 function showCartMessage(productId, message, type) {
@@ -624,28 +581,12 @@ function addToCart(productId) {
   const quantity = parseInt(quantityInput.value);
   console.log('📦 Cantidad seleccionada:', quantity);
 
+  // ✅ VALIDACIONES PARA MAYOREO (12+ unidades)
   if (quantity < 12) {
-    showCartMessage(productId, '❌ La cantidad mínima es 12 unidades', 'error');
+    showCartMessage(productId, '❌ La cantidad mínima es 12 unidades por referencia', 'error');
     return;
   }
-// Función para actualizar el estado visual del carrito
-  function updateCartVisual() {
-    const cartCounter = document.getElementById('cart-counter');
-    const viewCartBtn = document.querySelector('.view-cart-btn');
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    if (cart.length > 0) {
-      cartCounter.textContent = cart.length;
-      cartCounter.style.display = 'flex';
-      viewCartBtn.classList.add('has-items');
-    } else {
-      cartCounter.style.display = 'none';
-      viewCartBtn.classList.remove('has-items');
-    }
-  }
-
-// Llamar esta función cuando se cargue la página y cuando se actualice el carrito
-  document.addEventListener('DOMContentLoaded', updateCartVisual);
   // OBTENER LA VARIANTE SELECCIONADA
   let selectedVariant = null;
   if (product.variants) {
@@ -660,9 +601,12 @@ function addToCart(productId) {
 
   console.log('🎯 Variante seleccionada:', selectedVariant);
 
-  // Buscar si el producto ya está en el carrito (ahora considerando la variante)
+  // Obtener precio final
+  const finalPrice = selectedVariant ? parsePrice(selectedVariant.price) : parsePrice(product.price);
+
+  // Buscar si el producto ya está en el carrito
   const existingItemIndex = cart.findIndex(item =>
-    item.product.id === productId &&
+    item.productId === productId &&
     item.selectedVariant?.size === selectedVariant?.size
   );
 
@@ -673,176 +617,171 @@ function addToCart(productId) {
   } else {
     // Producto nuevo o con diferente variante, agregar al carrito
     cart.push({
-      product: product,
+      productId: productId,
+      name: product.name,
+      image: product.image,
+      category: product.category,
+      price: finalPrice,
       quantity: quantity,
       selectedVariant: selectedVariant
     });
     console.log('✅ Nuevo producto añadido al carrito');
   }
 
+  // Guardar en localStorage
+  localStorage.setItem('cart', JSON.stringify(cart));
+
   console.log('🛒 Carrito actual:', cart);
-  showCartMessage(productId, `✅ ${quantity} unidades añadidas al pedido`, 'success');
+  showCartMessage(productId, `✅ ${quantity} unidad(es) añadida(s) al pedido mayorista`, 'success');
 
   // Actualizar contador del carrito
   updateCartCounter();
 
   // Cerrar el modal después de añadir (opcional)
   setTimeout(() => {
-    const modal = document.getElementById('productModal');
-    if (modal) {
-      modal.style.display = 'none';
-    }
+    productModal.style.display = 'none';
   }, 1500);
 }
 
-// Función para ver el carrito completo
+// Función para ver el carrito completo - ADAPTADA PARA MAYOREO
 function viewCart() {
+  const modalContent = document.getElementById('productModalContent');
+
   if (cart.length === 0) {
-    showEmptyCartMessage();
+    modalContent.innerHTML = `
+      <div style="text-align: center; padding: 40px 20px;">
+        <div style="font-size: 48px; margin-bottom: 20px;">🏢</div>
+        <h3 style="margin-bottom: 15px; color: #666;">Tu pedido mayorista está vacío</h3>
+        <p style="color: #888; margin-bottom: 25px;">Agrega productos (mínimo 12 unidades por referencia)</p>
+        <button onclick="closeModal()" class="continue-shopping" style="background: #667eea; color: white; border: none; padding: 12px 30px; border-radius: 8px; cursor: pointer;">
+          Seguir Comprando
+        </button>
+      </div>
+    `;
+  } else {
+    let cartHTML = `
+      <div style="border-bottom: 2px solid #667eea; padding-bottom: 15px; margin-bottom: 20px;">
+        <h3 style="margin: 0; color: #333; display: flex; align-items: center; gap: 10px;">
+          <span>🏢</span> Pedido Mayorista (${cart.length} referencias)
+        </h3>
+        <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">
+          Compra mínima: 12 unidades por referencia
+        </p>
+      </div>
+      <div class="cart-items-container">
+    `;
+
+    let total = 0;
+    let totalUnits = 0;
+
+    cart.forEach((item, index) => {
+      const itemTotal = item.price * item.quantity;
+      total += itemTotal;
+      totalUnits += item.quantity;
+
+      cartHTML += `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}" class="cart-item-image"
+               style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+          <div class="cart-item-info">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-details">${item.category} • ${item.selectedVariant?.size || 'Tamaño único'}</div>
+            <div class="cart-item-price">$${item.price.toLocaleString()} c/u</div>
+            <div class="cart-item-quantity" style="color: #666; font-size: 14px;">
+              ${item.quantity} unidades (mínimo: 12)
+            </div>
+          </div>
+          <div class="cart-item-actions">
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="updateQuantity(${index}, ${item.quantity - 1})">-</button>
+              <span class="quantity-display">${item.quantity}</span>
+              <button class="quantity-btn" onclick="updateQuantity(${index}, ${item.quantity + 1})">+</button>
+            </div>
+            <button class="delete-btn" onclick="removeFromCart(${index})">
+              <span style="display: flex; align-items: center; gap: 5px;">
+                🗑️ <span class="delete-text">Eliminar</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      `;
+    });
+
+    cartHTML += `
+      </div>
+      <div class="cart-summary">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+          <span>Total unidades:</span>
+          <strong>${totalUnits} unidades</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; border-top: 1px solid #eee; padding-top: 10px;">
+          <span>Total a pagar:</span>
+          <strong style="font-size: 1.2em;">$${total.toLocaleString()}</strong>
+        </div>
+      </div>
+      <div class="cart-actions">
+        <button onclick="closeModal()" class="continue-shopping">Seguir Comprando</button>
+        <button onclick="proceedToCheckout()" class="checkout-btn">
+          <span style="display: flex; align-items: center; gap: 5px; justify-content: center;">
+            📱 Cotizar por WhatsApp
+          </span>
+        </button>
+      </div>
+    `;
+
+    modalContent.innerHTML = cartHTML;
+  }
+
+  productModal.style.display = 'block';
+}
+
+// Función para actualizar cantidad - ADAPTADA PARA MAYOREO
+function updateQuantity(index, newQuantity) {
+  if (newQuantity < 12) {
+    if (confirm('¿Estás seguro de eliminar esta referencia? La compra mínima es 12 unidades.')) {
+      removeFromCart(index);
+    } else {
+      // Mantener la cantidad mínima
+      cart[index].quantity = 12;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      viewCart();
+      updateCartCounter();
+    }
     return;
   }
 
-  showCartModal();
+  cart[index].quantity = newQuantity;
+  localStorage.setItem('cart', JSON.stringify(cart));
+  viewCart();
+  updateCartCounter();
 }
 
-// Función para mostrar mensaje de carrito vacío
-function showEmptyCartMessage() {
-  alert('🛒 Tu pedido está vacío\n\nAgrega productos con el botón "Añadir al Pedido"');
-}
-
-// Función para mostrar el modal del carrito
-function showCartModal() {
-  const cartModalHTML = `
-    <div class="cart-modal">
-      <div class="cart-header">
-        <h2>📋 Resumen de Tu Pedido</h2>
-        <span class="close-cart">&times;</span>
-      </div>
-      <div class="cart-items" id="cartItems">
-        ${generateCartItemsHTML()}
-      </div>
-      <div class="cart-total">
-        <strong>💰 Total: $${calculateTotal().toLocaleString()}</strong>
-      </div>
-      <div class="cart-actions">
-        <button class="continue-shopping-btn" onclick="closeCartModal()">
-          ← Seguir Comprando
-        </button>
-        <button class="whatsapp-btn" onclick="sendToWhatsApp()">
-          💬 Confirmar Pedido por WhatsApp
-        </button>
-      </div>
-    </div>
-  `;
-
-  // Crear modal del carrito
-  const cartModal = document.createElement('div');
-  cartModal.className = 'modal';
-  cartModal.id = 'cartModal';
-  cartModal.innerHTML = cartModalHTML;
-  document.body.appendChild(cartModal);
-
-  // Configurar event listeners
-  setupCartModalListeners();
-
-  // Mostrar modal
-  cartModal.style.display = 'block';
-}
-
-// Generar HTML de los items del carrito
-function generateCartItemsHTML() {
-  return cart.map((item, index) => `
-    <div class="cart-item" data-index="${index}">
-      <div class="cart-item-image">
-        <img src="${item.product.image}" alt="${item.product.name}"
-             onerror="this.src='https://via.placeholder.com/60x60/667eea/white?text=Imagen'">
-      </div>
-      <div class="cart-item-details">
-        <h4>${item.product.name}</h4>
-        ${item.selectedVariant ? `
-          <p><strong>Tamaño:</strong> ${item.selectedVariant.size}</p>
-          <p><strong>Precio unitario:</strong> ${item.selectedVariant.price}</p>
-        ` : ''}
-        <p><strong>Cantidad:</strong> ${item.quantity} unidades</p>
-        ${item.selectedVariant ? `
-          <p class="cart-item-price">
-            <strong>Subtotal:</strong> $${(parsePrice(item.selectedVariant.price) * item.quantity).toLocaleString()}
-          </p>
-        ` : ''}
-      </div>
-      <button class="remove-item-btn" onclick="removeFromCart(${index})">
-        🗑️ Eliminar
-      </button>
-    </div>
-  `).join('');
-}
-
-// Calcular total
-function calculateTotal() {
-  return cart.reduce((total, item) => {
-    const price = item.selectedVariant ? parsePrice(item.selectedVariant.price) : 0;
-    return total + (price * item.quantity);
-  }, 0);
-}
-
-// Eliminar producto del carrito
+// Función para eliminar item
 function removeFromCart(index) {
-  if (confirm('¿Estás seguro de que quieres eliminar este producto de tu pedido?')) {
+  if (confirm('¿Estás seguro de eliminar esta referencia de tu pedido mayorista?')) {
     cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    viewCart();
     updateCartCounter();
-    refreshCartModal();
-
-    if (cart.length === 0) {
-      closeCartModal();
-      showEmptyCartMessage();
-    }
   }
 }
 
-// Actualizar modal del carrito
-function refreshCartModal() {
-  const cartItems = document.getElementById('cartItems');
-  const cartTotal = document.querySelector('.cart-total');
-
-  if (cartItems) {
-    cartItems.innerHTML = generateCartItemsHTML();
-  }
-
-  if (cartTotal) {
-    cartTotal.innerHTML = `<strong>💰 Total: $${calculateTotal().toLocaleString()}</strong>`;
-  }
+// Función para cerrar modal
+function closeModal() {
+  productModal.style.display = 'none';
 }
 
-// Cerrar modal del carrito
-function closeCartModal() {
-  const cartModal = document.getElementById('cartModal');
-  if (cartModal) {
-    cartModal.remove();
-  }
-}
-
-// Configurar event listeners del modal del carrito
-function setupCartModalListeners() {
-  const closeCart = document.querySelector('.close-cart');
-  if (closeCart) {
-    closeCart.addEventListener('click', closeCartModal);
-  }
-
-  // Cerrar al hacer clic fuera
-  const cartModal = document.getElementById('cartModal');
-  if (cartModal) {
-    cartModal.addEventListener('click', function (event) {
-      if (event.target === this) {
-        closeCartModal();
-      }
-    });
-  }
-}
-
-// Función para enviar a WhatsApp
-function sendToWhatsApp() {
+// Función para proceder al checkout - ADAPTADA PARA MAYOREO
+function proceedToCheckout() {
   if (cart.length === 0) {
-    alert('❌ No hay productos en el pedido');
+    alert('❌ No hay productos en el pedido mayorista');
+    return;
+  }
+
+  // Validar que todas las referencias tengan al menos 12 unidades
+  const invalidItems = cart.filter(item => item.quantity < 12);
+  if (invalidItems.length > 0) {
+    alert('❌ Error: Todas las referencias deben tener mínimo 12 unidades');
     return;
   }
 
@@ -851,37 +790,44 @@ function sendToWhatsApp() {
   const encodedMessage = encodeURIComponent(message);
   const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-  // Abrir en nueva pestaña
   window.open(whatsappURL, '_blank');
 }
 
-// Generar mensaje para WhatsApp
+// Generar mensaje para WhatsApp - ADAPTADA PARA MAYOREO
 function generateWhatsAppMessage() {
   let message = "¡Hola! 👋\n\n";
-  message += "Quiero hacer el siguiente pedido:\n\n";
+  message += "Quiero solicitar cotización para el siguiente pedido al por mayor:\n\n";
 
   cart.forEach((item, index) => {
-    message += `📦 ${item.product.name}\n`;
+    message += `🏢 ${item.name}\n`;
     if (item.selectedVariant) {
       message += `   Tamaño: ${item.selectedVariant.size}\n`;
     }
     message += `   Cantidad: ${item.quantity} unidades\n`;
-    if (item.selectedVariant) {
-      const price = parsePrice(item.selectedVariant.price);
-      const subtotal = price * item.quantity;
-      message += `   Subtotal: $${subtotal.toLocaleString()}\n`;
-    }
-    message += "\n";
+    message += `   Precio unitario: $${item.price.toLocaleString()}\n`;
+    message += `   Subtotal: $${(item.price * item.quantity).toLocaleString()}\n\n`;
   });
 
-  message += `💰 *TOTAL: $${calculateTotal().toLocaleString()}*\n\n`;
-  message += "Por favor confirmar disponibilidad y forma de pago. ¡Gracias! 🎉";
+  const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const totalUnits = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  message += `📊 RESUMEN DEL PEDIDO:\n`;
+  message += `   Total referencias: ${cart.length}\n`;
+  message += `   Total unidades: ${totalUnits}\n`;
+  message += `   *TOTAL COTIZACIÓN: $${total.toLocaleString()}*\n\n`;
+  message += "Por favor confirmar:\n";
+  message += "• Disponibilidad de colores y tamaños\n";
+  message += "• Tiempos de entrega\n";
+  message += "• Descuentos por volumen\n";
+  message += "• Formas de pago\n\n";
+  message += "¡Gracias! 🎉";
 
   return message;
 }
 
 // Función auxiliar para convertir precios
 function parsePrice(priceString) {
+  if (typeof priceString === 'number') return priceString;
   return parseFloat(priceString.replace(/[$,]/g, ''));
 }
 
@@ -892,6 +838,14 @@ function updateCartCounter() {
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     cartCounter.textContent = totalItems;
     cartCounter.style.display = totalItems > 0 ? 'flex' : 'none';
+
+    // Actualizar estado visual del botón
+    const viewCartBtn = document.querySelector('.view-cart-btn');
+    if (totalItems > 0) {
+      viewCartBtn.classList.add('has-items');
+    } else {
+      viewCartBtn.classList.remove('has-items');
+    }
   }
 }
 
@@ -911,12 +865,16 @@ function displayProducts(productsToShow) {
       <div class="product-image-container">
         <img src="${product.image}" alt="${product.name}" class="product-image"
              onerror="this.src='https://via.placeholder.com/300x200/667eea/white?text=Imagen+No+Disponible'">
-        ${(product.images && product.images.length > 1)}
+        ${(product.images && product.images.length > 1) ? '<div class="image-badge">📷</div>' : ''}
+        <div class="wholesale-badge">🏢 Mayorista</div>
       </div>
       <div class="product-info">
         <h3 class="product-title">${product.name}</h3>
         <p class="product-description">${product.description.substring(0, 60)}...</p>
         <div class="product-price">${product.variants ? 'Desde ' + product.variants[0].price : product.price}</div>
+        <div class="min-quantity" style="color: #666; font-size: 12px; margin-top: 5px;">
+          Mínimo: 12 unidades
+        </div>
       </div>
     `;
 
@@ -938,18 +896,9 @@ function displayProducts(productsToShow) {
   });
 }
 
-// Filtrar productos - Versión robusta
+// Filtrar productos
 function filterProducts() {
   let filteredProducts = products;
-
-  // ✅ LÓGICA CLARA para combos
-  const shouldShowCombos = currentFilter === 'all' && currentSearch.trim() === '';
-
-  if (shouldShowCombos) {
-    showCombosSection();
-  } else {
-    hideCombosSection();
-  }
 
   // Filtrar por categoría
   if (currentFilter !== 'all') {
@@ -970,36 +919,7 @@ function filterProducts() {
   displayProducts(filteredProducts);
 }
 
-// ✅ Función para ocultar la sección de combos
-function hideCombosSection() {
-  const combosSection = document.querySelector('.combos-section');
-  if (combosSection) {
-    combosSection.style.display = 'none';
-  }
-}
-
-// ✅ Función para mostrar la sección de combos
-function showCombosSection() {
-  const combosSection = document.querySelector('.combos-section');
-  if (combosSection) {
-    combosSection.style.display = 'block';
-  }
-}
-
-// ✅ También ocultar combos cuando se escribe en la búsqueda
-searchInput.addEventListener('input', function() {
-  currentSearch = this.value.toLowerCase();
-
-  if (currentSearch.trim() !== '') {
-    hideCombosSection();
-  } else if (currentFilter === 'all') {
-    showCombosSection();
-  }
-
-  filterProducts();
-});
-
-// Función para abrir modal de producto (información)
+// Función para abrir modal de producto - ADAPTADA PARA MAYOREO
 function openProductModal(product) {
   // Construir HTML de variantes con selección
   const variantsHTML = product.variants ? `
@@ -1018,21 +938,26 @@ function openProductModal(product) {
     </div>
   ` : '';
 
-  // HTML para el selector de cantidad
+  // ✅ HTML para el selector de cantidad MODIFICADO PARA MAYOREO (12+ unidades)
   const quantitySelectorHTML = `
     <div class="quantity-selector">
-      <h3>🛒 Cantidad:</h3>
+      <h3>🏢 Cantidad (Compra Mayorista):</h3>
       <div class="quantity-controls">
         <button class="quantity-btn minus-btn" onclick="decreaseQuantity(${product.id})">-</button>
         <input type="number" id="quantity-${product.id}" class="quantity-input"
                value="12" min="12" onchange="validateQuantity(${product.id})">
         <button class="quantity-btn plus-btn" onclick="increaseQuantity(${product.id})">+</button>
       </div>
-      <p class="min-quantity-notice">Mínimo 12 unidades por pedido</p>
+      <p class="min-quantity-notice" style="color: #d35400; font-weight: 600;">
+        ⚠️ Compra mínima: 12 unidades por referencia
+      </p>
+      <p style="color: #666; font-size: 14px; margin-top: 5px;">
+        Puedes pedir cientos de unidades sin límite máximo
+      </p>
     </div>
 
     <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
-      ✅ Añadir al Pedido
+      🏢 Añadir a Pedido Mayorista
     </button>
 
     <div id="cart-message-${product.id}" class="cart-message"></div>
@@ -1121,6 +1046,12 @@ function openImageModal(productId) {
       <h2>${product.name}</h2>
       <div class="modal-price">${product.price}</div>
       <p class="modal-description">${product.description}</p>
+      <div class="wholesale-info" style="background: #fff3cd; padding: 10px; border-radius: 5px; margin: 10px 0;">
+        <strong>🏢 Pedido Mayorista</strong>
+        <p style="margin: 5px 0 0 0; color: #856404;">
+          Compra mínima: 12 unidades por referencia
+        </p>
+      </div>
       <button class="back-to-product-btn" onclick="closeImageModalAndOpenProduct(${product.id})">← Volver a información del producto</button>
     </div>
   `;
@@ -1161,128 +1092,4 @@ function closeImageModalAndOpenProduct(productId) {
   imageModal.style.display = 'none';
   const product = products.find(p => p.id === productId);
   openProductModal(product);
-}
-// Funciones para los combos
-function openComboModal(comboId) {
-  const comboData = getComboData(comboId);
-  const comboModalHTML = `
-        <div class="combo-modal">
-            <div class="combo-modal-header">
-                <h2>${comboData.title}</h2>
-                <span class="close-combo">&times;</span>
-            </div>
-            <div class="combo-modal-content">
-                <div class="combo-modal-image">
-                    <img src="${comboData.image}" alt="${comboData.title}"
-                         onerror="this.src='https://via.placeholder.com/500x400/667eea/white?text=Imagen+Combo'">
-                </div>
-                <div class="combo-modal-details">
-                    <h3>📦 Contenido del Combo:</h3>
-                    <ul>
-                        ${comboData.items.map(item => `<li>${item}</li>`).join('')}
-                    </ul>
-
-                    <div class="combo-modal-price">
-                        <span class="combo-modal-old-price">${comboData.oldPrice}</span>
-                        <span class="combo-modal-big-price">${comboData.newPrice}</span>
-                        <div class="combo-modal-savings">${comboData.savings}</div>
-                    </div>
-
-                    <button class="whatsapp-btn" onclick="contactForCombo('${comboData.title}')" style="width: 100%; margin-top: 1rem;">
-                        💬 Consultar por este Combo
-                    </button>
-                </div>
-            </div>
-        </div>
-    `;
-
-  const comboModal = document.createElement('div');
-  comboModal.className = 'modal';
-  comboModal.id = 'comboModal';
-  comboModal.innerHTML = comboModalHTML;
-  document.body.appendChild(comboModal);
-
-  // Configurar event listeners
-  const closeCombo = comboModal.querySelector('.close-combo');
-  closeCombo.addEventListener('click', () => {
-    comboModal.remove();
-  });
-
-  comboModal.addEventListener('click', (event) => {
-    if (event.target === comboModal) {
-      comboModal.remove();
-    }
-  });
-
-  comboModal.style.display = 'block';
-}
-
-function getComboData(comboId) {
-  const combos = {
-    'combo1': {
-      title: 'COMBO EMPRENDEDOR',
-      image: 'img/combo-detalle1.jpg',
-      items: [
-        '✓ 5 modelos diferentes de cajas',
-        '✓ 12 unidades de cada modelo (60 unidades total)',
-        '✓ Incluye: Corazón Forrado, Cilindro, Cuadrada, Cajón Corazón, Libro Corazón',
-        '✓ Material: Cartón rígido de alta calidad',
-        '✓ Forrado en papel craft premium',
-        '✓ Listo para personalizar'
-      ],
-      oldPrice: 'Precio normal: $450,000',
-      newPrice: '$382,500',
-      savings: '¡Ahorras $67,500! (15% OFF)'
-    },
-    'combo2': {
-      title: 'COMBO PROFESIONAL',
-      image: 'img/combo-detalle2.jpg',
-      items: [
-        '✓ 8 modelos diferentes de cajas',
-        '✓ 24 unidades de cada modelo (192 unidades total)',
-        '✓ Incluye modelos populares + joyeros',
-        '✓ Material: Cartón rígido reforzado',
-        '✓ Forrado en papel importado',
-        '✓ Acabados premium',
-        '✓ Prioridad en producción'
-      ],
-      oldPrice: 'Precio normal: $900,000',
-      newPrice: '$720,000',
-      savings: '¡Ahorras $180,000! (20% OFF)'
-    },
-    'combo3': {
-      title: 'COMBO CORPORATIVO',
-      image: 'img/combo-detalle3.jpg',
-      items: [
-        '✓ 12 modelos diferentes de cajas',
-        '✓ 50 unidades de cada modelo (600 unidades total)',
-        '✓ Incluye toda la gama de productos',
-        '✓ Material: Cartón de máxima resistencia',
-        '✓ Forrado en materiales premium',
-        '✓ Logística y almacenamiento incluido',
-        '✓ Asesoría personalizada',
-        '✓ Despacho nacional'
-      ],
-      oldPrice: 'Precio normal: $2,100,000',
-      newPrice: '$1,575,000',
-      savings: '¡Ahorras $525,000! (25% OFF)'
-    }
-  };
-
-  return combos[comboId] || combos['combo1'];
-}
-
-function contactForCombo(comboTitle) {
-  const phoneNumber = "573007276599"; // ⚠️ REEMPLAZA con tu número
-  const message = `¡Hola! 👋\n\nEstoy interesado en el: ${comboTitle}\n\nPor favor envíenme más información sobre este combo promocional. ¡Gracias! 🎉`;
-  const encodedMessage = encodeURIComponent(message);
-  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
-  window.open(whatsappURL, '_blank');
-
-  // Cerrar modal después de enviar
-  const comboModal = document.getElementById('comboModal');
-  if (comboModal) {
-    comboModal.remove();
-  }
 }
