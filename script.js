@@ -519,10 +519,10 @@ function increaseQuantity(productId) {
 function decreaseQuantity(productId) {
   const quantityInput = document.getElementById(`quantity-${productId}`);
   const currentValue = parseInt(quantityInput.value);
-  if (currentValue > 12) { // ✅ Mínimo 12 unidades en mayoreo
+  if (currentValue > 6) { // ✅ Mínimo 12 unidades en mayoreo
     quantityInput.value = currentValue - 1;
   } else {
-    showCartMessage(productId, '⚠️ La cantidad mínima es 12 unidades', 'warning');
+    showCartMessage(productId, '⚠️ La cantidad mínima es 6 unidades', 'warning');
   }
   validateQuantity(productId); // Validar después de disminuir
 }
@@ -531,9 +531,9 @@ function validateQuantity(productId) {
   const quantityInput = document.getElementById(`quantity-${productId}`);
   let value = parseInt(quantityInput.value);
 
-  if (isNaN(value) || value < 12) {
-    quantityInput.value = 12;
-    showCartMessage(productId, '⚠️ Compra mínima 12 unidades por referencia', 'warning');
+  if (isNaN(value) || value < 6) {
+    quantityInput.value = 6;
+    showCartMessage(productId, '⚠️ Compra mínima 6 unidades por referencia', 'warning');
   }
   // No hay máximo en mayoreo, pueden comprar cientos
 }
@@ -572,8 +572,8 @@ function addToCart(productId) {
   console.log('📦 Cantidad seleccionada:', quantity);
 
   // ✅ VALIDACIONES PARA MAYOREO (12+ unidades)
-  if (quantity < 12) {
-    showCartMessage(productId, '❌ La cantidad mínima es 12 unidades por referencia', 'error');
+  if (quantity < 6) {
+    showCartMessage(productId, '❌ La cantidad mínima es 6 unidades por referencia', 'error');
     return;
   }
 
@@ -727,12 +727,12 @@ function viewCart() {
 
 // Función para actualizar cantidad - ADAPTADA PARA MAYOREO
 function updateQuantity(index, newQuantity) {
-  if (newQuantity < 12) {
-    if (confirm('¿Estás seguro de eliminar esta referencia? La compra mínima es 12 unidades.')) {
+  if (newQuantity < 6) {
+    if (confirm('¿Estás seguro de eliminar esta referencia? La compra mínima es 6 unidades.')) {
       removeFromCart(index);
     } else {
       // Mantener la cantidad mínima
-      cart[index].quantity = 12;
+      cart[index].quantity = 6;
       localStorage.setItem('cart', JSON.stringify(cart));
       viewCart();
       updateCartCounter();
@@ -769,9 +769,9 @@ function proceedToCheckout() {
   }
 
   // Validar que todas las referencias tengan al menos 12 unidades
-  const invalidItems = cart.filter(item => item.quantity < 12);
+  const invalidItems = cart.filter(item => item.quantity < 6);
   if (invalidItems.length > 0) {
-    alert('❌ Error: Todas las referencias deben tener mínimo 12 unidades');
+    alert('❌ Error: Todas las referencias deben tener mínimo 6 unidades');
     return;
   }
 
@@ -806,10 +806,6 @@ function generateWhatsAppMessage() {
   message += `   Total unidades: ${totalUnits}\n`;
   message += `   *TOTAL COTIZACIÓN: $${total.toLocaleString()}*\n\n`;
   message += "Por favor confirmar:\n";
-  message += "• Disponibilidad de colores y tamaños\n";
-  message += "• Tiempos de entrega\n";
-  message += "• Descuentos por volumen\n";
-  message += "• Formas de pago\n\n";
   message += "¡Gracias! 🎉";
 
   return message;
@@ -935,14 +931,11 @@ function openProductModal(product) {
       <div class="quantity-controls">
         <button class="quantity-btn minus-btn" onclick="decreaseQuantity(${product.id})">-</button>
         <input type="number" id="quantity-${product.id}" class="quantity-input"
-               value="12" min="12" onchange="validateQuantity(${product.id})">
+               value="6" min="6" onchange="validateQuantity(${product.id})">
         <button class="quantity-btn plus-btn" onclick="increaseQuantity(${product.id})">+</button>
       </div>
       <p class="min-quantity-notice" style="color: #d35400; font-weight: 600;">
-        ⚠️ Compra mínima: 12 unidades por referencia
-      </p>
-      <p style="color: #666; font-size: 14px; margin-top: 5px;">
-        Puedes pedir cientos de unidades sin límite máximo
+        ⚠️ Compra mínima: 6 unidades por referencia
       </p>
     </div>
 
@@ -1039,7 +1032,7 @@ function openImageModal(productId) {
       <div class="wholesale-info" style="background: #fff3cd; padding: 10px; border-radius: 5px; margin: 10px 0;">
         <strong>🏢 Pedido Mayorista</strong>
         <p style="margin: 5px 0 0 0; color: #856404;">
-          Compra mínima: 12 unidades por referencia
+          Compra mínima: 6 unidades por referencia
         </p>
       </div>
       <button class="back-to-product-btn" onclick="closeImageModalAndOpenProduct(${product.id})">← Volver a información del producto</button>
