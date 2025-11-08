@@ -1,9 +1,12 @@
+
+const MIN_ORDER_QTY = 6;
+
+
 const products = [
   {
     id: 1,
     name: "Corazon Forrado",
     description: "Base en cartón rigido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos... ",
-
     category: "popular",
     image: "img/CorazónForrado1.jpg",
     images: [
@@ -12,14 +15,15 @@ const products = [
       "img/CorazonForrado5.jpeg"
     ],
     variants: [
-      {size: "25cm de ancho x 10 cm de alto", price: "$12,000"},
-      {size: "30cm de ancho x 10 cm de alto", price: "$15,000"}]
+
+      {size: "20cm de ancho x 10 cm de alto", price: "$8,500"},
+      {size: "25cm de ancho x 10 cm de alto", price: "$10,000"},
+      {size: "30cm de ancho x 10 cm de alto", price: "$13,000"}]
   },
   {
     id: 2,
     name: "Cilindro Forrado",
     description: "Base en cartón rigido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos... ",
-
     category: "popular",
     image: "img/CilindroForrado6.jpeg",
     images: [
@@ -28,9 +32,10 @@ const products = [
       "img/Cilindro44.png"
     ],
     variants: [
-      {size: "16cm de diametro x 13 cm de alto", price: "$9,000"},
-      {size: "20cm de diametro x 13 cm de alto", price: "$10,500"},
-      {size: "25cm de diametro x 13 cm de alto", price: "$13,000"}]
+      {size: "13cm de diametro x 10 cm de alto", price: "$6,000"},
+      {size: "16cm de diametro x 13 cm de alto", price: "$7,500"},
+      {size: "20cm de diametro x 13 cm de alto", price: "$9,000"},
+      {size: "25cm de diametro x 13 cm de alto", price: "$11,000"}]
   },
   {
     id: 24,
@@ -44,9 +49,10 @@ const products = [
       "img/cuadrada3.jpeg"
     ],
     variants: [
-      {size: "Base 16cm x 16cm x 10 cm de alto", price: "$8,500"},
-      {size: "Base 20cm x 20cm x 10 cm de alto", price: "$10,500"},
-      {size: "Base 25cm x 25cm x 10 cm de alto", price: "$12,000"}]
+      {size: "Base 13cm x 13cm x 10 cm de alto", price: "$6,000"},
+      {size: "Base 16cm x 16cm x 10 cm de alto", price: "$7,500"},
+      {size: "Base 20cm x 20cm x 10 cm de alto", price: "$8,500"},
+      {size: "Base 25cm x 25cm x 10 cm de alto", price: "$10,000"}]
   },
   {
     id: 3,
@@ -61,7 +67,7 @@ const products = [
       "img/cajoncorazon3.png"
     ],
     variants: [
-      {size: "Medida del cajon interno: 26cm x 18cm. Corazón de 24cm de diametro ", price: "$17,000"}]
+      {size: "Medida del cajon interno: 26cm x 18cm. Corazón de 24cm de diametro ", price: "$14,000"}]
   },
   {
     id: 4,
@@ -76,7 +82,7 @@ const products = [
       "img/librocorazon3.jpeg"
     ],
     variants: [
-      {size: "Corazón de 25cm de diametro", price: "$10,000"}]
+      {size: "Corazón de 25cm de diametro", price: "$8,000"}]
   },
   {
     id: 21,
@@ -90,12 +96,13 @@ const products = [
       "img/librocorazon23.png"
     ],
     variants: [
-      {size: "Corazón de 25cm de diametro", price: "$10,000"}]
+      {size: "Corazón de 25cm de diametro", price: "$8,000"}]
   },
   {
     id: 5,
     name: "Dulcera",
     description: "Caja resistente con borde de 1cm y separadores ",
+
     category: "Los mas llevados",
     image: "img/dulcera1.jpeg",
     images: [
@@ -103,12 +110,13 @@ const products = [
       "img/dulcera2.png"
     ],
     variants: [
-      {size: "Tamaño mediano", price: "$6,500"}]
+      {size: "Tamaño mediano", price: "$5,000"}]
   },
   {
     id: 6,
     name: "Mom",
     description: "Base de letras en cartón rídigo, doble capa de cartón blanco en basey tapa",
+
     category: "Los mas llevados",
     image: "img/mom1.jpeg",
     images: [
@@ -117,12 +125,13 @@ const products = [
       "img/mom3.jpeg"
     ],
     variants: [
-      {size: "53cm x 18cm x 6 cm de alto", price: "$16,000"}]
+      {size: "53cm x 18cm x 6 cm de alto", price: "$13,500"}]
   },
   {
     id: 7,
     name: "I love u",
     description: "Base de letras en cartón rídigo, doble capa de cartón blanco en basey tapa",
+
     category: "Los mas llevados",
     image: "img/loveu1.jpeg",
     images: [
@@ -130,25 +139,27 @@ const products = [
       "img/loveu2.jpeg"
     ],
     variants: [
-      {size: "50cm x 18cm x 6 cm de alto", price: "$16,000"}]
+      {size: "50cm x 18cm x 6 cm de alto", price: "$13,500"}]
   },
 
   {
     id: 8,
     name: "Buffet",
     description: "Caja con borde de 1cm incluye separadores, salseros y tapa con ventana, ideal para desayunos sorpresa",
+
     image: "img/buffet.jpeg",
     images: [
       "img/buffet.jpeg",
       "img/buffet2.jpeg"
     ],
     variants: [
-      {size: "34cm x 26cm x 6cm", price: "$12,000"}]
+      {size: "34cm x 26cm x 6cm", price: "$9,000"}]
   },
   {
     id: 10,
     name: "Cofre",
     description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+
     category: "Los mas llevados",
     image: "img/cofre1.jpeg",
     images: [
@@ -156,14 +167,15 @@ const products = [
       "img/cofre2.jpeg"
     ],
     variants: [
-      {size: "Mediano: 23cm x 17cm x 15cm alto total", price: "$15,000"},
-      {size: "Grande: 30cm x 20cm x 15 cm alto total", price: "$17,000"}]
+      {size: "Mediano: 23cm x 17cm x 15cm alto total", price: "$13,000"},
+      {size: "Grande: 30cm x 20cm x 15 cm alto total", price: "$15,000"}]
   },
 
   {
     id: 11,
     name: "Libro con broche iman",
     description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+
     category: "Los mas llevados",
     image: "img/librobroche1.jpeg",
     images: [
@@ -171,14 +183,15 @@ const products = [
       "img/librobroche2.jpeg"
     ],
     variants: [
-      {size: "Mediano: 25cm x 20cm x 8cm", price: "$11,000"},
-      {size: "Grande: 30cm x 25cm x 8cm", price: "$13,000"}],
+      {size: "Mediano: 25cm x 20cm x 8cm", price: "$9,500"},
+      {size: "Grande: 30cm x 25cm x 8cm", price: "$11,000"}],
 
   },
   {
     id: 12,
     name: "Cilindro sin forrar Alto",
     description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+
     category: "Los mas llevados",
     image: "img/cilindrosinforrar1.png",
     images: [
@@ -186,24 +199,27 @@ const products = [
       "img/cilindrosinforrar2.png"
     ],
     variants: [
-      {size: "16cm de diametro x 13 cm de alto", price: "$6,500"},
-      {size: "20cm de diametro x 13 cm de alto", price: "$8,000"},
-      {size: "25cm de diametro x 13 cm de alto", price: "$10,000"}],
+      {size: "13cm de diametro x 10 cm de alto", price: "$4,800"},
+      {size: "16cm de diametro x 13 cm de alto", price: "$5,500"},
+      {size: "20cm de diametro x 13 cm de alto", price: "$7,000"},
+      {size: "25cm de diametro x 13 cm de alto", price: "$9,000"}],
 
   },
   {
     id: 28,
     name: "Cilindro sin forrar Bajo",
     description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+
     category: "Los mas llevados",
     image: "img/cilindrosinforrarbajos.png",
     images: [
       "img/cilindrosinforrarbajos.png"
     ],
     variants: [
-      {size: "16cm de diametro x 7 cm de alto", price: "$6,000"},
-      {size: "20cm de diametro x 7 cm de alto", price: "$7,600"},
-      {size: "25cm de diametro x 7 cm de alto", price: "$10,000"}],
+      {size: "13cm de diametro x 5 cm de alto", price: "$4,300"},
+      {size: "16cm de diametro x 7 cm de alto", price: "$5,000"},
+      {size: "20cm de diametro x 7 cm de alto", price: "$6,600"},
+      {size: "25cm de diametro x 7 cm de alto", price: "$8,500"}],
 
   },
 
@@ -211,6 +227,7 @@ const products = [
     id: 13,
     name: "Corazones sin forrar",
     description: "Cajón en cartón rígico, muy resistentes y elegantes, ideal para flores, arreglos... ",
+
     category: "Los mas llevados",
     image: "img/corasinforrar2.jpeg",
     images: [
@@ -218,9 +235,9 @@ const products = [
       "img/corasinforrar1.jpeg"
     ],
     variants: [
-      {size: "20cm de ancho x 10 cm de alto", price: "$7,500"},
-      {size: "25cm de ancho x 10 cm de alto", price: "$9,000"},
-      {size: "30cm de ancho x 10 cm de alto", price: "$10,000"}],
+      {size: "20cm de ancho x 10 cm de alto", price: "$6,000"},
+      {size: "25cm de ancho x 10 cm de alto", price: "$7,000"},
+      {size: "30cm de ancho x 10 cm de alto", price: "$8,000"}],
 
   },
   {
@@ -228,19 +245,22 @@ const products = [
     name: "Reloj ",
     description: "Disponible en multiples colores. PRECIO SOLO LA CAJA, si quieres adicionar la almohadilla" +
       "y el moño, aumenta $1,000",
+
     category: "joyeria",
     image: "img/reloj.jpeg",
-    images: ["img/reloj.jpeg",
+    images: [
+      "img/reloj.jpeg",
       "img/reloj2.jpeg"
     ],
     variants: [
-      {size: "7,5cm x 8,5cm x 7cm de alto", price: "$5,000"}],
+      {size: "7,5cm x 8,5cm x 7cm de alto", price: "$4,000"}],
 
   },
   {
     id: 15,
     name: "Joyeros #1",
-    description: "Disponible en carton blanco, gris, rosa, vienen sin forrar ",
+    description: "Disponible en carton blanco, gris, rosa, vienen sin forrar, incluye nido en cartón ",
+
     category: "joyeria",
     image: "img/estilo1.jpeg",
     images: [
@@ -248,19 +268,20 @@ const products = [
       "img/estilo12.jpeg"
     ],
     variants: [
-      {size: "Color blanco: 5cm x 5cm x 3cm", price: "$1,500"},
-      {size: "Color blanco: 7cm x 7cm x 4cm", price: "$2,000"},
-      {size: "Color blanco: 10cm x 10cm x 4cm", price: "$2,800"},
+      {size: "Color blanco: 5cm x 5cm x 3cm", price: "$1,000"},
+      {size: "Color blanco: 7cm x 7cm x 4cm", price: "$1,400"},
+      {size: "Color blanco: 10cm x 10cm x 4cm", price: "$1,800"},
 
-      {size: "Color rosa o gris: 5cm x 5cm x 3cm", price: "$2,000"},
-      {size: "Color rosa o gris: 7cm x 7cm x 4cm", price: "$2,700"},
-      {size: "Color rosa o gris: 10cm x 10cm x 4cm", price: "$3,400"}],
+      {size: "Color rosa o gris: 5cm x 5cm x 3cm", price: "$1,500"},
+      {size: "Color rosa o gris: 7cm x 7cm x 4cm", price: "$1,800"},
+      {size: "Color rosa o gris: 10cm x 10cm x 4cm", price: "$2,300"}],
 
   },
   {
     id: 16,
     name: "Joyeros #2",
-    description: "Completamente forrada en cualquier color, elegante. ",
+    description: "Completamente forrada en cualquier color, elegante, incluye nido en cartón ",
+
     category: "joyeria",
     image: "img/estilo2.png",
     images: [
@@ -268,15 +289,16 @@ const products = [
       "img/estilo21.png"
     ],
     variants: [
-      {size: "5cm x 5cm x 3cm", price: "$3,300"},
-      {size: "7cm x 7cm x 4cm", price: "$3,900"},
-      {size: "10cm x 10cm x 4cm", price: "$4,500"}],
+      {size: "5cm x 5cm x 3cm", price: "$2,800"},
+      {size: "7cm x 7cm x 4cm", price: "$3,200"},
+      {size: "10cm x 10cm x 4cm", price: "$3,800"}],
 
   },
   {
     id: 17,
     name: "Joyeros #3",
-    description: "Disponible en color rosa, gris o blanco",
+    description: "Disponible en color rosa, gris o blanco, incluye nido en cartón",
+
     category: "joyeria",
     image: "img/estilo3.png",
     images: [
@@ -284,30 +306,31 @@ const products = [
       "img/estilo31.png"
     ],
     variants: [
-      {size: "5cm x 5cm x 3cm", price: "$2,900"},
-      {size: "7cm x 7cm x 4cm", price: "$3,500"},
-      {size: "10cm x 10cm x 4cm", price: "$4,000"}],
+      {size: "5cm x 5cm x 3cm", price: "$2,400"},
+      {size: "7cm x 7cm x 4cm", price: "$2,800"},
+      {size: "10cm x 10cm x 4cm", price: "$3,300"}],
 
   },
   {
     id: 18,
     name: "Joyeros #4",
-    description: "Base y tapas forradas en multiples colores",
+    description: "Base y tapas forradas en multiples colores, incluye nido en cartón",
     category: "joyeria",
     image: "img/estilo4.png",
     images: [
       "img/estilo4.png"
     ],
     variants: [
-      {size: "5cm x 5cm x 3cm", price: "$3,000"},
-      {size: "7cm x 7cm x 4cm", price: "$3,400"},
-      {size: "10cm x 10cm x 4cm", price: "$3,900"}],
+      {size: "5cm x 5cm x 3cm", price: "$2,400"},
+      {size: "7cm x 7cm x 4cm", price: "$2,800"},
+      {size: "10cm x 10cm x 4cm", price: "$3,300"}],
 
   },
   {
     id: 25,
     name: "Empaques #1",
     description: "Puedes personalizar las medidas, cartón 300gr. PRECIO NO INCLUYE CINTA NI STICKER",
+
     category: "empaques",
     image: "img/empaque1.png",
     images: [
@@ -315,9 +338,9 @@ const products = [
       "img/empaque12.png"
     ],
     variants: [
-      {size: "15cm x 15cm x 7cm ", price: "$2,600"},
-      {size: "20cm x 20cm x 7cm ", price: "$3,300"},
-      {size: "25cm x 25cm x 7cm ", price: "$3,900"}],
+      {size: "15cm x 15cm x 7cm ", price: "$2,200"},
+      {size: "20cm x 20cm x 7cm ", price: "$2,900"},
+      {size: "25cm x 25cm x 7cm ", price: "$3,500"}],
 
   }, {
     id: 26,
@@ -330,9 +353,9 @@ const products = [
       "img/empaque22.png"
     ],
     variants: [
-      {size: "20cm x 12cm x 6cm", price: "$4,400"},
-      {size: "25cm x 20cm x 6cm", price: "$5,900"},
-      {size: "30cm x 25cm x 6cm", price: "$7,000"}],
+      {size: "20cm x 12cm x 6cm", price: "$4,000"},
+      {size: "25cm x 20cm x 6cm", price: "$5,400"},
+      {size: "30cm x 25cm x 6cm", price: "$6,400"}],
 
   },
   {
@@ -347,9 +370,9 @@ const products = [
       "img/empaque33.png"
     ],
     variants: [
-      {size: "20cm x 12cm x 6cm", price: "$2,800"},
-      {size: "25cm x 20cm x 6cm", price: "$3,900"},
-      {size: "30cm x 25cm x 6cm", price: "$4,600"}],
+      {size: "20cm x 12cm x 6cm", price: "$2,400"},
+      {size: "25cm x 20cm x 6cm", price: "$3,500"},
+      {size: "30cm x 25cm x 6cm", price: "$4,200"}],
 
   },
   {
@@ -364,7 +387,7 @@ const products = [
       "img/carritoejemplo.png"
     ],
     variants: [
-      {size: "13cm x 18cm x 9cm", price: "$9,500"}]
+      {size: "13cm x 18cm x 9cm", price: "$7,500"}]
   },
   {
     id: 19,
@@ -377,7 +400,7 @@ const products = [
 
     ],
     variants: [
-      {size: "13cm x 13cm x 10cm ", price: "$6,000"}],
+      {size: "13cm x 13cm x 10cm ", price: "$4,500"}],
 
   },
   {
@@ -391,8 +414,9 @@ const products = [
       "img/anchetahombre2.png"
     ],
     variants: [
-      {size: "13cm x 13cm x 10cm ", price: "$5,000"}]
+      {size: "13cm x 13cm x 10cm ", price: "$4,000"}]
   },
+
   {
     id: 22,
     name: "Cilindro Esmoquin",
@@ -404,7 +428,8 @@ const products = [
       "img/cilindroesmoquin2.jpg"
     ],
     variants: [
-      {size: "17cm de diametro x 13 cm de alto", price: "$9,000"}]
+      { size: "17cm de diametro x 13 cm de alto", price: "$7,000" }
+    ]
   },
   {
     id: 23,
@@ -417,9 +442,9 @@ const products = [
       "img/anchetaamor2.png"
     ],
     variants: [
-      {size: "13cm x 15cm x 10cm de alto", price: "$7,500"}]
-  },
-
+      { size: "13cm x 15cm x 10cm de alto", price: "$5,500" }
+    ]
+  }
 ];
 
 // Estado
@@ -499,7 +524,7 @@ function setMainImageWithFade(container, imgSelector, src) {
   };
 }
 
-/* reemplaza tu función renderProducts por esta versión que NO incluye la badge */
+/* ---------- RENDER PRODUCTOS (usa .image-container para forzar cuadrado) ---------- */
 function renderProducts(list) {
   productsGrid.innerHTML = '';
   if (!list.length) {
@@ -518,8 +543,8 @@ function renderProducts(list) {
             <img src="${product.image}" alt="${escapeHtml(product.name)}" class="product-image"
                  onerror="this.src='https://via.placeholder.com/1000x1000/667eea/ffffff?text=Sin+imagen'">
           </div>
-        </div>
 
+        </div>
         <div class="card-body d-flex flex-column">
           <h5 class="mb-1">${escapeHtml(product.name)}</h5>
           <p class="text-muted small mb-2">${escapeHtml((product.description||'').substring(0,80))}${product.description && product.description.length>80 ? '...' : ''}</p>
@@ -537,16 +562,6 @@ function renderProducts(list) {
     productsGrid.appendChild(col);
   });
 
-  // Delegación de botones "Ver"
-  productsGrid.querySelectorAll('.btn-view').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const id = parseInt(btn.dataset.id, 10);
-      const product = products.find(p => p.id === id);
-      if (product) openProductModal(product);
-    });
-  });
-}
-
   // Delegación
   productsGrid.querySelectorAll('.btn-view').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -555,7 +570,7 @@ function renderProducts(list) {
       if (product) openProductModal(product);
     });
   });
-
+}
 
 function applyFilters() {
   let filtered = [...products];
@@ -618,7 +633,7 @@ function openProductModal(product) {
           </div>
 
           <div class="d-flex gap-2">
-            <button id="addToCartBtn" class="btn btn-primary flex-grow-1">🏢 Añadir al pedido</button>
+            <button id="addToCartBtn" class="btn btn-primary flex-grow-1">🏢 Añadir al pedido mayorista</button>
             <button id="viewGalleryBtn" class="btn btn-outline-secondary">📷 Ver fotos</button>
           </div>
         </div>
@@ -821,12 +836,12 @@ function buildCartModalHTML() {
   if (!cart.length) {
     return `
       <div class="modal-header">
-        <h5 class="modal-title">Tu pedido </h5>
+        <h5 class="modal-title">Tu pedido mayorista</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body text-center py-5">
         <div style="font-size:48px">🏢</div>
-        <p class="mt-3">Tu pedido está vacío.</p>
+        <p class="mt-3">Tu pedido mayorista está vacío.</p>
         <small class="text-muted">Agrega productos (mínimo ${MIN_ORDER_QTY} unidades por referencia)</small>
       </div>
       <div class="modal-footer">
@@ -868,7 +883,7 @@ function buildCartModalHTML() {
 
   return `
     <div class="modal-header">
-      <h5 class="modal-title">Pedido detal(${cart.length} referencias)</h5>
+      <h5 class="modal-title">Pedido mayorista (${cart.length} referencias)</h5>
       <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
     </div>
     <div class="modal-body">
@@ -924,7 +939,7 @@ function proceedToCheckout() {
 }
 
 function generateWhatsAppMessage() {
-  let msg = "¡Hola!%0A%0AQuiero cotizar el siguiente pedido mayorista:%0A%0A";
+  let msg = "¡Hola!%0A%0AQuiero cotizar el siguiente pedido :%0A%0A";
   cart.forEach(item => {
     msg += `🏢 ${item.name}%0A`;
     if (item.selectedVariant) msg += `   Tamaño: ${item.selectedVariant.size}%0A`;

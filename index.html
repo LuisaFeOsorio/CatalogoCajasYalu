@@ -1,162 +1,158 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CajasYempaquesYALU</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<!-- Header -->
-<header>
-  <div class="container">
-    <h1>CATÁLOGO AL POR MAYOR</h1>
-    <h2>Compra minima 12 unidades por referencia</h2>
-    <p>Personaliza tamaños y colores</p>
-    <p></p>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CajasYempaquesYALU · Catálogo al por mayor</title>
 
-    <a href="detal.html" class="footer-retail-link"
-       style="display: inline-block;
-          background: aliceblue;
-          color: #667eea;
-          text-decoration: none;
-          font-weight: 600;
-          padding: 12px 24px;
-          border-radius: 8px;
-          border-bottom-color: aliceblue;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-          text-align: center;
-          margin-top: 0.5rem;
-          font-family: 'Arial', sans-serif;
-          min-width: 160px;">
-      Ver catálogo al detal
-    </a>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons (opcional) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+
+<!-- Header -->
+<header class="bg-white shadow-sm">
+  <div class="container py-4">
+    <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3">
+      <div>
+        <h1 class="h4 mb-1">CATÁLOGO AL POR MAYOR</h1>
+        <h2 class="h6 text-muted mb-1">Compra mínima 6 unidades por referencia</h2>
+        <p class="mb-0 text-muted">Personaliza tamaños y colores</p>
+        <p class="mb-0 text-muted">🗺️Armenia-Quindío</p>
+        <p class="mb-0 text-muted">💛💙❤️ Envíos a todo el país</p>
+      </div>
+
+      <div class="d-flex gap-2 align-items-center">
+        <a href="detal.html" class="btn btn-outline-primary">
+          Ver catálogo al detal
+        </a>
+
+        <button id="btnViewCart" class="btn btn-primary position-relative">
+          <i class="bi bi-cart3"></i>
+          <span class="ms-2 d-none d-md-inline">Ver Pedido</span>
+          <span id="cart-counter" class="badge bg-danger rounded-pill cart-counter">0</span>
+        </button>
+      </div>
+    </div>
   </div>
 </header>
 
 <!-- Filtros -->
-<section class="filters">
+<section class="py-3">
   <div class="container">
-    <input type="text" id="searchInput" placeholder="Buscar productos..." class="search-bar">
-    <div class="filter-buttons">
-      <button class="filter-btn active" data-filter="all">Todos</button>
-      <button class="filter-btn" data-filter="popular">Flores-Arreglos</button>
-      <button class="filter-btn" data-filter="empaques">Empaques</button>
-      <button class="filter-btn" data-filter="joyeria">Joyeria</button>
-      <button class="filter-btn" data-filter="hombres">Hombres</button>
-
-    </div>
-    <br>
-    <div class="cart-floating-container">
-      <button class="view-cart-btn" onclick="viewCart()">
-        <span>🛒</span>
-        <span>Ver Pedido</span>
-        <div id="cart-counter" class="cart-counter"></div>
-      </button>
+    <div class="row g-2 align-items-center">
+      <div class="col-12 col-md-6">
+        <input id="searchInput" type="text" class="form-control" placeholder="Buscar productos...">
+      </div>
+      <div class="col-12 col-md-6 text-md-end">
+        <div class="btn-group" role="group" aria-label="Filtros">
+          <button class="btn btn-outline-secondary filter-btn active" data-filter="all">Todos</button>
+          <button class="btn btn-outline-secondary filter-btn" data-filter="popular">Flores-Arreglos</button>
+          <button class="btn btn-outline-secondary filter-btn" data-filter="empaques">Empaques</button>
+          <button class="btn btn-outline-secondary filter-btn" data-filter="joyeria">Joyeria</button>
+          <button class="btn btn-outline-secondary filter-btn" data-filter="hombres">Hombres</button>
+        </div>
+      </div>
     </div>
   </div>
-
 </section>
 
-
-<section class="combos-section">
+<!-- Combos mejorados -->
+<section id="combosSection" class="pb-3">
   <div class="container">
-    <div class="combos-header">
-      <h2>💼 Combos para Negocios</h2>
-    </div>
-    <div class="combos-grid">
-      <div class="combo-card">
-        <div class="combo-badge">1</div>
-        <div class="combo-info">
-          <h3>Combo primavera</h3>
-          <p>Ideal para flores🌻 y anchetas</p>
-          <ul>
-            <li>Elige el color de tu preferencia</li>
-            <li>6 Corazones de 25cm x 10cm de alto</li>
-            <li>6 Cilindros de 16cm x 13cm de alto</li>
-            <li>6 Cuadradas de 16cm x 13cm de alto</li>
-            <li>18 unidades</li>
-            <li>6% descuento</li>
-          </ul>
-          <div class="combo-price">
-            <span class="price">$140,000</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="combo-card featured">
-        <div class="combo-badge">2</div>
-        <div class="combo-info">
-          <h3>Combo brillante</h3>
-          <p>Ideal para joyeria💍</p>
-          <li>Elige el color de tu preferencia</li>
-          <ul>
-            <li>6 cajas de 5cm x 5cm x 3cm. Estilo #2</li>
-            <li>6 cajas de 7cm x 7cm x 4cm. Estilo #2</li>
-            <li>6 cajas de 10cm x 10cm x 4cm. Estilo #2</li>
-            <li>18 unidades</li>
-            <li>6% descuento</li>
-          </ul>
-
-          <div class="combo-price">
-            <span class="price">$55,000</span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 20px 0; padding: 15px; background-color: #f8f9fa; border-radius: 8px; border-left: 4px solid #25D366;">
-      <div style="font-size: 24px;">💬</div>
-      <p style="margin: 0; font-weight: 600; color: #333; flex: 1;">CONFIRMA COLORES EN NUESTRO WHATSAPP</p>
-      <a href="https://wa.me/573007276599?text=Hola,%20quiero%20confirmar%20colores%20disponibles"
-         target="_blank"
-         style="background-color: #25D366; color: white; padding: 8px 15px; border-radius: 20px; text-decoration: none; font-size: 14px; font-weight: 600; white-space: nowrap;">
-        Whatsapp ✅
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h3 class="h5 mb-0">💼 Combos para Negocios</h3>
+      <a class="btn btn-success btn-sm" href="https://wa.me/573007276599?text=Hola,%20quiero%20hacer%20mi%20pedido" target="_blank">
+        💬 Confirmar (WhatsApp)
       </a>
     </div>
+
+    <div class="combo-grid">
+      <article class="combo-card featured">
+
+        <div class="combo-info">
+          <h3>Combo Primavera</h3>
+          <p class="text-muted">Ideal para flores 🌻 y anchetas • Personaliza colores</p>
+          <ul>
+            <li>6 Corazones 25×10 cm</li>
+            <li>6 Cilindros 16×13 cm</li>
+            <li>6 Cuadradas 16×13 cm</li>
+            <li>18 unidades totales</li>
+          </ul>
+
+          <div class="combo-price">
+            <div class="price-pill">$140,000</div>
+            <div class="discount-badge">-6%</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="combo-card">
+
+        <div class="combo-info">
+          <h3>Combo Brillante</h3>
+          <p class="text-muted">Perfecto para joyería 💍 • Elegante y resistente</p>
+          <ul>
+            <li>6 cajas 5×5×3 cm</li>
+            <li>6 cajas 7×7×4 cm</li>
+            <li>6 cajas 10×10×4 cm</li>
+            <li>18 unidades totales</li>
+          </ul>
+
+          <div class="combo-price">
+            <div class="price-pill">$55,000</div>
+            <div class="discount-badge">-6%</div>
+
+          </div>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
-<!-- Catálogo de productos -->
-<main class="container">
-  <div class="products-grid" id="productsGrid">
-    <!-- Los productos se cargarán aquí dinámicamente -->
+
+<!-- Productos -->
+<main class="container mb-5">
+  <div id="productsGrid" class="row g-3">
+    <!-- Productos dinámicos -->
   </div>
 </main>
 
 <!-- Footer -->
-<footer>
-  <div class="container">
-    <p>&copy; Las cajas se realizan bajo pedido</p>
-    <p>&copy; 2025 CatalogoCajasYalu. Contacto: 3007276599</p>
+<footer class="bg-white py-3">
+  <div class="container text-center small text-muted">
+    <p class="mb-0">Las cajas se realizan bajo pedido</p>
+    <p class="mb-0">© 2025 CatalogoCajasYalu · Contacto: 3007276599</p>
   </div>
 </footer>
 
-<!-- Modal para vista detallada del producto -->
-<div id="productModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <div id="productModalContent">
-      <!-- Aquí va la información detallada del producto -->
+<!-- Modal Producto (Bootstrap) -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content" id="productModalContent">
+      <!-- Llenado por JS -->
     </div>
   </div>
 </div>
 
-<!-- Modal para galería de imágenes -->
-<div id="imageModal" class="modal">
-  <div class="image-modal-content">
-    <span class="close-image">&times;</span>
-    <div id="imageModalContent">
-      <!-- Aquí va la galería de imágenes -->
+<!-- Modal Imágenes (Bootstrap) -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content" id="imageModalContent">
+      <!-- Llenado por JS -->
     </div>
   </div>
 </div>
 
-<script src="script.js"></script>
-<!-- Agrega esto antes de cerrar el body -->
+<!-- Bootstrap JS bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+<!-- App script -->
+<script src="js/script.js"></script>
 </body>
 </html>

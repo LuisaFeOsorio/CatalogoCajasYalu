@@ -1,88 +1,106 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo al Detal - Precios Unitarios</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CajasYempaquesYALU · Catálogo al DETAL</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons (opcional) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-<!-- Banner Detal -->
-<div class="retail-banner">
-  <div class="container">
-    <br>
-    <h1>🛍️ PRECIOS AL DETAL</h1>
-    <p>Cajas joyas y empaques mínimo 3 unidades por referencia </p>
-    <div class="banner-actions">
-      <a href="index.html" class="wholesale-link">¿Eres negocio? Ver precios mayoristas →</a>
+<body class="bg-light">
+
+<!-- Header -->
+<header class="bg-white shadow-sm">
+  <div class="container py-4">
+    <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3">
+      <div>
+        <h1 class="h4 mb-1">CATÁLOGO AL DETAL</h1>
+        <h2 class="h6 text-muted mb-1">Compra mínima 1 unidad</h2>
+        <p class="mb-0 text-muted">Personaliza tamaños y colores</p>
+        <p class="mb-0 text-muted">🗺️Armenia-Quindío</p>
+        <p class="mb-0 text-muted">💛💙❤️ Envíos a todo el país</p>
+      </div>
+
+      <div class="d-flex gap-2 align-items-center">
+        <a href="index.html" class="btn btn-outline-primary">
+          Ver catálogo al por mayor
+        </a>
+
+        <button id="btnViewCart" class="btn btn-primary position-relative">
+          <i class="bi bi-cart3"></i>
+          <span class="ms-2 d-none d-md-inline">Ver Pedido</span>
+          <span id="cart-counter" class="badge bg-danger rounded-pill cart-counter">0</span>
+        </button>
+      </div>
     </div>
-
-
   </div>
-</div>
-
+</header>
 
 <!-- Filtros -->
-<section class="filters">
+<section class="py-3">
   <div class="container">
-    <input type="text" id="searchInput" placeholder="Buscar productos..." class="search-bar">
-    <div class="filter-buttons">
-      <button class="filter-btn active" data-filter="all">Todos</button>
-      <button class="filter-btn" data-filter="popular">Flores-Arreglos</button>
-      <button class="filter-btn" data-filter="joyeria">Joyería</button>
-      <button class="filter-btn" data-filter="empaques">Empaques</button>
-      <button class="filter-btn" data-filter="hombres">Hombres</button>
-
+    <div class="row g-2 align-items-center">
+      <div class="col-12 col-md-6">
+        <input id="searchInput" type="text" class="form-control" placeholder="Buscar productos...">
+      </div>
+      <div class="col-12 col-md-6 text-md-end">
+        <div class="btn-group" role="group" aria-label="Filtros">
+          <button class="btn btn-outline-secondary filter-btn active" data-filter="all">Todos</button>
+          <button class="btn btn-outline-secondary filter-btn" data-filter="popular">Flores-Arreglos</button>
+          <button class="btn btn-outline-secondary filter-btn" data-filter="empaques">Empaques</button>
+          <button class="btn btn-outline-secondary filter-btn" data-filter="joyeria">Joyeria</button>
+          <button class="btn btn-outline-secondary filter-btn" data-filter="hombres">Hombres</button>
+        </div>
+      </div>
     </div>
   </div>
-  <br>
-  <div class="cart-floating-container">
-    <button class="view-cart-btn" onclick="viewCart()">
-      🛒 Ver Pedido
-      <div id="cart-counter" class="cart-counter"></div>
-    </button>
-  </div>
 </section>
-<div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 20px 0; padding: 15px; background-color: #f8f9fa; border-radius: 8px; border-left: 4px solid #25D366;">
-  <div style="font-size: 24px;">💬</div>
-  <p style="margin: 0; font-weight: 600; color: #333; flex: 1;">CONFIRMA COLORES EN NUESTRO WHATSAPP</p>
-  <a href="https://wa.me/573007276599?text=Hola,%20quiero%20confirmar%20colores%20disponibles"
-     target="_blank"
-     style="background-color: #25D366; color: white; padding: 8px 15px; border-radius: 20px; text-decoration: none; font-size: 14px; font-weight: 600; white-space: nowrap;">
-    Whatsapp ✅
-  </a>
-</div>
 
-<!-- Catálogo de productos -->
-<main class="container">
-  <div class="products-grid" id="productsGrid"></div>
 
+<!-- Productos -->
+<main class="container mb-5">
+  <div id="productsGrid" class="row g-3">
+    <!-- Productos dinámicos -->
+  </div>
 </main>
 
 <!-- Footer -->
-<footer>
-  <div class="container">
-    <p>&copy; 2025 Catálogo cajas YALU Precios al Detal</p>
-    <p>Las cajas se realizan bajo pedido</p>
+<footer class="bg-white py-3">
+  <div class="container text-center small text-muted">
+    <p class="mb-0">Las cajas se realizan bajo pedido</p>
+    <p class="mb-0">© 2025 CatalogoCajasYalu · Contacto: 3007276599</p>
   </div>
 </footer>
 
-<!-- Modal para vista detallada del producto -->
-<div id="productModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <div id="productModalContent"></div>
+<!-- Modal Producto (Bootstrap) -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content" id="productModalContent">
+      <!-- Llenado por JS -->
+    </div>
   </div>
 </div>
 
-<!-- Modal para galería de imágenes -->
-<div id="imageModal" class="modal">
-  <div class="image-modal-content">
-    <span class="close-image">&times;</span>
-    <div id="imageModalContent"></div>
+<!-- Modal Imágenes (Bootstrap) -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content" id="imageModalContent">
+      <!-- Llenado por JS -->
+    </div>
   </div>
 </div>
 
-<script src="scriptDetal.js"></script>
+<!-- Bootstrap JS bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- App script -->
+<script src="js/script.js"></script>
 </body>
 </html>
