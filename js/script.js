@@ -1,10 +1,63 @@
-
 const MIN_ORDER_QTY = 6;
 
 
 const products = [
   {
     id: 1,
+    name: "Bolsa blanca ",
+    description: "Bolsa en papel importado, incluye cinta del color de tu preferencia y personalizacion de logo",
+    category: "popular",
+    image: "img/bolsablanca.png",
+    images: [
+      "img/bolsablanca.png",
+      "img/bolsamedidas.png"
+    ],
+    variants: [
+
+      {size: "11cm alto x 9cm ancho x 5cm profundo ", price: "$1,700"},
+      {size: "16cm alto x 14cm ancho x 6cm profundo", price: "$2,550"},
+      {size: "19cm alto x 15cm ancho x 7cm profundo", price: "$2,900"},
+      {size: "18cm alto x 25cm ancho x 10cm profundo", price: "$3,600"},
+      {size: "24cm alto x 30cm ancho x 13cm profundo", price: "$4,300"},]
+  },
+  {
+    id: 54,
+    name: "Bolsa de color",
+    description: "Bolsa en papel importado, incluye cinta del color de tu preferencia.",
+    category: "popular",
+    image: "img/bolsarosa.png",
+    images: [
+      "img/bolsarosa.png",
+      "img/bolsamedidas.png"
+    ],
+    variants: [
+
+      {size: "11cm alto x 9cm ancho x 5cm profundo ", price: "$2,200"},
+      {size: "16cm alto x 14cm ancho x 6cm profundo", price: "$3,300"},
+      {size: "19cm alto x 15cm ancho x 7cm profundo", price: "$4,000"},
+      {size: "18cm alto x 25cm ancho x 10cm profundo", price: "$4,500"},
+      {size: "24cm alto x 30cm ancho x 13cm profundo", price: "$5,000"},]
+  },
+  {
+    id: 53,
+    name: "Bolsa de color",
+    description: "Bolsa en papel importado, incluye cinta del color de tu preferencia.",
+    category: "popular",
+    image: "img/bolsanegra.png",
+    images: [
+      "img/bolsanegra.png",
+      "img/bolsamedidas.png"
+    ],
+    variants: [
+
+      {size: "11cm alto x 9cm ancho x 5cm profundo ", price: "$2,200"},
+      {size: "16cm alto x 14cm ancho x 6cm profundo", price: "$3,300"},
+      {size: "19cm alto x 15cm ancho x 7cm profundo", price: "$4,000"},
+      {size: "18cm alto x 25cm ancho x 10cm profundo", price: "$4,500"},
+      {size: "24cm alto x 30cm ancho x 13cm profundo", price: "$5,000"},]
+  },
+  {
+    id: 55,
     name: "Corazon Forrado",
     description: "Base en cartón rigido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos... ",
     category: "popular",
@@ -257,9 +310,54 @@ const products = [
 
   },
   {
+    id: 60,
+    name: "Joyas #1",
+    description: "Disponible en color blanco" +
+      "y el moño, aumenta $1,000",
+
+    category: "joyeria",
+    image: "img/joyasluxury.jpeg",
+    images: [
+      "img/joyasluxury.jpeg",
+      "img/joyasluxury2.jpeg"
+    ],
+    variants: [
+      {size: "SIN personalización"},
+      {size: "6cm x 6cm x 4cm de alto", price: "$4,000"},
+      {size: "10cm x 10m x 4cm de alto", price: "$5,000"},
+      {size: "CON personalización"},
+      {size: "6cm x 6cm x 4cm de alto", price: "$4,800"},
+      {size: "10cm x 10m x 4cm de alto", price: "$5,800"
+      }],
+
+  },
+  {
+    id: 61,
+    name: "Joyas #2",
+    description: "Variedad de colores",
+
+    category: "joyeria",
+    image: "img/joyasrosanegra.jpeg",
+    images: [
+      "img/joyasrosanegra.jpeg",
+      "img/joyasrosa.jpeg",
+      "img/joyasnegra.jpeg"
+    ],
+    variants: [
+      {size: "SENCILLAS"},
+      {size: "5cm x 5cm x 3cm", price: "$2,900"},
+      {size: "7cm x 7cm x 4cm", price: "$4,000"},
+      {size: "10cm x 10cm x 4cm", price: "$5,000"},
+      {size: "PERSONALIZADAS"},
+      {size: "5cm x 5cm x 3cm", price: "$3,700"},
+      {size: "7cm x 7cm x 4cm", price: "$4,800"},
+      {size: "10cm x 10cm x 4cm", price: "$5,800"}],
+
+  },
+  {
     id: 15,
-    name: "Joyeros #1",
-    description: "Disponible en carton blanco, gris, rosa, vienen sin forrar, incluye nido en cartón ",
+    name: "Joyeros #3",
+    description: "Disponible en carton blanco, gris, rosa, vienen sin forrar, incluye nido en cartón. SE PUEDEN PERSONALIZAR CON LOGO ",
 
     category: "joyeria",
     image: "img/estilo1.jpeg",
@@ -279,7 +377,7 @@ const products = [
   },
   {
     id: 16,
-    name: "Joyeros #2",
+    name: "Joyeros #4",
     description: "Completamente forrada en cualquier color, elegante, incluye nido en cartón ",
 
     category: "joyeria",
@@ -289,15 +387,20 @@ const products = [
       "img/estilo21.png"
     ],
     variants: [
-      {size: "5cm x 5cm x 3cm", price: "$2,800"},
-      {size: "7cm x 7cm x 4cm", price: "$3,200"},
-      {size: "10cm x 10cm x 4cm", price: "$3,800"}],
+      {size: "SENCILLAS"},
+      {size: "5cm x 5cm x 3cm", price: "$2,900"},
+      {size: "7cm x 7cm x 4cm", price: "$4,000"},
+      {size: "10cm x 10cm x 4cm", price: "$5,000"},
+      {size: "PERSONALIZADAS"},
+      {size: "5cm x 5cm x 3cm", price: "$3,700"},
+      {size: "7cm x 7cm x 4cm", price: "$4,800"},
+      {size: "10cm x 10cm x 4cm", price: "$5,800"}],
 
   },
   {
     id: 17,
-    name: "Joyeros #3",
-    description: "Disponible en color rosa, gris o blanco, incluye nido en cartón",
+    name: "Joyeros #5",
+    description: "Cartulina de 150gr, disponible en todos los colores, incluye nido en cartón",
 
     category: "joyeria",
     image: "img/estilo3.png",
@@ -306,14 +409,17 @@ const products = [
       "img/estilo31.png"
     ],
     variants: [
-      {size: "5cm x 5cm x 3cm", price: "$2,400"},
-      {size: "7cm x 7cm x 4cm", price: "$2,800"},
-      {size: "10cm x 10cm x 4cm", price: "$3,300"}],
-
+      {size: "SIN personalización"},
+      {size: "6cm x 6cm x 4cm de alto", price: "$3,000"},
+      {size: "10cm x 10m x 4cm de alto", price: "$4,000"},
+      {size: "CON personalización"},
+      {size: "6cm x 6cm x 4cm de alto", price: "$3,700"},
+      {size: "10cm x 10m x 4cm de alto", price: "$4,800"
+      }],
   },
   {
     id: 18,
-    name: "Joyeros #4",
+    name: "Joyeros #6",
     description: "Base y tapas forradas en multiples colores, incluye nido en cartón",
     category: "joyeria",
     image: "img/estilo4.png",
@@ -321,9 +427,36 @@ const products = [
       "img/estilo4.png"
     ],
     variants: [
-      {size: "5cm x 5cm x 3cm", price: "$2,400"},
-      {size: "7cm x 7cm x 4cm", price: "$2,800"},
-      {size: "10cm x 10cm x 4cm", price: "$3,300"}],
+      {size: "SENCILLAS"},
+      {size: "5cm x 5cm x 3cm", price: "$2,500"},
+      {size: "7cm x 7cm x 4cm", price: "$3,500"},
+      {size: "10cm x 10cm x 4cm", price: "$4,500"},
+      {size: "PERSONALIZADAS"},
+      {size: "5cm x 5cm x 3cm", price: "$3,200"},
+      {size: "7cm x 7cm x 4cm", price: "$4,300"},
+      {size: "10cm x 10cm x 4cm", price: "$5,200"}],
+
+  },
+  {
+    id: 62,
+    name: "Joyas #7",
+    description: "Color blanco, cartón de 300gr, no incluye nido ",
+
+    category: "joyeria",
+    image: "img/joyasimple2.jpeg",
+    images: [
+      "img/joyasimple2.jpeg",
+      "img/joyasimple.jpeg"
+    ],
+    variants: [
+      {size: "5cm x 5cm x 3cm", price: "$1,500"},
+      {size: "7cm x 7cm x 4cm", price: "$2,000"},
+      {size: "10cm x 10cm x 4cm", price: "$2,500"},
+
+      {size: "CON VENTANA"},
+      {size: "5cm x 5cm x 3cm", price: "$1,900"},
+      {size: "7cm x 7cm x 4cm", price: "$2,500"},
+      {size: "10cm x 10cm x 4cm", price: "$2,900"}],
 
   },
   {
@@ -428,7 +561,7 @@ const products = [
       "img/cilindroesmoquin2.jpg"
     ],
     variants: [
-      { size: "17cm de diametro x 13 cm de alto", price: "$7,000" }
+      {size: "17cm de diametro x 13 cm de alto", price: "$7,000"}
     ]
   },
   {
@@ -442,7 +575,7 @@ const products = [
       "img/anchetaamor2.png"
     ],
     variants: [
-      { size: "13cm x 15cm x 10cm de alto", price: "$5,500" }
+      {size: "13cm x 15cm x 10cm de alto", price: "$5,500"}
     ]
   }
 ];
@@ -502,6 +635,7 @@ function toggleCombosVisibility() {
   // Si quieres que se oculte para cualquier filtro distinto de 'all':
   combos.classList.toggle('d-none', currentFilter !== 'all');
 }
+
 /* ---------- Helper: cambia imagen principal con fade ---------- */
 function setMainImageWithFade(container, imgSelector, src) {
   const img = container.querySelector(imgSelector);
@@ -547,7 +681,7 @@ function renderProducts(list) {
         </div>
         <div class="card-body d-flex flex-column">
           <h5 class="mb-1">${escapeHtml(product.name)}</h5>
-          <p class="text-muted small mb-2">${escapeHtml((product.description||'').substring(0,80))}${product.description && product.description.length>80 ? '...' : ''}</p>
+          <p class="text-muted small mb-2">${escapeHtml((product.description || '').substring(0, 80))}${product.description && product.description.length > 80 ? '...' : ''}</p>
           <div class="mt-auto d-flex justify-content-between align-items-center">
             <div>
               <div class="fw-bold">${product.variants ? 'Desde ' + product.variants[0].price : (product.price || '')}</div>
@@ -590,128 +724,154 @@ function applyFilters() {
 }
 
 /* ---------- Modal producto (main image cuadrada) ---------- */
+
+/* ---------- Modal producto (imágenes corregidas) ---------- */
 function openProductModal(product) {
   const variantsHTML = product.variants ? `
-    <div class="mb-3">
-      <label class="form-label fw-semibold">Selecciona tamaño / variante</label>
-      <div id="variantsList" class="d-flex flex-wrap gap-2">
+    <div class="mb-4">
+      <h6 class="fw-semibold mb-3">Selecciona tamaño / variante</h6>
+      <div id="variantsList" class="variants-container">
         ${product.variants.map((v, idx) => `
-          <button type="button" class="btn btn-outline-secondary btn-sm variant-item ${idx===0 ? 'active' : ''}"
-                  data-size="${escapeHtml(v.size)}" data-price="${escapeHtml(v.price)}">
-            ${escapeHtml(v.size)} • ${escapeHtml(v.price)}
-          </button>
+          <div class="variant-option ${idx === 0 ? 'selected' : ''}"
+               data-size="${escapeHtml(v.size)}" data-price="${escapeHtml(v.price)}">
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="variant-size">${escapeHtml(v.size)}</span>
+              <span class="variant-price fw-bold text-primary">${escapeHtml(v.price)}</span>
+            </div>
+          </div>
         `).join('')}
       </div>
     </div>` : '';
 
   productModalContent.innerHTML = `
-    <div class="modal-header">
-      <h5 class="modal-title">${escapeHtml(product.name)}</h5>
+    <div class="modal-header border-0 pb-0">
+      <h5 class="modal-title fw-bold">${escapeHtml(product.name)}</h5>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
     </div>
-    <div class="modal-body">
-      <div class="row g-3">
+    <div class="modal-body p-4">
+      <div class="row g-4">
         <div class="col-12 col-md-6">
-          <div class="image-container">
-            <img id="modalMainImage" src="${product.images && product.images.length ? product.images[0] : product.image}" class="gallery-main" alt="${escapeHtml(product.name)}" onerror="this.src='https://via.placeholder.com/1000x1000/667eea/ffffff?text=Sin+imagen'">
+          <div class="image-container-modal">
+            <img id="modalMainImage" src="${product.images && product.images.length ? product.images[0] : product.image}"
+                 class="modal-product-image" alt="${escapeHtml(product.name)}"
+                 onerror="this.src='https://via.placeholder.com/500x500/667eea/ffffff?text=Sin+imagen'">
           </div>
-          ${product.images && product.images.length > 1 ? '<div class="mt-2 d-flex overflow-auto" id="modalThumbnails"></div>' : ''}
+          ${product.images && product.images.length > 1 ?
+    `<div class="mt-3 d-flex gap-2 overflow-auto pb-2" id="modalThumbnails"></div>` : ''}
+          <div class="mt-3 text-center">
+            <button class="btn btn-outline-primary btn-sm" id="viewGalleryBtn">
+              <i class="bi bi-images me-2"></i>Ver más fotos
+            </button>
+          </div>
         </div>
         <div class="col-12 col-md-6">
-          <p class="text-muted">${escapeHtml(product.description || '')}</p>
+          <div class="product-info-content">
+            <p class="text-muted mb-3">${escapeHtml(product.description || '')}</p>
 
-          ${variantsHTML}
+            ${variantsHTML}
 
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Cantidad (mín ${MIN_ORDER_QTY})</label>
-            <div class="input-group" style="max-width:220px;">
-              <button class="btn btn-outline-secondary" type="button" id="qtyMinus">-</button>
-              <input type="number" id="quantityInput" class="form-control text-center" value="${MIN_ORDER_QTY}" min="${MIN_ORDER_QTY}">
-              <button class="btn btn-outline-secondary" type="button" id="qtyPlus">+</button>
+            <div class="mb-4">
+              <h6 class="fw-semibold mb-3">Cantidad (mín ${MIN_ORDER_QTY})</h6>
+              <div class="quantity-selector">
+                <button class="quantity-btn" type="button" id="qtyMinus">-</button>
+                <span class="quantity-display" id="quantityDisplay">${MIN_ORDER_QTY}</span>
+                <button class="quantity-btn" type="button" id="qtyPlus">+</button>
+              </div>
             </div>
-            <div id="productMessage" class="cart-message mt-2"></div>
-          </div>
 
-          <div class="d-flex gap-2">
-            <button id="addToCartBtn" class="btn btn-primary flex-grow-1">🏢 Añadir al pedido mayorista</button>
-            <button id="viewGalleryBtn" class="btn btn-outline-secondary">📷 Ver fotos</button>
+            <div class="d-grid">
+              <button id="addToCartBtn" class="btn btn-primary btn-lg py-3">
+                <i class="bi bi-cart-plus me-2"></i>Añadir al pedido mayorista
+              </button>
+            </div>
+
+            <div id="productMessage" class="cart-message mt-3 text-center"></div>
           </div>
         </div>
       </div>
     </div>
   `;
 
-  // Thumbnails: cada miniatura mantiene proporción cuadrada
+  // Thumbnails
   if (product.images && product.images.length > 1) {
     const thumbnailsContainer = productModalContent.querySelector('#modalThumbnails');
     product.images.forEach((src, idx) => {
       const thumb = document.createElement('div');
-      thumb.className = 'me-2 thumbnail-item';
-      thumb.setAttribute('tabindex', '0');
-      thumb.innerHTML = `<img src="${src}" alt="Vista ${idx+1}" onerror="this.src='https://via.placeholder.com/200x200/667eea/ffffff?text=Sin'">`;
+      thumb.className = 'thumbnail-item flex-shrink-0';
+      thumb.innerHTML = `
+        <img src="${src}" alt="Vista ${idx + 1}"
+             class="thumbnail-img rounded-2"
+             onerror="this.src='https://via.placeholder.com/80x80/667eea/ffffff?text=Sin'">
+      `;
       thumb.addEventListener('click', () => {
-        setMainImageWithFade(productModalContent, '#modalMainImage', src);
+        // Cambiar imagen principal manteniendo proporciones
+        const mainImage = productModalContent.querySelector('#modalMainImage');
+        mainImage.style.opacity = 0;
+        setTimeout(() => {
+          mainImage.src = src;
+          mainImage.style.opacity = 1;
+        }, 150);
+
         thumbnailsContainer.querySelectorAll('.thumbnail-item').forEach(t => t.classList.remove('active'));
         thumb.classList.add('active');
       });
-      thumb.addEventListener('keydown', (e) => { if (e.key === 'Enter') thumb.click(); });
-      // marcar la primera como activa
       if (idx === 0) thumb.classList.add('active');
       thumbnailsContainer.appendChild(thumb);
     });
   }
 
   // Variant selection
-  const variantItems = productModalContent.querySelectorAll('.variant-item');
-  variantItems.forEach(item => item.addEventListener('click', () => {
-    variantItems.forEach(i => i.classList.remove('active'));
-    item.classList.add('active');
-  }));
+  const variantOptions = productModalContent.querySelectorAll('.variant-option');
+  variantOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      variantOptions.forEach(opt => opt.classList.remove('selected'));
+      option.classList.add('selected');
+    });
+  });
 
   // Cantidad
-  const qtyInput = productModalContent.querySelector('#quantityInput');
+  const quantityDisplay = productModalContent.querySelector('#quantityDisplay');
   const qtyMinus = productModalContent.querySelector('#qtyMinus');
   const qtyPlus = productModalContent.querySelector('#qtyPlus');
-  const productMessage = productModalContent.querySelector('#productMessage');
+  let currentQuantity = MIN_ORDER_QTY;
+
+  function updateQuantityDisplay() {
+    quantityDisplay.textContent = currentQuantity;
+  }
 
   qtyMinus.addEventListener('click', () => {
-    let v = parseInt(qtyInput.value || MIN_ORDER_QTY, 10);
-    v = Math.max(MIN_ORDER_QTY, v - 1);
-    qtyInput.value = v;
-    clearMessage(productMessage);
-  });
-  qtyPlus.addEventListener('click', () => {
-    let v = parseInt(qtyInput.value || MIN_ORDER_QTY, 10);
-    qtyInput.value = v + 1;
-    clearMessage(productMessage);
-  });
-  qtyInput.addEventListener('change', () => {
-    let v = parseInt(qtyInput.value || MIN_ORDER_QTY, 10);
-    if (isNaN(v) || v < MIN_ORDER_QTY) {
-      qtyInput.value = MIN_ORDER_QTY;
-      showMessage(productMessage, `La cantidad mínima es ${MIN_ORDER_QTY} unidades.`, 'warning');
-    } else {
-      clearMessage(productMessage);
+    if (currentQuantity > MIN_ORDER_QTY) {
+      currentQuantity--;
+      updateQuantityDisplay();
+      clearMessage(productModalContent.querySelector('#productMessage'));
     }
+  });
+
+  qtyPlus.addEventListener('click', () => {
+    currentQuantity++;
+    updateQuantityDisplay();
+    clearMessage(productModalContent.querySelector('#productMessage'));
   });
 
   // Botones
   const addToCartBtn = productModalContent.querySelector('#addToCartBtn');
   addToCartBtn.addEventListener('click', () => {
-    const qty = parseInt(qtyInput.value || MIN_ORDER_QTY, 10);
-    if (isNaN(qty) || qty < MIN_ORDER_QTY) {
-      showMessage(productMessage, `La cantidad mínima es ${MIN_ORDER_QTY} unidades.`, 'error');
+    if (currentQuantity < MIN_ORDER_QTY) {
+      showMessage(productModalContent.querySelector('#productMessage'),
+        `La cantidad mínima es ${MIN_ORDER_QTY} unidades.`, 'error');
       return;
     }
+
     let selectedVariant = null;
-    const sel = productModalContent.querySelector('.variant-item.active');
-    if (sel) {
+    const selectedOption = productModalContent.querySelector('.variant-option.selected');
+    if (selectedOption) {
       selectedVariant = {
-        size: sel.dataset.size,
-        price: sel.dataset.price
+        size: selectedOption.dataset.size,
+        price: selectedOption.dataset.price
       };
     }
-    addToCart(product.id, qty, selectedVariant, productMessage);
+
+    addToCart(product.id, currentQuantity, selectedVariant, productModalContent.querySelector('#productMessage'));
   });
 
   const viewGalleryBtn = productModalContent.querySelector('#viewGalleryBtn');
@@ -721,44 +881,55 @@ function openProductModal(product) {
 }
 
 /* ---------- Modal imágenes (galería cuadrada con fade) ---------- */
+
+/* ---------- Modal imágenes (galería corregida) ---------- */
 function openImageModal(productId) {
   const product = products.find(p => p.id === productId);
   if (!product) return;
   const images = product.images && product.images.length ? product.images : [product.image];
 
   imageModalContent.innerHTML = `
-    <div class="modal-header">
-      <h5 class="modal-title">${escapeHtml(product.name)} — Galería</h5>
+    <div class="modal-header border-0">
+      <h5 class="modal-title fw-bold">${escapeHtml(product.name)} — Galería</h5>
       <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
     </div>
-    <div class="modal-body">
-      <div class="row g-3">
+    <div class="modal-body p-4">
+      <div class="row g-4">
         <div class="col-12 col-lg-8">
-          <div class="image-container">
-            <img id="galleryMainImage" src="${images[0]}" class="gallery-main" alt="${escapeHtml(product.name)}" onerror="this.src='https://via.placeholder.com/1000x1000/667eea/ffffff?text=Sin+imagen'">
+          <div class="image-container-modal">
+            <img id="galleryMainImage" src="${images[0]}" class="gallery-main-img"
+                 alt="${escapeHtml(product.name)}"
+                 onerror="this.src='https://via.placeholder.com/600x500/667eea/ffffff?text=Sin+imagen'">
           </div>
         </div>
         <div class="col-12 col-lg-4">
-          <div class="d-flex flex-wrap gap-2" id="galleryThumbnails">
-            ${images.map((src,i)=>`<div class="thumbnail-item" data-src="${src}" title="Vista ${i+1}"><img src="${src}" alt="Mini ${i+1}" onerror="this.src='https://via.placeholder.com/200x200/667eea/ffffff?text=Sin'"></div>`).join('')}
+          <div class="thumbnails-grid">
+            ${images.map((src, i) => `
+              <div class="thumbnail-item ${i === 0 ? 'active' : ''}" data-src="${src}">
+                <img src="${src}" alt="Mini ${i + 1}" class="thumbnail-img"
+                     onerror="this.src='https://via.placeholder.com/100x100/667eea/ffffff?text=Sin'">
+              </div>
+            `).join('')}
           </div>
         </div>
       </div>
     </div>
   `;
 
-  // Conectar thumbnails con fade
-  const galleryMainContainer = imageModalContent;
+  // Conectar thumbnails
   imageModalContent.querySelectorAll('.thumbnail-item').forEach((t, idx) => {
     t.addEventListener('click', () => {
       const src = t.dataset.src;
-      setMainImageWithFade(galleryMainContainer, '#galleryMainImage', src);
+      const mainImage = imageModalContent.querySelector('#galleryMainImage');
+      mainImage.style.opacity = 0;
+      setTimeout(() => {
+        mainImage.src = src;
+        mainImage.style.opacity = 1;
+      }, 150);
+
       imageModalContent.querySelectorAll('.thumbnail-item').forEach(x => x.classList.remove('active'));
       t.classList.add('active');
     });
-    if (idx === 0) t.classList.add('active');
-    t.setAttribute('tabindex', '0');
-    t.addEventListener('keydown', (e)=> { if (e.key === 'Enter') t.click(); });
   });
 
   imageModal.show();
@@ -802,7 +973,7 @@ function addToCart(productId, quantity, selectedVariant = null, messageEl = null
   updateCartCounter();
   if (messageEl) showMessage(messageEl, `✅ ${quantity} unidad(es) añadida(s) al pedido`, 'success');
 
-  setTimeout(()=> productModal.hide(), 700);
+  setTimeout(() => productModal.hide(), 700);
 }
 
 function viewCart() {
@@ -908,7 +1079,8 @@ function buildCartModalHTML() {
 function changeCartQuantity(index, newQty) {
   if (newQty < MIN_ORDER_QTY) {
     if (confirm(`La cantidad mínima por referencia es ${MIN_ORDER_QTY}. ¿Eliminar la referencia del pedido?`)) {
-      removeFromCart(index); return;
+      removeFromCart(index);
+      return;
     } else {
       cart[index].quantity = MIN_ORDER_QTY;
     }
@@ -922,16 +1094,22 @@ function changeCartQuantity(index, newQty) {
 
 function removeFromCart(index) {
   if (!confirm('¿Estás seguro de eliminar esta referencia del pedido?')) return;
-  cart.splice(index,1);
+  cart.splice(index, 1);
   localStorage.setItem('cart', JSON.stringify(cart));
   updateCartCounter();
   viewCart();
 }
 
 function proceedToCheckout() {
-  if (!cart.length) { alert('No hay productos en el pedido.'); return; }
+  if (!cart.length) {
+    alert('No hay productos en el pedido.');
+    return;
+  }
   const invalid = cart.filter(i => i.quantity < MIN_ORDER_QTY);
-  if (invalid.length) { alert(`Todas las referencias deben tener mínimo ${MIN_ORDER_QTY} unidades.`); return; }
+  if (invalid.length) {
+    alert(`Todas las referencias deben tener mínimo ${MIN_ORDER_QTY} unidades.`);
+    return;
+  }
 
   const phoneNumber = "573007276599";
   const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(generateWhatsAppMessage())}`;
@@ -947,8 +1125,8 @@ function generateWhatsAppMessage() {
     msg += `   Precio unitario: $${formatCurrency(item.price)}%0A`;
     msg += `   Subtotal: $${formatCurrency(item.price * item.quantity)}%0A%0A`;
   });
-  const total = cart.reduce((s,i)=>s + i.price*i.quantity,0);
-  const totalUnits = cart.reduce((s,i)=>s + i.quantity,0);
+  const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+  const totalUnits = cart.reduce((s, i) => s + i.quantity, 0);
   msg += `📊 RESUMEN:%0A   Total referencias: ${cart.length}%0A   Total unidades: ${totalUnits}%0A   TOTAL: $${formatCurrency(total)}%0A%0AGracias!`;
   return msg;
 }
@@ -959,24 +1137,27 @@ function parsePrice(str) {
   if (!str) return 0;
   return parseFloat(String(str).replace(/[$,\s]/g, '')) || 0;
 }
+
 function formatCurrency(n) {
   return Number(n).toLocaleString('es-CO');
 }
-function showMessage(el, text, type='info') {
+
+function showMessage(el, text, type = 'info') {
   if (!el) return;
   el.textContent = text;
-  el.classList.remove('success','error','warning');
+  el.classList.remove('success', 'error', 'warning');
   el.classList.add(type);
-  setTimeout(()=> clearMessage(el), 3500);
+  setTimeout(() => clearMessage(el), 3500);
 }
+
 function clearMessage(el) {
   if (!el) return;
   el.textContent = '';
-  el.classList.remove('success','error','warning');
+  el.classList.remove('success', 'error', 'warning');
 }
 
 function updateCartCounter() {
-  const total = cart.reduce((s,i)=> s + i.quantity, 0);
+  const total = cart.reduce((s, i) => s + i.quantity, 0);
   if (total > 0) {
     cartCounter.style.display = 'inline-block';
     cartCounter.textContent = total;
@@ -988,5 +1169,5 @@ function updateCartCounter() {
 /* Escape HTML básico */
 function escapeHtml(unsafe) {
   if (!unsafe) return '';
-  return String(unsafe).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+  return String(unsafe).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
 }

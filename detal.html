@@ -8,11 +8,193 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Bootstrap Icons (opcional) -->
+  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-  <!-- Estilos personalizados -->
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #2c5aa0;
+      --primary-dark: #1e3d72;
+      --primary-light: #5a8de0;
+      --secondary: #ff6b6b;
+      --accent: #ffd166;
+      --light: #f8f9fa;
+      --dark: #343a40;
+      --gray: #6c757d;
+      --success: #06d6a0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+      color: #333;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    /* Tarjetas de productos */
+    .product-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07);
+      transition: all 0.3s ease;
+      height: 100%;
+      border: none;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .product-image-container {
+      position: relative;
+      overflow: hidden;
+      height: 220px;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      padding: 1.25rem;
+    }
+
+    /* Estilos para el modal */
+    .modal-product-image {
+      width: 100%;
+      height: 300px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #f8f9fa;
+    }
+
+    .image-container-modal {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      max-height: 400px;
+    }
+
+    .variants-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .variant-option {
+      border: 2px solid #e9ecef;
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    .variant-option:hover {
+      border-color: var(--primary-light);
+      background-color: #f8f9fa;
+      transform: translateY(-2px);
+    }
+
+    .variant-option.selected {
+      border-color: var(--primary);
+      background-color: rgba(44, 90, 160, 0.05);
+      box-shadow: 0 4px 12px rgba(44, 90, 160, 0.15);
+    }
+
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin: 15px 0;
+    }
+
+    .quantity-btn {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.3rem;
+      transition: all 0.2s ease;
+    }
+
+    .quantity-btn:hover {
+      background: var(--primary-dark);
+      transform: scale(1.1);
+    }
+
+    .quantity-display {
+      font-size: 1.8rem;
+      font-weight: bold;
+      min-width: 60px;
+      text-align: center;
+      color: var(--primary);
+    }
+
+    .thumbnail-item {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .thumbnail-item.active {
+      border-color: var(--primary);
+    }
+
+    .thumbnail-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .modal-product-image {
+        height: 250px;
+      }
+
+      .image-container-modal {
+        min-height: 250px;
+        max-height: 300px;
+      }
+    }
+  </style>
 </head>
 <body class="bg-light">
 
@@ -21,16 +203,16 @@
   <div class="container py-4">
     <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3">
       <div>
-        <h1 class="h4 mb-1">CATÁLOGO AL DETAL</h1>
+        <h1 class="h4 mb-1 fw-bold text-primary">CATÁLOGO AL DETAL</h1>
         <h2 class="h6 text-muted mb-1">Compra mínima 1 unidad</h2>
-        <p class="mb-0 text-muted">Personaliza tamaños y colores</p>
-        <p class="mb-0 text-muted">🗺️Armenia-Quindío</p>
-        <p class="mb-0 text-muted">💛💙❤️ Envíos a todo el país</p>
+        <p class="mb-0 text-muted"><i class="bi bi-palette me-1"></i>Personaliza tamaños y colores</p>
+        <p class="mb-0 text-muted"><i class="bi bi-geo-alt me-1"></i>Armenia-Quindío</p>
+        <p class="mb-0 text-muted"><i class="bi bi-truck me-1"></i>Envíos a todo el país</p>
       </div>
 
       <div class="d-flex gap-2 align-items-center">
         <a href="index.html" class="btn btn-outline-primary">
-          Ver catálogo al por mayor
+          <i class="bi bi-arrow-left me-1"></i>Catálogo al por mayor
         </a>
 
         <button id="btnViewCart" class="btn btn-primary position-relative">
@@ -44,18 +226,21 @@
 </header>
 
 <!-- Filtros -->
-<section class="py-3">
+<section class="py-4 bg-white shadow-sm">
   <div class="container">
-    <div class="row g-2 align-items-center">
+    <div class="row g-3 align-items-center">
       <div class="col-12 col-md-6">
-        <input id="searchInput" type="text" class="form-control" placeholder="Buscar productos...">
+        <div class="input-group">
+          <span class="input-group-text bg-light border-end-0"><i class="bi bi-search"></i></span>
+          <input id="searchInput" type="text" class="form-control border-start-0" placeholder="Buscar productos...">
+        </div>
       </div>
       <div class="col-12 col-md-6 text-md-end">
-        <div class="btn-group" role="group" aria-label="Filtros">
+        <div class="btn-group flex-wrap">
           <button class="btn btn-outline-secondary filter-btn active" data-filter="all">Todos</button>
           <button class="btn btn-outline-secondary filter-btn" data-filter="popular">Flores-Arreglos</button>
           <button class="btn btn-outline-secondary filter-btn" data-filter="empaques">Empaques</button>
-          <button class="btn btn-outline-secondary filter-btn" data-filter="joyeria">Joyeria</button>
+          <button class="btn btn-outline-secondary filter-btn" data-filter="joyeria">Joyería</button>
           <button class="btn btn-outline-secondary filter-btn" data-filter="hombres">Hombres</button>
         </div>
       </div>
@@ -63,44 +248,51 @@
   </div>
 </section>
 
-
 <!-- Productos -->
-<main class="container mb-5">
-  <div id="productsGrid" class="row g-3">
+<main class="container my-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="h3 fw-bold text-primary">Nuestros Productos</h2>
+    <span id="product-count" class="badge bg-primary">0 productos</span>
+  </div>
+
+  <div id="productsGrid" class="row g-4">
     <!-- Productos dinámicos -->
+  </div>
+
+  <div id="no-products" class="text-center py-5 d-none">
+    <i class="bi bi-search display-4 text-muted mb-3"></i>
+    <h3 class="h4 text-muted">No se encontraron productos</h3>
+    <p class="text-muted">Intenta con otros términos de búsqueda o filtros</p>
   </div>
 </main>
 
 <!-- Footer -->
-<footer class="bg-white py-3">
-  <div class="container text-center small text-muted">
-    <p class="mb-0">Las cajas se realizan bajo pedido</p>
-    <p class="mb-0">© 2025 CatalogoCajasYalu · Contacto: 3007276599</p>
+<footer class="bg-dark text-white py-4">
+  <div class="container text-center">
+    <div class="footer-content">
+      <p class="mb-1">Las cajas se realizan bajo pedido</p>
+      <p class="mb-0">© 2025 CajasYempaquesYALU · Contacto: 3007276599</p>
+    </div>
   </div>
 </footer>
 
-<!-- Modal Producto (Bootstrap) -->
+<!-- Modal Producto -->
 <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content" id="productModalContent">
-      <!-- Llenado por JS -->
-    </div>
+    <div class="modal-content" id="productModalContent"></div>
   </div>
 </div>
 
-<!-- Modal Imágenes (Bootstrap) -->
+<!-- Modal Imágenes -->
 <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered">
-    <div class="modal-content" id="imageModalContent">
-      <!-- Llenado por JS -->
-    </div>
+    <div class="modal-content" id="imageModalContent"></div>
   </div>
 </div>
-
 <!-- Bootstrap JS bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- App script -->
-<script src="js/script.js"></script>
+<script src="scriptDetal.js"></script>
 </body>
 </html>

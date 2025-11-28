@@ -1,3 +1,4 @@
+const MIN_ORDER_QTY = 1;
 const products = [
   {
     id: 1,
@@ -421,9 +422,8 @@ const products = [
   },
 
 ];
-
 // Estado
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let cart = JSON.parse(localStorage.getItem('cart_detal')) || [];
 let currentFilter = 'all';
 let currentSearch = '';
 
@@ -433,6 +433,7 @@ const searchInput = document.getElementById('searchInput');
 const filterButtons = document.querySelectorAll('.filter-btn');
 const cartCounter = document.getElementById('cart-counter');
 const btnViewCart = document.getElementById('btnViewCart');
+const productCount = document.getElementById('product-count');
 
 // Bootstrap modales
 const productModalEl = document.getElementById('productModal');
@@ -447,6 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProducts(products);
   setupEventListeners();
   updateCartCounter();
+  updateProductCount();
 });
 
 function setupEventListeners() {
@@ -469,66 +471,37 @@ function setupEventListeners() {
   });
 }
 
-// --- Mostrar/ocultar combos según el filtro seleccionado ---
-function toggleCombosVisibility() {
-  const combos = document.getElementById('combosSection') || document.querySelector('.combos-section');
-  if (!combos) return;
-  // Usamos la clase Bootstrap 'd-none' para ocultar con CSS.
-  // Si quieres que se oculte para cualquier filtro distinto de 'all':
-  combos.classList.toggle('d-none', currentFilter !== 'all');
-}
-/* ---------- Helper: cambia imagen principal con fade ---------- */
-function setMainImageWithFade(container, imgSelector, src) {
-  const img = container.querySelector(imgSelector);
-  if (!img) return;
-  // fade out
-  img.style.opacity = 0;
-  // Preload image then swap
-  const tmp = new Image();
-  tmp.src = src;
-  tmp.onload = () => {
-    img.src = src;
-    // small delay to ensure src swapped
-    requestAnimationFrame(() => {
-      img.style.opacity = 1;
-    });
-  };
-  tmp.onerror = () => {
-    img.src = 'https://via.placeholder.com/1000x1000/667eea/ffffff?text=Sin+imagen';
-    img.style.opacity = 1;
-  };
-}
-
-/* reemplaza tu función renderProducts por esta versión que NO incluye la badge */
 function renderProducts(list) {
   productsGrid.innerHTML = '';
   if (!list.length) {
     productsGrid.innerHTML = `<div class="col-12 text-center py-4 text-muted">No se encontraron productos.</div>`;
+    updateProductCount();
     return;
   }
 
   list.forEach(product => {
     const col = document.createElement('div');
     col.className = 'col-12 col-sm-6 col-md-4 col-lg-3';
+    col.setAttribute('data-category', product.category);
 
     col.innerHTML = `
-      <div class="card h-100 shadow-sm position-relative">
-        <div class="position-relative">
-          <div class="image-container">
-            <img src="${product.image}" alt="${escapeHtml(product.name)}" class="product-image"
-                 onerror="this.src='https://via.placeholder.com/1000x1000/667eea/ffffff?text=Sin+imagen'">
-          </div>
+      <div class="product-card">
+        <div class="product-image-container">
+          <img src="${product.image}" alt="${escapeHtml(product.name)}" class="product-image"
+               onerror="this.src='https://via.placeholder.com/400x300/667eea/ffffff?text=Sin+imagen'">
         </div>
-
-        <div class="card-body d-flex flex-column">
-          <h5 class="mb-1">${escapeHtml(product.name)}</h5>
-          <p class="text-muted small mb-2">${escapeHtml((product.description||'').substring(0,80))}${product.description && product.description.length>80 ? '...' : ''}</p>
-          <div class="mt-auto d-flex justify-content-between align-items-center">
+        <div class="product-info">
+          <h5 class="product-title mb-2">${escapeHtml(product.name)}</h5>
+          <p class="product-category text-muted small mb-2 text-uppercase">${escapeHtml(product.category)}</p>
+          <p class="product-description small text-muted mb-3">${escapeHtml((product.description||'').substring(0,80))}${product.description && product.description.length>80 ? '...' : ''}</p>
+          <div class="d-flex justify-content-between align-items-center mt-auto">
             <div>
-              <div class="fw-bold">${product.variants ? 'Desde ' + product.variants[0].price : (product.price || '')}</div>
-              <small class="text-muted">Mínimo: ${MIN_ORDER_QTY} u.</small>
+              <div class="product-price fw-bold text-primary">${product.variants ? product.variants[0].price : ''}</div>
+              <small class="text-muted">Mínimo: ${MIN_ORDER_QTY} unidad</small>
             </div>
-            <button class="btn btn-sm btn-primary btn-view" data-id="${product.id}">Ver</button>
+            <button class="btn btn-sm btn-primary btn-view" data-id="${product.id}">
+              <i class="bi bi-eye me-1"></i>Ver
+            </button>
           </div>
         </div>
       </div>
@@ -539,16 +512,6 @@ function renderProducts(list) {
 
   // Delegación de botones "Ver"
   productsGrid.querySelectorAll('.btn-view').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const id = parseInt(btn.dataset.id, 10);
-      const product = products.find(p => p.id === id);
-      if (product) openProductModal(product);
-    });
-  });
-}
-
-  // Delegación
-  productsGrid.querySelectorAll('.btn-view').forEach(btn => {
     btn.addEventListener('click', () => {
       const id = parseInt(btn.dataset.id, 10);
       const product = products.find(p => p.id === id);
@@ -556,6 +519,8 @@ function renderProducts(list) {
     });
   });
 
+  updateProductCount();
+}
 
 function applyFilters() {
   let filtered = [...products];
@@ -570,133 +535,150 @@ function applyFilters() {
     );
   }
   renderProducts(filtered);
-  // Actualiza visibilidad de combos después de aplicar filtros
-  toggleCombosVisibility();
 }
 
-/* ---------- Modal producto (main image cuadrada) ---------- */
 function openProductModal(product) {
   const variantsHTML = product.variants ? `
-    <div class="mb-3">
-      <label class="form-label fw-semibold">Selecciona tamaño / variante</label>
-      <div id="variantsList" class="d-flex flex-wrap gap-2">
+    <div class="mb-4">
+      <h6 class="fw-semibold mb-3">Selecciona tamaño / variante</h6>
+      <div id="variantsList" class="variants-container">
         ${product.variants.map((v, idx) => `
-          <button type="button" class="btn btn-outline-secondary btn-sm variant-item ${idx===0 ? 'active' : ''}"
-                  data-size="${escapeHtml(v.size)}" data-price="${escapeHtml(v.price)}">
-            ${escapeHtml(v.size)} • ${escapeHtml(v.price)}
-          </button>
+          <div class="variant-option ${idx===0 ? 'selected' : ''}"
+               data-size="${escapeHtml(v.size)}" data-price="${escapeHtml(v.price)}">
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="variant-size">${escapeHtml(v.size)}</span>
+              <span class="variant-price fw-bold text-primary">${escapeHtml(v.price)}</span>
+            </div>
+          </div>
         `).join('')}
       </div>
     </div>` : '';
 
   productModalContent.innerHTML = `
-    <div class="modal-header">
-      <h5 class="modal-title">${escapeHtml(product.name)}</h5>
+    <div class="modal-header border-0 pb-0">
+      <h5 class="modal-title fw-bold">${escapeHtml(product.name)}</h5>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
     </div>
-    <div class="modal-body">
-      <div class="row g-3">
+    <div class="modal-body p-4">
+      <div class="row g-4">
         <div class="col-12 col-md-6">
-          <div class="image-container">
-            <img id="modalMainImage" src="${product.images && product.images.length ? product.images[0] : product.image}" class="gallery-main" alt="${escapeHtml(product.name)}" onerror="this.src='https://via.placeholder.com/1000x1000/667eea/ffffff?text=Sin+imagen'">
+          <div class="image-container-modal">
+            <img id="modalMainImage" src="${product.images && product.images.length ? product.images[0] : product.image}"
+                 class="modal-product-image" alt="${escapeHtml(product.name)}"
+                 onerror="this.src='https://via.placeholder.com/500x500/667eea/ffffff?text=Sin+imagen'">
           </div>
-          ${product.images && product.images.length > 1 ? '<div class="mt-2 d-flex overflow-auto" id="modalThumbnails"></div>' : ''}
+          ${product.images && product.images.length > 1 ?
+    `<div class="mt-3 d-flex gap-2 overflow-auto pb-2" id="modalThumbnails"></div>` : ''}
+          <div class="mt-3 text-center">
+            <button class="btn btn-outline-primary btn-sm" id="viewGalleryBtn">
+              <i class="bi bi-images me-2"></i>Ver más fotos
+            </button>
+          </div>
         </div>
         <div class="col-12 col-md-6">
-          <p class="text-muted">${escapeHtml(product.description || '')}</p>
+          <div class="product-info-content">
+            <p class="text-muted mb-3">${escapeHtml(product.description || '')}</p>
 
-          ${variantsHTML}
+            ${variantsHTML}
 
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Cantidad (mín ${MIN_ORDER_QTY})</label>
-            <div class="input-group" style="max-width:220px;">
-              <button class="btn btn-outline-secondary" type="button" id="qtyMinus">-</button>
-              <input type="number" id="quantityInput" class="form-control text-center" value="${MIN_ORDER_QTY}" min="${MIN_ORDER_QTY}">
-              <button class="btn btn-outline-secondary" type="button" id="qtyPlus">+</button>
+            <div class="mb-4">
+              <h6 class="fw-semibold mb-3">Cantidad (mín ${MIN_ORDER_QTY})</h6>
+              <div class="quantity-selector">
+                <button class="quantity-btn" type="button" id="qtyMinus">-</button>
+                <span class="quantity-display" id="quantityDisplay">${MIN_ORDER_QTY}</span>
+                <button class="quantity-btn" type="button" id="qtyPlus">+</button>
+              </div>
             </div>
-            <div id="productMessage" class="cart-message mt-2"></div>
-          </div>
 
-          <div class="d-flex gap-2">
-            <button id="addToCartBtn" class="btn btn-primary flex-grow-1">🏢 Añadir al pedido</button>
-            <button id="viewGalleryBtn" class="btn btn-outline-secondary">📷 Ver fotos</button>
+            <div class="d-grid">
+              <button id="addToCartBtn" class="btn btn-primary btn-lg py-3">
+                <i class="bi bi-cart-plus me-2"></i>Añadir al pedido
+              </button>
+            </div>
+
+            <div id="productMessage" class="alert alert-success mt-3 text-center d-none"></div>
           </div>
         </div>
       </div>
     </div>
   `;
 
-  // Thumbnails: cada miniatura mantiene proporción cuadrada
+  // Thumbnails
   if (product.images && product.images.length > 1) {
     const thumbnailsContainer = productModalContent.querySelector('#modalThumbnails');
     product.images.forEach((src, idx) => {
       const thumb = document.createElement('div');
-      thumb.className = 'me-2 thumbnail-item';
-      thumb.setAttribute('tabindex', '0');
-      thumb.innerHTML = `<img src="${src}" alt="Vista ${idx+1}" onerror="this.src='https://via.placeholder.com/200x200/667eea/ffffff?text=Sin'">`;
+      thumb.className = 'thumbnail-item flex-shrink-0';
+      thumb.innerHTML = `
+        <img src="${src}" alt="Vista ${idx+1}"
+             class="thumbnail-img rounded-2"
+             onerror="this.src='https://via.placeholder.com/80x80/667eea/ffffff?text=Sin'">
+      `;
       thumb.addEventListener('click', () => {
-        setMainImageWithFade(productModalContent, '#modalMainImage', src);
+        const mainImage = productModalContent.querySelector('#modalMainImage');
+        mainImage.style.opacity = 0;
+        setTimeout(() => {
+          mainImage.src = src;
+          mainImage.style.opacity = 1;
+        }, 150);
+
         thumbnailsContainer.querySelectorAll('.thumbnail-item').forEach(t => t.classList.remove('active'));
         thumb.classList.add('active');
       });
-      thumb.addEventListener('keydown', (e) => { if (e.key === 'Enter') thumb.click(); });
-      // marcar la primera como activa
       if (idx === 0) thumb.classList.add('active');
       thumbnailsContainer.appendChild(thumb);
     });
   }
 
   // Variant selection
-  const variantItems = productModalContent.querySelectorAll('.variant-item');
-  variantItems.forEach(item => item.addEventListener('click', () => {
-    variantItems.forEach(i => i.classList.remove('active'));
-    item.classList.add('active');
-  }));
+  const variantOptions = productModalContent.querySelectorAll('.variant-option');
+  variantOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      variantOptions.forEach(opt => opt.classList.remove('selected'));
+      option.classList.add('selected');
+    });
+  });
 
   // Cantidad
-  const qtyInput = productModalContent.querySelector('#quantityInput');
+  const quantityDisplay = productModalContent.querySelector('#quantityDisplay');
   const qtyMinus = productModalContent.querySelector('#qtyMinus');
   const qtyPlus = productModalContent.querySelector('#qtyPlus');
-  const productMessage = productModalContent.querySelector('#productMessage');
+  let currentQuantity = MIN_ORDER_QTY;
+
+  function updateQuantityDisplay() {
+    quantityDisplay.textContent = currentQuantity;
+  }
 
   qtyMinus.addEventListener('click', () => {
-    let v = parseInt(qtyInput.value || MIN_ORDER_QTY, 10);
-    v = Math.max(MIN_ORDER_QTY, v - 1);
-    qtyInput.value = v;
-    clearMessage(productMessage);
-  });
-  qtyPlus.addEventListener('click', () => {
-    let v = parseInt(qtyInput.value || MIN_ORDER_QTY, 10);
-    qtyInput.value = v + 1;
-    clearMessage(productMessage);
-  });
-  qtyInput.addEventListener('change', () => {
-    let v = parseInt(qtyInput.value || MIN_ORDER_QTY, 10);
-    if (isNaN(v) || v < MIN_ORDER_QTY) {
-      qtyInput.value = MIN_ORDER_QTY;
-      showMessage(productMessage, `La cantidad mínima es ${MIN_ORDER_QTY} unidades.`, 'warning');
-    } else {
-      clearMessage(productMessage);
+    if (currentQuantity > MIN_ORDER_QTY) {
+      currentQuantity--;
+      updateQuantityDisplay();
     }
+  });
+
+  qtyPlus.addEventListener('click', () => {
+    currentQuantity++;
+    updateQuantityDisplay();
   });
 
   // Botones
   const addToCartBtn = productModalContent.querySelector('#addToCartBtn');
   addToCartBtn.addEventListener('click', () => {
-    const qty = parseInt(qtyInput.value || MIN_ORDER_QTY, 10);
-    if (isNaN(qty) || qty < MIN_ORDER_QTY) {
-      showMessage(productMessage, `La cantidad mínima es ${MIN_ORDER_QTY} unidades.`, 'error');
+    if (currentQuantity < MIN_ORDER_QTY) {
+      showMessage('error', `La cantidad mínima es ${MIN_ORDER_QTY} unidad.`);
       return;
     }
+
     let selectedVariant = null;
-    const sel = productModalContent.querySelector('.variant-item.active');
-    if (sel) {
+    const selectedOption = productModalContent.querySelector('.variant-option.selected');
+    if (selectedOption) {
       selectedVariant = {
-        size: sel.dataset.size,
-        price: sel.dataset.price
+        size: selectedOption.dataset.size,
+        price: selectedOption.dataset.price
       };
     }
-    addToCart(product.id, qty, selectedVariant, productMessage);
+
+    addToCart(product.id, currentQuantity, selectedVariant);
   });
 
   const viewGalleryBtn = productModalContent.querySelector('#viewGalleryBtn');
@@ -705,64 +687,72 @@ function openProductModal(product) {
   productModal.show();
 }
 
-/* ---------- Modal imágenes (galería cuadrada con fade) ---------- */
 function openImageModal(productId) {
   const product = products.find(p => p.id === productId);
   if (!product) return;
   const images = product.images && product.images.length ? product.images : [product.image];
 
   imageModalContent.innerHTML = `
-    <div class="modal-header">
-      <h5 class="modal-title">${escapeHtml(product.name)} — Galería</h5>
+    <div class="modal-header border-0">
+      <h5 class="modal-title fw-bold">${escapeHtml(product.name)} — Galería</h5>
       <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
     </div>
-    <div class="modal-body">
-      <div class="row g-3">
+    <div class="modal-body p-4">
+      <div class="row g-4">
         <div class="col-12 col-lg-8">
-          <div class="image-container">
-            <img id="galleryMainImage" src="${images[0]}" class="gallery-main" alt="${escapeHtml(product.name)}" onerror="this.src='https://via.placeholder.com/1000x1000/667eea/ffffff?text=Sin+imagen'">
+          <div class="image-container-modal">
+            <img id="galleryMainImage" src="${images[0]}" class="gallery-main-img"
+                 alt="${escapeHtml(product.name)}"
+                 onerror="this.src='https://via.placeholder.com/600x500/667eea/ffffff?text=Sin+imagen'">
           </div>
         </div>
         <div class="col-12 col-lg-4">
-          <div class="d-flex flex-wrap gap-2" id="galleryThumbnails">
-            ${images.map((src,i)=>`<div class="thumbnail-item" data-src="${src}" title="Vista ${i+1}"><img src="${src}" alt="Mini ${i+1}" onerror="this.src='https://via.placeholder.com/200x200/667eea/ffffff?text=Sin'"></div>`).join('')}
+          <div class="d-flex flex-column gap-2" id="galleryThumbnails">
+            ${images.map((src, i) => `
+              <div class="thumbnail-item ${i === 0 ? 'active' : ''}" data-src="${src}">
+                <img src="${src}" alt="Mini ${i+1}" class="thumbnail-img"
+                     onerror="this.src='https://via.placeholder.com/100x100/667eea/ffffff?text=Sin'">
+              </div>
+            `).join('')}
           </div>
         </div>
       </div>
     </div>
   `;
 
-  // Conectar thumbnails con fade
-  const galleryMainContainer = imageModalContent;
+  // Conectar thumbnails
   imageModalContent.querySelectorAll('.thumbnail-item').forEach((t, idx) => {
     t.addEventListener('click', () => {
       const src = t.dataset.src;
-      setMainImageWithFade(galleryMainContainer, '#galleryMainImage', src);
+      const mainImage = imageModalContent.querySelector('#galleryMainImage');
+      mainImage.style.opacity = 0;
+      setTimeout(() => {
+        mainImage.src = src;
+        mainImage.style.opacity = 1;
+      }, 150);
+
       imageModalContent.querySelectorAll('.thumbnail-item').forEach(x => x.classList.remove('active'));
       t.classList.add('active');
     });
-    if (idx === 0) t.classList.add('active');
-    t.setAttribute('tabindex', '0');
-    t.addEventListener('keydown', (e)=> { if (e.key === 'Enter') t.click(); });
   });
 
   imageModal.show();
 }
 
-/* ---------- Carrito (sin cambios funcionales importantes) ---------- */
-function addToCart(productId, quantity, selectedVariant = null, messageEl = null) {
+function addToCart(productId, quantity, selectedVariant = null) {
   const product = products.find(p => p.id === productId);
   if (!product) {
-    if (messageEl) showMessage(messageEl, 'Error: producto no encontrado', 'error');
+    showMessage('error', 'Error: producto no encontrado');
     return;
   }
 
   if (quantity < MIN_ORDER_QTY) {
-    if (messageEl) showMessage(messageEl, `La cantidad mínima es ${MIN_ORDER_QTY} unidades.`, 'error');
+    showMessage('error', `La cantidad mínima es ${MIN_ORDER_QTY} unidad.`);
     return;
   }
 
-  const price = selectedVariant ? parsePrice(selectedVariant.price) : (product.price ? parsePrice(product.price) : (product.variants ? parsePrice(product.variants[0].price) : 0));
+  const price = selectedVariant ? parsePrice(selectedVariant.price) :
+    (product.variants ? parsePrice(product.variants[0].price) : 0);
 
   const existingIndex = cart.findIndex(item =>
     item.productId === productId &&
@@ -783,11 +773,11 @@ function addToCart(productId, quantity, selectedVariant = null, messageEl = null
     });
   }
 
-  localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem('cart_detal', JSON.stringify(cart));
   updateCartCounter();
-  if (messageEl) showMessage(messageEl, `✅ ${quantity} unidad(es) añadida(s) al pedido`, 'success');
+  showMessage('success', `✅ ${quantity} unidad(es) añadida(s) al pedido`);
 
-  setTimeout(()=> productModal.hide(), 700);
+  setTimeout(() => productModal.hide(), 1500);
 }
 
 function viewCart() {
@@ -801,18 +791,21 @@ function viewCart() {
       changeCartQuantity(idx, cart[idx].quantity - 1);
     });
   });
+
   productModalContent.querySelectorAll('.btn-increase').forEach(btn => {
     btn.addEventListener('click', () => {
       const idx = parseInt(btn.dataset.index, 10);
       changeCartQuantity(idx, cart[idx].quantity + 1);
     });
   });
+
   productModalContent.querySelectorAll('.btn-remove').forEach(btn => {
     btn.addEventListener('click', () => {
       const idx = parseInt(btn.dataset.index, 10);
       removeFromCart(idx);
     });
   });
+
   const checkoutBtn = productModalContent.querySelector('#checkoutBtn');
   if (checkoutBtn) checkoutBtn.addEventListener('click', proceedToCheckout);
 }
@@ -821,13 +814,13 @@ function buildCartModalHTML() {
   if (!cart.length) {
     return `
       <div class="modal-header">
-        <h5 class="modal-title">Tu pedido </h5>
+        <h5 class="modal-title fw-bold">Tu pedido de detal</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body text-center py-5">
-        <div style="font-size:48px">🏢</div>
+        <i class="bi bi-cart-x display-4 text-muted mb-3"></i>
         <p class="mt-3">Tu pedido está vacío.</p>
-        <small class="text-muted">Agrega productos (mínimo ${MIN_ORDER_QTY} unidades por referencia)</small>
+        <small class="text-muted">Agrega productos (mínimo ${MIN_ORDER_QTY} unidad por referencia)</small>
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" data-bs-dismiss="modal">Seguir comprando</button>
@@ -842,7 +835,7 @@ function buildCartModalHTML() {
     totalUnits += item.quantity;
     totalPrice += subtotal;
     return `
-      <div class="d-flex align-items-center gap-3 mb-3">
+      <div class="d-flex align-items-center gap-3 mb-3 p-3 border rounded">
         <div style="width:72px;height:72px;overflow:hidden;border-radius:8px;">
           <img src="${item.image}" alt="${escapeHtml(item.name)}" style="width:100%;height:100%;object-fit:cover;">
         </div>
@@ -868,7 +861,7 @@ function buildCartModalHTML() {
 
   return `
     <div class="modal-header">
-      <h5 class="modal-title">Pedido detal(${cart.length} referencias)</h5>
+      <h5 class="modal-title fw-bold">Pedido detal (${cart.length} referencias)</h5>
       <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
     </div>
     <div class="modal-body">
@@ -885,7 +878,9 @@ function buildCartModalHTML() {
     </div>
     <div class="modal-footer">
       <button class="btn btn-secondary" data-bs-dismiss="modal">Seguir comprando</button>
-      <button id="checkoutBtn" class="btn btn-primary">📱 Cotizar por WhatsApp</button>
+      <button id="checkoutBtn" class="btn btn-primary">
+        <i class="bi bi-whatsapp me-2"></i>Cotizar por WhatsApp
+      </button>
     </div>
   `;
 }
@@ -900,7 +895,7 @@ function changeCartQuantity(index, newQty) {
   } else {
     cart[index].quantity = newQty;
   }
-  localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem('cart_detal', JSON.stringify(cart));
   updateCartCounter();
   viewCart();
 }
@@ -908,15 +903,16 @@ function changeCartQuantity(index, newQty) {
 function removeFromCart(index) {
   if (!confirm('¿Estás seguro de eliminar esta referencia del pedido?')) return;
   cart.splice(index,1);
-  localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem('cart_detal', JSON.stringify(cart));
   updateCartCounter();
   viewCart();
 }
 
 function proceedToCheckout() {
-  if (!cart.length) { alert('No hay productos en el pedido.'); return; }
-  const invalid = cart.filter(i => i.quantity < MIN_ORDER_QTY);
-  if (invalid.length) { alert(`Todas las referencias deben tener mínimo ${MIN_ORDER_QTY} unidades.`); return; }
+  if (!cart.length) {
+    alert('No hay productos en el pedido.');
+    return;
+  }
 
   const phoneNumber = "573007276599";
   const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(generateWhatsAppMessage())}`;
@@ -924,9 +920,9 @@ function proceedToCheckout() {
 }
 
 function generateWhatsAppMessage() {
-  let msg = "¡Hola!%0A%0AQuiero cotizar el siguiente pedido mayorista:%0A%0A";
+  let msg = "¡Hola!%0A%0AQuiero cotizar el siguiente pedido al detal:%0A%0A";
   cart.forEach(item => {
-    msg += `🏢 ${item.name}%0A`;
+    msg += `🛍️ ${item.name}%0A`;
     if (item.selectedVariant) msg += `   Tamaño: ${item.selectedVariant.size}%0A`;
     msg += `   Cantidad: ${item.quantity} unidades%0A`;
     msg += `   Precio unitario: $${formatCurrency(item.price)}%0A`;
@@ -944,34 +940,45 @@ function parsePrice(str) {
   if (!str) return 0;
   return parseFloat(String(str).replace(/[$,\s]/g, '')) || 0;
 }
+
 function formatCurrency(n) {
   return Number(n).toLocaleString('es-CO');
 }
-function showMessage(el, text, type='info') {
-  if (!el) return;
-  el.textContent = text;
-  el.classList.remove('success','error','warning');
-  el.classList.add(type);
-  setTimeout(()=> clearMessage(el), 3500);
-}
-function clearMessage(el) {
-  if (!el) return;
-  el.textContent = '';
-  el.classList.remove('success','error','warning');
+
+function showMessage(type, text) {
+  const messageEl = document.querySelector('#productMessage');
+  if (!messageEl) return;
+
+  messageEl.textContent = text;
+  messageEl.className = `alert alert-${type === 'success' ? 'success' : 'danger'} mt-3 text-center`;
+  messageEl.classList.remove('d-none');
+
+  setTimeout(() => {
+    messageEl.classList.add('d-none');
+  }, 3000);
 }
 
 function updateCartCounter() {
   const total = cart.reduce((s,i)=> s + i.quantity, 0);
+  cartCounter.textContent = total;
   if (total > 0) {
     cartCounter.style.display = 'inline-block';
-    cartCounter.textContent = total;
   } else {
     cartCounter.style.display = 'none';
   }
 }
 
-/* Escape HTML básico */
+function updateProductCount() {
+  const visibleCount = document.querySelectorAll('#productsGrid .col-12').length;
+  productCount.textContent = `${visibleCount} productos`;
+}
+
 function escapeHtml(unsafe) {
   if (!unsafe) return '';
-  return String(unsafe).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+  return String(unsafe)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }

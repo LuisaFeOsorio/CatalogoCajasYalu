@@ -5,35 +5,547 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CajasYempaquesYALU · Catálogo al por mayor</title>
 
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Bootstrap Icons (opcional) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Estilos personalizados -->
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    :root {
+      --primary: #2c5aa0;
+      --primary-dark: #1e3d72;
+      --primary-light: #5a8de0;
+      --secondary: #ff6b6b;
+      --accent: #ffd166;
+      --light: #f8f9fa;
+      --dark: #343a40;
+      --gray: #6c757d;
+      --success: #06d6a0;
+    }
+    /* Estilos para el modal de producto - CORREGIDOS */
+    .modal-product-image {
+      width: 100%;
+      height: 300px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #f8f9fa;
+    }
+
+    .variants-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .variant-option {
+      border: 2px solid #e9ecef;
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    .variant-option:hover {
+      border-color: var(--primary-light);
+      background-color: #f8f9fa;
+      transform: translateY(-2px);
+    }
+
+    .variant-option.selected {
+      border-color: var(--primary);
+      background-color: rgba(44, 90, 160, 0.05);
+      box-shadow: 0 4px 12px rgba(44, 90, 160, 0.15);
+    }
+
+    .variant-size {
+      font-weight: 500;
+      color: #333;
+    }
+
+    .variant-price {
+      font-size: 1.1rem;
+    }
+
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin: 15px 0;
+    }
+
+    .quantity-btn {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.3rem;
+      transition: all 0.2s ease;
+    }
+
+    .quantity-btn:hover {
+      background: var(--primary-dark);
+      transform: scale(1.1);
+    }
+
+    .quantity-btn:disabled {
+      background: #6c757d;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .quantity-display {
+      font-size: 1.8rem;
+      font-weight: bold;
+      min-width: 60px;
+      text-align: center;
+      color: var(--primary);
+    }
+
+    .thumbnail-item {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .thumbnail-item:hover {
+      border-color: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    .thumbnail-item.active {
+      border-color: var(--primary);
+    }
+
+    .thumbnail-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-info-content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Contenedor de imagen en modal - MANTIENE PROPORCIONES */
+    .image-container-modal {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      max-height: 400px;
+    }
+
+    .image-container-modal img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Galería de imágenes */
+    .gallery-main-img {
+      max-height: 500px;
+      object-fit: contain;
+    }
+
+    .thumbnails-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    .thumbnails-grid .thumbnail-item {
+      width: 100%;
+      height: 100px;
+    }
+
+    /* Mejoras responsive para el modal */
+    @media (max-width: 768px) {
+      .modal-product-image {
+        height: 250px;
+      }
+
+      .quantity-selector {
+        gap: 15px;
+      }
+
+      .quantity-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+      }
+
+      .quantity-display {
+        font-size: 1.5rem;
+      }
+
+      .variant-option {
+        padding: 12px;
+      }
+
+      .image-container-modal {
+        min-height: 250px;
+        max-height: 300px;
+      }
+    }
+
+    /* Estilos para mensajes */
+    .cart-message.success {
+      color: #198754;
+      background: #d1e7dd;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #badbcc;
+    }
+
+    .cart-message.error {
+      color: #dc3545;
+      background: #f8d7da;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #f1aeb5;
+    }
+
+    .cart-message.warning {
+      color: #664d03;
+      background: #fff3cd;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #ffecb5;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+      color: #333;
+      min-height: 100vh;
+    }
+
+    /* Header mejorado */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.1;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 1.8rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .brand-subtitle {
+      font-weight: 500;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .header-info {
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    /* Tarjetas de productos mejoradas */
+    .product-card {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .product-image-container {
+      position: relative;
+      overflow: hidden;
+      height: 220px;
+    }
+
+    .product-image {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 2;
+    }
+
+    .product-info {
+      padding: 1.25rem;
+    }
+
+    .product-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+      line-height: 1.3;
+    }
+
+    .product-category {
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .product-price {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .product-description {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    .btn-add-cart {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      width: 100%;
+    }
+
+    .btn-add-cart:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Sección de combos mejorada */
+    .combo-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.75rem;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07);
+      transition: all 0.3s ease;
+      height: 100%;
+      border-left: 4px solid var(--accent);
+    }
+
+    .combo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .combo-title {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .combo-description {
+      color: var(--gray);
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .combo-list {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .combo-list li {
+      padding: 0.25rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .combo-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: bold;
+    }
+
+    .price-pill {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      padding: 0.5rem 1.25rem;
+      border-radius: 30px;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: inline-block;
+    }
+
+    .discount-badge {
+      background: var(--secondary);
+      padding: 0.4rem 0.9rem;
+      color: white;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-left: 0.5rem;
+    }
+
+    /* Botones de filtro mejorados */
+    .filter-btn {
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      border: 1px solid #dee2e6;
+    }
+
+    .filter-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .filter-btn:not(.active):hover {
+      background: #f8f9fa;
+      border-color: var(--primary-light);
+    }
+
+    /* Botón de carrito mejorado */
+    #btnViewCart {
+      background: white;
+      color: var(--primary);
+      border: 1px solid white;
+      border-radius: 10px;
+      padding: 0.5rem 1.25rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    #btnViewCart:hover {
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateY(-2px);
+    }
+
+    .cart-counter {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+    }
+
+    /* Footer mejorado */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Mejoras responsive */
+    @media (max-width: 768px) {
+      .brand-title {
+        font-size: 1.5rem;
+      }
+
+      .brand-subtitle {
+        font-size: 1rem;
+      }
+
+      .header-info {
+        font-size: 0.85rem;
+      }
+
+      .filter-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Animaciones adicionales */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .stagger-delay-1 { animation-delay: 0.1s; }
+    .stagger-delay-2 { animation-delay: 0.2s; }
+    .stagger-delay-3 { animation-delay: 0.3s; }
+    .stagger-delay-4 { animation-delay: 0.4s; }
+  </style>
 </head>
 <body class="bg-light">
 
-<!-- Header -->
-<header class="bg-white shadow-sm">
+<header class="shadow-sm">
   <div class="container py-4">
     <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3">
-      <div>
-        <h1 class="h4 mb-1">CATÁLOGO AL POR MAYOR</h1>
-        <h2 class="h6 text-muted mb-1">Compra mínima 6 unidades por referencia</h2>
-        <p class="mb-0 text-muted">Personaliza tamaños y colores</p>
-        <p class="mb-0 text-muted">🗺️Armenia-Quindío</p>
-        <p class="mb-0 text-muted">💛💙❤️ Envíos a todo el país</p>
+      <div class="position-relative z-1">
+        <h1 class="brand-title mb-1">CajasYempaquesYALU</h1>
+        <h2 class="brand-subtitle mb-2">Catálogo al por mayor</h2>
+        <div class="header-info">
+          <p class="mb-1"><i class="bi bi-check-circle me-1"></i> Compra mínima 6 unidades por referencia</p>
+          <p class="mb-1"><i class="bi bi-palette me-1"></i> Personaliza tamaños y colores</p>
+          <p class="mb-1"><i class="bi bi-geo-alt me-1"></i> Armenia - Quindío</p>
+          <p class="mb-0"><i class="bi bi-truck me-1"></i> Envíos a todo el país</p>
+        </div>
       </div>
 
-      <div class="d-flex gap-2 align-items-center">
-        <a href="detal.html" class="btn btn-outline-primary">
-          Ver catálogo al detal
+      <div class="d-flex gap-2 align-items-center position-relative z-1">
+        <a href="detal.html" class="btn btn-outline-light border-light rounded-pill px-3">
+          <i class="bi bi-grid me-1"></i>Catálogo al detal
         </a>
-
-        <button id="btnViewCart" class="btn btn-primary position-relative">
+        <button id="btnViewCart" class="btn btn-light position-relative rounded-pill px-3">
           <i class="bi bi-cart3"></i>
           <span class="ms-2 d-none d-md-inline">Ver Pedido</span>
           <span id="cart-counter" class="badge bg-danger rounded-pill cart-counter">0</span>
@@ -43,116 +555,118 @@
   </div>
 </header>
 
-<!-- Filtros -->
-<section class="py-3">
+<section class="py-4 bg-white shadow-sm">
   <div class="container">
-    <div class="row g-2 align-items-center">
+    <div class="row g-3 align-items-center">
       <div class="col-12 col-md-6">
-        <input id="searchInput" type="text" class="form-control" placeholder="Buscar productos...">
+        <div class="input-group">
+          <span class="input-group-text bg-light border-end-0"><i class="bi bi-search"></i></span>
+          <input id="searchInput" type="text" class="form-control border-start-0" placeholder="Buscar productos...">
+        </div>
       </div>
       <div class="col-12 col-md-6 text-md-end">
-        <div class="btn-group" role="group" aria-label="Filtros">
-          <button class="btn btn-outline-secondary filter-btn active" data-filter="all">Todos</button>
-          <button class="btn btn-outline-secondary filter-btn" data-filter="popular">Flores-Arreglos</button>
-          <button class="btn btn-outline-secondary filter-btn" data-filter="empaques">Empaques</button>
-          <button class="btn btn-outline-secondary filter-btn" data-filter="joyeria">Joyeria</button>
-          <button class="btn btn-outline-secondary filter-btn" data-filter="hombres">Hombres</button>
+        <div class="btn-group flex-wrap">
+          <button class="btn filter-btn active" data-filter="all">Todos</button>
+          <button class="btn filter-btn" data-filter="popular">Flores-Arreglos</button>
+          <button class="btn filter-btn" data-filter="empaques">Empaques</button>
+          <button class="btn filter-btn" data-filter="joyeria">Joyería</button>
+          <button class="btn filter-btn" data-filter="hombres">Hombres</button>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Combos mejorados -->
-<section id="combosSection" class="pb-3">
+<section id="combosSection" class="py-5">
   <div class="container">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <h3 class="h5 mb-0">💼 Combos para Negocios</h3>
-      <a class="btn btn-success btn-sm" href="https://wa.me/573007276599?text=Hola,%20quiero%20hacer%20mi%20pedido" target="_blank">
-        💬 Confirmar (WhatsApp)
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h2 class="h3 fw-bold text-primary mb-1">Combos para Negocios</h2>
+        <p class="text-muted mb-0">Ahorra comprando nuestros combos especiales</p>
+      </div>
+      <a class="btn btn-success rounded-pill px-4" href="https://wa.me/573007276599?text=Hola,%20quiero%20hacer%20mi%20pedido" target="_blank">
+        <i class="bi bi-whatsapp me-2"></i>Confirmar Pedido
       </a>
     </div>
 
-    <div class="combo-grid">
-      <article class="combo-card featured">
-
-        <div class="combo-info">
-          <h3>Combo Primavera</h3>
-          <p class="text-muted">Ideal para flores 🌻 y anchetas • Personaliza colores</p>
-          <ul>
+    <div class="row g-4">
+      <div class="col-md-6 fade-in stagger-delay-1">
+        <article class="combo-card h-100">
+          <h3 class="combo-title">Combo Primavera</h3>
+          <p class="combo-description">Ideal para flores y anchetas • Personaliza colores</p>
+          <ul class="combo-list">
             <li>6 Corazones 25×10 cm</li>
             <li>6 Cilindros 16×13 cm</li>
             <li>6 Cuadradas 16×13 cm</li>
             <li>18 unidades totales</li>
           </ul>
-
-          <div class="combo-price">
+          <div class="d-flex align-items-center">
             <div class="price-pill">$140,000</div>
             <div class="discount-badge">-6%</div>
           </div>
-        </div>
-      </article>
+        </article>
+      </div>
 
-      <article class="combo-card">
-
-        <div class="combo-info">
-          <h3>Combo Brillante</h3>
-          <p class="text-muted">Perfecto para joyería 💍 • Elegante y resistente</p>
-          <ul>
+      <div class="col-md-6 fade-in stagger-delay-2">
+        <article class="combo-card h-100">
+          <h3 class="combo-title">Combo Brillante</h3>
+          <p class="combo-description">Perfecto para joyería • Elegante y resistente</p>
+          <ul class="combo-list">
             <li>6 cajas 5×5×3 cm</li>
             <li>6 cajas 7×7×4 cm</li>
             <li>6 cajas 10×10×4 cm</li>
             <li>18 unidades totales</li>
           </ul>
-
-          <div class="combo-price">
+          <div class="d-flex align-items-center">
             <div class="price-pill">$55,000</div>
             <div class="discount-badge">-6%</div>
-
           </div>
-        </div>
-      </article>
+        </article>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Productos -->
-<main class="container mb-5">
-  <div id="productsGrid" class="row g-3">
-    <!-- Productos dinámicos -->
+<main class="container my-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="h3 fw-bold text-primary">Nuestros Productos</h2>
+    <span id="product-count" class="badge bg-primary">0 productos</span>
+  </div>
+
+  <div id="productsGrid" class="row g-4">
+    <!-- Los productos se cargarán aquí desde script.js -->
+  </div>
+
+  <div id="no-products" class="text-center py-5 d-none">
+    <i class="bi bi-search display-4 text-muted mb-3"></i>
+    <h3 class="h4 text-muted">No se encontraron productos</h3>
+    <p class="text-muted">Intenta con otros términos de búsqueda o filtros</p>
   </div>
 </main>
 
-<!-- Footer -->
-<footer class="bg-white py-3">
-  <div class="container text-center small text-muted">
-    <p class="mb-0">Las cajas se realizan bajo pedido</p>
-    <p class="mb-0">© 2025 CatalogoCajasYalu · Contacto: 3007276599</p>
+<footer class="bg-dark text-white">
+  <div class="container text-center">
+    <div class="footer-content">
+      <p class="mb-1">Las cajas se realizan bajo pedido</p>
+      <p class="mb-0">© 2025 CajasYempaquesYALU · Contacto: 3007276599</p>
+    </div>
   </div>
 </footer>
 
-<!-- Modal Producto (Bootstrap) -->
-<div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+<!-- Modales -->
+<div class="modal fade" id="productModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content" id="productModalContent">
-      <!-- Llenado por JS -->
-    </div>
+    <div class="modal-content" id="productModalContent"></div>
   </div>
 </div>
 
-<!-- Modal Imágenes (Bootstrap) -->
-<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="imageModal" tabindex="-1">
   <div class="modal-dialog modal-xl modal-dialog-centered">
-    <div class="modal-content" id="imageModalContent">
-      <!-- Llenado por JS -->
-    </div>
+    <div class="modal-content" id="imageModalContent"></div>
   </div>
 </div>
 
-<!-- Bootstrap JS bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- App script -->
 <script src="js/script.js"></script>
 </body>
 </html>
