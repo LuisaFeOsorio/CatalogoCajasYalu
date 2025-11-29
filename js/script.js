@@ -300,9 +300,9 @@ const products = [
       "y el moño, aumenta $1,000",
 
     category: "joyeria",
-    image: "img/reloj.jpeg",
+    image: "img/Relojnuevo.png",
     images: [
-      "img/reloj.jpeg",
+      "img/Relojnuevo.png",
       "img/reloj2.jpeg"
     ],
     variants: [
@@ -312,8 +312,7 @@ const products = [
   {
     id: 60,
     name: "Joyas #1",
-    description: "Disponible en color blanco" +
-      "y el moño, aumenta $1,000",
+    description: "Disponible en color blanco, resistentes y elegantes",
 
     category: "joyeria",
     image: "img/joyasluxury.jpeg",
@@ -422,8 +421,9 @@ const products = [
     name: "Joyeros #6",
     description: "Base y tapas forradas en multiples colores, incluye nido en cartón",
     category: "joyeria",
-    image: "img/estilo4.png",
+    image: "img/joyasCuadradasLogo.png",
     images: [
+      "img/joyasCuadradasLogo.png",
       "img/estilo4.png"
     ],
     variants: [
@@ -506,7 +506,33 @@ const products = [
       {size: "20cm x 12cm x 6cm", price: "$2,400"},
       {size: "25cm x 20cm x 6cm", price: "$3,500"},
       {size: "30cm x 25cm x 6cm", price: "$4,200"}],
+  },
+  {
+    id: 96,
+    name: "Empaques 3 separaciones",
+    description: "Disponible en color blanco, ideal para chocolates, galletas... PRECIO CON VENTANA AUMENTA $600",
+    category: "empaques",
+    image: "img/3separaciones2.jpg",
+    images: [
+      "img/3separaciones2.jpg",
+      "img/3separaciones.png"
 
+    ],
+    variants: [
+      {size: "6cm largo x 18 cm ancho x 5cm profundo", price: "$2,300"},
+      {size: "8cm largo x 24cm ancho x 5cm profundo", price: "$3,000"},
+      {size: "10cm largo x 30cm ancho x 6cm profundo", price: "$3,900"}],
+  },
+  {
+    id: 97,
+    name: "Empaques para cupcakes",
+    description: "Se recomienda que verifiques las medidas con base a tus productos, caja con ventana aumenta $600",
+    category: "empaques",
+    image: "img/cupcakes.png",
+
+    variants: [
+      {size: "Para 6: 24cm largo x 16 cm ancho x 10cm profundo", price: "$3,800"},
+      {size: "Para 12: 33cm largo x 26cm ancho x 10cm profundo", price: "$5,500"},]
   },
   {
     id: 9,
