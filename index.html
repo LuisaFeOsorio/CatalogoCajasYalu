@@ -23,6 +23,186 @@
       --gray: #6c757d;
       --success: #06d6a0;
     }
+
+    /* Estilos para la nueva sección de empaques */
+    .empaques-banner {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      margin: 2rem 0;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      transition: all 0.4s ease;
+    }
+
+    .empaques-banner:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .empaques-content {
+      padding: 3rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .empaques-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .empaques-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      max-width: 500px;
+    }
+
+    .empaques-btn {
+      background: var(--accent);
+      color: var(--dark);
+      border: none;
+      border-radius: 50px;
+      padding: 0.8rem 2rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .empaques-btn:hover {
+      background: white;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .empaques-images {
+      position: relative;
+      height: 30%;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .empaque-img {
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s ease;
+      object-fit: cover; /* Esto asegura que la imagen mantenga proporciones */
+    }
+
+    /* Tamaños fijos para las imágenes - siempre pequeñas */
+    .empaque-img-1 {
+      width: 180px !important;
+      height: 180px !important;
+      top: 20px;
+      right: 30px;
+      z-index: 3;
+      position: absolute;
+    }
+
+    .empaque-img-2 {
+      width: 160px !important;
+      height: 160px !important;
+      top: 60px;
+      right: 220px;
+      z-index: 2;
+      transform: rotate(-5deg);
+      position: absolute;
+    }
+
+    .empaque-img-3 {
+      width: 140px !important;
+      height: 140px !important;
+      bottom: 0px;
+      right: 150px;
+      z-index: 1;
+      transform: rotate(5deg);
+      position: absolute;
+    }
+
+    .empaques-banner:hover .empaque-img-1 {
+      transform: translateY(-10px) rotate(2deg);
+    }
+
+    .empaques-banner:hover .empaque-img-2 {
+      transform: translateY(-5px) rotate(-8deg);
+    }
+
+    .empaques-banner:hover .empaque-img-3 {
+      transform: translateY(-5px) rotate(8deg);
+    }
+
+    .empaques-banner::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+      z-index: 1;
+    }
+
+    @media (max-width: 992px) {
+      .empaques-content {
+        padding: 2rem;
+      }
+
+      .empaques-title {
+        font-size: 2rem;
+      }
+
+      .empaque-img-1 {
+        width: 150px !important;
+        height: 150px !important;
+        right: 20px;
+      }
+
+      .empaque-img-2 {
+        width: 130px !important;
+        height: 130px !important;
+        right: 170px;
+      }
+
+      .empaque-img-3 {
+        width: 110px !important;
+        height: 110px !important;
+        right: 110px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .empaques-banner {
+        text-align: center;
+      }
+
+      .empaques-images {
+        min-height: 200px;
+        margin-top: 2rem;
+      }
+
+      .empaque-img-1 {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 0 auto 1rem;
+        width: 150px !important;
+        height: 150px !important;
+      }
+
+      .empaque-img-2, .empaque-img-3 {
+        display: none;
+      }
+    }
+
     /* Estilos para el modal de producto - CORREGIDOS */
     .modal-product-image {
       width: 100%;
@@ -554,6 +734,31 @@
     </div>
   </div>
 </header>
+
+<!-- Nueva sección de empaques llamativa -->
+<section class="container mt-4">
+  <div class="empaques-banner">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <div class="empaques-content">
+          <h2 class="empaques-title">¿Buscas estos empaques?</h2>
+          <p class="empaques-subtitle">Descubre nuestra exclusiva colección de empaques especializados para todo tipo de productos. Calidad, diseño y funcionalidad en un solo lugar.</p>
+          <a href="https://luisafeosorio.github.io/catalogoEmpaques/" class="empaques-btn" target="_blank">
+            <span>Da click aquí</span>
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="empaques-images">
+          <img src="img/joyasimple2.jpeg" alt="Empaques con separaciones" class="empaque-img empaque-img-2">
+          <img src="img/sencillaAcetato.jpeg" alt="Caja sencilla de acetato" class="empaque-img empaque-img-1">
+          <img src="img/cupcakes.png" alt="Empaque elegante" class="empaque-img empaque-img-3">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="py-4 bg-white shadow-sm">
   <div class="container">
