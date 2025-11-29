@@ -620,23 +620,22 @@ function renderProducts(list) {
 
   list.forEach(product => {
     const col = document.createElement('div');
-    col.className = 'col-12 col-sm-6 col-md-4 col-lg-3';
+    col.className = 'col-12 col-sm-6 col-md-4 col-lg-3 mb-3';
 
     col.innerHTML = `
       <div class="card h-100 shadow-sm position-relative">
         <div class="position-relative">
           <div class="image-container">
             <img src="${product.image}" alt="${escapeHtml(product.name)}" class="product-image"
-                 onerror="this.src='https://via.placeholder.com/1000x1000/667eea/ffffff?text=Sin+imagen'">
+                 onerror="this.src='https://via.placeholder.com/500x500/667eea/ffffff?text=Sin+imagen'">
           </div>
-
         </div>
-        <div class="card-body d-flex flex-column">
-          <h5 class="mb-1">${escapeHtml(product.name)}</h5>
-          <p class="text-muted small mb-2">${escapeHtml((product.description || '').substring(0, 80))}${product.description && product.description.length > 80 ? '...' : ''}</p>
+        <div class="card-body d-flex flex-column p-3">
+          <h5 class="mb-1 product-title">${escapeHtml(product.name)}</h5>
+          <p class="text-muted small mb-2 product-description">${escapeHtml((product.description || '').substring(0, 60))}${product.description && product.description.length > 60 ? '...' : ''}</p>
           <div class="mt-auto d-flex justify-content-between align-items-center">
             <div>
-              <div class="fw-bold">${product.variants ? 'Desde ' + product.variants[0].price : (product.price || '')}</div>
+              <div class="fw-bold text-primary">${product.variants ? 'Desde ' + product.variants[0].price : (product.price || '')}</div>
               <small class="text-muted">Mínimo: ${MIN_ORDER_QTY} u.</small>
             </div>
             <button class="btn btn-sm btn-primary btn-view" data-id="${product.id}">Ver</button>
@@ -648,7 +647,10 @@ function renderProducts(list) {
     productsGrid.appendChild(col);
   });
 
-  // Delegación
+  // Actualizar contador de productos
+  document.getElementById('product-count').textContent = `${list.length} productos`;
+
+  // Delegación de eventos
   productsGrid.querySelectorAll('.btn-view').forEach(btn => {
     btn.addEventListener('click', () => {
       const id = parseInt(btn.dataset.id, 10);

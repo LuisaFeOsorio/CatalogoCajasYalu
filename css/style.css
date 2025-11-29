@@ -1,89 +1,211 @@
-/* Estilos mejorados para el modal de producto */
-.modal-product-image {
+/* Estilos responsive para móviles */
+@media (max-width: 768px) {
+  /* Header responsive */
+  header {
+    padding: 1.5rem 0 !important;
+  }
+
+  .brand-title {
+    font-size: 2rem !important;
+    text-align: center;
+  }
+
+  .brand-subtitle {
+    font-size: 1.2rem !important;
+    text-align: center;
+  }
+
+  .header-highlight {
+    padding: 1rem !important;
+  }
+
+  .header-info p {
+    font-size: 0.9rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Botones del header en móvil */
+  .d-flex.gap-3 {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem !important;
+  }
+
+  .d-flex.gap-3 .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Filtros responsive */
+  .btn-group.flex-wrap {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .filter-btn {
+    flex: 1;
+    min-width: 120px;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  /* Contenedor de imágenes responsive */
+  .image-container {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  /* Modal responsive */
+  .modal-dialog {
+    margin: 0.5rem;
+  }
+
+  .modal-body .row {
+    flex-direction: column;
+  }
+
+  .image-container-modal {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 1rem;
+  }
+
+  .modal-product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  /* Thumbnails en móvil */
+  #modalThumbnails {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .thumbnail-item {
+    flex: 0 0 auto;
+    width: 80px;
+    height: 80px;
+  }
+
+  .thumbnail-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Sección de empaques responsive */
+  .empaques-banner {
+    margin: 1rem 0;
+  }
+
+  .empaques-content {
+    padding: 1.5rem !important;
+    text-align: center;
+  }
+
+  .empaques-title {
+    font-size: 1.5rem !important;
+  }
+
+  .empaques-subtitle {
+    font-size: 1rem !important;
+  }
+
+  .empaque-img {
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  /* Combos responsive */
+  .combo-card {
+    padding: 1.25rem;
+  }
+
+  .combo-title {
+    font-size: 1.1rem;
+  }
+
+  /* Grid de productos responsive */
+  .col-12.col-sm-6.col-md-4.col-lg-3 {
+    padding: 0.5rem;
+  }
+
+  .card {
+    margin-bottom: 0.5rem;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  /* Botones en móvil */
+  .btn-view {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Estilos generales para imágenes */
+.image-container {
+  position: relative;
   width: 100%;
-  height: 300px;
+  overflow: hidden;
+}
+
+.image-container::before {
+  content: "";
+  display: block;
+  padding-top: 100%; /* Mantiene relación 1:1 */
+}
+
+.product-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Mejoras para el modal en todos los dispositivos */
+.image-container-modal {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
   border-radius: 12px;
 }
 
-.variants-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.image-container-modal::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
 }
 
-.variant-option {
-  border: 2px solid #e9ecef;
-  border-radius: 12px;
-  padding: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background: white;
+.modal-product-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
 }
 
-.variant-option:hover {
-  border-color: var(--primary-light);
-  background-color: #f8f9fa;
-  transform: translateY(-2px);
-}
-
-.variant-option.selected {
-  border-color: var(--primary);
-  background-color: rgba(44, 90, 160, 0.05);
-  box-shadow: 0 4px 12px rgba(44, 90, 160, 0.15);
-}
-
-.variant-size {
-  font-weight: 500;
-  color: #333;
-}
-
-.variant-price {
-  font-size: 1.1rem;
-}
-
-.quantity-selector {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  margin: 15px 0;
-}
-
-.quantity-btn {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background: var(--primary);
-  color: white;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.3rem;
-  transition: all 0.2s ease;
-}
-
-.quantity-btn:hover {
-  background: var(--primary-dark);
-  transform: scale(1.1);
-}
-
-.quantity-btn:disabled {
-  background: #6c757d;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.quantity-display {
-  font-size: 1.8rem;
-  font-weight: bold;
-  min-width: 60px;
-  text-align: center;
-  color: var(--primary);
-}
-
+/* Thumbnails mejorados */
 .thumbnail-item {
   width: 80px;
   height: 80px;
@@ -92,12 +214,6 @@
   cursor: pointer;
   border: 2px solid transparent;
   transition: all 0.2s ease;
-  flex-shrink: 0;
-}
-
-.thumbnail-item:hover {
-  border-color: var(--primary-light);
-  transform: translateY(-2px);
 }
 
 .thumbnail-item.active {
@@ -110,87 +226,34 @@
   object-fit: cover;
 }
 
-.product-info-content {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Mejoras responsive para el modal */
-@media (max-width: 768px) {
-  .modal-product-image {
-    height: 250px;
-  }
-
-  .quantity-selector {
-    gap: 15px;
-  }
-
-  .quantity-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1.1rem;
-  }
-
-  .quantity-display {
-    font-size: 1.5rem;
-  }
-
-  .variant-option {
-    padding: 12px;
-  }
-}
-
-/* Mejora para el contenedor de imagen */
-.image-container {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #f8f9fa;
-}
-
-.image-container img {
-  transition: opacity 0.3s ease;
-}
-
-/* Estilos para mensajes */
-.cart-message.success {
-  color: #198754;
-  background: #d1e7dd;
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid #badbcc;
-}
-
-.cart-message.error {
-  color: #dc3545;
-  background: #f8d7da;
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid #f1aeb5;
-}
-
-.cart-message.warning {
-  color: #664d03;
-  background: #fff3cd;
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid #ffecb5;
-}
-.gallery-main-img {
-  max-height: 500px;
-  object-fit: contain;
-}
-
+/* Mejoras para la galería de imágenes */
 .thumbnails-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  max-height: 500px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  max-height: 400px;
   overflow-y: auto;
 }
 
-.thumbnails-grid .thumbnail-item {
+.gallery-main-img {
   width: 100%;
-  height: 100px;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* Corrección para el botón de carrito en móvil */
+@media (max-width: 576px) {
+  #btnViewCart {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cart-counter {
+    top: -5px;
+    right: -5px;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.4rem;
+  }
 }

@@ -1,280 +1,341 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CajasYempaquesYALU · Catálogo al por mayor</title>
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo Profesional | Cajas y empaques YALU</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <style>
     :root {
-      --primary: #2c5aa0;
-      --primary-dark: #1e3d72;
-      --primary-light: #5a8de0;
-      --secondary: #ff6b6b;
-      --accent: #ffd166;
-      --gold: #d4af37;
-      --light: #f8f9fa;
-      --dark: #343a40;
-      --gray: #6c757d;
-      --success: #06d6a0;
+      --primary-color: #2563eb;    /* Azul profesional */
+      --secondary-color: #059669;  /* Verde confianza */
+      --accent-color: #7c3aed;     /* Púrpura llamativo */
+      --light-bg: #f8fafc;         /* Fondo claro */
+      --dark-bg: #1e293b;          /* Fondo oscuro */
+      --text-dark: #334155;        /* Texto principal */
+      --text-light: #64748b;       /* Texto secundario */
+      --white: #ffffff;
+      --success: #10b981;          /* Verde éxito */
     }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
-      color: #333;
-      min-height: 100vh;
-    }
-
-    /* Header mejorado - Más grande y elegante */
-    header {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: white;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+    /* Sección de cajas especiales centrada con imagen */
+    .special-box-section {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f7fa 100%);
+      border-radius: 20px;
+      padding: 3rem;
+      margin: 3rem auto;
+      max-width: 1000px;
       position: relative;
       overflow: hidden;
-      padding: 3rem 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e0f2fe;
     }
 
-    header::before {
-      content: "";
+    .special-box-section::before {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-      opacity: 0.1;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232563eb' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
     }
 
-    .brand-title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      letter-spacing: 2px;
-      font-size: 3.5rem;
-      margin-bottom: 0.5rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-    }
-
-    .brand-subtitle {
-      font-family: 'Playfair Display', serif;
-      font-weight: 400;
-      font-size: 1.8rem;
-      opacity: 0.9;
-      margin-bottom: 2rem;
-      letter-spacing: 1px;
-    }
-
-    .header-info {
-      font-size: 1.1rem;
-      opacity: 0.9;
-      margin-bottom: 1.5rem;
-    }
-
-    .header-info p {
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-    }
-
-    .header-info i {
-      margin-right: 10px;
-      font-size: 1.2rem;
-      color: var(--gold);
-    }
-
-    .header-highlight {
-      background: rgba(255,255,255,0.1);
-      padding: 1.5rem;
-      border-radius: 15px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-
-    /* Nueva sección de empaques simplificada */
-    .empaques-banner {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: white;
-      border-radius: 20px;
-      overflow: hidden;
-      position: relative;
-      margin: 2rem 0;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-      transition: all 0.4s ease;
-    }
-
-    .empaques-banner:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    }
-
-    .empaques-content {
-      padding: 3rem;
+    .special-box-content {
       position: relative;
       z-index: 2;
     }
 
-    .empaques-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      font-weight: 700;
+    .special-box-title {
+      font-size: 2rem;
+      color: var(--dark-bg);
       margin-bottom: 1rem;
-      line-height: 1.2;
+      font-weight: 700;
     }
 
-    .empaques-subtitle {
-      font-size: 1.2rem;
+    .special-box-description {
+      font-size: 1.1rem;
+      color: var(--text-light);
       margin-bottom: 2rem;
-      opacity: 0.9;
       max-width: 500px;
     }
 
-    .empaques-btn {
-      background: var(--gold);
-      color: var(--dark);
-      border: none;
-      border-radius: 50px;
-      padding: 0.8rem 2rem;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
+    .special-box-link {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(135deg, var(--accent-color), #6d28d9);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
     }
 
-    .empaques-btn:hover {
-      background: white;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      color: var(--primary-dark);
+    .special-box-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+      color: white;
     }
 
-    .empaques-image {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
+    .special-box-image {
+      position: relative;
+      z-index: 2;
     }
 
-    .empaque-img {
-      width: 220px;
-      height: 220px;
-      border-radius: 15px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      transition: all 0.4s ease;
-      object-fit: cover;
-      border: 3px solid rgba(255,255,255,0.3);
+    .special-box-image img {
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+      max-height: 200px;
+      width: auto;
     }
 
-    .empaques-banner:hover .empaque-img {
-      transform: translateY(-5px) rotate(2deg);
+    .special-box-image:hover img {
+      transform: scale(1.05);
     }
 
-    .empaques-banner::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 40%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-      z-index: 1;
-    }
-
+    /* Responsive para la sección especial */
     @media (max-width: 768px) {
-      .empaques-banner {
+      .special-box-section {
+        padding: 2rem 1.5rem;
+        margin: 2rem 1rem;
         text-align: center;
       }
 
-      .empaques-content {
-        padding: 2rem;
+      .special-box-title {
+        font-size: 1.6rem;
       }
 
-      .empaques-title {
-        font-size: 2rem;
+      .special-box-image {
+        margin-top: 2rem;
       }
 
-      .empaque-img {
-        width: 180px;
-        height: 180px;
+      .special-box-image img {
+        max-height: 150px;
       }
     }
 
-    /* Resto de estilos (se mantienen igual que antes) */
-    .filter-btn {
-      border-radius: 8px;
+    /* Responsive para la sección especial */
+    @media (max-width: 768px) {
+      .special-box-section {
+        padding: 2rem 1.5rem;
+        margin: 2rem 1rem;
+        text-align: center;
+      }
+
+      .special-box-title {
+        font-size: 1.6rem;
+      }
+
+      .special-box-image {
+        margin-top: 2rem;
+      }
+
+      .special-box-image img {
+        max-height: 150px;
+      }
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--light-bg);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--dark-bg);
+    }
+
+    /* Navbar profesional */
+    .custom-navbar {
+      background: linear-gradient(135deg, var(--white) 0%, #f1f5f9 100%) !important;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .custom-navbar.scrolled {
+      box-shadow: 0 4px 20px rgba(30, 41, 59, 0.1);
+    }
+
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--primary-color) !important;
+      font-weight: 700;
+    }
+
+    .navbar-nav .nav-link {
+      color: var(--text-dark) !important;
+      font-weight: 500;
+      transition: color 0.3s ease;
       padding: 0.5rem 1rem;
-      font-weight: 500;
-      transition: all 0.2s ease;
-      border: 1px solid #dee2e6;
     }
 
-    .filter-btn.active {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
+    .navbar-nav .nav-link:hover {
+      color: var(--primary-color) !important;
     }
 
-    .filter-btn:not(.active):hover {
-      background: #f8f9fa;
-      border-color: var(--primary-light);
+    /* Hero Section - Gradiente profesional */
+    .hero-section {
+      background: linear-gradient(135deg, var(--white) 0%, #f0f9ff 50%, #e0f2fe 100%);
+      color: var(--text-dark);
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    #btnViewCart {
-      background: white;
-      color: var(--primary);
-      border: 1px solid white;
-      border-radius: 10px;
-      padding: 0.5rem 1.25rem;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
-
-    #btnViewCart:hover {
-      background: rgba(255, 255, 255, 0.9);
-      transform: translateY(-2px);
-    }
-
-    .cart-counter {
+    .hero-section::before {
+      content: '';
       position: absolute;
-      top: -8px;
-      right: -8px;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232563eb' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
 
+    .hero-section .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    /* Botones profesionales */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #1d4ed8 100%);
+      border: none;
+      padding: 12px 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+      color: white;
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, var(--secondary-color) 0%, #047857 100%);
+      border: none;
+      padding: 12px 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+    }
+
+    .btn-success:hover {
+      background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4);
+      color: white;
+    }
+
+    .btn-outline-primary {
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      background: transparent;
+      padding: 10px 25px;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-primary:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    /* Secciones */
+    .section-padding {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--dark-bg);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      margin-bottom: 3rem;
+      max-width: 600px;
+    }
+
+    /* Cards de productos */
     .product-card {
-      aspect-ratio: 1 / 1;
-      width: 100%;
-      object-fit: cover;
-      border-radius: 12px 12px 0 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: 12px;
+      background: var(--white);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      height: 100%;
     }
 
     .product-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
     }
 
-    .product-image-container {
-      position: relative;
-      overflow: hidden;
+    .product-img {
       height: 220px;
-    }
-
-    .product-image {
-      aspect-ratio: 1 / 1;
-      width: 100%;
       object-fit: cover;
-      border-radius: 12px 12px 0 0;
+      transition: transform 0.3s ease;
     }
 
-    .product-card:hover .product-image {
+    .product-card:hover .product-img {
       transform: scale(1.05);
     }
 
@@ -283,343 +344,1138 @@
       top: 12px;
       right: 12px;
       z-index: 2;
-    }
-
-    .product-info {
-      padding: 1.25rem;
-    }
-
-    .product-title {
-      font-weight: 600;
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      color: var(--dark);
-      line-height: 1.3;
-    }
-
-    .product-category {
+      background: linear-gradient(135deg, var(--accent-color), #6d28d9);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
       font-size: 0.8rem;
-      color: var(--gray);
-      margin-bottom: 0.5rem;
+      font-weight: 600;
     }
 
     .product-price {
       font-weight: 700;
-      font-size: 1.25rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      color: var(--primary-color);
     }
 
-    .product-description {
-      font-size: 0.9rem;
-      color: var(--gray);
-      margin-bottom: 1rem;
-      line-height: 1.4;
-    }
-
-    .btn-add-cart {
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 0.5rem 1rem;
-      font-weight: 500;
-      transition: all 0.2s ease;
-      width: 100%;
-    }
-
-    .btn-add-cart:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-    }
-
-    .combo-card {
-      background: white;
-      border-radius: 16px;
-      padding: 1.75rem;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07);
-      transition: all 0.3s ease;
-      height: 100%;
-      border-left: 4px solid var(--accent);
-    }
-
-    .combo-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .combo-title {
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-
-    .combo-description {
-      color: var(--gray);
-      margin-bottom: 1.25rem;
-      font-size: 0.95rem;
-    }
-
-    .combo-list {
-      list-style: none;
-      padding-left: 0;
-      margin-bottom: 1.5rem;
-    }
-
-    .combo-list li {
-      padding: 0.25rem 0;
+    /* Sección de cajas especiales centrada */
+    .special-box-section {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f7fa 100%);
+      border-radius: 20px;
+      padding: 3rem;
+      margin: 3rem auto;
+      max-width: 800px;
+      text-align: center;
       position: relative;
-      padding-left: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e0f2fe;
     }
 
-    .combo-list li::before {
-      content: "✓";
+    .special-box-section::before {
+      content: '';
       position: absolute;
+      top: 0;
       left: 0;
-      color: var(--success);
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232563eb' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+
+    .special-box-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .special-box-title {
+      font-size: 2rem;
+      color: var(--dark-bg);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .special-box-description {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .special-box-link {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(135deg, var(--accent-color), #6d28d9);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+    }
+
+    .special-box-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+      color: white;
+    }
+
+    /* Estilos para la galería de productos */
+    .product-gallery {
+      position: relative;
+    }
+
+    .main-image {
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--white);
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .main-image img {
+      transition: transform 0.3s ease;
+      width: 100%;
+      height: auto;
+    }
+
+    .thumbnail-container {
+      margin-top: 15px;
+    }
+
+    .thumbnail-img {
+      width: 100%;
+      height: 80px;
+      object-fit: cover;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .thumbnail-img:hover {
+      border-color: var(--primary-color);
+      transform: scale(1.05);
+    }
+
+    .thumbnail-img.active {
+      border-color: var(--primary-color);
+      border-width: 3px;
+    }
+
+    /* Estilos para variantes de productos */
+    .variant-option {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px 15px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .variant-option:hover {
+      border-color: var(--primary-color);
+      background-color: #f0f9ff;
+    }
+
+    .variant-option.selected {
+      border-color: var(--primary-color);
+      background-color: #f0f9ff;
+    }
+
+    .variant-size {
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .variant-price {
+      color: var(--primary-color);
       font-weight: bold;
     }
 
-    .price-pill {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-      padding: 0.5rem 1.25rem;
-      border-radius: 30px;
-      color: white;
-      font-weight: 700;
-      font-size: 1.1rem;
-      display: inline-block;
-    }
-
-    .discount-badge {
-      background: var(--secondary);
-      padding: 0.4rem 0.9rem;
-      color: white;
+    /* Beneficios */
+    .benefits-section {
+      background: linear-gradient(135deg, var(--white) 0%, #f8fafc 100%);
       border-radius: 20px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      display: inline-block;
-      margin-left: 0.5rem;
+      padding: 3rem;
+      margin: 2rem 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     }
 
-    footer {
-      background: var(--dark);
+    .benefit-item {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .benefit-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
       color: white;
-      padding: 2rem 0;
-      margin-top: 3rem;
+      font-size: 1.5rem;
     }
 
-    .footer-content {
-      font-size: 0.9rem;
-      opacity: 0.8;
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--dark-bg) 0%, #0f172a 100%);
+      color: var(--white);
     }
 
+    /* Botón flotante de WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 1000;
+    }
+
+    .whatsapp-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      border-radius: 50%;
+      text-decoration: none;
+      font-size: 24px;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-link:hover {
+      background: linear-gradient(135deg, #128C7E, #0a6e5a);
+      color: white;
+      transform: scale(1.1);
+    }
+
+    /* Responsive */
     @media (max-width: 768px) {
-      .brand-title {
-        font-size: 2.5rem;
+      .hero-section h1 {
+        font-size: 2.2rem;
       }
 
-      .brand-subtitle {
-        font-size: 1.4rem;
+      .section-padding {
+        padding: 60px 0;
       }
 
-      .header-info {
-        font-size: 1rem;
+      .section-title {
+        font-size: 2rem;
       }
 
-      .filter-btn {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
+      .thumbnail-img {
+        height: 60px;
       }
 
-      header {
-        padding: 2rem 0;
+      .benefits-section {
+        padding: 2rem 1rem;
+      }
+
+      .special-box-section {
+        padding: 2rem 1.5rem;
+        margin: 2rem 1rem;
+      }
+
+      .special-box-title {
+        font-size: 1.6rem;
       }
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .fade-in {
-      animation: fadeIn 0.5s ease forwards;
-    }
-
-    .stagger-delay-1 { animation-delay: 0.1s; }
-    .stagger-delay-2 { animation-delay: 0.2s; }
-    .stagger-delay-3 { animation-delay: 0.3s; }
-    .stagger-delay-4 { animation-delay: 0.4s; }
   </style>
 </head>
-<body class="bg-light">
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top custom-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <i class="fas fa-box me-2"></i>
+      YALU
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<header class="shadow-sm">
-  <div class="container py-4">
-    <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-4">
-      <div class="position-relative z-1 flex-grow-1">
-        <h1 class="brand-title mb-2">CajasYempaquesYALU</h1>
-        <h2 class="brand-subtitle mb-4">Catálogo al por mayor</h2>
+  </div>
+</nav>
 
-        <div class="header-highlight mb-4">
-          <div class="header-info">
-            <p><i class="bi bi-check-circle"></i> Compra mínima 6 unidades por referencia</p>
-            <p><i class="bi bi-palette"></i> Personaliza tamaños y colores</p>
-            <p><i class="bi bi-geo-alt"></i> Armenia - Quindío</p>
-            <p><i class="bi bi-truck"></i> Envíos a todo el país</p>
-          </div>
+<!-- Hero Section -->
+<section id="inicio" class="hero-section">
+  <div class="container">
+    <div class="row align-items-center min-vh-80">
+      <div class="col-lg-6">
+        <span class="hero-badge">
+          <i class="fas fa-star me-2"></i>Calidad Garantizada
+        </span>
+        <h1 class="display-5 fw-bold mb-4">Empaques Profesionales para tu Negocio</h1>
+        <p class="lead mb-4">Ofrecemos cajas y empaques de alta calidad que realzan el valor de tus productos y generan confianza en tus clientes.</p>
+        <div class="d-flex flex-wrap gap-3">
+          <button class="btn btn-primary btn-lg" onclick="scrollToSection('productos')">
+            <i class="fas fa-box-open me-2"></i>Ver Catálogo
+          </button>
+
+        </div>
+        <div class="mt-4">
+          <p class="text-muted">
+            <i class="fas fa-check-circle text-success me-2"></i>
+            Venta al por mayor - Mínimo 6 unidades por referencia
+          </p>
         </div>
       </div>
 
-      <div class="d-flex gap-3 align-items-center position-relative z-1">
-        <a href="detal.html" class="btn btn-outline-light border-light rounded-pill px-4 py-2">
-          <i class="bi bi-grid me-2"></i>Catálogo al detal
-        </a>
-        <button id="btnViewCart" class="btn btn-light position-relative rounded-pill px-4 py-2">
-          <i class="bi bi-cart3"></i>
-          <span class="ms-2 d-none d-md-inline">Ver Pedido</span>
-          <span id="cart-counter" class="badge bg-danger rounded-pill cart-counter">0</span>
+    </div>
+  </div>
+</section>
+
+<section id="productos" class="section-padding bg-white">
+  <div class="container">
+
+    <div class="special-box-section">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <div class="special-box-content">
+            <h3 class="special-box-title">¿Buscas empaques para tus productos?</h3>
+            <p class="special-box-description">
+              Descubre nuestra línea de cajas especiales para productos únicos.
+              Diseños personalizados para hacer
+              que tus productos destaquen.
+            </p>
+            <a href="https://luisafeosorio.github.io/catalogoEmpaques/" class="special-box-link" target="_blank">
+              <i class="fas fa-external-link-alt me-2"></i>
+              Ver catálogo de cajas especiales
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 text-center">
+          <div class="special-box-image">
+            <img src="img/CintaRosa.jpeg"
+                 alt="Cajas especiales personalizadas"
+                 class="img-fluid rounded-3 shadow-sm">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mb-5">
+      <h2 class="section-title">Nuestros Productos</h2>
+      <p class="section-subtitle mx-auto">Descubre nuestra amplia gama de empaques y cajas para todo tipo de productos</p>
+    </div>
+    <div class="row g-4" id="productos-grid">
+      <!-- Los productos se cargarán dinámicamente desde JavaScript -->
+    </div>
+
+    <!-- Sección de cajas especiales centrada -->
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="contacto" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h4 class="mb-3">
+          <i class="fas fa-box me-2"></i>
+          YALU Empaques
+        </h4>
+        <p class="mb-4">Especialistas en empaques y cajas de alta calidad para negocios y emprendedores.</p>
+        <div class="d-flex flex-column">
+          <p class="mb-2">
+            <i class="fas fa-phone me-2"></i>
+            +57 300 727 6599
+          </p>
+          <p class="mb-0">
+            <i class="fas fa-map-marker-alt me-2"></i>
+            Armenia, Quindío - Envíos a todo el país
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <h5 class="mb-3">Horario de atención</h5>
+        <p class="mb-2">Lunes a Viernes: 8:00 AM - 6:00 PM</p>
+        <p class="mb-4">Sábados: 9:00 AM - 2:00 PM</p>
+        <button class="btn btn-success" onclick="contactarPorWhatsApp()">
+          <i class="fab fa-whatsapp me-2"></i>
+          Contactar por WhatsApp
         </button>
       </div>
     </div>
-  </div>
-</header>
-
-<!-- Nueva sección de empaques simplificada -->
-<section class="container mt-4">
-  <div class="empaques-banner">
-    <div class="row align-items-center">
-      <div class="col-lg-8">
-        <div class="empaques-content">
-          <h2 class="empaques-title">¿Buscas estos empaques?</h2>
-          <p class="empaques-subtitle">Descubre nuestros empaques para todo tipo de productos. Personalizalos a tu gusto.</p>
-          <a href="https://luisafeosorio.github.io/catalogoEmpaques/">
-            <span>Da click aquí</span>
-            <i class="bi bi-arrow-right"></i>
-          </a>
-        </div>
+    <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+    <div class="row">
+      <div class="col-md-6">
+        <p>&copy; 2025 YALU Empaques. Todos los derechos reservados.</p>
       </div>
-      <div class="col-lg-4">
-        <div class="empaques-image">
-          <!-- Reemplaza esta URL con tu propia imagen -->
-          <img src="img/CintaRosa.jpeg" alt="Empaques especiales" class="empaque-img">
-        </div>
+      <div class="col-md-6 text-md-end">
+        <p>Diseñado para impulsar tu negocio</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="py-4 bg-white shadow-sm">
-  <div class="container">
-    <div class="row g-3 align-items-center">
-      <div class="col-12 col-md-6">
-        <div class="input-group">
-          <span class="input-group-text bg-light border-end-0"><i class="bi bi-search"></i></span>
-          <input id="searchInput" type="text" class="form-control border-start-0" placeholder="Buscar productos...">
-        </div>
-      </div>
-      <div class="col-12 col-md-6 text-md-end">
-        <div class="btn-group flex-wrap">
-          <button class="btn filter-btn active" data-filter="all">Todos</button>
-          <button class="btn filter-btn" data-filter="popular">Flores-Arreglos</button>
-          <button class="btn filter-btn" data-filter="empaques">Empaques</button>
-          <button class="btn filter-btn" data-filter="joyeria">Joyería</button>
-          <button class="btn filter-btn" data-filter="hombres">Hombres</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="combosSection" class="py-5">
-  <div class="container">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <div>
-        <h2 class="h3 fw-bold text-primary mb-1">Combos para Negocios</h2>
-        <p class="text-muted mb-0">Ahorra comprando nuestros combos especiales</p>
-      </div>
-      <a class="btn btn-success rounded-pill px-4" href="https://wa.me/573007276599?text=Hola,%20quiero%20hacer%20mi%20pedido" target="_blank">
-        <i class="bi bi-whatsapp me-2"></i>Confirmar Pedido
-      </a>
-    </div>
-
-    <div class="row g-4">
-      <div class="col-md-6 fade-in stagger-delay-1">
-        <article class="combo-card h-100">
-          <h3 class="combo-title">Combo Primavera</h3>
-          <p class="combo-description">Ideal para flores y anchetas • Personaliza colores</p>
-          <ul class="combo-list">
-            <li>6 Corazones 25×10 cm</li>
-            <li>6 Cilindros 16×13 cm</li>
-            <li>6 Cuadradas 16×13 cm</li>
-            <li>18 unidades totales</li>
-          </ul>
-          <div class="d-flex align-items-center">
-            <div class="price-pill">$140,000</div>
-            <div class="discount-badge">-6%</div>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-md-6 fade-in stagger-delay-2">
-        <article class="combo-card h-100">
-          <h3 class="combo-title">Combo Brillante</h3>
-          <p class="combo-description">Perfecto para joyería • Elegante y resistente</p>
-          <ul class="combo-list">
-            <li>6 cajas 5×5×3 cm</li>
-            <li>6 cajas 7×7×4 cm</li>
-            <li>6 cajas 10×10×4 cm</li>
-            <li>18 unidades totales</li>
-          </ul>
-          <div class="d-flex align-items-center">
-            <div class="price-pill">$55,000</div>
-            <div class="discount-badge">-6%</div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
-
-<main class="container my-5">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="h3 fw-bold text-primary">Nuestros Productos</h2>
-    <span id="product-count" class="badge bg-primary">0 productos</span>
-  </div>
-
-  <div id="productsGrid" class="row g-4">
-    <!-- Los productos se cargarán aquí desde script.js -->
-  </div>
-
-  <div id="no-products" class="text-center py-5 d-none">
-    <i class="bi bi-search display-4 text-muted mb-3"></i>
-    <h3 class="h4 text-muted">No se encontraron productos</h3>
-    <p class="text-muted">Intenta con otros términos de búsqueda o filtros</p>
-  </div>
-</main>
-
-<footer class="bg-dark text-white">
-  <div class="container text-center">
-    <div class="footer-content">
-      <p class="mb-1">Las cajas se realizan bajo pedido</p>
-      <p class="mb-0">© 2025 CajasYempaquesYALU · Contacto: 3007276599</p>
     </div>
   </div>
 </footer>
 
-<!-- Modales -->
-<div class="modal fade" id="productModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content" id="productModalContent"></div>
-  </div>
+<!-- Botón flotante de WhatsApp -->
+<div class="whatsapp-float">
+  <a href="#" onclick="contactarPorWhatsApp()" class="whatsapp-link">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 </div>
 
-<div class="modal fade" id="imageModal" tabindex="-1">
-  <div class="modal-dialog modal-xl modal-dialog-centered">
-    <div class="modal-content" id="imageModalContent"></div>
-  </div>
-</div>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/script.js"></script>
+<script>
+  // Datos de los productos
+  const productos = [
+    {
+      id: 1,
+      name: "Bolsa blanca",
+      description: "Bolsa en papel importado, incluye cinta del color de tu preferencia y personalización de logo",
+      category: "popular",
+      image: "img/bolsablanca.png",
+      images: [
+        "img/bolsablanca.png",
+        "img/bolsamedidas.png"
+      ],
+      variants: [
+        {size: "11cm alto x 9cm ancho x 5cm profundo", price: "$1,700"},
+        {size: "16cm alto x 14cm ancho x 6cm profundo", price: "$2,550"},
+        {size: "19cm alto x 15cm ancho x 7cm profundo", price: "$2,900"},
+        {size: "18cm alto x 25cm ancho x 10cm profundo", price: "$3,600"},
+        {size: "24cm alto x 30cm ancho x 13cm profundo", price: "$4,300"}
+      ]
+    },
+    {
+      id: 2,
+      name: "Bolsa de color",
+      description: "Bolsa en papel importado, incluye cinta del color de tu preferencia",
+      category: "popular",
+      image: "img/bolsarosa.png",
+      images: [
+        "img/bolsarosa.png",
+        "img/bolsamedidas.png"
+      ],
+      variants: [
+        {size: "11cm alto x 9cm ancho x 5cm profundo", price: "$2,200"},
+        {size: "16cm alto x 14cm ancho x 6cm profundo", price: "$3,300"},
+        {size: "19cm alto x 15cm ancho x 7cm profundo", price: "$4,000"},
+        {size: "18cm alto x 25cm ancho x 10cm profundo", price: "$4,500"},
+        {size: "24cm alto x 30cm ancho x 13cm profundo", price: "$5,000"}
+      ]
+    },
+    {
+      id: 3,
+      name: "Bolsa de color negra",
+      description: "Bolsa en papel importado, incluye cinta del color de tu preferencia",
+      category: "popular",
+      image: "img/bolsanegra.png",
+      images: [
+        "img/bolsanegra.png",
+        "img/bolsamedidas.png"
+      ],
+      variants: [
+        {size: "11cm alto x 9cm ancho x 5cm profundo", price: "$2,200"},
+        {size: "16cm alto x 14cm ancho x 6cm profundo", price: "$3,300"},
+        {size: "19cm alto x 15cm ancho x 7cm profundo", price: "$4,000"},
+        {size: "18cm alto x 25cm ancho x 10cm profundo", price: "$4,500"},
+        {size: "24cm alto x 30cm ancho x 13cm profundo", price: "$5,000"}
+      ]
+    },
+    {
+      id: 4,
+      name: "Corazón Forrado",
+      description: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
+      category: "popular",
+      image: "img/CorazónForrado1.jpg",
+      images: [
+        "img/CorazónForrado1.jpg",
+        "img/CorazonForrado4.jpeg",
+        "img/CorazonForrado5.jpeg"
+      ],
+      variants: [
+        {size: "20cm de ancho x 10 cm de alto", price: "$8,500"},
+        {size: "25cm de ancho x 10 cm de alto", price: "$10,000"},
+        {size: "30cm de ancho x 10 cm de alto", price: "$13,000"}
+      ]
+    },
+    {
+      id: 5,
+      name: "Cilindro Forrado",
+      description: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
+      category: "popular",
+      image: "img/CilindroForrado6.jpeg",
+      images: [
+        "img/CilindroForrado6.jpeg",
+        "img/Cilindro33.png",
+        "img/Cilindro44.png"
+      ],
+      variants: [
+        {size: "13cm de diámetro x 10 cm de alto", price: "$6,000"},
+        {size: "16cm de diámetro x 13 cm de alto", price: "$7,500"},
+        {size: "20cm de diámetro x 13 cm de alto", price: "$9,000"},
+        {size: "25cm de diámetro x 13 cm de alto", price: "$11,000"}
+      ]
+    },
+    {
+      id: 6,
+      name: "Cuadrada",
+      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      category: "popular",
+      image: "img/cuadrada1.png",
+      images: [
+        "img/cuadrada2.jpeg",
+        "img/cuadrada3.jpeg"
+      ],
+      variants: [
+        {size: "Base 13cm x 13cm x 10 cm de alto", price: "$6,000"},
+        {size: "Base 16cm x 16cm x 10 cm de alto", price: "$7,500"},
+        {size: "Base 20cm x 20cm x 10 cm de alto", price: "$8,500"},
+        {size: "Base 25cm x 25cm x 10 cm de alto", price: "$10,000"}
+      ]
+    },
+    {
+      id: 7,
+      name: "Cajón Corazón",
+      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      category: "popular",
+      image: "img/cajoncorazon1.png",
+      images: [
+        "img/cajoncorazon1.png",
+        "img/cajoncorazon2.png",
+        "img/cajoncorazon3.png"
+      ],
+      variants: [
+        {size: "Medida del cajón interno: 26cm x 18cm. Corazón de 24cm de diámetro", price: "$14,000"}
+      ]
+    },
+    {
+      id: 8,
+      name: "Libro Corazón #1",
+      description: "Base del corazón en cartón rígido, libro con doble capa de cartón blanco de 300gr",
+      category: "popular",
+      image: "img/librocorazon2.jpeg",
+      images: [
+        "img/librocorazon2.jpeg",
+        "img/librocorazon1.jpeg",
+        "img/librocorazon3.jpeg"
+      ],
+      variants: [
+        {size: "Corazón de 25cm de diámetro", price: "$8,000"}
+      ]
+    },
+    {
+      id: 9,
+      name: "Libro Corazón #2",
+      description: "Base del corazón en cartón rígido, libro con doble capa de cartón blanco de 300gr",
+      category: "popular",
+      image: "img/librocorazon22.png",
+      images: [
+        "img/librocorazon22.png",
+        "img/librocorazon23.png"
+      ],
+      variants: [
+        {size: "Corazón de 25cm de diámetro", price: "$8,000"}
+      ]
+    },
+    {
+      id: 10,
+      name: "Dulcera",
+      description: "Caja resistente con borde de 1cm y separadores",
+      category: "Los mas llevados",
+      image: "img/dulcera1.jpeg",
+      images: [
+        "img/dulcera1.jpeg",
+        "img/dulcera2.png"
+      ],
+      variants: [
+        {size: "Tamaño mediano", price: "$5,000"}
+      ]
+    },
+    {
+      id: 11,
+      name: "Mom",
+      description: "Base de letras en cartón rígido, doble capa de cartón blanco en base y tapa",
+      category: "Los mas llevados",
+      image: "img/mom1.jpeg",
+      images: [
+        "img/mom1.jpeg",
+        "img/mom2.jpeg",
+        "img/mom3.jpeg"
+      ],
+      variants: [
+        {size: "53cm x 18cm x 6 cm de alto", price: "$13,500"}
+      ]
+    },
+    {
+      id: 12,
+      name: "I love u",
+      description: "Base de letras en cartón rígido, doble capa de cartón blanco en base y tapa",
+      category: "Los mas llevados",
+      image: "img/loveu1.jpeg",
+      images: [
+        "img/loveu1.jpeg",
+        "img/loveu2.jpeg"
+      ],
+      variants: [
+        {size: "50cm x 18cm x 6 cm de alto", price: "$13,500"}
+      ]
+    },
+    {
+      id: 13,
+      name: "Buffet",
+      description: "Caja con borde de 1cm incluye separadores, salseros y tapa con ventana, ideal para desayunos sorpresa",
+      image: "img/buffet.jpeg",
+      images: [
+        "img/buffet.jpeg",
+        "img/buffet2.jpeg"
+      ],
+      variants: [
+        {size: "34cm x 26cm x 6cm", price: "$9,000"}
+      ]
+    },
+    {
+      id: 14,
+      name: "Cofre",
+      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      category: "Los mas llevados",
+      image: "img/cofre1.jpeg",
+      images: [
+        "img/cofre1.jpeg",
+        "img/cofre2.jpeg"
+      ],
+      variants: [
+        {size: "Mediano: 23cm x 17cm x 15cm alto total", price: "$13,000"},
+        {size: "Grande: 30cm x 20cm x 15 cm alto total", price: "$15,000"}
+      ]
+    },
+    {
+      id: 15,
+      name: "Libro con broche imán",
+      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      category: "Los mas llevados",
+      image: "img/librobroche1.jpeg",
+      images: [
+        "img/librobroche1.jpeg",
+        "img/librobroche2.jpeg"
+      ],
+      variants: [
+        {size: "Mediano: 25cm x 20cm x 8cm", price: "$9,500"},
+        {size: "Grande: 30cm x 25cm x 8cm", price: "$11,000"}
+      ]
+    },
+    {
+      id: 16,
+      name: "Cilindro sin forrar Alto",
+      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      category: "Los mas llevados",
+      image: "img/cilindrosinforrar1.png",
+      images: [
+        "img/cilindrosinforrar1.png",
+        "img/cilindrosinforrar2.png"
+      ],
+      variants: [
+        {size: "13cm de diámetro x 10 cm de alto", price: "$4,800"},
+        {size: "16cm de diámetro x 13 cm de alto", price: "$5,500"},
+        {size: "20cm de diámetro x 13 cm de alto", price: "$7,000"},
+        {size: "25cm de diámetro x 13 cm de alto", price: "$9,000"}
+      ]
+    },
+    {
+      id: 17,
+      name: "Cilindro sin forrar Bajo",
+      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      category: "Los mas llevados",
+      image: "img/cilindrosinforrarbajos.png",
+      images: [
+        "img/cilindrosinforrarbajos.png"
+      ],
+      variants: [
+        {size: "13cm de diámetro x 5 cm de alto", price: "$4,300"},
+        {size: "16cm de diámetro x 7 cm de alto", price: "$5,000"},
+        {size: "20cm de diámetro x 7 cm de alto", price: "$6,600"},
+        {size: "25cm de diámetro x 7 cm de alto", price: "$8,500"}
+      ]
+    },
+    {
+      id: 18,
+      name: "Corazones sin forrar",
+      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      category: "Los mas llevados",
+      image: "img/corasinforrar2.jpeg",
+      images: [
+        "img/corasinforrar2.jpeg",
+        "img/corasinforrar1.jpeg"
+      ],
+      variants: [
+        {size: "20cm de ancho x 10 cm de alto", price: "$6,000"},
+        {size: "25cm de ancho x 10 cm de alto", price: "$7,000"},
+        {size: "30cm de ancho x 10 cm de alto", price: "$8,000"}
+      ]
+    },
+    {
+      id: 19,
+      name: "Reloj",
+      description: "Disponible en múltiples colores. PRECIO SOLO LA CAJA, si quieres adicionar la almohadilla y el moño, aumenta $1,000",
+      category: "joyeria",
+      image: "img/Relojnuevo.png",
+      images: [
+        "img/Relojnuevo.png",
+        "img/reloj2.jpeg"
+      ],
+      variants: [
+        {size: "7,5cm x 8,5cm x 7cm de alto", price: "$4,000"}
+      ]
+    },
+    {
+      id: 20,
+      name: "Joyas #1",
+      description: "Disponible en color blanco, resistentes y elegantes",
+      category: "joyeria",
+      image: "img/joyasluxury.jpeg",
+      images: [
+        "img/joyasluxury.jpeg",
+        "img/joyasluxury2.jpeg"
+      ],
+      variants: [
+        {size: "SIN personalización"},
+        {size: "6cm x 6cm x 4cm de alto", price: "$4,000"},
+        {size: "10cm x 10m x 4cm de alto", price: "$5,000"},
+        {size: "CON personalización"},
+        {size: "6cm x 6cm x 4cm de alto", price: "$4,800"},
+        {size: "10cm x 10m x 4cm de alto", price: "$5,800"}
+      ]
+    },
+    {
+      id: 21,
+      name: "Joyas #2",
+      description: "Variedad de colores",
+      category: "joyeria",
+      image: "img/joyasrosanegra.jpeg",
+      images: [
+        "img/joyasrosanegra.jpeg",
+        "img/joyasrosa.jpeg",
+        "img/joyasnegra.jpeg"
+      ],
+      variants: [
+        {size: "SENCILLAS"},
+        {size: "5cm x 5cm x 3cm", price: "$2,900"},
+        {size: "7cm x 7cm x 4cm", price: "$4,000"},
+        {size: "10cm x 10cm x 4cm", price: "$5,000"},
+        {size: "PERSONALIZADAS"},
+        {size: "5cm x 5cm x 3cm", price: "$3,700"},
+        {size: "7cm x 7cm x 4cm", price: "$4,800"},
+        {size: "10cm x 10cm x 4cm", price: "$5,800"}
+      ]
+    },
+    {
+      id: 22,
+      name: "Joyeros #3",
+      description: "Disponible en cartón blanco, gris, rosa, vienen sin forrar, incluye nido en cartón. SE PUEDEN PERSONALIZAR CON LOGO",
+      category: "joyeria",
+      image: "img/estilo1.jpeg",
+      images: [
+        "img/estilo1.jpeg",
+        "img/estilo12.jpeg"
+      ],
+      variants: [
+        {size: "Color blanco: 5cm x 5cm x 3cm", price: "$1,000"},
+        {size: "Color blanco: 7cm x 7cm x 4cm", price: "$1,400"},
+        {size: "Color blanco: 10cm x 10cm x 4cm", price: "$1,800"},
+        {size: "Color rosa o gris: 5cm x 5cm x 3cm", price: "$1,500"},
+        {size: "Color rosa o gris: 7cm x 7cm x 4cm", price: "$1,800"},
+        {size: "Color rosa o gris: 10cm x 10cm x 4cm", price: "$2,300"}
+      ]
+    },
+    {
+      id: 23,
+      name: "Joyeros #4",
+      description: "Completamente forrada en cualquier color, elegante, incluye nido en cartón",
+      category: "joyeria",
+      image: "img/estilo2.png",
+      images: [
+        "img/estilo2.png",
+        "img/estilo21.png"
+      ],
+      variants: [
+        {size: "SENCILLAS"},
+        {size: "5cm x 5cm x 3cm", price: "$2,900"},
+        {size: "7cm x 7cm x 4cm", price: "$4,000"},
+        {size: "10cm x 10cm x 4cm", price: "$5,000"},
+        {size: "PERSONALIZADAS"},
+        {size: "5cm x 5cm x 3cm", price: "$3,700"},
+        {size: "7cm x 7cm x 4cm", price: "$4,800"},
+        {size: "10cm x 10cm x 4cm", price: "$5,800"}
+      ]
+    },
+    {
+      id: 24,
+      name: "Joyeros #5",
+      description: "Cartulina de 150gr, disponible en todos los colores, incluye nido en cartón",
+      category: "joyeria",
+      image: "img/estilo3.png",
+      images: [
+        "img/estilo3.png",
+        "img/estilo31.png"
+      ],
+      variants: [
+        {size: "SIN personalización"},
+        {size: "6cm x 6cm x 4cm de alto", price: "$3,000"},
+        {size: "10cm x 10m x 4cm de alto", price: "$4,000"},
+        {size: "CON personalización"},
+        {size: "6cm x 6cm x 4cm de alto", price: "$3,700"},
+        {size: "10cm x 10m x 4cm de alto", price: "$4,800"}
+      ]
+    },
+    {
+      id: 25,
+      name: "Joyeros #6",
+      description: "Base y tapas forradas en múltiples colores, incluye nido en cartón",
+      category: "joyeria",
+      image: "img/joyasCuadradasLogo.png",
+      images: [
+        "img/joyasCuadradasLogo.png",
+        "img/estilo4.png"
+      ],
+      variants: [
+        {size: "SENCILLAS"},
+        {size: "5cm x 5cm x 3cm", price: "$2,500"},
+        {size: "7cm x 7cm x 4cm", price: "$3,500"},
+        {size: "10cm x 10cm x 4cm", price: "$4,500"},
+        {size: "PERSONALIZADAS"},
+        {size: "5cm x 5cm x 3cm", price: "$3,200"},
+        {size: "7cm x 7cm x 4cm", price: "$4,300"},
+        {size: "10cm x 10cm x 4cm", price: "$5,200"}
+      ]
+    },
+    {
+      id: 26,
+      name: "Joyas #7",
+      description: "Color blanco, cartón de 300gr, no incluye nido",
+      category: "joyeria",
+      image: "img/joyasimple2.jpeg",
+      images: [
+        "img/joyasimple2.jpeg",
+        "img/joyasimple.jpeg"
+      ],
+      variants: [
+        {size: "5cm x 5cm x 3cm", price: "$1,500"},
+        {size: "7cm x 7cm x 4cm", price: "$2,000"},
+        {size: "10cm x 10cm x 4cm", price: "$2,500"},
+        {size: "CON VENTANA"},
+        {size: "5cm x 5cm x 3cm", price: "$1,900"},
+        {size: "7cm x 7cm x 4cm", price: "$2,500"},
+        {size: "10cm x 10cm x 4cm", price: "$2,900"}
+      ]
+    },
+    {
+      id: 27,
+      name: "Carrito Corona",
+      description: "Se puede personalizar la impresión",
+      category: "hombres",
+      image: "img/corona1.jpeg",
+      images: [
+        "img/corona1.jpeg",
+        "img/corona2.jpeg",
+        "img/carritoejemplo.png"
+      ],
+      variants: [
+        {size: "13cm x 18cm x 9cm", price: "$7,500"}
+      ]
+    },
+    {
+      id: 28,
+      name: "Ancheta",
+      description: "Base en cartón rígido, variedad de colores",
+      image: "img/acheta1.png",
+      images: [
+        "img/acheta1.png",
+        "img/acheta2.png"
+      ],
+      variants: [
+        {size: "13cm x 13cm x 10cm", price: "$4,500"}
+      ]
+    },
+    {
+      id: 29,
+      name: "Ancheta Esmoquin",
+      description: "Base en cartón rígido, sin forrar con decoración",
+      category: "hombres",
+      image: "img/anchetahombre1.png",
+      images: [
+        "img/anchetahombre1.png",
+        "img/anchetahombre2.png"
+      ],
+      variants: [
+        {size: "13cm x 13cm x 10cm", price: "$4,000"}
+      ]
+    },
+    {
+      id: 30,
+      name: "Cilindro Esmoquin",
+      description: "Base en cartón rígido, forrados en variedad de colores",
+      category: "hombres",
+      image: "img/cilindroesmoquin.jpg",
+      images: [
+        "img/cilindroesmoquin.jpg",
+        "img/cilindroesmoquin2.jpg"
+      ],
+      variants: [
+        {size: "17cm de diámetro x 13 cm de alto", price: "$7,000"}
+      ]
+    },
+    {
+      id: 31,
+      name: "Ancheta Amor",
+      description: "Base en cartón rígido, forrados en variedad de colores",
+      category: "amoryamistad",
+      image: "img/anchetaamor1.png",
+      images: [
+        "img/anchetaamor1.png",
+        "img/anchetaamor2.png"
+      ],
+      variants: [
+        {size: "13cm x 15cm x 10cm de alto", price: "$5,500"}
+      ]
+    }]
+
+
+
+    // Inicialización cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', function () {
+    cargarProductos();
+    inicializarNavbar();
+  });
+
+  // Cargar productos en el grid
+  function cargarProductos() {
+    const grid = document.getElementById('productos-grid');
+
+    productos.forEach(producto => {
+      const card = crearCardProducto(producto);
+      grid.appendChild(card);
+    });
+  }
+
+  // Crear card para cada producto
+  function crearCardProducto(producto) {
+    const col = document.createElement('div');
+    col.className = 'col-md-6 col-lg-4';
+
+    // Usar la primera imagen como principal
+    const imagenPrincipal = producto.image;
+
+    // Obtener el precio mínimo para mostrar
+    let precioMinimo = "Consultar";
+    if (producto.variants && producto.variants.length > 0) {
+      const precios = producto.variants
+        .filter(v => v.price && v.price !== "SIN personalización" && v.price !== "CON personalización")
+        .map(v => parseFloat(v.price.replace(/[$,]/g, '')));
+
+      if (precios.length > 0) {
+        precioMinimo = `Desde $${Math.min(...precios).toLocaleString()}`;
+      }
+    }
+
+    col.innerHTML = `
+      <div class="card product-card h-100">
+        <div class="position-relative">
+          <img src="${imagenPrincipal}" class="card-img-top product-img" alt="${producto.name}">
+
+        </div>
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">${producto.name}</h5>
+          <p class="card-text text-muted flex-grow-1">${producto.description}</p>
+          <div class="d-flex justify-content-between align-items-center mt-auto">
+            <span class="product-price">${precioMinimo}</span>
+            <button class="btn btn-outline-primary btn-sm" onclick="mostrarDetallesProducto(${producto.id})">
+              Ver detalles
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    return col;
+  }
+
+  // Función para mostrar detalles del producto
+  function mostrarDetallesProducto(id) {
+    const producto = productos.find(p => p.id === id);
+
+    if (!producto) return;
+
+    // Generar HTML para las variantes
+    let variantesHTML = '';
+    if (producto.variants && producto.variants.length > 0) {
+      variantesHTML = `
+        <div class="mb-4">
+          <h6 class="fw-semibold mb-3">Opciones disponibles:</h6>
+          <div class="variants-container">
+            ${producto.variants.map((v, idx) => `
+              <div class="variant-option ${idx === 0 ? 'selected' : ''}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="variant-size">${v.size}</span>
+                  <span class="variant-price">${v.price || 'Consultar'}</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    const modalHTML = `
+      <div class="modal fade" id="productoModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">${producto.name}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <!-- Galería de imágenes -->
+                <div class="col-lg-7">
+                  <div class="product-gallery">
+                    <div class="main-image mb-3">
+                      <img src="${producto.images[0]}"
+                           id="mainProductImage"
+                           class="img-fluid rounded"
+                           alt="${producto.name}">
+                    </div>
+                    <div class="thumbnail-container">
+                      <div class="row g-2" id="thumbnails">
+                        ${producto.images.map((img, index) => `
+                          <div class="col-4">
+                            <img src="${img}"
+                                 class="thumbnail-img ${index === 0 ? 'active' : ''}"
+                                 onclick="cambiarImagenPrincipal('${img}', this)"
+                                 alt="${producto.name} - Vista ${index + 1}">
+                          </div>
+                        `).join('')}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Información del producto -->
+                <div class="col-lg-5">
+                  <div class="product-info">
+                    <p class="lead">${producto.description}</p>
+
+                    ${variantesHTML}
+
+                    <div class="product-actions">
+                      <button class="btn btn-success w-100"
+                              onclick="consultarProductoWhatsApp(${producto.id})">
+                        <i class="fab fa-whatsapp me-2"></i>
+                        Consultar por WhatsApp
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Crear y mostrar modal
+    const modalContainer = document.createElement('div');
+    modalContainer.innerHTML = modalHTML;
+    document.body.appendChild(modalContainer);
+
+    // Añadir eventos a las variantes
+    const modalElement = document.getElementById('productoModal');
+    modalElement.addEventListener('shown.bs.modal', function() {
+      const variantOptions = modalElement.querySelectorAll('.variant-option');
+      variantOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          variantOptions.forEach(opt => opt.classList.remove('selected'));
+          option.classList.add('selected');
+        });
+      });
+    });
+
+    const modal = new bootstrap.Modal(modalElement);
+    modal.show();
+
+    // Limpiar cuando se cierre
+    modalElement.addEventListener('hidden.bs.modal', function () {
+      modalContainer.remove();
+    });
+  }
+
+  // Función para cambiar imagen principal
+  function cambiarImagenPrincipal(src, element) {
+    // Cambiar imagen principal
+    document.getElementById('mainProductImage').src = src;
+
+    // Remover clase active de todas las miniaturas
+    document.querySelectorAll('.thumbnail-img').forEach(img => {
+      img.classList.remove('active');
+    });
+
+    // Agregar clase active a la miniatura clickeada
+    element.classList.add('active');
+  }
+
+  // Función para WhatsApp
+  function solicitarCatalogoWhatsApp() {
+    const numero = "573007276599";
+    const mensaje = "Hola, me interesa recibir el catálogo completo de todas las cajas y empaques que manejan. ¿Podrían enviarme más información?";
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+  }
+
+  function contactarPorWhatsApp() {
+    const numero = "573007276599";
+    const mensaje = "Hola, tengo una consulta sobre sus empaques y cajas para productos.";
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+  }
+
+  function consultarProductoWhatsApp(productoId) {
+    const producto = productos.find(p => p.id === productoId);
+    if (!producto) return;
+
+    const numero = "573007276599";
+    const mensaje = `Hola, me interesa el producto: ${producto.name}. ¿Podrían darme más información sobre precios y disponibilidad?`;
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+  }
+
+  // Función para desplazamiento suave
+  function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }
+
+  // Navbar scroll effect
+  function inicializarNavbar() {
+    const navbar = document.querySelector('.custom-navbar');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  }
+</script>
 </body>
 </html>
