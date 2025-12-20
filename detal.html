@@ -276,19 +276,72 @@
   </div>
 </footer>
 
-<!-- Modal Producto -->
+<!-- Modal para detalles del producto -->
 <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content" id="productModalContent"></div>
+  <div class="modal-dialog modal-lg modal-fullscreen-md-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalProductTitle">Detalles del Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <!-- Columna para imagen -->
+          <div class="col-12 col-md-6">
+            <div class="modal-image-container">
+              <img id="modalMainImage" src="" alt="" class="img-fluid">
+            </div>
+
+            <!-- Miniaturas -->
+            <div class="modal-thumbnails" id="modalThumbnails">
+              <!-- Se llenará con JavaScript -->
+            </div>
+          </div>
+
+          <!-- Columna para contenido -->
+          <div class="col-12 col-md-6">
+            <div class="product-details-container">
+              <!-- Nombre y descripción -->
+              <div class="mb-4">
+                <h3 id="modalProductName" class="modal-price-highlight mb-2"></h3>
+                <p id="modalProductDescription" class="text-muted"></p>
+              </div>
+
+              <!-- Variantes de precios -->
+              <div class="mb-4">
+                <h6 class="text-muted mb-3">
+                  <i class="fas fa-ruler-combined me-2"></i>Tamaños y Precios
+                </h6>
+                <div id="modalVariants" class="variants-list">
+                  <!-- Se llenará con JavaScript -->
+                </div>
+              </div>
+
+              <!-- Información adicional -->
+              <div class="mb-4">
+                <h6 class="text-muted mb-3">
+                  <i class="fas fa-info-circle me-2"></i>Información adicional
+                </h6>
+                <p id="modalAdditionalInfo" class="small text-muted">
+                  • Producto de alta calidad<br>
+                  • Personalizable según preferencias<br>
+                  • Tiempo de entrega: 3-5 días hábiles<br>
+                  • Envíos a todo el país
+                </p>
+              </div>
+
+              <!-- Botón para contacto -->
+              <button class="btn btn-lg w-100 mt-4" id="btnContactar">
+                <i class="fas fa-whatsapp me-2"></i>Consultar Disponibilidad por WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- Modal Imágenes -->
-<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered">
-    <div class="modal-content" id="imageModalContent"></div>
-  </div>
-</div>
 <!-- Bootstrap JS bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 

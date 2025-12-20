@@ -3,1478 +3,1963 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo Profesional | Cajas y empaques YALU</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
+  <title>Catálogo al por mayor Cajas y empaques YALU</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome para iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary-color: #2563eb;    /* Azul profesional */
-      --secondary-color: #059669;  /* Verde confianza */
-      --accent-color: #7c3aed;     /* Púrpura llamativo */
-      --light-bg: #f8fafc;         /* Fondo claro */
-      --dark-bg: #1e293b;          /* Fondo oscuro */
-      --text-dark: #334155;        /* Texto principal */
-      --text-light: #64748b;       /* Texto secundario */
-      --white: #ffffff;
-      --success: #10b981;          /* Verde éxito */
-    }
-    /* Sección de cajas especiales centrada con imagen */
-    .special-box-section {
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f7fa 100%);
-      border-radius: 20px;
-      padding: 3rem;
-      margin: 3rem auto;
-      max-width: 1000px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      border: 1px solid #e0f2fe;
-    }
-
-    .special-box-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232563eb' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-    }
-
-    .special-box-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .special-box-title {
-      font-size: 2rem;
-      color: var(--dark-bg);
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-
-    .special-box-description {
-      font-size: 1.1rem;
-      color: var(--text-light);
-      margin-bottom: 2rem;
-      max-width: 500px;
-    }
-
-    .special-box-link {
-      display: inline-flex;
-      align-items: center;
-      background: linear-gradient(135deg, var(--accent-color), #6d28d9);
-      color: white;
-      padding: 12px 30px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
-    }
-
-    .special-box-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
-      color: white;
-    }
-
-    .special-box-image {
-      position: relative;
-      z-index: 2;
-    }
-
-    .special-box-image img {
-      border-radius: 12px;
-      transition: transform 0.3s ease;
-      max-height: 200px;
-      width: auto;
-    }
-
-    .special-box-image:hover img {
-      transform: scale(1.05);
-    }
-
-    /* Responsive para la sección especial */
-    @media (max-width: 768px) {
-      .special-box-section {
-        padding: 2rem 1.5rem;
-        margin: 2rem 1rem;
-        text-align: center;
-      }
-
-      .special-box-title {
-        font-size: 1.6rem;
-      }
-
-      .special-box-image {
-        margin-top: 2rem;
-      }
-
-      .special-box-image img {
-        max-height: 150px;
-      }
-    }
-
-    /* Responsive para la sección especial */
-    @media (max-width: 768px) {
-      .special-box-section {
-        padding: 2rem 1.5rem;
-        margin: 2rem 1rem;
-        text-align: center;
-      }
-
-      .special-box-title {
-        font-size: 1.6rem;
-      }
-
-      .special-box-image {
-        margin-top: 2rem;
-      }
-
-      .special-box-image img {
-        max-height: 150px;
-      }
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      --lila-claro: #e6d4f7;
+      --lila-medio: #d0b8f0;
+      --lila: #b08ce6;
+      --gris-claro: #f8f9fa;
+      --gris-medio: #e9ecef;
+      --gris-texto: #6c757d;
+      --negro: #212529;
+      --blanco: #ffffff;
+      --borde: #dee2e6;
+      --sombra: rgba(0, 0, 0, 0.08);
+      --sombra-hover: rgba(0, 0, 0, 0.12);
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background-color: var(--blanco);
+      color: var(--negro);
       line-height: 1.6;
-      color: var(--text-dark);
-      background-color: var(--light-bg);
+      padding-bottom: 50px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Playfair Display', serif;
+    .container {
+      max-width: 1200px;
+    }
+
+    /* Header lila claro */
+    .page-header {
+      text-align: center;
+      margin: 30px 0 40px;
+      padding: 50px 20px;
+      background: linear-gradient(135deg, var(--lila-claro) 0%, var(--lila-medio) 100%);
+      border-radius: 16px;
+      color: var(--negro);
+      box-shadow: 0 4px 20px rgba(176, 140, 230, 0.15);
+    }
+
+    .page-title {
       font-weight: 700;
-      color: var(--dark-bg);
+      font-size: 2.8rem;
+      letter-spacing: -0.5px;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
 
-    /* Navbar profesional */
-    .custom-navbar {
-      background: linear-gradient(135deg, var(--white) 0%, #f1f5f9 100%) !important;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-      border-bottom: 1px solid #e2e8f0;
-    }
-
-    .custom-navbar.scrolled {
-      box-shadow: 0 4px 20px rgba(30, 41, 59, 0.1);
-    }
-
-    .navbar-brand {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      color: var(--primary-color) !important;
-      font-weight: 700;
-    }
-
-    .navbar-nav .nav-link {
-      color: var(--text-dark) !important;
-      font-weight: 500;
-      transition: color 0.3s ease;
-      padding: 0.5rem 1rem;
-    }
-
-    .navbar-nav .nav-link:hover {
-      color: var(--primary-color) !important;
-    }
-
-    /* Hero Section - Gradiente profesional */
-    .hero-section {
-      background: linear-gradient(135deg, var(--white) 0%, #f0f9ff 50%, #e0f2fe 100%);
-      color: var(--text-dark);
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232563eb' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
-
-    .hero-section .container {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-badge {
-      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      display: inline-block;
-      margin-bottom: 1rem;
-    }
-
-    /* Botones profesionales */
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary-color) 0%, #1d4ed8 100%);
-      border: none;
-      padding: 12px 30px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      color: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-    }
-
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
-      color: white;
-    }
-
-    .btn-success {
-      background: linear-gradient(135deg, var(--secondary-color) 0%, #047857 100%);
-      border: none;
-      padding: 12px 30px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      color: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
-    }
-
-    .btn-success:hover {
-      background: linear-gradient(135deg, #047857 0%, #065f46 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4);
-      color: white;
-    }
-
-    .btn-outline-primary {
-      border: 2px solid var(--primary-color);
-      color: var(--primary-color);
-      background: transparent;
-      padding: 10px 25px;
-      font-weight: 600;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .btn-outline-primary:hover {
-      background: var(--primary-color);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-    }
-
-    /* Secciones */
-    .section-padding {
-      padding: 80px 0;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: var(--dark-bg);
-      position: relative;
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-      border-radius: 2px;
-    }
-
-    .section-subtitle {
+    .page-subtitle {
+      color: var(--gris-texto);
+      font-weight: 400;
       font-size: 1.2rem;
-      color: var(--text-light);
-      margin-bottom: 3rem;
-      max-width: 600px;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
 
-    /* Cards de productos */
-    .product-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Tabuladores - MEJORADOS */
+    .nav-tabs {
+      border-bottom: 2px solid var(--borde);
+      margin-bottom: 40px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding-bottom: 2px;
+    }
+
+    .nav-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-tabs .nav-link {
+      color: var(--gris-texto);
+      font-weight: 600;
       border: none;
-      overflow: hidden;
+      padding: 14px 28px;
+      background: none;
+      position: relative;
       cursor: pointer;
+      white-space: nowrap;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 8px 8px 0 0;
+    }
+
+    .nav-tabs .nav-link:hover {
+      color: var(--lila);
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, rgba(230, 212, 247, 0.1) 0%, rgba(208, 184, 240, 0.1) 100%);
+    }
+
+    .nav-tabs .nav-link.active {
+      color: var(--lila);
+      background: none;
+      border: none;
+      font-weight: 700;
+    }
+
+    .nav-tabs .nav-link.active:after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--lila) 0%, var(--lila-medio) 100%);
+      border-radius: 2px;
+      box-shadow: 0 2px 8px rgba(176, 140, 230, 0.3);
+    }
+
+    /* Tarjetas de producto - FORMATO CUADRADO PERFECTO */
+    .product-card {
+      background: var(--blanco);
+      border: 1px solid var(--borde);
       border-radius: 12px;
-      background: var(--white);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       height: 100%;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 8px var(--sombra);
     }
 
     .product-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px var(--sombra-hover);
+      border-color: var(--lila-medio);
     }
 
-    .product-img {
-      height: 220px;
-      object-fit: cover;
-      transition: transform 0.3s ease;
+    /* Estilos para resaltar nuevas colecciones */
+    .product-card.nueva-coleccion {
+      position: relative;
+      border: 2px solid var(--lila);
+      box-shadow: 0 8px 25px rgba(176, 140, 230, 0.2);
     }
 
-    .product-card:hover .product-img {
-      transform: scale(1.05);
+    .product-card.nueva-coleccion:hover {
+      box-shadow: 0 15px 35px rgba(176, 140, 230, 0.3);
     }
 
-    .product-badge {
+    .badge-nueva {
       position: absolute;
       top: 12px;
       right: 12px;
-      z-index: 2;
-      background: linear-gradient(135deg, var(--accent-color), #6d28d9);
+      background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
       color: white;
-      padding: 0.3rem 0.8rem;
+      padding: 6px 14px;
       border-radius: 20px;
       font-size: 0.8rem;
-      font-weight: 600;
-    }
-
-    .product-price {
       font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--primary-color);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+      animation: pulse 2s infinite;
     }
 
-    /* Sección de cajas especiales centrada */
-    .special-box-section {
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f7fa 100%);
-      border-radius: 20px;
-      padding: 3rem;
-      margin: 3rem auto;
-      max-width: 800px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      border: 1px solid #e0f2fe;
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 8px rgba(255, 107, 107, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+      }
     }
 
-    .special-box-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232563eb' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-    }
-
-    .special-box-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .special-box-title {
-      font-size: 2rem;
-      color: var(--dark-bg);
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-
-    .special-box-description {
-      font-size: 1.1rem;
-      color: var(--text-light);
-      margin-bottom: 2rem;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .special-box-link {
-      display: inline-flex;
-      align-items: center;
-      background: linear-gradient(135deg, var(--accent-color), #6d28d9);
-      color: white;
-      padding: 12px 30px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
-    }
-
-    .special-box-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
-      color: white;
-    }
-
-    /* Estilos para la galería de productos */
-    .product-gallery {
-      position: relative;
-    }
-
-    .main-image {
-      border: 2px solid #e2e8f0;
-      border-radius: 12px;
-      overflow: hidden;
-      background: var(--white);
-      min-height: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .main-image img {
-      transition: transform 0.3s ease;
+    /* IMAGENES SIEMPRE CUADRADAS - SOLUCIÓN DEFINITIVA */
+    .product-image-container {
       width: 100%;
-      height: auto;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background-color: var(--gris-medio);
+      position: relative;
     }
 
-    .thumbnail-container {
-      margin-top: 15px;
-    }
-
-    .thumbnail-img {
+    .product-image {
       width: 100%;
-      height: 80px;
+      height: 100%;
       object-fit: cover;
-      border: 2px solid #e2e8f0;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      display: block;
+      transition: transform 0.5s ease;
     }
 
-    .thumbnail-img:hover {
-      border-color: var(--primary-color);
+    .product-card:hover .product-image {
       transform: scale(1.05);
     }
 
-    .thumbnail-img.active {
-      border-color: var(--primary-color);
-      border-width: 3px;
+    .product-info {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Estilos para variantes de productos */
-    .variant-option {
-      border: 1px solid #e2e8f0;
+    .product-category {
+      color: var(--lila);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 10px;
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(176, 140, 230, 0.1);
+      border-radius: 20px;
+      width: fit-content;
+    }
+
+    .product-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      color: var(--negro);
+      line-height: 1.4;
+    }
+
+    .product-description {
+      color: var(--gris-texto);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .price-range {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--negro);
+      margin-bottom: 20px;
+      padding: 10px 0;
+      border-top: 1px solid var(--borde);
+      border-bottom: 1px solid var(--borde);
+    }
+
+    .btn-view-details {
+      background: linear-gradient(135deg, var(--lila) 0%, var(--lila-medio) 100%);
+      color: var(--blanco);
+      border: none;
       border-radius: 8px;
-      padding: 12px 15px;
-      margin-bottom: 8px;
+      padding: 12px 24px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      width: 100%;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
-      transition: all 0.3s ease;
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
-    .variant-option:hover {
-      border-color: var(--primary-color);
-      background-color: #f0f9ff;
+    .btn-view-details:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(176, 140, 230, 0.3);
     }
 
-    .variant-option.selected {
-      border-color: var(--primary-color);
-      background-color: #f0f9ff;
+    /* Productos ocultos inicialmente */
+    .product-tab {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .product-tab.active {
+      display: block;
+    }
+
+    /* =========================================== */
+    /* ESTILOS PARA EL MODAL - PERFECTAMENTE CUADRADO */
+    /* =========================================== */
+    .modal-image-container {
+      width: 100%;
+      height: 400px;
+      background-color: var(--gris-medio);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    #modalMainImage {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.5s ease;
+      border-radius: 8px;
+    }
+
+    /* Miniaturas del modal */
+    .modal-thumbnails {
+      display: flex;
+      gap: 10px;
+      padding: 10px 0;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--lila) var(--gris-claro);
+    }
+
+    .modal-thumbnails::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .modal-thumbnails::-webkit-scrollbar-track {
+      background: var(--gris-claro);
+      border-radius: 3px;
+    }
+
+    .modal-thumbnails::-webkit-scrollbar-thumb {
+      background: var(--lila);
+      border-radius: 3px;
+    }
+
+    .modal-thumbnail {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 3px solid transparent;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      aspect-ratio: 1 / 1;
+      background-color: var(--gris-medio);
+      flex-shrink: 0;
+    }
+
+    .modal-thumbnail:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .modal-thumbnail.active {
+      border-color: var(--lila);
+      box-shadow: 0 0 0 3px rgba(176, 140, 230, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Contenido del modal */
+    .modal-price-highlight {
+      color: var(--lila);
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .variant-item {
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--borde);
+      transition: all 0.2s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .variant-item:hover {
+      background-color: var(--gris-claro);
+      border-radius: 6px;
+      transform: translateX(5px);
+    }
+
+    .variant-item:last-child {
+      border-bottom: none;
     }
 
     .variant-size {
       font-weight: 500;
-      color: var(--text-dark);
+      color: var(--negro);
+      font-size: 0.95rem;
     }
 
     .variant-price {
-      color: var(--primary-color);
-      font-weight: bold;
+      color: var(--lila);
+      font-weight: 700;
+      font-size: 1.1rem;
     }
 
-    /* Beneficios */
-    .benefits-section {
-      background: linear-gradient(135deg, var(--white) 0%, #f8fafc 100%);
-      border-radius: 20px;
-      padding: 3rem;
-      margin: 2rem 0;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    }
-
-    .benefit-item {
-      text-align: center;
-      padding: 1.5rem;
-    }
-
-    .benefit-icon {
-      width: 70px;
-      height: 70px;
-      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-      color: white;
-      font-size: 1.5rem;
-    }
-
-    /* Footer */
-    footer {
-      background: linear-gradient(135deg, var(--dark-bg) 0%, #0f172a 100%);
-      color: var(--white);
-    }
-
-    /* Botón flotante de WhatsApp */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      z-index: 1000;
-    }
-
-    .whatsapp-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      color: white;
-      border-radius: 50%;
-      text-decoration: none;
-      font-size: 24px;
-      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-      transition: all 0.3s ease;
-    }
-
-    .whatsapp-link:hover {
-      background: linear-gradient(135deg, #128C7E, #0a6e5a);
-      color: white;
-      transform: scale(1.1);
-    }
-
-    /* Responsive */
+    /* Ajustes específicos para móvil - DISEÑO 50/50 PERFECTO */
     @media (max-width: 768px) {
-      .hero-section h1 {
+      .modal-dialog {
+        margin: 0;
+        max-width: 100%;
+        height: 100vh;
+      }
+
+      .modal-content {
+        height: 100vh;
+        border-radius: 0;
+        border: none;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .modal-header {
+        position: sticky;
+        top: 0;
+        background: var(--blanco);
+        z-index: 1050;
+        border-bottom: 1px solid var(--borde);
+        padding: 1rem;
+      }
+
+      .modal-body {
+        padding: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      /* CONTENEDOR DE IMAGEN - 50% DE ALTURA EXACTA */
+      .modal-body .col-12:first-child {
+        height: 50vh;
+        min-height: 50vh;
+        max-height: 50vh;
+        padding: 15px 15px 0 15px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .modal-image-container {
+        height: calc(50vh - 100px);
+        border-radius: 12px;
+        flex: 1;
+      }
+
+      #modalMainImage {
+        max-height: calc(50vh - 100px);
+      }
+
+      /* Miniaturas en móvil */
+      .modal-thumbnails {
+        padding: 12px 0;
+        margin-top: 8px;
+      }
+
+      .modal-thumbnail {
+        width: 70px;
+        height: 70px;
+      }
+
+      /* CONTENIDO DE DESCRIPCIÓN - 50% DE ALTURA EXACTA */
+      .modal-body .col-12:last-child {
+        height: 50vh;
+        min-height: 50vh;
+        max-height: 50vh;
+        overflow-y: auto;
+        padding: 20px;
+        background: var(--blanco);
+        border-top: 1px solid var(--borde);
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .modal-header .btn-close {
+        position: static;
+        margin: 0;
+        font-size: 1.2rem;
+      }
+
+      /* Mejoras para el contenido en móvil */
+      .modal-price-highlight {
+        font-size: 1.6rem;
+      }
+
+      .variant-item {
+        padding: 10px 12px;
+      }
+
+      #btnContactar {
+        padding: 14px;
+        font-size: 1rem;
+        position: sticky;
+        bottom: 0;
+        background: linear-gradient(135deg, var(--lila) 0%, var(--lila-medio) 100%);
+        border: none;
+      }
+    }
+
+    /* Para desktop - DISEÑO LADO A LADO ELEGANTE */
+    @media (min-width: 768px) {
+      .modal-dialog {
+        max-width: 900px;
+      }
+
+      .modal-image-container {
+        height: 450px;
+        border-radius: 16px;
+      }
+
+      .modal-body .row {
+        display: flex;
+        align-items: stretch;
+        min-height: 500px;
+      }
+
+      .modal-body .col-md-6:first-child {
+        padding-right: 25px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .modal-body .col-md-6:last-child {
+        padding-left: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .modal-thumbnails {
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 15px 0;
+      }
+
+      /* Mejoras estéticas desktop */
+      .modal-header {
+        padding: 1.5rem 1.5rem 1rem;
+        border-bottom: 1px solid var(--borde);
+      }
+
+      .modal-header .modal-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--negro);
+      }
+
+      .modal-header .btn-close {
+        font-size: 1.3rem;
+      }
+    }
+
+    /* Estilos adicionales para el contenido del modal */
+    #modalProductDescription {
+      color: var(--gris-texto);
+      line-height: 1.7;
+      margin-bottom: 25px;
+      font-size: 1.05rem;
+    }
+
+    #modalAdditionalInfo {
+      color: var(--gris-texto);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    #btnContactar {
+      background: linear-gradient(135deg, var(--lila) 0%, var(--lila-medio) 100%);
+      border: none;
+      padding: 14px 20px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      border-radius: 10px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    #btnContactar:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(176, 140, 230, 0.4);
+    }
+
+    /* Mejoras para los grupos de variantes */
+    .variants-list {
+      background: var(--gris-claro);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .variant-header {
+      font-weight: 600;
+      color: var(--lila);
+      margin: 15px 0 10px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid rgba(176, 140, 230, 0.2);
+    }
+
+    /* Animación de entrada del modal */
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .modal.fade .modal-dialog {
+      animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* =========================================== */
+    /* ESTILOS RESPONSIVE PARA EL GRID DE PRODUCTOS */
+    /* =========================================== */
+    .product-col {
+      margin-bottom: 25px;
+    }
+
+    /* Para móvil - 2 columnas */
+    @media (max-width: 768px) {
+      .product-col {
+        width: 50%;
+        float: left;
+      }
+
+      .page-title {
         font-size: 2.2rem;
       }
 
-      .section-padding {
-        padding: 60px 0;
+      .page-subtitle {
+        font-size: 1rem;
+        padding: 0 10px;
       }
 
-      .section-title {
-        font-size: 2rem;
+      .nav-tabs .nav-link {
+        padding: 12px 20px;
+        font-size: 0.9rem;
       }
 
-      .thumbnail-img {
-        height: 60px;
+      .product-tab .row {
+        margin: 0 -8px;
       }
 
-      .benefits-section {
-        padding: 2rem 1rem;
+      .product-col {
+        padding: 0 8px;
       }
 
-      .special-box-section {
-        padding: 2rem 1.5rem;
-        margin: 2rem 1rem;
+      .product-info {
+        padding: 18px;
       }
 
-      .special-box-title {
-        font-size: 1.6rem;
+      .product-title {
+        font-size: 1.1rem;
+      }
+
+      .price-range {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Para tablet - 3 columnas */
+    @media (min-width: 769px) and (max-width: 991px) {
+      .product-col {
+        width: 33.333%;
+        float: left;
+      }
+
+      .product-tab .row {
+        margin: 0 -12px;
+      }
+
+      .product-col {
+        padding: 0 12px;
+      }
+    }
+
+    /* Para desktop - 4 columnas */
+    @media (min-width: 992px) {
+      .product-col {
+        width: 25%;
+        float: left;
+      }
+
+      .product-tab .row {
+        margin: 0 -15px;
+      }
+
+      .product-col {
+        padding: 0 15px;
+      }
+    }
+
+    /* Clearfix para el grid */
+    .product-tab .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Footer mejorado */
+    footer {
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 2px solid var(--borde);
+      color: var(--gris-texto);
+      font-size: 0.9rem;
+      background: linear-gradient(135deg, var(--gris-claro) 0%, var(--blanco) 100%);
+      padding: 30px 20px;
+      border-radius: 12px;
+    }
+
+    footer p {
+      margin: 0;
+      font-weight: 500;
+    }
+
+    /* Mejoras de accesibilidad y enfoque */
+    .btn-view-details:focus,
+    .btn-outline-lila:focus,
+    .modal-thumbnail:focus,
+    #btnContactar:focus {
+      outline: 3px solid rgba(176, 140, 230, 0.4);
+      outline-offset: 2px;
+    }
+
+    /* Suavizar scroll */
+    .modal-body .col-12:last-child {
+      scroll-behavior: smooth;
+    }
+
+    /* Estados de carga para imágenes */
+    .product-image-container,
+    .modal-image-container {
+      position: relative;
+    }
+
+    .product-image-container.loading::after,
+    .modal-image-container.loading::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg,
+      var(--gris-medio) 0%,
+      var(--gris-claro) 50%,
+      var(--gris-medio) 100%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+      z-index: 2;
+      border-radius: inherit;
+    }
+
+    .product-image.loaded + .product-image-container::before,
+    #modalMainImage.loaded + .modal-image-container::before {
+      display: none;
+    }
+
+    @keyframes loading {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
       }
     }
   </style>
 </head>
 <body>
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top custom-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <i class="fas fa-box me-2"></i>
-      YALU
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<div class="container">
 
-  </div>
-</nav>
+  <header class="page-header">
+    <h1 class="page-title">Catálogo al por mayor</h1>
+    <p class="page-subtitle">Venta mínima 6 unds por referencia. Descuento a partir de 4 docenas.</p>
+  </header>
 
-<!-- Hero Section -->
-<section id="inicio" class="hero-section">
-  <div class="container">
-    <div class="row align-items-center min-vh-80">
-      <div class="col-lg-6">
-        <span class="hero-badge">
-          <i class="fas fa-star me-2"></i>Calidad Garantizada
-        </span>
-        <h1 class="display-5 fw-bold mb-4">Empaques Profesionales para tu Negocio</h1>
-        <p class="lead mb-4">Ofrecemos cajas y empaques de alta calidad que realzan el valor de tus productos y generan confianza en tus clientes.</p>
-        <div class="d-flex flex-wrap gap-3">
-          <button class="btn btn-primary btn-lg" onclick="scrollToSection('productos')">
-            <i class="fas fa-box-open me-2"></i>Ver Catálogo
-          </button>
+  <ul class="nav nav-tabs justify-content-center" id="productTabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-tab="arreglos">Arreglos-Anchetas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-tab="joyeria">Joyería</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-tab="empaques">Empaques</a>
+    </li>
+  </ul>
 
-        </div>
-        <div class="mt-4">
-          <p class="text-muted">
-            <i class="fas fa-check-circle text-success me-2"></i>
-            Venta al por mayor - Mínimo 6 unidades por referencia
-          </p>
-        </div>
+  <div id="tabContent">
+
+    <div class="product-tab active" id="arreglos">
+      <div class="row g-3" id="productos-arreglos">
+
       </div>
+    </div>
 
+    <!-- Tabulador Joyería -->
+    <div class="product-tab" id="joyeria">
+      <div class="row g-3" id="productos-joyeria">
+        <!-- Los productos de joyería se cargarán aquí dinámicamente -->
+      </div>
+    </div>
+
+    <!-- Tabulador Empaques -->
+    <div class="product-tab" id="empaques">
+      <div class="row g-3" id="productos-empaques">
+        <!-- Los productos de empaques se cargarán aquí dinámicamente -->
+      </div>
     </div>
   </div>
-</section>
 
-<section id="productos" class="section-padding bg-white">
-  <div class="container">
+  <footer class="text-center mt-5 pt-4 border-top" style="color: var(--gris-texto); font-size: 0.9rem;">
+    <p>Catálogo cajas yalu.</p>
+  </footer>
+</div>
 
-    <div class="special-box-section">
-      <div class="row align-items-center">
-        <div class="col-lg-8">
-          <div class="special-box-content">
-            <h3 class="special-box-title">¿Buscas empaques para tus productos?</h3>
-            <p class="special-box-description">
-              Descubre nuestra línea de cajas especiales para productos únicos.
-              Diseños personalizados para hacer
-              que tus productos destaquen.
-            </p>
-            <a href="https://luisafeosorio.github.io/catalogoEmpaques/" class="special-box-link" target="_blank">
-              <i class="fas fa-external-link-alt me-2"></i>
-              Ver catálogo de cajas especiales
-            </a>
+<!-- Modal para detalles del producto -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-fullscreen-md-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalProductTitle">Detalles del Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <div class="modal-image-container">
+              <img id="modalMainImage" src="" alt="" class="img-fluid">
+            </div>
+            <div class="modal-thumbnails" id="modalThumbnails">
+              <!-- Miniaturas se cargarán aquí -->
+            </div>
+          </div>
+          <!-- Columna para contenido -->
+          <div class="col-12 col-md-6">
+            <div class="product-details-container">
+              <!-- Nombre y descripción -->
+              <div class="mb-4">
+                <h3 id="modalProductName" class="modal-price-highlight mb-2"></h3>
+                <p id="modalProductDescription" class="text-muted"></p>
+              </div>
+              <!-- Variantes de precios -->
+              <div class="mb-4">
+                <h6 class="text-muted mb-3">
+                  <i class="fas fa-ruler-combined me-2"></i>Tamaños y Precios
+                </h6>
+                <div id="modalVariants" class="variants-list">
+                  <!-- Se llenará con JavaScript -->
+                </div>
+              </div>
+              <!-- Información adicional -->
+              <div class="mb-4">
+                <h6 class="text-muted mb-3">
+                  <i class="fas fa-info-circle me-2"></i>Información adicional
+                </h6>
+                <p id="modalAdditionalInfo" class="small text-muted">
+                  • Producto de alta calidad<br>
+                  • Personalizable según preferencias<br>
+                  • Tiempo de entrega: a estimar<br>
+                  • Envíos a todo el país
+                </p>
+              </div>
+
+              <button class="btn btn-lg w-100 mt-4" id="btnContactar">
+                <i class="fas fa-whatsapp me-2"></i>Consultar Disponibilidad por WhatsApp
+              </button>
+            </div>
           </div>
         </div>
-
-        <div class="col-lg-4 text-center">
-          <div class="special-box-image">
-            <img src="img/CintaRosa.jpeg"
-                 alt="Cajas especiales personalizadas"
-                 class="img-fluid rounded-3 shadow-sm">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="text-center mb-5">
-      <h2 class="section-title">Nuestros Productos</h2>
-      <p class="section-subtitle mx-auto">Descubre nuestra amplia gama de empaques y cajas para todo tipo de productos</p>
-    </div>
-    <div class="row g-4" id="productos-grid">
-      <!-- Los productos se cargarán dinámicamente desde JavaScript -->
-    </div>
-
-    <!-- Sección de cajas especiales centrada -->
-
-  </div>
-</section>
-
-<!-- Footer -->
-<footer id="contacto" class="py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h4 class="mb-3">
-          <i class="fas fa-box me-2"></i>
-          YALU Empaques
-        </h4>
-        <p class="mb-4">Especialistas en empaques y cajas de alta calidad para negocios y emprendedores.</p>
-        <div class="d-flex flex-column">
-          <p class="mb-2">
-            <i class="fas fa-phone me-2"></i>
-            +57 300 727 6599
-          </p>
-          <p class="mb-0">
-            <i class="fas fa-map-marker-alt me-2"></i>
-            Armenia, Quindío - Envíos a todo el país
-          </p>
-        </div>
-      </div>
-      <div class="col-md-6 text-md-end">
-        <h5 class="mb-3">Horario de atención</h5>
-        <p class="mb-2">Lunes a Viernes: 8:00 AM - 6:00 PM</p>
-        <p class="mb-4">Sábados: 9:00 AM - 2:00 PM</p>
-        <button class="btn btn-success" onclick="contactarPorWhatsApp()">
-          <i class="fab fa-whatsapp me-2"></i>
-          Contactar por WhatsApp
-        </button>
-      </div>
-    </div>
-    <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
-    <div class="row">
-      <div class="col-md-6">
-        <p>&copy; 2025 YALU Empaques. Todos los derechos reservados.</p>
-      </div>
-      <div class="col-md-6 text-md-end">
-        <p>Diseñado para impulsar tu negocio</p>
       </div>
     </div>
   </div>
-</footer>
-
-<!-- Botón flotante de WhatsApp -->
-<div class="whatsapp-float">
-  <a href="#" onclick="contactarPorWhatsApp()" class="whatsapp-link">
-    <i class="fab fa-whatsapp"></i>
-  </a>
 </div>
 
 <!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  // Datos de los productos
+  // Datos de productos
   const productos = [
     {
       id: 1,
-      name: "Bolsa blanca",
-      description: "Bolsa en papel importado, incluye cinta del color de tu preferencia y personalización de logo",
-      category: "popular",
-      image: "img/bolsablanca.png",
-      images: [
-        "img/bolsablanca.png",
-        "img/bolsamedidas.png"
-      ],
-      variants: [
-        {size: "11cm alto x 9cm ancho x 5cm profundo", price: "$1,700"},
-        {size: "16cm alto x 14cm ancho x 6cm profundo", price: "$2,550"},
-        {size: "19cm alto x 15cm ancho x 7cm profundo", price: "$2,900"},
-        {size: "18cm alto x 25cm ancho x 10cm profundo", price: "$3,600"},
-        {size: "24cm alto x 30cm ancho x 13cm profundo", price: "$4,300"}
-      ]
-    },
-    {
-      id: 2,
-      name: "Bolsa de color",
-      description: "Bolsa en papel importado, incluye cinta del color de tu preferencia",
-      category: "popular",
-      image: "img/bolsarosa.png",
-      images: [
-        "img/bolsarosa.png",
-        "img/bolsamedidas.png"
-      ],
-      variants: [
-        {size: "11cm alto x 9cm ancho x 5cm profundo", price: "$2,200"},
-        {size: "16cm alto x 14cm ancho x 6cm profundo", price: "$3,300"},
-        {size: "19cm alto x 15cm ancho x 7cm profundo", price: "$4,000"},
-        {size: "18cm alto x 25cm ancho x 10cm profundo", price: "$4,500"},
-        {size: "24cm alto x 30cm ancho x 13cm profundo", price: "$5,000"}
-      ]
-    },
-    {
-      id: 3,
-      name: "Bolsa de color negra",
-      description: "Bolsa en papel importado, incluye cinta del color de tu preferencia",
-      category: "popular",
-      image: "img/bolsanegra.png",
-      images: [
-        "img/bolsanegra.png",
-        "img/bolsamedidas.png"
-      ],
-      variants: [
-        {size: "11cm alto x 9cm ancho x 5cm profundo", price: "$2,200"},
-        {size: "16cm alto x 14cm ancho x 6cm profundo", price: "$3,300"},
-        {size: "19cm alto x 15cm ancho x 7cm profundo", price: "$4,000"},
-        {size: "18cm alto x 25cm ancho x 10cm profundo", price: "$4,500"},
-        {size: "24cm alto x 30cm ancho x 13cm profundo", price: "$5,000"}
-      ]
-    },
-    {
-      id: 4,
-      name: "Corazón Forrado",
-      description: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
-      category: "popular",
-      image: "img/CorazónForrado1.jpg",
-      images: [
+      nombre: "Corazón Forrado",
+      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/corazonrojo1.png",
+      imagenes: [
+        "img/corazonrojo1.png",
+        "img/corazonrojo2.png",
+        "img/corazonrojo3.png",
         "img/CorazónForrado1.jpg",
         "img/CorazonForrado4.jpeg",
         "img/CorazonForrado5.jpeg"
       ],
-      variants: [
-        {size: "20cm de ancho x 10 cm de alto", price: "$8,500"},
-        {size: "25cm de ancho x 10 cm de alto", price: "$10,000"},
-        {size: "30cm de ancho x 10 cm de alto", price: "$13,000"}
-      ]
+      variantes: [
+        {tamaño: "20cm de ancho x 10 cm de alto", precio: "$8,500"},
+        {tamaño: "25cm de ancho x 10 cm de alto", precio: "$10,000"},
+        {tamaño: "30cm de ancho x 10 cm de alto", precio: "$13,000"}
+      ],
+      esNuevaColeccion: false
     },
     {
-      id: 5,
-      name: "Cilindro Forrado",
-      description: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
-      category: "popular",
-      image: "img/CilindroForrado6.jpeg",
-      images: [
+      id: 2,
+      nombre: "Cilindro Forrado",
+      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/cilindrogranderojo1.png",
+      imagenes: [
+        "img/cilindrogranderojo1.png",
+        "img/cilindrogranderojo2.png",
+        "img/cilindrogranderojo3.png",
         "img/CilindroForrado6.jpeg",
         "img/Cilindro33.png",
         "img/Cilindro44.png"
       ],
-      variants: [
-        {size: "13cm de diámetro x 10 cm de alto", price: "$6,000"},
-        {size: "16cm de diámetro x 13 cm de alto", price: "$7,500"},
-        {size: "20cm de diámetro x 13 cm de alto", price: "$9,000"},
-        {size: "25cm de diámetro x 13 cm de alto", price: "$11,000"}
-      ]
-    },
-    {
-      id: 6,
-      name: "Cuadrada",
-      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
-      category: "popular",
-      image: "img/cuadrada1.png",
-      images: [
-        "img/cuadrada2.jpeg",
-        "img/cuadrada3.jpeg"
+      variantes: [
+        {tamaño: "13cm de diámetro x 10 cm de alto", precio: "$6,000"},
+        {tamaño: "16cm de diámetro x 13 cm de alto", precio: "$7,500"},
+        {tamaño: "20cm de diámetro x 13 cm de alto", precio: "$9,000"},
+        {tamaño: "25cm de diámetro x 13 cm de alto", precio: "$11,000"}
       ],
-      variants: [
-        {size: "Base 13cm x 13cm x 10 cm de alto", price: "$6,000"},
-        {size: "Base 16cm x 16cm x 10 cm de alto", price: "$7,500"},
-        {size: "Base 20cm x 20cm x 10 cm de alto", price: "$8,500"},
-        {size: "Base 25cm x 25cm x 10 cm de alto", price: "$10,000"}
-      ]
+      esNuevaColeccion: false
     },
     {
-      id: 7,
-      name: "Cajón Corazón",
-      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
-      category: "popular",
-      image: "img/cajoncorazon1.png",
-      images: [
+      id: 3,
+      nombre: "I love u",
+      descripcion: "Doble capa de cartón blanco en base y tapa, resistente, ideal para flores, chocolates...",
+      categoria: "arreglos",
+      imagen: "img/loveu.png",
+      imagenes: [
+        "img/loveu.png",
+        "img/loveu1.jpeg",
+        "img/loveu2.jpeg"
+      ],
+      variantes: [
+        {tamaño: "50cm x 18cm x 6 cm de alto", precio: "$13,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 4,
+      nombre: "Cajón de amor",
+      descripcion: "Cartón blanco de 300gr, ideal para flores eternas y chocolates en el cajón",
+      categoria: "arreglos",
+      imagen: "img/cajon1.png",
+      imagenes: [
+        "img/cajon1.png",
+        "img/cajon2.png",
+      ],
+      variantes: [
+        {tamaño: "15cm de diámetro x 20 cm de alto", precio: "$10,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 5,
+      nombre: "Ventana de amor",
+      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/12.png",
+      imagenes: [
+        "img/12.png",
+        "img/13.png",
+      ],
+      variantes: [
+        {tamaño: "25 cm de diametro x 10 cm de alto", precio: "$9,500"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 10,
+      nombre: "Cajón Corazón",
+      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/cajoncorazon1.png",
+      imagenes: [
         "img/cajoncorazon1.png",
         "img/cajoncorazon2.png",
         "img/cajoncorazon3.png"
       ],
-      variants: [
-        {size: "Medida del cajón interno: 26cm x 18cm. Corazón de 24cm de diámetro", price: "$14,000"}
-      ]
+      variantes: [
+        {tamaño: "Medida del cajón interno: 26cm x 18cm. Corazón de 24cm de diámetro", precio: "$14,000"}
+      ],
+      esNuevaColeccion: false
     },
     {
-      id: 8,
-      name: "Libro Corazón #1",
-      description: "Base del corazón en cartón rígido, libro con doble capa de cartón blanco de 300gr",
-      category: "popular",
-      image: "img/librocorazon2.jpeg",
-      images: [
+      id: 7,
+      nombre: "Libro Corazón #1",
+      descripcion: "Base del corazón en cartón rígido, libro con doble capa de cartón blanco de 300gr",
+      categoria: "arreglos",
+      imagen: "img/librocorazon2.jpeg",
+      imagenes: [
         "img/librocorazon2.jpeg",
         "img/librocorazon1.jpeg",
         "img/librocorazon3.jpeg"
       ],
-      variants: [
-        {size: "Corazón de 25cm de diámetro", price: "$8,000"}
-      ]
+      variantes: [
+        {tamaño: "Corazón de 25cm de diámetro", precio: "$8,000"}
+      ],
+      esNuevaColeccion: false
     },
     {
-      id: 9,
-      name: "Libro Corazón #2",
-      description: "Base del corazón en cartón rígido, libro con doble capa de cartón blanco de 300gr",
-      category: "popular",
-      image: "img/librocorazon22.png",
-      images: [
+      id: 8,
+      nombre: "Libro Corazón #2",
+      descripcion: "Base del corazón en cartón rígido, libro con doble capa de cartón blanco de 300gr",
+      categoria: "arreglos",
+      imagen: "img/librocorazon22.png",
+      imagenes: [
         "img/librocorazon22.png",
         "img/librocorazon23.png"
       ],
-      variants: [
-        {size: "Corazón de 25cm de diámetro", price: "$8,000"}
-      ]
+      variantes: [
+        {tamaño: "Corazón de 25cm de diámetro", precio: "$8,000"}
+      ],
+      esNuevaColeccion: false
     },
     {
-      id: 10,
-      name: "Dulcera",
-      description: "Caja resistente con borde de 1cm y separadores",
-      category: "Los mas llevados",
-      image: "img/dulcera1.jpeg",
-      images: [
-        "img/dulcera1.jpeg",
-        "img/dulcera2.png"
+      id: 9,
+      nombre: "Libro",
+      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/cuadradarosa1.png",
+      imagenes: [
+        "img/cuadradarosa1.png",
+        "img/cuadradarosa2.png",
       ],
-      variants: [
-        {size: "Tamaño mediano", price: "$5,000"}
-      ]
+      variantes: [
+
+        {tamaño: "Mediano: 15cm x 20cm x 8cm", precio: "$8,000"},
+        {tamaño: "Grande: 20cm x 25cm x 8cm", precio: "$9,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 6,
+      nombre: "Cilindro Forrado bajo",
+      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/cilindroBajoAbierto.jpeg",
+      imagenes: [
+        "img/cilindroBajoAbierto.jpeg",
+        "img/cilindroBajoCerrado.jpeg",
+      ],
+      variantes: [
+        {tamaño: "13cm de diámetro x 5-7 cm de alto", precio: "$5,600"},
+        {tamaño: "16cm de diámetro x 5-7 cm de alto", precio: "$7,100"},
+        {tamaño: "20cm de diámetro x 5-7 cm de alto", precio: "$8,600"},
+        {tamaño: "25cm de diámetro x 5-7 cm de alto", precio: "$10,600"}
+      ],
+      esNuevaColeccion: false
     },
     {
       id: 11,
-      name: "Mom",
-      description: "Base de letras en cartón rígido, doble capa de cartón blanco en base y tapa",
-      category: "Los mas llevados",
-      image: "img/mom1.jpeg",
-      images: [
+      nombre: "Cilindro bajo con ventana",
+      descripcion: "Base en cartón rígido, resistentes, ideal para chocolates, fresas, flores",
+      categoria: "arreglos",
+      imagen: "img/cilindrorosa.jpeg",
+      imagenes: [
+        "img/cilindrorosa.jpeg",
+        "img/cilindrorosa2.jpeg",
+      ],
+      variantes: [
+        {tamaño: "13cm de diámetro x 10 cm de alto", precio: "$6,000"},
+        {tamaño: "16cm de diámetro x 13 cm de alto", precio: "$7,500"},
+        {tamaño: "20cm de diámetro x 13 cm de alto", precio: "$9,000"},
+        {tamaño: "25cm de diámetro x 13 cm de alto", precio: "$11,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 12,
+      nombre: "Cilindro sin forrar Alto",
+      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/cilindrosinforrar1.png",
+      imagenes: [
+        "img/cilindrosinforrar1.png",
+        "img/cilindrosinforrar2.png"
+      ],
+      variantes: [
+        {tamaño: "13cm de diámetro x 10 cm de alto", precio: "$4,800"},
+        {tamaño: "16cm de diámetro x 13 cm de alto", precio: "$5,500"},
+        {tamaño: "20cm de diámetro x 13 cm de alto", precio: "$7,000"},
+        {tamaño: "25cm de diámetro x 13 cm de alto", precio: "$9,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 13,
+      nombre: "Cilindro sin forrar Bajo",
+      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/cilindrosinforrarbajos.png",
+      imagenes: [
+        "img/cilindrosinforrarbajos.png"
+      ],
+      variantes: [
+        {tamaño: "13cm de diámetro x 5 cm de alto", precio: "$4,300"},
+        {tamaño: "16cm de diámetro x 5-7 cm de alto", precio: "$5,000"},
+        {tamaño: "20cm de diámetro x 5-7 cm de alto", precio: "$6,000"},
+        {tamaño: "25cm de diámetro x 5-7 cm de alto", precio: "$7,500"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 22,
+      nombre: "Corazones sin forrar",
+      descripcion: "Base en cartón rígido, resistentes.",
+      categoria: "arreglos",
+      imagen: "img/corasinforrar2.jpeg",
+      imagenes: [
+        "img/corasinforrar2.jpeg",
+        "img/corasinforrar1.jpeg"
+      ],
+      variantes: [
+        {tamaño: "20cm de ancho x 10 cm de alto", precio: "$5,500"},
+        {tamaño: "25cm de ancho x 10 cm de alto", precio: "$6,500"},
+        {tamaño: "30cm de ancho x 10 cm de alto", precio: "$8,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 89,
+      nombre: "Corazones sin forrar bajo con ventana",
+      descripcion: "Base en cartón rígido, resistentes.",
+      categoria: "arreglos",
+      imagen: "img/coraventanachat1.png",
+      imagenes: [
+        "img/coraventanachat1.png"
+      ],
+      variantes: [
+        {tamaño: "20cm de ancho x 5-7 cm de alto", precio: "$5,500"},
+        {tamaño: "25cm de ancho x 5-7 cm de alto", precio: "$6,500"},
+        {tamaño: "30cm de ancho x 5-7 cm de alto", precio: "$8,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 14,
+      nombre: "Cuadrada",
+      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/cuadrada1.png",
+      imagenes: [
+        "img/cuadrada2.jpeg",
+        "img/cuadrada3.jpeg"
+      ],
+      variantes: [
+        {tamaño: "Base 13cm x 13cm x 10 cm de alto", precio: "$6,000"},
+        {tamaño: "Base 16cm x 16cm x 10 cm de alto", precio: "$7,500"},
+        {tamaño: "Base 20cm x 20cm x 10 cm de alto", precio: "$8,500"},
+        {tamaño: "Base 25cm x 25cm x 10 cm de alto", precio: "$10,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 15,
+      nombre: "Ancheta Amor",
+      descripcion: "Base en cartón rígido, forrados en variedad de colores",
+      categoria: "arreglos",
+      imagen: "img/anchetaamor1.png",
+      imagenes: [
+        "img/anchetaamor1.png",
+        "img/anchetaamor2.png"
+      ],
+      variantes: [
+        {tamaño: "13cm x 15cm x 10cm de alto", precio: "$5,500"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 20,
+      nombre: "Cofre",
+      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/cofre1.jpeg",
+      imagenes: [
+        "img/cofre1.jpeg",
+        "img/cofre2.jpeg"
+      ],
+      variantes: [
+        {tamaño: "Mediano: 23cm x 17cm x 15cm alto total", precio: "$13,000"},
+        {tamaño: "Grande: 30cm x 20cm x 15 cm alto total", precio: "$15,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 16,
+      nombre: "Ancheta",
+      descripcion: "Base en cartón rígido, variedad de colores",
+      categoria: "arreglos",
+      imagen: "img/acheta1.png",
+      imagenes: [
+        "img/acheta1.png",
+        "img/acheta2.png"
+      ],
+      variantes: [
+        {tamaño: "13cm x 13cm x 10cm", precio: "$4,500"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 17,
+      nombre: "Dulcera",
+      descripcion: "Caja resistente con borde de 1cm y separadores",
+      categoria: "arreglos",
+      imagen: "img/dulcera1.jpeg",
+      imagenes: [
+        "img/dulcera1.jpeg",
+        "img/dulcera2.png"
+      ],
+      variantes: [
+        {tamaño: "Tamaño mediano", precio: "$5,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 18,
+      nombre: "Mom",
+      descripcion: "Base de letras en cartón rígido, doble capa de cartón blanco en base y tapa",
+      categoria: "arreglos",
+      imagen: "img/mom1.jpeg",
+      imagenes: [
         "img/mom1.jpeg",
         "img/mom2.jpeg",
         "img/mom3.jpeg"
       ],
-      variants: [
-        {size: "53cm x 18cm x 6 cm de alto", price: "$13,500"}
-      ]
-    },
-    {
-      id: 12,
-      name: "I love u",
-      description: "Base de letras en cartón rígido, doble capa de cartón blanco en base y tapa",
-      category: "Los mas llevados",
-      image: "img/loveu1.jpeg",
-      images: [
-        "img/loveu1.jpeg",
-        "img/loveu2.jpeg"
+      variantes: [
+        {tamaño: "53cm x 18cm x 6 cm de alto", precio: "$13,500"}
       ],
-      variants: [
-        {size: "50cm x 18cm x 6 cm de alto", price: "$13,500"}
-      ]
-    },
-    {
-      id: 13,
-      name: "Buffet",
-      description: "Caja con borde de 1cm incluye separadores, salseros y tapa con ventana, ideal para desayunos sorpresa",
-      image: "img/buffet.jpeg",
-      images: [
-        "img/buffet.jpeg",
-        "img/buffet2.jpeg"
-      ],
-      variants: [
-        {size: "34cm x 26cm x 6cm", price: "$9,000"}
-      ]
-    },
-    {
-      id: 14,
-      name: "Cofre",
-      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
-      category: "Los mas llevados",
-      image: "img/cofre1.jpeg",
-      images: [
-        "img/cofre1.jpeg",
-        "img/cofre2.jpeg"
-      ],
-      variants: [
-        {size: "Mediano: 23cm x 17cm x 15cm alto total", price: "$13,000"},
-        {size: "Grande: 30cm x 20cm x 15 cm alto total", price: "$15,000"}
-      ]
-    },
-    {
-      id: 15,
-      name: "Libro con broche imán",
-      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
-      category: "Los mas llevados",
-      image: "img/librobroche1.jpeg",
-      images: [
-        "img/librobroche1.jpeg",
-        "img/librobroche2.jpeg"
-      ],
-      variants: [
-        {size: "Mediano: 25cm x 20cm x 8cm", price: "$9,500"},
-        {size: "Grande: 30cm x 25cm x 8cm", price: "$11,000"}
-      ]
-    },
-    {
-      id: 16,
-      name: "Cilindro sin forrar Alto",
-      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
-      category: "Los mas llevados",
-      image: "img/cilindrosinforrar1.png",
-      images: [
-        "img/cilindrosinforrar1.png",
-        "img/cilindrosinforrar2.png"
-      ],
-      variants: [
-        {size: "13cm de diámetro x 10 cm de alto", price: "$4,800"},
-        {size: "16cm de diámetro x 13 cm de alto", price: "$5,500"},
-        {size: "20cm de diámetro x 13 cm de alto", price: "$7,000"},
-        {size: "25cm de diámetro x 13 cm de alto", price: "$9,000"}
-      ]
-    },
-    {
-      id: 17,
-      name: "Cilindro sin forrar Bajo",
-      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
-      category: "Los mas llevados",
-      image: "img/cilindrosinforrarbajos.png",
-      images: [
-        "img/cilindrosinforrarbajos.png"
-      ],
-      variants: [
-        {size: "13cm de diámetro x 5 cm de alto", price: "$4,300"},
-        {size: "16cm de diámetro x 7 cm de alto", price: "$5,000"},
-        {size: "20cm de diámetro x 7 cm de alto", price: "$6,600"},
-        {size: "25cm de diámetro x 7 cm de alto", price: "$8,500"}
-      ]
-    },
-    {
-      id: 18,
-      name: "Corazones sin forrar",
-      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
-      category: "Los mas llevados",
-      image: "img/corasinforrar2.jpeg",
-      images: [
-        "img/corasinforrar2.jpeg",
-        "img/corasinforrar1.jpeg"
-      ],
-      variants: [
-        {size: "20cm de ancho x 10 cm de alto", price: "$6,000"},
-        {size: "25cm de ancho x 10 cm de alto", price: "$7,000"},
-        {size: "30cm de ancho x 10 cm de alto", price: "$8,000"}
-      ]
+      esNuevaColeccion: false
     },
     {
       id: 19,
-      name: "Reloj",
-      description: "Disponible en múltiples colores. PRECIO SOLO LA CAJA, si quieres adicionar la almohadilla y el moño, aumenta $1,000",
-      category: "joyeria",
-      image: "img/Relojnuevo.png",
-      images: [
-        "img/Relojnuevo.png",
-        "img/reloj2.jpeg"
+      nombre: "Buffet",
+      descripcion: "Caja con borde de 1cm incluye separadores, salseros y tapa con ventana, ideal para desayunos sorpresa",
+      categoria: "arreglos",
+      imagen: "img/buffet.jpeg",
+      imagenes: [
+        "img/buffet.jpeg",
+        "img/buffet2.jpeg"
       ],
-      variants: [
-        {size: "7,5cm x 8,5cm x 7cm de alto", price: "$4,000"}
-      ]
-    },
-    {
-      id: 20,
-      name: "Joyas #1",
-      description: "Disponible en color blanco, resistentes y elegantes",
-      category: "joyeria",
-      image: "img/joyasluxury.jpeg",
-      images: [
-        "img/joyasluxury.jpeg",
-        "img/joyasluxury2.jpeg"
+      variantes: [
+        {tamaño: "34cm x 26cm x 6cm", precio: "$9,000"}
       ],
-      variants: [
-        {size: "SIN personalización"},
-        {size: "6cm x 6cm x 4cm de alto", price: "$4,000"},
-        {size: "10cm x 10m x 4cm de alto", price: "$5,000"},
-        {size: "CON personalización"},
-        {size: "6cm x 6cm x 4cm de alto", price: "$4,800"},
-        {size: "10cm x 10m x 4cm de alto", price: "$5,800"}
-      ]
+      esNuevaColeccion: false
     },
+
     {
       id: 21,
-      name: "Joyas #2",
-      description: "Variedad de colores",
-      category: "joyeria",
-      image: "img/joyasrosanegra.jpeg",
-      images: [
-        "img/joyasrosanegra.jpeg",
-        "img/joyasrosa.jpeg",
-        "img/joyasnegra.jpeg"
+      nombre: "Libro con broche imán",
+      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/librobroche1.jpeg",
+      imagenes: [
+        "img/librobroche1.jpeg",
+        "img/librobroche2.jpeg"
       ],
-      variants: [
-        {size: "SENCILLAS"},
-        {size: "5cm x 5cm x 3cm", price: "$2,900"},
-        {size: "7cm x 7cm x 4cm", price: "$4,000"},
-        {size: "10cm x 10cm x 4cm", price: "$5,000"},
-        {size: "PERSONALIZADAS"},
-        {size: "5cm x 5cm x 3cm", price: "$3,700"},
-        {size: "7cm x 7cm x 4cm", price: "$4,800"},
-        {size: "10cm x 10cm x 4cm", price: "$5,800"}
-      ]
-    },
-    {
-      id: 22,
-      name: "Joyeros #3",
-      description: "Disponible en cartón blanco, gris, rosa, vienen sin forrar, incluye nido en cartón. SE PUEDEN PERSONALIZAR CON LOGO",
-      category: "joyeria",
-      image: "img/estilo1.jpeg",
-      images: [
-        "img/estilo1.jpeg",
-        "img/estilo12.jpeg"
+      variantes: [
+        {tamaño: "Mediano: 25cm x 20cm x 8cm", precio: "$9,500"},
+        {tamaño: "Grande: 30cm x 25cm x 8cm", precio: "$11,000"}
       ],
-      variants: [
-        {size: "Color blanco: 5cm x 5cm x 3cm", price: "$1,000"},
-        {size: "Color blanco: 7cm x 7cm x 4cm", price: "$1,400"},
-        {size: "Color blanco: 10cm x 10cm x 4cm", price: "$1,800"},
-        {size: "Color rosa o gris: 5cm x 5cm x 3cm", price: "$1,500"},
-        {size: "Color rosa o gris: 7cm x 7cm x 4cm", price: "$1,800"},
-        {size: "Color rosa o gris: 10cm x 10cm x 4cm", price: "$2,300"}
-      ]
+      esNuevaColeccion: false
     },
     {
       id: 23,
-      name: "Joyeros #4",
-      description: "Completamente forrada en cualquier color, elegante, incluye nido en cartón",
-      category: "joyeria",
-      image: "img/estilo2.png",
-      images: [
-        "img/estilo2.png",
-        "img/estilo21.png"
+      nombre: "Reloj",
+      descripcion: "Disponible en múltiples colores. PRECIO SOLO LA CAJA, si quieres adicionar la almohadilla y el moño, aumenta $1,000",
+      categoria: "joyeria",
+      imagen: "img/Relojnuevo.png",
+      imagenes: [
+        "img/Relojnuevo.png",
+        "img/reloj2.jpeg"
       ],
-      variants: [
-        {size: "SENCILLAS"},
-        {size: "5cm x 5cm x 3cm", price: "$2,900"},
-        {size: "7cm x 7cm x 4cm", price: "$4,000"},
-        {size: "10cm x 10cm x 4cm", price: "$5,000"},
-        {size: "PERSONALIZADAS"},
-        {size: "5cm x 5cm x 3cm", price: "$3,700"},
-        {size: "7cm x 7cm x 4cm", price: "$4,800"},
-        {size: "10cm x 10cm x 4cm", price: "$5,800"}
-      ]
-    },
-    {
-      id: 24,
-      name: "Joyeros #5",
-      description: "Cartulina de 150gr, disponible en todos los colores, incluye nido en cartón",
-      category: "joyeria",
-      image: "img/estilo3.png",
-      images: [
-        "img/estilo3.png",
-        "img/estilo31.png"
+      variantes: [
+        {tamaño: "7,5cm x 8,5cm x 7cm de alto", precio: "$4,000"}
       ],
-      variants: [
-        {size: "SIN personalización"},
-        {size: "6cm x 6cm x 4cm de alto", price: "$3,000"},
-        {size: "10cm x 10m x 4cm de alto", price: "$4,000"},
-        {size: "CON personalización"},
-        {size: "6cm x 6cm x 4cm de alto", price: "$3,700"},
-        {size: "10cm x 10m x 4cm de alto", price: "$4,800"}
-      ]
-    },
-    {
-      id: 25,
-      name: "Joyeros #6",
-      description: "Base y tapas forradas en múltiples colores, incluye nido en cartón",
-      category: "joyeria",
-      image: "img/joyasCuadradasLogo.png",
-      images: [
-        "img/joyasCuadradasLogo.png",
-        "img/estilo4.png"
-      ],
-      variants: [
-        {size: "SENCILLAS"},
-        {size: "5cm x 5cm x 3cm", price: "$2,500"},
-        {size: "7cm x 7cm x 4cm", price: "$3,500"},
-        {size: "10cm x 10cm x 4cm", price: "$4,500"},
-        {size: "PERSONALIZADAS"},
-        {size: "5cm x 5cm x 3cm", price: "$3,200"},
-        {size: "7cm x 7cm x 4cm", price: "$4,300"},
-        {size: "10cm x 10cm x 4cm", price: "$5,200"}
-      ]
-    },
-    {
-      id: 26,
-      name: "Joyas #7",
-      description: "Color blanco, cartón de 300gr, no incluye nido",
-      category: "joyeria",
-      image: "img/joyasimple2.jpeg",
-      images: [
-        "img/joyasimple2.jpeg",
-        "img/joyasimple.jpeg"
-      ],
-      variants: [
-        {size: "5cm x 5cm x 3cm", price: "$1,500"},
-        {size: "7cm x 7cm x 4cm", price: "$2,000"},
-        {size: "10cm x 10cm x 4cm", price: "$2,500"},
-        {size: "CON VENTANA"},
-        {size: "5cm x 5cm x 3cm", price: "$1,900"},
-        {size: "7cm x 7cm x 4cm", price: "$2,500"},
-        {size: "10cm x 10cm x 4cm", price: "$2,900"}
-      ]
+      esNuevaColeccion: false
     },
     {
       id: 27,
-      name: "Carrito Corona",
-      description: "Se puede personalizar la impresión",
-      category: "hombres",
-      image: "img/corona1.jpeg",
-      images: [
+      nombre: "Estilo 1",
+      descripcion: "Cartón blanco de 300gr, sin forrar, incluye nido en cartón",
+      categoria: "joyeria",
+      imagen: "img/joyasSinForrar02.png",
+      imagenes: [
+        "img/joyasSinForrar02.png",
+        "img/joyasSinForrar1.png",
+      ],
+      variantes: [
+        {tamaño: "CON VENTANA", precio: ""},
+        {tamaño: " 5cm x 5cm x 3cm", precio: "$1,400"},
+        {tamaño: " 7cm x 7cm x 4cm", precio: "$1,800"},
+        {tamaño: " 10cm x 10cm x 4cm", precio: "$2,200"},
+
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 25,
+      nombre: "Estilo 2",
+      descripcion: "Variedad de colores, diseños llamativos, elegantes, ideales para resaltar tu marca",
+      categoria: "joyeria",
+      imagen: "img/joyasprincipal02.png",
+      imagenes: [
+        "img/joyasprincipal02.png",
+        "img/joyasrosa2.png",
+        "img/joyasazul.png",
+        "img/joyaslila1.png",
+      ],
+      variantes: [
+        {tamaño: "SENCILLAS", precio: ""},
+        {tamaño: "5cm x 5cm x 3cm", precio: "$2,900"},
+        {tamaño: "7cm x 7cm x 4cm", precio: "$3,500"},
+        {tamaño: "10cm x 10cm x 4cm", precio: "$4,200"},
+        {tamaño: "PERSONALIZADAS", precio: ""},
+        {tamaño: "5cm x 5cm x 3cm", precio: "$3,700"},
+        {tamaño: "7cm x 7cm x 4cm", precio: "$4,800"},
+        {tamaño: "10cm x 10cm x 4cm", precio: "$5,800"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 29,
+      nombre: "Estilo 3",
+      descripcion: "Base y tapas forradas en múltiples colores, incluye nido en cartón",
+      categoria: "joyeria",
+      imagen: "img/joyasCuadradasLogo.png",
+      imagenes: [
+        "img/joyasCuadradasLogo.png",
+        "img/estilo4.png"
+      ],
+      variantes: [
+        {tamaño: "SENCILLAS", precio: ""},
+        {tamaño: "5cm x 5cm x 3cm", precio: "$2,200"},
+        {tamaño: "7cm x 7cm x 3cm", precio: "$2,900"},
+        {tamaño: "10cm x 10cm x 3cm", precio: "$3,500"},
+        {tamaño: "PERSONALIZADAS", precio: ""},
+        {tamaño: "5cm x 5cm x 3cm", precio: "$2,900"},
+        {tamaño: "7cm x 7cm x 3cm", precio: "$3,500"},
+        {tamaño: "10cm x 10cm x 3cm", precio: "$4,400"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 24,
+      nombre: "Estilo 4",
+      descripcion: "Disponible en color blanco, resistentes y elegantes",
+      categoria: "joyeria",
+      imagen: "img/49.png",
+      imagenes: [
+        "img/49.png",
+        "img/joyasluxury2.jpeg"
+      ],
+      variantes: [
+        {tamaño: "SIN personalización", precio: ""},
+        {tamaño: "6cm x 6cm x 4cm de alto", precio: "$4,000"},
+        {tamaño: "10cm x 10m x 4cm de alto", precio: "$5,000"},
+        {tamaño: "CON personalización", precio: ""},
+        {tamaño: "6cm x 6cm x 4cm de alto", precio: "$4,800"},
+        {tamaño: "10cm x 10m x 4cm de alto", precio: "$5,800"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 26,
+      nombre: "Estilo 5",
+      descripcion: "Disponible en cartón blanco, gris, rosa, vienen sin forrar, incluye nido en cartón. SE PUEDEN PERSONALIZAR CON LOGO",
+      categoria: "joyeria",
+      imagen: "img/joyaschat.png",
+      imagenes: [
+        "img/joyaschat.png",
+      ],
+      variantes: [
+        {tamaño: "Color blanco: 5cm x 5cm x 3cm", precio: "$1,200"},
+        {tamaño: "Color blanco: 7cm x 7cm x 4cm", precio: "$1,600"},
+        {tamaño: "Color blanco: 10cm x 10cm x 4cm", precio: "$1,900"},
+
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 30,
+      nombre: "Estilo 6",
+      descripcion: "Color blanco, cartón de 300gr, no incluye nido",
+      categoria: "joyeria",
+      imagen: "img/joyasimple.jpeg",
+      imagenes: [
+        "img/joyasimple2.jpeg",
+        "img/joyasimple.jpeg"
+      ],
+      variantes: [
+        {tamaño: "5cm x 5cm x 3cm", precio: "$1,500"},
+        {tamaño: "7cm x 7cm x 4cm", precio: "$2,000"},
+        {tamaño: "10cm x 10cm x 4cm", precio: "$2,500"},
+        {tamaño: "CON VENTANA", precio: ""},
+        {tamaño: "5cm x 5cm x 3cm", precio: "$1,900"},
+        {tamaño: "7cm x 7cm x 4cm", precio: "$2,500"},
+        {tamaño: "10cm x 10cm x 4cm", precio: "$2,900"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 31,
+      nombre: "Carrito Corona",
+      descripcion: "Se puede personalizar la impresión",
+      categoria: "arreglos",
+      imagen: "img/corona1.jpeg",
+      imagenes: [
         "img/corona1.jpeg",
         "img/corona2.jpeg",
         "img/carritoejemplo.png"
       ],
-      variants: [
-        {size: "13cm x 18cm x 9cm", price: "$7,500"}
-      ]
-    },
-    {
-      id: 28,
-      name: "Ancheta",
-      description: "Base en cartón rígido, variedad de colores",
-      image: "img/acheta1.png",
-      images: [
-        "img/acheta1.png",
-        "img/acheta2.png"
+      variantes: [
+        {tamaño: "13cm x 18cm x 9cm", precio: "$7,500"}
       ],
-      variants: [
-        {size: "13cm x 13cm x 10cm", price: "$4,500"}
-      ]
+      esNuevaColeccion: false
     },
     {
-      id: 29,
-      name: "Ancheta Esmoquin",
-      description: "Base en cartón rígido, sin forrar con decoración",
-      category: "hombres",
-      image: "img/anchetahombre1.png",
-      images: [
+      id: 32,
+      nombre: "Bolsa blanca",
+      descripcion: "Bolsa en papel importado, incluye cinta del color de tu preferencia y personalización de logo",
+      categoria: "empaques",
+      imagen: "img/bolsablanca.png",
+      imagenes: [
+        "img/bolsablanca.png",
+        "img/bolsamedidas.png"
+      ],
+      variantes: [
+        {tamaño: "11cm alto x 9cm ancho x 5cm profundo", precio: "$1,700"},
+        {tamaño: "16cm alto x 14cm ancho x 6cm profundo", precio: "$2,550"},
+        {tamaño: "19cm alto x 15cm ancho x 7cm profundo", precio: "$2,900"},
+        {tamaño: "18cm alto x 25cm ancho x 10cm profundo", precio: "$3,600"},
+        {tamaño: "24cm alto x 30cm ancho x 13cm profundo", precio: "$4,300"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 33,
+      nombre: "Bolsa de color",
+      descripcion: "Bolsa en papel importado, incluye cinta del color de tu preferencia",
+      categoria: "empaques",
+      imagen: "img/bolsarosa.png",
+      imagenes: [
+        "img/bolsarosa.png",
+        "img/bolsamedidas.png"
+      ],
+      variantes: [
+        {tamaño: "11cm alto x 9cm ancho x 5cm profundo", precio: "$2,200"},
+        {tamaño: "16cm alto x 14cm ancho x 6cm profundo", precio: "$3,300"},
+        {tamaño: "19cm alto x 15cm ancho x 7cm profundo", precio: "$4,000"},
+        {tamaño: "18cm alto x 25cm ancho x 10cm profundo", precio: "$4,500"},
+        {tamaño: "24cm alto x 30cm ancho x 13cm profundo", precio: "$5,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 34,
+      nombre: "Bolsa de color negra",
+      descripcion: "Bolsa en papel importado, incluye cinta del color de tu preferencia",
+      categoria: "empaques",
+      imagen: "img/bolsanegra.png",
+      imagenes: [
+        "img/bolsanegra.png",
+        "img/bolsamedidas.png"
+      ],
+      variantes: [
+        {tamaño: "11cm alto x 9cm ancho x 5cm profundo", precio: "$2,200"},
+        {tamaño: "16cm alto x 14cm ancho x 6cm profundo", precio: "$3,300"},
+        {tamaño: "19cm alto x 15cm ancho x 7cm profundo", precio: "$4,000"},
+        {tamaño: "18cm alto x 25cm ancho x 10cm profundo", precio: "$4,500"},
+        {tamaño: "24cm alto x 30cm ancho x 13cm profundo", precio: "$5,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 35,
+      nombre: "Ancheta Esmoquin",
+      descripcion: "Base en cartón rígido, sin forrar con decoración",
+      categoria: "arreglos",
+      imagen: "img/anchetahombre1.png",
+      imagenes: [
         "img/anchetahombre1.png",
         "img/anchetahombre2.png"
       ],
-      variants: [
-        {size: "13cm x 13cm x 10cm", price: "$4,000"}
-      ]
+      variantes: [
+        {tamaño: "13cm x 13cm x 10cm", precio: "$4,000"}
+      ],
+      esNuevaColeccion: false
     },
     {
-      id: 30,
-      name: "Cilindro Esmoquin",
-      description: "Base en cartón rígido, forrados en variedad de colores",
-      category: "hombres",
-      image: "img/cilindroesmoquin.jpg",
-      images: [
+      id: 36,
+      nombre: "Cilindro Esmoquin",
+      descripcion: "Base en cartón rígido, forrados en variedad de colores",
+      categoria: "arreglos",
+      imagen: "img/cilindroesmoquin.jpg",
+      imagenes: [
         "img/cilindroesmoquin.jpg",
         "img/cilindroesmoquin2.jpg"
       ],
-      variants: [
-        {size: "17cm de diámetro x 13 cm de alto", price: "$7,000"}
-      ]
+      variantes: [
+        {tamaño: "17cm de diámetro x 13 cm de alto", precio: "$7,000"}
+      ],
+      esNuevaColeccion: false
     },
     {
-      id: 31,
-      name: "Ancheta Amor",
-      description: "Base en cartón rígido, forrados en variedad de colores",
-      category: "amoryamistad",
-      image: "img/anchetaamor1.png",
-      images: [
-        "img/anchetaamor1.png",
-        "img/anchetaamor2.png"
+      id: 50,
+      nombre: "Empaques sencillos pequeños",
+      descripcion: "Cajas en cartón maule de 300gr",
+      categoria: "empaques",
+      imagen: "img/joyasimple2.jpeg",
+      esNuevaColeccion: false,
+      variantes: [
+        {tamaño: "Sin ventana: 7x7x4cm", precio: "$1,700"},
+        {tamaño: "Sin ventana: 10x10x5cm", precio: "$2,000"},
+        {tamaño: "Sin ventana: 12x8x5cm", precio: "$2,000"},
+        {tamaño: "Sin ventana: 12x15x5cm", precio: "$2,300"},
+        {tamaño: "Con ventana: 7x7x4cm", precio: "$2,000"},
+        {tamaño: "Con ventana: 10x10x5cm", precio: "$2,300"},
+        {tamaño: "Con ventana: 12x8x5cm", precio: "$2,300"},
+        {tamaño: "Con ventana: 12x15x5cm", precio: "$2,600"}
       ],
-      variants: [
-        {size: "13cm x 15cm x 10cm de alto", price: "$5,500"}
-      ]
-    }]
+      imagenes: ["img/joyasimple2.jpeg", "img/pequeña1.png", "img/pequeña2.png"]
+    },
+    {
+      id: 51,
+      nombre: "Empaques sencillos medianos",
+      descripcion: "Cajas en cartón maule de 300gr",
+      categoria: "empaques",
+      imagen: "img/sencillaAcetato.jpeg",
+      esNuevaColeccion: false,
+      variantes: [
+        {tamaño: "Sin ventana: 14x20x5cm", precio: "$2,900"},
+        {tamaño: "Sin ventana: 16x22x6cm", precio: "$2,900"},
+        {tamaño: "Sin ventana: 18x24x6cm", precio: "$2,900"},
+        {tamaño: "Sin ventana: 20x26x7cm", precio: "$3,400"},
+        {tamaño: "Con ventana: 14x20x5cm", precio: "$3,300"},
+        {tamaño: "Con ventana: 16x22x6cm", precio: "$3,300"},
+        {tamaño: "Con ventana: 18x24x6cm", precio: "$3,300"},
+        {tamaño: "Con ventana: 20x26x7cm", precio: "$3,800"}
+      ],
+      imagenes: ["img/sencillaAcetato.jpeg", "img/sencillaAcetato2.jpeg"]
+    },
+    {
+      id: 52,
+      nombre: "Empaques sencillos grandes",
+      descripcion: "Cajas en cartón maule de 300gr",
+      categoria: "empaques",
+      imagen: "img/sencillaGrande2.png",
+      esNuevaColeccion: false,
+      variantes: [
+        {tamaño: "Sin ventana: 25x25x8cm", precio: "$4,000"},
+        {tamaño: "Sin ventana: 25x30x8cm", precio: "$4,000"},
+        {tamaño: "Sin ventana: 30x30x8cm", precio: "$4,800"},
+        {tamaño: "Sin ventana: 35x30x8cm", precio: "$4,800"},
+        {tamaño: "Con ventana: 25x25x8cm", precio: "$4,500"},
+        {tamaño: "Con ventana: 25x30x8cm", precio: "$4,500"},
+        {tamaño: "Con ventana: 30x30x8cm", precio: "$5,300"},
+        {tamaño: "Con ventana: 35x30x8cm", precio: "$5,300"}
+      ],
+      imagenes: ["img/sencillaGrande2.png"]
+    },
+    {
+      id: 53,
+      nombre: "Empaques sencillos con cinta",
+      descripcion: "Disponible en color blanco, resistentes y elegantes, tú eliges el color de la cinta",
+      categoria: "empaques",
+      imagen: "img/CintaRosa.jpeg",
+      esNuevaColeccion: false,
+      variantes: [
+        {tamaño: "Sin ventana: 14x20x5cm", precio: "$3,400"},
+        {tamaño: "Sin ventana: 16x22x6cm", precio: "$3,400"},
+        {tamaño: "Sin ventana: 18x24x6cm", precio: "$3,400"},
+        {tamaño: "Sin ventana: 20x26x7cm", precio: "$3,900"},
+        {tamaño: "Con ventana: 14x20x5cm", precio: "$3,900"},
+        {tamaño: "Con ventana: 16x22x6cm", precio: "$3,900"},
+        {tamaño: "Con ventana: 18x24x6cm", precio: "$3,900"},
+        {tamaño: "Con ventana: 20x26x7cm", precio: "$4,400"}
+      ],
+      imagenes: ["img/CintaRosa.jpeg", "img/cintaNegra.jpeg"]
+    },
+    {
+      id: 54,
+      nombre: "Empaques tipo bouquet",
+      descripcion: "Disponible en color blanco, ideal para lenceria y miles de productos más",
+      categoria: "empaques",
+      imagen: "img/libro01.jpeg",
+      esNuevaColeccion: false,
+      variantes: [
+        {tamaño: "Sencilla: 14x20x5cm", precio: "$2,900"},
+        {tamaño: "Sencilla: 16x22x6cm", precio: "$2,900"},
+        {tamaño: "Sencilla: 18x24x6cm", precio: "$2,900"},
+        {tamaño: "Sencilla: 20x26x7cm", precio: "$3,400"},
+        {tamaño: "Con logo y cinta: 14x20x5cm", precio: "$3,800"},
+        {tamaño: "Con logo y cinta: 16x22x6cm", precio: "$3,800"},
+        {tamaño: "Con logo y cinta: 18x24x6cm", precio: "$3,800"},
+        {tamaño: "Con logo y cinta: 20x26x7cm", precio: "$4,200"}
+      ],
+      imagenes: ["img/libro01.jpeg", "img/libro02.png"]
+    },
+    {
+      id: 55,
+      nombre: "Empaques doble pared, borde de 1cm",
+      descripcion: "Disponible en color blanco, resistentes y elegantes",
+      categoria: "empaques",
+      imagen: "img/borde01.jpeg",
+      esNuevaColeccion: false,
+      variantes: [
+        {tamaño: "Sin ventana: 10x10x5cm", precio: "$3,500"},
+        {tamaño: "Sin ventana: 10x13x5cm", precio: "$3,500"},
+        {tamaño: "Sin ventana: 15x19x6cm", precio: "$4,200"},
+        {tamaño: "Sin ventana: 20x25x6cm", precio: "$5,200"},
+        {tamaño: "Con ventana: 10x10x5cm", precio: "$3,900"},
+        {tamaño: "Con ventana: 10x13x5cm", precio: "$3,900"},
+        {tamaño: "Con ventana: 15x19x6cm", precio: "$4,600"},
+        {tamaño: "Con ventana: 20x25x6cm", precio: "$5,600"}
+      ],
+      imagenes: ["img/borde01.jpeg", "img/empaque21.png", "img/empaque22.png"]
+    },
+    {
+      id: 56,
+      nombre: "Empaques 3 separaciones",
+      descripcion: "Disponible en color blanco, ideal para chocolates, galletas...",
+      categoria: "empaques",
+      imagen: "img/3separaciones2.jpg",
+      esNuevaColeccion: false,
+      variantes: [
+        {tamaño: "Sin ventana: 6x18x5cm", precio: "$2,500"},
+        {tamaño: "Sin ventana: 8x24x5cm", precio: "$3,000"},
+        {tamaño: "Sin ventana: 10x30x6cm", precio: "$3,900"},
+        {tamaño: "Con ventana: 6x18x5cm", precio: "$2,900"},
+        {tamaño: "Con ventana: 8x24x5cm", precio: "$3,500"},
+        {tamaño: "Con ventana: 10x30x6cm", precio: "$4,400"}
+      ],
+      imagenes: ["img/3separaciones2.jpg", "img/3separaciones.png"]
+    },
+    {
+      id: 57,
+      nombre: "Empaques para cupcakes",
+      descripcion: "Disponible en color blanco, se recomienda que verifiques las medidas con base a tus productos",
+      categoria: "empaques",
+      imagen: "img/cupcakes.png",
+      esNuevaColeccion: false,
+      variantes: [
+        {tamaño: "Sin ventana: 6 cupcakes (24x16x10cm)", precio: "$3,800"},
+        {tamaño: "Sin ventana: 12 cupcakes (33x26x10cm)", precio: "$5,500"},
+        {tamaño: "Con ventana: 6 cupcakes (24x16x10cm)", precio: "$4,400"},
+        {tamaño: "Con ventana: 12 cupcakes (33x26x10cm)", precio: "$6,100"}
+      ],
+      imagenes: ["img/cupcakes.png"]
+    },
+    {
+      id: 58,
+      nombre: "Dulcera",
+      descripcion: "Disponible en color blanco",
+      categoria: "empaques",
+      imagen: "img/dulcera1.jpeg",
+      esNuevaColeccion: false,
+      variantes: [
+        {tamaño: "Tamaño mediano", precio: "$5,000"}
+      ],
+      imagenes: ["img/dulcera1.jpeg", "img/dulcera2.png"]
+    }
+  ];
 
+  let productModal = null;
 
-
-    // Inicialización cuando el DOM esté listo
   document.addEventListener('DOMContentLoaded', function () {
+    console.log('DOM cargado - Inicializando catálogo');
+
+    productModal = new bootstrap.Modal(document.getElementById('productModal'));
+
+    // Configurar tabs
+    const tabLinks = document.querySelectorAll('#productTabs .nav-link');
+    tabLinks.forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        console.log('Click en tab:', this.getAttribute('data-tab'));
+
+        // Remover clase active de todos los tabs
+        tabLinks.forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.product-tab').forEach(tab => tab.classList.remove('active'));
+
+        // Agregar clase active al tab clickeado
+        this.classList.add('active');
+
+        // Mostrar el contenido del tab correspondiente
+        const tabId = this.getAttribute('data-tab');
+        const tabElement = document.getElementById(tabId);
+
+        if (tabElement) {
+          tabElement.classList.add('active');
+          console.log('Tab activado:', tabId);
+        } else {
+          console.error('No se encontró el tab con id:', tabId);
+        }
+      });
+    });
+
+    // Configurar botón de contacto en modal
+    document.getElementById('btnContactar').addEventListener('click', function () {
+      const productoNombre = document.getElementById('modalProductName').textContent;
+      const mensaje = `Hola, estoy interesado en el producto: ${productoNombre}. ¿Podrían darme más información?`;
+      const numeroWhatsApp = "573007276599";
+
+      window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`, '_blank');
+    });
+
+    // EVENT DELEGATION PARA BOTONES "VER DETALLES"
+    document.getElementById('tabContent').addEventListener('click', function (e) {
+      const btnDetalles = e.target.closest('.btn-view-details');
+      if (btnDetalles) {
+        const productId = parseInt(btnDetalles.getAttribute('data-product-id'));
+        console.log('Click en Ver detalles - Producto ID:', productId);
+        mostrarDetallesProducto(productId);
+      }
+    });
+
+    // Cargar productos
     cargarProductos();
-    inicializarNavbar();
   });
 
-  // Cargar productos en el grid
+  // Función para crear una tarjeta de producto
+  function crearTarjetaProducto(producto) {
+    // Calcular precios
+    let precios = producto.variantes.map(v => {
+      const precioNum = parseInt(v.precio.replace(/[^0-9]/g, ''));
+      return isNaN(precioNum) ? 0 : precioNum;
+    }).filter(p => p > 0);
+
+    let precioTexto = "Consultar precio";
+    if (precios.length > 0) {
+      const precioMin = Math.min(...precios);
+      precioTexto = `Desde $${precioMin.toLocaleString()}`;
+    }
+
+    // Determinar si es nueva colección para agregar clase especial
+    const claseEspecial = producto.esNuevaColeccion ? ' nueva-coleccion' : '';
+
+    // Mapear categorías a nombres legibles
+    const categoriasMap = {
+      'arreglos': 'Arreglo-Ancheta',
+      'joyeria': 'Joyería',
+      'empaques': 'Empaque'
+    };
+
+    return `
+    <div class="product-col">
+      <div class="product-card${claseEspecial}">
+        ${producto.esNuevaColeccion ? '<span class="badge-nueva">¡Nueva!</span>' : ''}
+        <div class="product-image-container">
+          <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image" onerror="this.src='https://via.placeholder.com/400x400?text=Imagen+no+disponible'">
+        </div>
+        <div class="product-info">
+          <div class="product-category">${categoriasMap[producto.categoria] || producto.categoria}</div>
+          <h3 class="product-title">${producto.nombre}</h3>
+          <p class="product-description">${producto.descripcion}</p>
+          <div class="price-range">${precioTexto}</div>
+          <button class="btn-view-details" data-product-id="${producto.id}">
+            <i class="fas fa-eye me-2"></i>Ver detalles
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+  }
+
+  // Función para cargar productos en las 3 categorías
   function cargarProductos() {
-    const grid = document.getElementById('productos-grid');
+    console.log('=== DIAGNÓSTICO DE CARGA ===');
+    console.log('Total productos:', productos.length);
 
+    // Verificar categorías únicas
+    const categorias = [...new Set(productos.map(p => p.categoria))];
+    console.log('Categorías encontradas:', categorias);
+
+    // Contar por categoría
+    const conteo = {};
+    productos.forEach(p => {
+      conteo[p.categoria] = (conteo[p.categoria] || 0) + 1;
+    });
+    console.log('Productos por categoría:', conteo);
+
+    // Verificar primeros productos
+    console.log('Primeros 3 productos:');
+    productos.slice(0, 3).forEach(p => {
+      console.log(`- ${p.nombre} (${p.categoria})`);
+    });
+
+    // Limpiar contenedores
+    const contenedores = {
+      'arreglos': document.getElementById('productos-arreglos'),
+      'joyeria': document.getElementById('productos-joyeria'),
+      'empaques': document.getElementById('productos-empaques')
+    };
+
+    // Limpiar todos
+    Object.values(contenedores).forEach(contenedor => {
+      if (contenedor) contenedor.innerHTML = '';
+    });
+
+
+    // Cargar productos
     productos.forEach(producto => {
-      const card = crearCardProducto(producto);
-      grid.appendChild(card);
-    });
-  }
+      const tarjeta = crearTarjetaProducto(producto);
+      conteo[producto.categoria]++;
 
-  // Crear card para cada producto
-  function crearCardProducto(producto) {
-    const col = document.createElement('div');
-    col.className = 'col-md-6 col-lg-4';
-
-    // Usar la primera imagen como principal
-    const imagenPrincipal = producto.image;
-
-    // Obtener el precio mínimo para mostrar
-    let precioMinimo = "Consultar";
-    if (producto.variants && producto.variants.length > 0) {
-      const precios = producto.variants
-        .filter(v => v.price && v.price !== "SIN personalización" && v.price !== "CON personalización")
-        .map(v => parseFloat(v.price.replace(/[$,]/g, '')));
-
-      if (precios.length > 0) {
-        precioMinimo = `Desde $${Math.min(...precios).toLocaleString()}`;
-      }
-    }
-
-    col.innerHTML = `
-      <div class="card product-card h-100">
-        <div class="position-relative">
-          <img src="${imagenPrincipal}" class="card-img-top product-img" alt="${producto.name}">
-
-        </div>
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">${producto.name}</h5>
-          <p class="card-text text-muted flex-grow-1">${producto.description}</p>
-          <div class="d-flex justify-content-between align-items-center mt-auto">
-            <span class="product-price">${precioMinimo}</span>
-            <button class="btn btn-outline-primary btn-sm" onclick="mostrarDetallesProducto(${producto.id})">
-              Ver detalles
-            </button>
-          </div>
-        </div>
-      </div>
-    `;
-
-    return col;
-  }
-
-  // Función para mostrar detalles del producto
-  function mostrarDetallesProducto(id) {
-    const producto = productos.find(p => p.id === id);
-
-    if (!producto) return;
-
-    // Generar HTML para las variantes
-    let variantesHTML = '';
-    if (producto.variants && producto.variants.length > 0) {
-      variantesHTML = `
-        <div class="mb-4">
-          <h6 class="fw-semibold mb-3">Opciones disponibles:</h6>
-          <div class="variants-container">
-            ${producto.variants.map((v, idx) => `
-              <div class="variant-option ${idx === 0 ? 'selected' : ''}">
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="variant-size">${v.size}</span>
-                  <span class="variant-price">${v.price || 'Consultar'}</span>
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-    }
-
-    const modalHTML = `
-      <div class="modal fade" id="productoModal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">${producto.name}</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <!-- Galería de imágenes -->
-                <div class="col-lg-7">
-                  <div class="product-gallery">
-                    <div class="main-image mb-3">
-                      <img src="${producto.images[0]}"
-                           id="mainProductImage"
-                           class="img-fluid rounded"
-                           alt="${producto.name}">
-                    </div>
-                    <div class="thumbnail-container">
-                      <div class="row g-2" id="thumbnails">
-                        ${producto.images.map((img, index) => `
-                          <div class="col-4">
-                            <img src="${img}"
-                                 class="thumbnail-img ${index === 0 ? 'active' : ''}"
-                                 onclick="cambiarImagenPrincipal('${img}', this)"
-                                 alt="${producto.name} - Vista ${index + 1}">
-                          </div>
-                        `).join('')}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Información del producto -->
-                <div class="col-lg-5">
-                  <div class="product-info">
-                    <p class="lead">${producto.description}</p>
-
-                    ${variantesHTML}
-
-                    <div class="product-actions">
-                      <button class="btn btn-success w-100"
-                              onclick="consultarProductoWhatsApp(${producto.id})">
-                        <i class="fab fa-whatsapp me-2"></i>
-                        Consultar por WhatsApp
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    // Crear y mostrar modal
-    const modalContainer = document.createElement('div');
-    modalContainer.innerHTML = modalHTML;
-    document.body.appendChild(modalContainer);
-
-    // Añadir eventos a las variantes
-    const modalElement = document.getElementById('productoModal');
-    modalElement.addEventListener('shown.bs.modal', function() {
-      const variantOptions = modalElement.querySelectorAll('.variant-option');
-      variantOptions.forEach(option => {
-        option.addEventListener('click', () => {
-          variantOptions.forEach(opt => opt.classList.remove('selected'));
-          option.classList.add('selected');
-        });
-      });
-    });
-
-    const modal = new bootstrap.Modal(modalElement);
-    modal.show();
-
-    // Limpiar cuando se cierre
-    modalElement.addEventListener('hidden.bs.modal', function () {
-      modalContainer.remove();
-    });
-  }
-
-  // Función para cambiar imagen principal
-  function cambiarImagenPrincipal(src, element) {
-    // Cambiar imagen principal
-    document.getElementById('mainProductImage').src = src;
-
-    // Remover clase active de todas las miniaturas
-    document.querySelectorAll('.thumbnail-img').forEach(img => {
-      img.classList.remove('active');
-    });
-
-    // Agregar clase active a la miniatura clickeada
-    element.classList.add('active');
-  }
-
-  // Función para WhatsApp
-  function solicitarCatalogoWhatsApp() {
-    const numero = "573007276599";
-    const mensaje = "Hola, me interesa recibir el catálogo completo de todas las cajas y empaques que manejan. ¿Podrían enviarme más información?";
-    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-    window.open(url, '_blank');
-  }
-
-  function contactarPorWhatsApp() {
-    const numero = "573007276599";
-    const mensaje = "Hola, tengo una consulta sobre sus empaques y cajas para productos.";
-    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-    window.open(url, '_blank');
-  }
-
-  function consultarProductoWhatsApp(productoId) {
-    const producto = productos.find(p => p.id === productoId);
-    if (!producto) return;
-
-    const numero = "573007276599";
-    const mensaje = `Hola, me interesa el producto: ${producto.name}. ¿Podrían darme más información sobre precios y disponibilidad?`;
-    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-    window.open(url, '_blank');
-  }
-
-  // Función para desplazamiento suave
-  function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  }
-
-  // Navbar scroll effect
-  function inicializarNavbar() {
-    const navbar = document.querySelector('.custom-navbar');
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        navbar.classList.add('scrolled');
+      // Agregar al contenedor correspondiente
+      if (contenedores[producto.categoria]) {
+        contenedores[producto.categoria].innerHTML += tarjeta;
       } else {
-        navbar.classList.remove('scrolled');
+        console.warn(`Producto ${producto.id} (${producto.nombre}) tiene categoría no válida: "${producto.categoria}"`);
       }
     });
+
+    console.log('Productos cargados por categoría:', conteo);
+    console.log(`Total productos: ${productos.length}`);
+  }
+
+  function mostrarDetallesProducto(productId) {
+    console.log('Mostrando detalles del producto ID:', productId);
+
+    const producto = productos.find(p => p.id === productId);
+
+    if (producto) {
+      console.log('Producto encontrado:', producto.nombre);
+
+      // Llenar modal con datos del producto
+      document.getElementById('modalProductTitle').textContent = producto.nombre;
+      document.getElementById('modalProductName').textContent = producto.nombre;
+      document.getElementById('modalProductDescription').textContent = producto.descripcion;
+
+      // Llenar variantes
+      const variantsContainer = document.getElementById('modalVariants');
+      variantsContainer.innerHTML = '';
+
+      producto.variantes.forEach(variante => {
+        const div = document.createElement('div');
+        div.className = 'variant-item';
+
+        // Si no tiene precio, mostrar solo el tamaño como título
+        if (variante.precio) {
+          div.innerHTML = `
+            <span class="variant-size">${variante.tamaño}</span>
+            <span class="variant-price">${variante.precio}</span>
+          `;
+        } else {
+          div.innerHTML = `
+            <span class="variant-size fw-bold text-uppercase" style="color: var(--lila);">
+              ${variante.tamaño}
+            </span>
+          `;
+          div.style.background = 'transparent';
+          div.style.border = 'none';
+          div.style.padding = '8px 0';
+        }
+
+        variantsContainer.appendChild(div);
+      });
+
+      // Configurar imágenes
+      const mainImage = document.getElementById('modalMainImage');
+      const thumbnailsContainer = document.getElementById('modalThumbnails');
+
+      if (producto.imagenes && producto.imagenes.length > 0) {
+        mainImage.src = producto.imagenes[0];
+        mainImage.alt = producto.nombre;
+
+        thumbnailsContainer.innerHTML = '';
+        producto.imagenes.forEach((img, index) => {
+          const thumbnail = document.createElement('img');
+          thumbnail.src = img;
+          thumbnail.alt = `${producto.nombre} - vista ${index + 1}`;
+          thumbnail.className = 'modal-thumbnail' + (index === 0 ? ' active' : '');
+
+          // Agregar manejador de error para imágenes
+          thumbnail.onerror = function () {
+            this.src = 'https://via.placeholder.com/80x80?text=Imagen+no+disponible';
+          };
+
+          thumbnail.addEventListener('click', function () {
+            // Cambiar imagen principal
+            mainImage.src = img;
+            mainImage.style.opacity = '0.7';
+
+            // Pequeña animación
+            setTimeout(() => {
+              mainImage.style.opacity = '1';
+              mainImage.style.transform = 'scale(1.02)';
+            }, 50);
+
+            setTimeout(() => {
+              mainImage.style.transform = 'scale(1)';
+            }, 200);
+
+            // Actualizar miniaturas activas
+            document.querySelectorAll('.modal-thumbnail').forEach(thumb => {
+              thumb.classList.remove('active');
+            });
+            this.classList.add('active');
+          });
+
+          thumbnailsContainer.appendChild(thumbnail);
+        });
+      } else {
+        mainImage.src = producto.imagen;
+        mainImage.alt = producto.nombre;
+        thumbnailsContainer.innerHTML = '';
+      }
+
+      // Agregar manejador de error para imagen principal
+      mainImage.onerror = function () {
+        this.src = 'https://via.placeholder.com/400x400?text=Imagen+no+disponible';
+      };
+
+      // Configurar botón de WhatsApp
+      const btnContactar = document.getElementById('btnContactar');
+      const mensaje = `Hola, estoy interesado en el producto: ${producto.nombre}. ¿Podrían darme más información?`;
+      const numeroWhatsApp = "573007276599";
+
+      btnContactar.onclick = function () {
+        window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`, '_blank');
+      };
+
+      // Mostrar modal
+      productModal.show();
+      console.log('Modal mostrado');
+
+      // Ajustes para móvil después de que el modal se muestre
+      setTimeout(() => {
+        if (window.innerWidth < 768) {
+          const imageCol = document.querySelector('.modal-body .col-12:first-child');
+          const contentCol = document.querySelector('.modal-body .col-12:last-child');
+
+          if (imageCol && contentCol) {
+            // Asegurar alturas exactas
+            const windowHeight = window.innerHeight;
+            imageCol.style.height = Math.floor(windowHeight * 0.5) + 'px';
+            contentCol.style.height = Math.floor(windowHeight * 0.5) + 'px';
+            contentCol.style.maxHeight = Math.floor(windowHeight * 0.5) + 'px';
+          }
+        }
+      }, 100);
+    } else {
+      console.error('Producto no encontrado con ID:', productId);
+      alert('Error: Producto no encontrado');
+    }
   }
 </script>
 </body>
