@@ -1,511 +1,786 @@
-const productos = [
+ // Datos de productos
+  const productos = [
     {
       id: 1,
-      name: "Bolsa blanca",
-      description: "Bolsa en papel importado, incluye cinta del color de tu preferencia y personalización de logo",
-      category: "popular",
-      image: "img/bolsablanca.png",
-      images: [
-        "img/bolsablanca.png",
-        "img/bolsamedidas.png"
-      ],
-      variants: [
-        {size: "11cm alto x 9cm ancho x 5cm profundo", price: "$1,700"},
-        {size: "16cm alto x 14cm ancho x 6cm profundo", price: "$2,550"},
-        {size: "19cm alto x 15cm ancho x 7cm profundo", price: "$2,900"},
-        {size: "18cm alto x 25cm ancho x 10cm profundo", price: "$3,600"},
-        {size: "24cm alto x 30cm ancho x 13cm profundo", price: "$4,300"}
-      ]
-    },
-    {
-      id: 2,
-      name: "Bolsa de color",
-      description: "Bolsa en papel importado, incluye cinta del color de tu preferencia",
-      category: "popular",
-      image: "img/bolsarosa.png",
-      images: [
-        "img/bolsarosa.png",
-        "img/bolsamedidas.png"
-      ],
-      variants: [
-        {size: "11cm alto x 9cm ancho x 5cm profundo", price: "$2,200"},
-        {size: "16cm alto x 14cm ancho x 6cm profundo", price: "$3,300"},
-        {size: "19cm alto x 15cm ancho x 7cm profundo", price: "$4,000"},
-        {size: "18cm alto x 25cm ancho x 10cm profundo", price: "$4,500"},
-        {size: "24cm alto x 30cm ancho x 13cm profundo", price: "$5,000"}
-      ]
-    },
-    {
-      id: 3,
-      name: "Bolsa de color negra",
-      description: "Bolsa en papel importado, incluye cinta del color de tu preferencia",
-      category: "popular",
-      image: "img/bolsanegra.png",
-      images: [
-        "img/bolsanegra.png",
-        "img/bolsamedidas.png"
-      ],
-      variants: [
-        {size: "11cm alto x 9cm ancho x 5cm profundo", price: "$2,200"},
-        {size: "16cm alto x 14cm ancho x 6cm profundo", price: "$3,300"},
-        {size: "19cm alto x 15cm ancho x 7cm profundo", price: "$4,000"},
-        {size: "18cm alto x 25cm ancho x 10cm profundo", price: "$4,500"},
-        {size: "24cm alto x 30cm ancho x 13cm profundo", price: "$5,000"}
-      ]
-    },
-    {
-      id: 4,
-      name: "Corazón Forrado",
-      description: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
-      category: "popular",
-      image: "img/CorazónForrado1.jpg",
-      images: [
+      nombre: "Corazón Forrado",
+      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/corazonrojo1.png",
+      imagenes: [
+        "img/corazonrojo1.png",
+        "img/corazonrojo2.png",
+        "img/corazonrojo3.png",
         "img/CorazónForrado1.jpg",
         "img/CorazonForrado4.jpeg",
         "img/CorazonForrado5.jpeg"
       ],
-      variants: [
-        {size: "20cm de ancho x 10 cm de alto", price: "$8,500"},
-        {size: "25cm de ancho x 10 cm de alto", price: "$10,000"},
-        {size: "30cm de ancho x 10 cm de alto", price: "$13,000"}
-      ]
+      variantes: [
+        {tamaño: "20cm de ancho x 10 cm de alto", precio: "$8,500"},
+        {tamaño: "25cm de ancho x 10 cm de alto", precio: "$10,000"},
+        {tamaño: "30cm de ancho x 10 cm de alto", precio: "$13,000"}
+      ],
+      esNuevaColeccion: false
     },
     {
-      id: 5,
-      name: "Cilindro Forrado",
-      description: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
-      category: "popular",
-      image: "img/CilindroForrado6.jpeg",
-      images: [
+      id: 2,
+      nombre: "Cilindro Forrado",
+      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/cilindrogranderojo1.png",
+      imagenes: [
+        "img/cilindrogranderojo1.png",
+        "img/cilindrogranderojo2.png",
+        "img/cilindrogranderojo3.png",
         "img/CilindroForrado6.jpeg",
         "img/Cilindro33.png",
         "img/Cilindro44.png"
       ],
-      variants: [
-        {size: "13cm de diámetro x 10 cm de alto", price: "$6,000"},
-        {size: "16cm de diámetro x 13 cm de alto", price: "$7,500"},
-        {size: "20cm de diámetro x 13 cm de alto", price: "$9,000"},
-        {size: "25cm de diámetro x 13 cm de alto", price: "$11,000"}
-      ]
-    },
-    {
-      id: 6,
-      name: "Cuadrada",
-      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
-      category: "popular",
-      image: "img/cuadrada1.png",
-      images: [
-        "img/cuadrada2.jpeg",
-        "img/cuadrada3.jpeg"
+      variantes: [
+        {tamaño: "13cm de diámetro x 10 cm de alto", precio: "$6,000"},
+        {tamaño: "16cm de diámetro x 13 cm de alto", precio: "$7,500"},
+        {tamaño: "20cm de diámetro x 13 cm de alto", precio: "$9,000"},
+        {tamaño: "25cm de diámetro x 13 cm de alto", precio: "$11,000"}
       ],
-      variants: [
-        {size: "Base 13cm x 13cm x 10 cm de alto", price: "$6,000"},
-        {size: "Base 16cm x 16cm x 10 cm de alto", price: "$7,500"},
-        {size: "Base 20cm x 20cm x 10 cm de alto", price: "$8,500"},
-        {size: "Base 25cm x 25cm x 10 cm de alto", price: "$10,000"}
-      ]
+      esNuevaColeccion: false
     },
     {
-      id: 7,
-      name: "Cajón Corazón",
-      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
-      category: "popular",
-      image: "img/cajoncorazon1.png",
-      images: [
+      id: 3,
+      nombre: "I love u",
+      descripcion: "Doble capa de cartón blanco en base y tapa, resistente, ideal para flores, chocolates...",
+      categoria: "arreglos",
+      imagen: "img/loveu.png",
+      imagenes: [
+        "img/loveu.png",
+        "img/loveu1.jpeg",
+        "img/loveu2.jpeg"
+      ],
+      variantes: [
+        {tamaño: "50cm x 18cm x 6 cm de alto", precio: "$13,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 4,
+      nombre: "Cajón de amor",
+      descripcion: "Cartón blanco de 300gr, ideal para flores eternas y chocolates en el cajón",
+      categoria: "arreglos",
+      imagen: "img/cajon1.png",
+      imagenes: [
+        "img/cajon1.png",
+        "img/cajon2.png",
+      ],
+      variantes: [
+        {tamaño: "15cm de diámetro x 20 cm de alto", precio: "$10,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 5,
+      nombre: "Ventana de amor",
+      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/12.png",
+      imagenes: [
+        "img/12.png",
+        "img/13.png",
+      ],
+      variantes: [
+        {tamaño: "25 cm de diametro x 10 cm de alto", precio: "$9,500"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 10,
+      nombre: "Cajón Corazón",
+      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/cajoncorazon1.png",
+      imagenes: [
         "img/cajoncorazon1.png",
         "img/cajoncorazon2.png",
         "img/cajoncorazon3.png"
       ],
-      variants: [
-        {size: "Medida del cajón interno: 26cm x 18cm. Corazón de 24cm de diámetro", price: "$14,000"}
-      ]
+      variantes: [
+        {tamaño: "Medida del cajón interno: 26cm x 18cm. Corazón de 24cm de diámetro", precio: "$14,000"}
+      ],
+      esNuevaColeccion: false
     },
     {
-      id: 8,
-      name: "Libro Corazón #1",
-      description: "Base del corazón en cartón rígido, libro con doble capa de cartón blanco de 300gr",
-      category: "popular",
-      image: "img/librocorazon2.jpeg",
-      images: [
+      id: 7,
+      nombre: "Libro Corazón #1",
+      descripcion: "Base del corazón en cartón rígido, libro con doble capa de cartón blanco de 300gr",
+      categoria: "arreglos",
+      imagen: "img/librocorazon2.jpeg",
+      imagenes: [
         "img/librocorazon2.jpeg",
         "img/librocorazon1.jpeg",
         "img/librocorazon3.jpeg"
       ],
-      variants: [
-        {size: "Corazón de 25cm de diámetro", price: "$8,000"}
-      ]
+      variantes: [
+        {tamaño: "Corazón de 25cm de diámetro", precio: "$8,000"}
+      ],
+      esNuevaColeccion: false
     },
     {
-      id: 9,
-      name: "Libro Corazón #2",
-      description: "Base del corazón en cartón rígido, libro con doble capa de cartón blanco de 300gr",
-      category: "popular",
-      image: "img/librocorazon22.png",
-      images: [
+      id: 8,
+      nombre: "Libro Corazón #2",
+      descripcion: "Base del corazón en cartón rígido, libro con doble capa de cartón blanco de 300gr",
+      categoria: "arreglos",
+      imagen: "img/librocorazon22.png",
+      imagenes: [
         "img/librocorazon22.png",
         "img/librocorazon23.png"
       ],
-      variants: [
-        {size: "Corazón de 25cm de diámetro", price: "$8,000"}
-      ]
+      variantes: [
+        {tamaño: "Corazón de 25cm de diámetro", precio: "$8,000"}
+      ],
+      esNuevaColeccion: false
     },
     {
-      id: 10,
-      name: "Dulcera",
-      description: "Caja resistente con borde de 1cm y separadores",
-      category: "Los mas llevados",
-      image: "img/dulcera1.jpeg",
-      images: [
-        "img/dulcera1.jpeg",
-        "img/dulcera2.png"
+      id: 9,
+      nombre: "Libro",
+      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/cuadradarosa1.png",
+      imagenes: [
+        "img/cuadradarosa1.png",
+        "img/cuadradarosa2.png",
       ],
-      variants: [
-        {size: "Tamaño mediano", price: "$5,000"}
-      ]
+      variantes: [
+
+        {tamaño: "Mediano: 15cm x 20cm x 8cm", precio: "$8,000"},
+        {tamaño: "Grande: 20cm x 25cm x 8cm", precio: "$9,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 6,
+      nombre: "Cilindro Forrado bajo",
+      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/cilindroBajoAbierto.jpeg",
+      imagenes: [
+        "img/cilindroBajoAbierto.jpeg",
+        "img/cilindroBajoCerrado.jpeg",
+      ],
+      variantes: [
+        {tamaño: "13cm de diámetro x 5-7 cm de alto", precio: "$5,600"},
+        {tamaño: "16cm de diámetro x 5-7 cm de alto", precio: "$7,100"},
+        {tamaño: "20cm de diámetro x 5-7 cm de alto", precio: "$8,600"},
+        {tamaño: "25cm de diámetro x 5-7 cm de alto", precio: "$10,600"}
+      ],
+      esNuevaColeccion: false
     },
     {
       id: 11,
-      name: "Mom",
-      description: "Base de letras en cartón rígido, doble capa de cartón blanco en base y tapa",
-      category: "Los mas llevados",
-      image: "img/mom1.jpeg",
-      images: [
+      nombre: "Cilindro bajo con ventana",
+      descripcion: "Base en cartón rígido, resistentes, ideal para chocolates, fresas, flores",
+      categoria: "arreglos",
+      imagen: "img/cilindrorosa.jpeg",
+      imagenes: [
+        "img/cilindrorosa.jpeg",
+        "img/cilindrorosa2.jpeg",
+      ],
+      variantes: [
+        {tamaño: "13cm de diámetro x 5-7 cm de alto", precio: "$6,000"},
+        {tamaño: "16cm de diámetro x 5-7 cm de alto", precio: "$7,500"},
+        {tamaño: "20cm de diámetro x 5-7 cm de alto", precio: "$9,000"},
+        {tamaño: "25cm de diámetro x 5-7 cm de alto", precio: "$11,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 12,
+      nombre: "Cilindro sin forrar Alto",
+      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/cilindrosinforrar1.png",
+      imagenes: [
+        "img/cilindrosinforrar1.png",
+        "img/cilindrosinforrar2.png"
+      ],
+      variantes: [
+        {tamaño: "13cm de diámetro x 10 cm de alto", precio: "$4,800"},
+        {tamaño: "16cm de diámetro x 13 cm de alto", precio: "$5,500"},
+        {tamaño: "20cm de diámetro x 13 cm de alto", precio: "$7,000"},
+        {tamaño: "25cm de diámetro x 13 cm de alto", precio: "$9,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 13,
+      nombre: "Cilindro sin forrar Bajo",
+      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/cilindrosinforrarbajos.png",
+      imagenes: [
+        "img/cilindrosinforrarbajos.png"
+      ],
+      variantes: [
+        {tamaño: "13cm de diámetro x 5 cm de alto", precio: "$4,300"},
+        {tamaño: "16cm de diámetro x 5-7 cm de alto", precio: "$5,000"},
+        {tamaño: "20cm de diámetro x 5-7 cm de alto", precio: "$6,000"},
+        {tamaño: "25cm de diámetro x 5-7 cm de alto", precio: "$7,500"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 22,
+      nombre: "Corazones sin forrar",
+      descripcion: "Base en cartón rígido, resistentes.",
+      categoria: "arreglos",
+      imagen: "img/corasinforrar2.jpeg",
+      imagenes: [
+        "img/corasinforrar2.jpeg",
+        "img/corasinforrar1.jpeg"
+      ],
+      variantes: [
+        {tamaño: "20cm de ancho x 10 cm de alto", precio: "$5,500"},
+        {tamaño: "25cm de ancho x 10 cm de alto", precio: "$6,500"},
+        {tamaño: "30cm de ancho x 10 cm de alto", precio: "$8,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 89,
+      nombre: "Corazones sin forrar bajo con ventana",
+      descripcion: "Base en cartón rígido, resistentes.",
+      categoria: "arreglos",
+      imagen: "img/coraventanachat1.png",
+      imagenes: [
+        "img/coraventanachat1.png"
+      ],
+      variantes: [
+        {tamaño: "20cm de ancho x 5-7 cm de alto", precio: "$5,500"},
+        {tamaño: "25cm de ancho x 5-7 cm de alto", precio: "$6,500"},
+        {tamaño: "30cm de ancho x 5-7 cm de alto", precio: "$8,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 14,
+      nombre: "Cuadrada",
+      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/cuadrada1.png",
+      imagenes: [
+        "img/cuadrada2.jpeg",
+        "img/cuadrada3.jpeg"
+      ],
+      variantes: [
+        {tamaño: "Base 13cm x 13cm x 10 cm de alto", precio: "$6,000"},
+        {tamaño: "Base 16cm x 16cm x 10 cm de alto", precio: "$7,500"},
+        {tamaño: "Base 20cm x 20cm x 10 cm de alto", precio: "$8,500"},
+        {tamaño: "Base 25cm x 25cm x 10 cm de alto", precio: "$10,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 15,
+      nombre: "Ancheta Amor",
+      descripcion: "Base en cartón rígido, forrados en variedad de colores",
+      categoria: "arreglos",
+      imagen: "img/anchetaamor1.png",
+      imagenes: [
+        "img/anchetaamor1.png",
+        "img/anchetaamor2.png"
+      ],
+      variantes: [
+        {tamaño: "13cm x 15cm x 10cm de alto", precio: "$5,500"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 20,
+      nombre: "Cofre",
+      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/cofre1.jpeg",
+      imagenes: [
+        "img/cofre1.jpeg",
+        "img/cofre2.jpeg"
+      ],
+      variantes: [
+        {tamaño: "Mediano: 23cm x 17cm x 15cm alto total", precio: "$13,000"},
+        {tamaño: "Grande: 30cm x 20cm x 15 cm alto total", precio: "$15,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 16,
+      nombre: "Ancheta",
+      descripcion: "Base en cartón rígido, variedad de colores",
+      categoria: "arreglos",
+      imagen: "img/acheta1.png",
+      imagenes: [
+        "img/acheta1.png",
+        "img/acheta2.png"
+      ],
+      variantes: [
+        {tamaño: "13cm x 13cm x 10cm", precio: "$4,500"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 17,
+      nombre: "Dulcera",
+      descripcion: "Caja resistente con borde de 1cm y separadores",
+      categoria: "arreglos",
+      imagen: "img/dulcera1.jpeg",
+      imagenes: [
+        "img/dulcera1.jpeg",
+        "img/dulcera2.png"
+      ],
+      variantes: [
+        {tamaño: "Tamaño mediano", precio: "$5,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 18,
+      nombre: "Mom",
+      descripcion: "Base de letras en cartón rígido, doble capa de cartón blanco en base y tapa",
+      categoria: "arreglos",
+      imagen: "img/mom1.jpeg",
+      imagenes: [
         "img/mom1.jpeg",
         "img/mom2.jpeg",
         "img/mom3.jpeg"
       ],
-      variants: [
-        {size: "53cm x 18cm x 6 cm de alto", price: "$13,500"}
-      ]
-    },
-    {
-      id: 12,
-      name: "I love u",
-      description: "Base de letras en cartón rígido, doble capa de cartón blanco en base y tapa",
-      category: "Los mas llevados",
-      image: "img/loveu1.jpeg",
-      images: [
-        "img/loveu1.jpeg",
-        "img/loveu2.jpeg"
+      variantes: [
+        {tamaño: "53cm x 18cm x 6 cm de alto", precio: "$13,500"}
       ],
-      variants: [
-        {size: "50cm x 18cm x 6 cm de alto", price: "$13,500"}
-      ]
-    },
-    {
-      id: 13,
-      name: "Buffet",
-      description: "Caja con borde de 1cm incluye separadores, salseros y tapa con ventana, ideal para desayunos sorpresa",
-      image: "img/buffet.jpeg",
-      images: [
-        "img/buffet.jpeg",
-        "img/buffet2.jpeg"
-      ],
-      variants: [
-        {size: "34cm x 26cm x 6cm", price: "$9,000"}
-      ]
-    },
-    {
-      id: 14,
-      name: "Cofre",
-      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
-      category: "Los mas llevados",
-      image: "img/cofre1.jpeg",
-      images: [
-        "img/cofre1.jpeg",
-        "img/cofre2.jpeg"
-      ],
-      variants: [
-        {size: "Mediano: 23cm x 17cm x 15cm alto total", price: "$13,000"},
-        {size: "Grande: 30cm x 20cm x 15 cm alto total", price: "$15,000"}
-      ]
-    },
-    {
-      id: 15,
-      name: "Libro con broche imán",
-      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
-      category: "Los mas llevados",
-      image: "img/librobroche1.jpeg",
-      images: [
-        "img/librobroche1.jpeg",
-        "img/librobroche2.jpeg"
-      ],
-      variants: [
-        {size: "Mediano: 25cm x 20cm x 8cm", price: "$9,500"},
-        {size: "Grande: 30cm x 25cm x 8cm", price: "$11,000"}
-      ]
-    },
-    {
-      id: 16,
-      name: "Cilindro sin forrar Alto",
-      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
-      category: "Los mas llevados",
-      image: "img/cilindrosinforrar1.png",
-      images: [
-        "img/cilindrosinforrar1.png",
-        "img/cilindrosinforrar2.png"
-      ],
-      variants: [
-        {size: "13cm de diámetro x 10 cm de alto", price: "$4,800"},
-        {size: "16cm de diámetro x 13 cm de alto", price: "$5,500"},
-        {size: "20cm de diámetro x 13 cm de alto", price: "$7,000"},
-        {size: "25cm de diámetro x 13 cm de alto", price: "$9,000"}
-      ]
-    },
-    {
-      id: 17,
-      name: "Cilindro sin forrar Bajo",
-      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
-      category: "Los mas llevados",
-      image: "img/cilindrosinforrarbajos.png",
-      images: [
-        "img/cilindrosinforrarbajos.png"
-      ],
-      variants: [
-        {size: "13cm de diámetro x 5 cm de alto", price: "$4,300"},
-        {size: "16cm de diámetro x 7 cm de alto", price: "$5,000"},
-        {size: "20cm de diámetro x 7 cm de alto", price: "$6,600"},
-        {size: "25cm de diámetro x 7 cm de alto", price: "$8,500"}
-      ]
-    },
-    {
-      id: 18,
-      name: "Corazones sin forrar",
-      description: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
-      category: "Los mas llevados",
-      image: "img/corasinforrar2.jpeg",
-      images: [
-        "img/corasinforrar2.jpeg",
-        "img/corasinforrar1.jpeg"
-      ],
-      variants: [
-        {size: "20cm de ancho x 10 cm de alto", price: "$6,000"},
-        {size: "25cm de ancho x 10 cm de alto", price: "$7,000"},
-        {size: "30cm de ancho x 10 cm de alto", price: "$8,000"}
-      ]
+      esNuevaColeccion: false
     },
     {
       id: 19,
-      name: "Reloj",
-      description: "Disponible en múltiples colores. PRECIO SOLO LA CAJA, si quieres adicionar la almohadilla y el moño, aumenta $1,000",
-      category: "joyeria",
-      image: "img/Relojnuevo.png",
-      images: [
-        "img/Relojnuevo.png",
-        "img/reloj2.jpeg"
+      nombre: "Buffet",
+      descripcion: "Caja con borde de 1cm incluye separadores, salseros y tapa con ventana, ideal para desayunos sorpresa",
+      categoria: "arreglos",
+      imagen: "img/buffet.jpeg",
+      imagenes: [
+        "img/buffet.jpeg",
+        "img/buffet2.jpeg"
       ],
-      variants: [
-        {size: "7,5cm x 8,5cm x 7cm de alto", price: "$4,000"}
-      ]
-    },
-    {
-      id: 20,
-      name: "Joyas #1",
-      description: "Disponible en color blanco, resistentes y elegantes",
-      category: "joyeria",
-      image: "img/joyasluxury.jpeg",
-      images: [
-        "img/joyasluxury.jpeg",
-        "img/joyasluxury2.jpeg"
+      variantes: [
+        {tamaño: "34cm x 26cm x 6cm", precio: "$9,000"}
       ],
-      variants: [
-        {size: "SIN personalización"},
-        {size: "6cm x 6cm x 4cm de alto", price: "$4,000"},
-        {size: "10cm x 10m x 4cm de alto", price: "$5,000"},
-        {size: "CON personalización"},
-        {size: "6cm x 6cm x 4cm de alto", price: "$4,800"},
-        {size: "10cm x 10m x 4cm de alto", price: "$5,800"}
-      ]
+      esNuevaColeccion: false
     },
+
     {
       id: 21,
-      name: "Joyas #2",
-      description: "Variedad de colores",
-      category: "joyeria",
-      image: "img/joyasrosanegra.jpeg",
-      images: [
-        "img/joyasrosanegra.jpeg",
-        "img/joyasrosa.jpeg",
-        "img/joyasnegra.jpeg"
+      nombre: "Libro con broche imán",
+      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen: "img/librobroche1.jpeg",
+      imagenes: [
+        "img/librobroche1.jpeg",
+        "img/librobroche2.jpeg"
       ],
-      variants: [
-        {size: "SENCILLAS"},
-        {size: "5cm x 5cm x 3cm", price: "$2,900"},
-        {size: "7cm x 7cm x 4cm", price: "$4,000"},
-        {size: "10cm x 10cm x 4cm", price: "$5,000"},
-        {size: "PERSONALIZADAS"},
-        {size: "5cm x 5cm x 3cm", price: "$3,700"},
-        {size: "7cm x 7cm x 4cm", price: "$4,800"},
-        {size: "10cm x 10cm x 4cm", price: "$5,800"}
-      ]
-    },
-    {
-      id: 22,
-      name: "Joyeros #3",
-      description: "Disponible en cartón blanco, gris, rosa, vienen sin forrar, incluye nido en cartón. SE PUEDEN PERSONALIZAR CON LOGO",
-      category: "joyeria",
-      image: "img/estilo1.jpeg",
-      images: [
-        "img/estilo1.jpeg",
-        "img/estilo12.jpeg"
+      variantes: [
+        {tamaño: "Mediano: 25cm x 20cm x 8cm", precio: "$9,500"},
+        {tamaño: "Grande: 30cm x 25cm x 8cm", precio: "$11,000"}
       ],
-      variants: [
-        {size: "Color blanco: 5cm x 5cm x 3cm", price: "$1,000"},
-        {size: "Color blanco: 7cm x 7cm x 4cm", price: "$1,400"},
-        {size: "Color blanco: 10cm x 10cm x 4cm", price: "$1,800"},
-        {size: "Color rosa o gris: 5cm x 5cm x 3cm", price: "$1,500"},
-        {size: "Color rosa o gris: 7cm x 7cm x 4cm", price: "$1,800"},
-        {size: "Color rosa o gris: 10cm x 10cm x 4cm", price: "$2,300"}
-      ]
+      esNuevaColeccion: false
     },
     {
       id: 23,
-      name: "Joyeros #4",
-      description: "Completamente forrada en cualquier color, elegante, incluye nido en cartón",
-      category: "joyeria",
-      image: "img/estilo2.png",
-      images: [
-        "img/estilo2.png",
-        "img/estilo21.png"
+      nombre: "Reloj",
+      descripcion: "Disponible en múltiples colores. PRECIO SOLO LA CAJA, si quieres adicionar la almohadilla y el moño, aumenta $1,000",
+      categoria: "joyeria",
+      imagen: "img/Relojnuevo.png",
+      imagenes: [
+        "img/Relojnuevo.png",
+        "img/reloj2.jpeg"
       ],
-      variants: [
-        {size: "SENCILLAS"},
-        {size: "5cm x 5cm x 3cm", price: "$2,900"},
-        {size: "7cm x 7cm x 4cm", price: "$4,000"},
-        {size: "10cm x 10cm x 4cm", price: "$5,000"},
-        {size: "PERSONALIZADAS"},
-        {size: "5cm x 5cm x 3cm", price: "$3,700"},
-        {size: "7cm x 7cm x 4cm", price: "$4,800"},
-        {size: "10cm x 10cm x 4cm", price: "$5,800"}
-      ]
-    },
-    {
-      id: 24,
-      name: "Joyeros #5",
-      description: "Cartulina de 150gr, disponible en todos los colores, incluye nido en cartón",
-      category: "joyeria",
-      image: "img/estilo3.png",
-      images: [
-        "img/estilo3.png",
-        "img/estilo31.png"
+      variantes: [
+        {tamaño: "7,5cm x 8,5cm x 7cm de alto", precio: "$4,000"}
       ],
-      variants: [
-        {size: "SIN personalización"},
-        {size: "6cm x 6cm x 4cm de alto", price: "$3,000"},
-        {size: "10cm x 10m x 4cm de alto", price: "$4,000"},
-        {size: "CON personalización"},
-        {size: "6cm x 6cm x 4cm de alto", price: "$3,700"},
-        {size: "10cm x 10m x 4cm de alto", price: "$4,800"}
-      ]
-    },
-    {
-      id: 25,
-      name: "Joyeros #6",
-      description: "Base y tapas forradas en múltiples colores, incluye nido en cartón",
-      category: "joyeria",
-      image: "img/joyasCuadradasLogo.png",
-      images: [
-        "img/joyasCuadradasLogo.png",
-        "img/estilo4.png"
-      ],
-      variants: [
-        {size: "SENCILLAS"},
-        {size: "5cm x 5cm x 3cm", price: "$2,500"},
-        {size: "7cm x 7cm x 4cm", price: "$3,500"},
-        {size: "10cm x 10cm x 4cm", price: "$4,500"},
-        {size: "PERSONALIZADAS"},
-        {size: "5cm x 5cm x 3cm", price: "$3,200"},
-        {size: "7cm x 7cm x 4cm", price: "$4,300"},
-        {size: "10cm x 10cm x 4cm", price: "$5,200"}
-      ]
-    },
-    {
-      id: 26,
-      name: "Joyas #7",
-      description: "Color blanco, cartón de 300gr, no incluye nido",
-      category: "joyeria",
-      image: "img/joyasimple2.jpeg",
-      images: [
-        "img/joyasimple2.jpeg",
-        "img/joyasimple.jpeg"
-      ],
-      variants: [
-        {size: "5cm x 5cm x 3cm", price: "$1,500"},
-        {size: "7cm x 7cm x 4cm", price: "$2,000"},
-        {size: "10cm x 10cm x 4cm", price: "$2,500"},
-        {size: "CON VENTANA"},
-        {size: "5cm x 5cm x 3cm", price: "$1,900"},
-        {size: "7cm x 7cm x 4cm", price: "$2,500"},
-        {size: "10cm x 10cm x 4cm", price: "$2,900"}
-      ]
+      esNuevaColeccion: false
     },
     {
       id: 27,
-      name: "Carrito Corona",
-      description: "Se puede personalizar la impresión",
-      category: "hombres",
-      image: "img/corona1.jpeg",
-      images: [
+      nombre: "Estilo 1",
+      descripcion: "Cartón blanco de 300gr, sin forrar, incluye nido en cartón, con personalizacion tiene costo adicional.",
+      categoria: "joyeria",
+      imagen: "img/joyassinforrar02.png",
+      imagenes: [
+        "img/joyassinforrar02.png",
+        "img/joyasSinForrar1.png",
+      ],
+      variantes: [
+        {tamaño: " 5cm x 5cm x 3cm", precio: "$1,400"},
+        {tamaño: " 7cm x 7cm x 4cm", precio: "$1,800"},
+        {tamaño: " 10cm x 10cm x 4cm", precio: "$2,200"},
+
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 25,
+      nombre: "Estilo 2",
+      descripcion: "Variedad de colores, diseños llamativos, elegantes, ideales para resaltar tu marca",
+      categoria: "joyeria",
+      imagen: "img/joyasprincipal02.png",
+      imagenes: [
+        "img/joyasprincipal02.png",
+        "img/joyasrosa2.png",
+        "img/joyasazul.png",
+        "img/joyaslila1.png",
+      ],
+      variantes: [
+        {tamaño: "SENCILLAS", precio: ""},
+        {tamaño: "5cm x 5cm x 3cm", precio: "$2,900"},
+        {tamaño: "7cm x 7cm x 4cm", precio: "$3,500"},
+        {tamaño: "10cm x 10cm x 4cm", precio: "$4,200"},
+        {tamaño: "PERSONALIZADAS", precio: ""},
+        {tamaño: "5cm x 5cm x 3cm", precio: "$3,700"},
+        {tamaño: "7cm x 7cm x 4cm", precio: "$4,800"},
+        {tamaño: "10cm x 10cm x 4cm", precio: "$5,800"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 29,
+      nombre: "Estilo 3",
+      descripcion: "Base y tapas forradas en múltiples colores, incluye nido en cartón",
+      categoria: "joyeria",
+      imagen: "img/joyasCuadradasLogo.png",
+      imagenes: [
+        "img/joyasCuadradasLogo.png",
+        "img/estilo4.png"
+      ],
+      variantes: [
+        {tamaño: "SENCILLAS", precio: ""},
+        {tamaño: "5cm x 5cm x 3cm", precio: "$2,200"},
+        {tamaño: "7cm x 7cm x 3cm", precio: "$2,900"},
+        {tamaño: "10cm x 10cm x 3cm", precio: "$3,500"},
+        {tamaño: "PERSONALIZADAS", precio: ""},
+        {tamaño: "5cm x 5cm x 3cm", precio: "$2,900"},
+        {tamaño: "7cm x 7cm x 3cm", precio: "$3,500"},
+        {tamaño: "10cm x 10cm x 3cm", precio: "$4,400"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 24,
+      nombre: "Estilo 4",
+      descripcion: "Disponible en color blanco, resistentes y elegantes",
+      categoria: "joyeria",
+      imagen: "img/joyasluxury2.jpeg",
+      imagenes: [
+        "img/joyasluxury2.jpeg",
+        "img/49.png"
+
+      ],
+      variantes: [
+        {tamaño: "SIN personalización", precio: ""},
+        {tamaño: "6cm x 6cm x 4cm de alto", precio: "$4,000"},
+        {tamaño: "10cm x 10m x 4cm de alto", precio: "$5,000"},
+        {tamaño: "CON personalización", precio: ""},
+        {tamaño: "6cm x 6cm x 4cm de alto", precio: "$4,800"},
+        {tamaño: "10cm x 10m x 4cm de alto", precio: "$5,800"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 26,
+      nombre: "Estilo 5",
+      descripcion: "Cartón blanco de 300gr vienen sin forrar, incluye nido en cartón. SE PUEDEN PERSONALIZAR CON LOGO",
+      categoria: "joyeria",
+      imagen: "img/joyaschat.png",
+      imagenes: [
+        "img/joyaschat.png",
+      ],
+      variantes: [
+        {tamaño: "Color blanco: 5cm x 5cm x 3cm", precio: "$1,200"},
+        {tamaño: "Color blanco: 7cm x 7cm x 4cm", precio: "$1,600"},
+        {tamaño: "Color blanco: 10cm x 10cm x 4cm", precio: "$1,900"},
+
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 30,
+      nombre: "Estilo 6",
+      descripcion: "Color blanco, cartón de 300gr, no incluye nido",
+      categoria: "joyeria",
+      imagen: "img/joyasimple.jpeg",
+      imagenes: [
+        "img/joyasimple2.jpeg",
+        "img/joyasimple.jpeg"
+      ],
+      variantes: [
+        {tamaño: "5cm x 5cm x 3cm", precio: "$1,500"},
+        {tamaño: "7cm x 7cm x 4cm", precio: "$2,000"},
+        {tamaño: "10cm x 10cm x 4cm", precio: "$2,500"},
+        {tamaño: "CON VENTANA", precio: ""},
+        {tamaño: "5cm x 5cm x 3cm", precio: "$1,900"},
+        {tamaño: "7cm x 7cm x 4cm", precio: "$2,500"},
+        {tamaño: "10cm x 10cm x 4cm", precio: "$2,900"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 31,
+      nombre: "Carrito Corona",
+      descripcion: "Se puede personalizar la impresión",
+      categoria: "arreglos",
+      imagen: "img/corona1.jpeg",
+      imagenes: [
         "img/corona1.jpeg",
         "img/corona2.jpeg",
         "img/carritoejemplo.png"
       ],
-      variants: [
-        {size: "13cm x 18cm x 9cm", price: "$7,500"}
-      ]
-    },
-    {
-      id: 28,
-      name: "Ancheta",
-      description: "Base en cartón rígido, variedad de colores",
-      image: "img/acheta1.png",
-      images: [
-        "img/acheta1.png",
-        "img/acheta2.png"
+      variantes: [
+        {tamaño: "13cm x 18cm x 9cm", precio: "$7,500"}
       ],
-      variants: [
-        {size: "13cm x 13cm x 10cm", price: "$4,500"}
-      ]
+      esNuevaColeccion: false
     },
     {
-      id: 29,
-      name: "Ancheta Esmoquin",
-      description: "Base en cartón rígido, sin forrar con decoración",
-      category: "hombres",
-      image: "img/anchetahombre1.png",
-      images: [
+      id: 32,
+      nombre: "Bolsa blanca",
+      descripcion: "Bolsa en papel importado, incluye cinta del color de tu preferencia y personalización de logo",
+      categoria: "empaques",
+      imagen: "img/bolsablanca.png",
+      imagenes: [
+        "img/bolsablanca.png",
+        "img/bolsamedidas.png"
+      ],
+      variantes: [
+        {tamaño: "11cm alto x 9cm ancho x 5cm profundo", precio: "$1,700"},
+        {tamaño: "16cm alto x 14cm ancho x 6cm profundo", precio: "$2,550"},
+        {tamaño: "19cm alto x 15cm ancho x 7cm profundo", precio: "$2,900"},
+        {tamaño: "18cm alto x 25cm ancho x 10cm profundo", precio: "$3,600"},
+        {tamaño: "24cm alto x 30cm ancho x 13cm profundo", precio: "$4,300"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 33,
+      nombre: "Bolsa de color",
+      descripcion: "Bolsa en papel importado, incluye cinta del color de tu preferencia",
+      categoria: "empaques",
+      imagen: "img/bolsarosa.png",
+      imagenes: [
+        "img/bolsarosa.png",
+        "img/bolsamedidas.png"
+      ],
+      variantes: [
+        {tamaño: "11cm alto x 9cm ancho x 5cm profundo", precio: "$2,200"},
+        {tamaño: "16cm alto x 14cm ancho x 6cm profundo", precio: "$3,300"},
+        {tamaño: "19cm alto x 15cm ancho x 7cm profundo", precio: "$4,000"},
+        {tamaño: "18cm alto x 25cm ancho x 10cm profundo", precio: "$4,500"},
+        {tamaño: "24cm alto x 30cm ancho x 13cm profundo", precio: "$5,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 34,
+      nombre: "Bolsa de color negra",
+      descripcion: "Bolsa en papel importado, incluye cinta del color de tu preferencia",
+      categoria: "empaques",
+      imagen: "img/bolsanegra.png",
+      imagenes: [
+        "img/bolsanegra.png",
+        "img/bolsamedidas.png"
+      ],
+      variantes: [
+        {tamaño: "11cm alto x 9cm ancho x 5cm profundo", precio: "$2,200"},
+        {tamaño: "16cm alto x 14cm ancho x 6cm profundo", precio: "$3,300"},
+        {tamaño: "19cm alto x 15cm ancho x 7cm profundo", precio: "$4,000"},
+        {tamaño: "18cm alto x 25cm ancho x 10cm profundo", precio: "$4,500"},
+        {tamaño: "24cm alto x 30cm ancho x 13cm profundo", precio: "$5,000"}
+      ],
+      esNuevaColeccion: false
+    },
+    {
+      id: 35,
+      nombre: "Ancheta Esmoquin",
+      descripcion: "Base en cartón rígido, sin forrar con decoración",
+      categoria: "arreglos",
+      imagen: "img/anchetahombre1.png",
+      imagenes: [
         "img/anchetahombre1.png",
         "img/anchetahombre2.png"
       ],
-      variants: [
-        {size: "13cm x 13cm x 10cm", price: "$4,000"}
-      ]
+      variantes: [
+        {tamaño: "13cm x 13cm x 10cm", precio: "$4,000"}
+      ],
+      esNuevaColeccion: false
     },
     {
-      id: 30,
-      name: "Cilindro Esmoquin",
-      description: "Base en cartón rígido, forrados en variedad de colores",
-      category: "hombres",
-      image: "img/cilindroesmoquin.jpg",
-      images: [
+      id: 36,
+      nombre: "Cilindro Esmoquin",
+      descripcion: "Base en cartón rígido, forrados en variedad de colores",
+      categoria: "arreglos",
+      imagen: "img/cilindroesmoquin.jpg",
+      imagenes: [
         "img/cilindroesmoquin.jpg",
         "img/cilindroesmoquin2.jpg"
       ],
-      variants: [
-        {size: "17cm de diámetro x 13 cm de alto", price: "$7,000"}
-      ]
+      variantes: [
+        {tamaño: "17cm de diámetro x 13 cm de alto", precio: "$7,000"}
+      ],
+      esNuevaColeccion: false
     },
     {
-      id: 31,
-      name: "Ancheta Amor",
-      description: "Base en cartón rígido, forrados en variedad de colores",
-      category: "amoryamistad",
-      image: "img/anchetaamor1.png",
-      images: [
-        "img/anchetaamor1.png",
-        "img/anchetaamor2.png"
+      id: 50,
+      nombre: "Empaques sencillos pequeños",
+      descripcion: "Cajas en cartón maule de 300gr",
+      categoria: "empaques",
+      imagen: "img/joyasimple2.jpeg",
+      esNuevaColeccion: false,
+      variantes: [
+        {tamaño: "Sin ventana: 7x7x4cm", precio: "$1,700"},
+        {tamaño: "Sin ventana: 10x10x5cm", precio: "$2,000"},
+        {tamaño: "Sin ventana: 12x8x5cm", precio: "$2,000"},
+        {tamaño: "Sin ventana: 12x15x5cm", precio: "$2,300"},
+        {tamaño: "Con ventana: 7x7x4cm", precio: "$2,000"},
+        {tamaño: "Con ventana: 10x10x5cm", precio: "$2,300"},
+        {tamaño: "Con ventana: 12x8x5cm", precio: "$2,300"},
+        {tamaño: "Con ventana: 12x15x5cm", precio: "$2,600"}
       ],
-      variants: [
-        {size: "13cm x 15cm x 10cm de alto", price: "$5,500"}
-      ]
+      imagenes: ["img/joyasimple2.jpeg", "img/pequeña1.png", "img/pequeña2.png"]
+    },
+    {
+      id: 51,
+      nombre: "Empaques sencillos medianos",
+      descripcion: "Cajas en cartón maule de 300gr",
+      categoria: "empaques",
+      imagen: "img/sencillaAcetato.jpeg",
+      esNuevaColeccion: false,
+      variantes: [
+        {tamaño: "Sin ventana: 14x20x5cm", precio: "$2,900"},
+        {tamaño: "Sin ventana: 16x22x6cm", precio: "$2,900"},
+        {tamaño: "Sin ventana: 18x24x6cm", precio: "$2,900"},
+        {tamaño: "Sin ventana: 20x26x7cm", precio: "$3,400"},
+        {tamaño: "Con ventana: 14x20x5cm", precio: "$3,300"},
+        {tamaño: "Con ventana: 16x22x6cm", precio: "$3,300"},
+        {tamaño: "Con ventana: 18x24x6cm", precio: "$3,300"},
+        {tamaño: "Con ventana: 20x26x7cm", precio: "$3,800"}
+      ],
+      imagenes: ["img/sencillaAcetato.jpeg", "img/sencillaAcetato2.jpeg"]
+    },
+    {
+      id: 52,
+      nombre: "Empaques sencillos grandes",
+      descripcion: "Cajas en cartón maule de 300gr",
+      categoria: "empaques",
+      imagen: "img/sencillaGrande2.png",
+      esNuevaColeccion: false,
+      variantes: [
+        {tamaño: "Sin ventana: 25x25x8cm", precio: "$4,000"},
+        {tamaño: "Sin ventana: 25x30x8cm", precio: "$4,000"},
+        {tamaño: "Sin ventana: 30x30x8cm", precio: "$4,800"},
+        {tamaño: "Sin ventana: 35x30x8cm", precio: "$4,800"},
+        {tamaño: "Con ventana: 25x25x8cm", precio: "$4,500"},
+        {tamaño: "Con ventana: 25x30x8cm", precio: "$4,500"},
+        {tamaño: "Con ventana: 30x30x8cm", precio: "$5,300"},
+        {tamaño: "Con ventana: 35x30x8cm", precio: "$5,300"}
+      ],
+      imagenes: ["img/sencillaGrande2.png"]
+    },
+    {
+      id: 53,
+      nombre: "Empaques sencillos con cinta",
+      descripcion: "Disponible en color blanco, resistentes y elegantes, tú eliges el color de la cinta",
+      categoria: "empaques",
+      imagen: "img/CintaRosa.jpeg",
+      esNuevaColeccion: false,
+      variantes: [
+        {tamaño: "Sin ventana: 14x20x5cm", precio: "$3,400"},
+        {tamaño: "Sin ventana: 16x22x6cm", precio: "$3,400"},
+        {tamaño: "Sin ventana: 18x24x6cm", precio: "$3,400"},
+        {tamaño: "Sin ventana: 20x26x7cm", precio: "$3,900"},
+        {tamaño: "Con ventana: 14x20x5cm", precio: "$3,900"},
+        {tamaño: "Con ventana: 16x22x6cm", precio: "$3,900"},
+        {tamaño: "Con ventana: 18x24x6cm", precio: "$3,900"},
+        {tamaño: "Con ventana: 20x26x7cm", precio: "$4,400"}
+      ],
+      imagenes: ["img/CintaRosa.jpeg", "img/cintaNegra.jpeg"]
+    },
+    {
+      id: 54,
+      nombre: "Empaques tipo bouquet",
+      descripcion: "Disponible en color blanco, ideal para lenceria y miles de productos más",
+      categoria: "empaques",
+      imagen: "img/libro01.jpeg",
+      esNuevaColeccion: false,
+      variantes: [
+        {tamaño: "Sencilla: 14x20x5cm", precio: "$2,900"},
+        {tamaño: "Sencilla: 16x22x6cm", precio: "$2,900"},
+        {tamaño: "Sencilla: 18x24x6cm", precio: "$2,900"},
+        {tamaño: "Sencilla: 20x26x7cm", precio: "$3,400"},
+        {tamaño: "Con logo y cinta: 14x20x5cm", precio: "$3,800"},
+        {tamaño: "Con logo y cinta: 16x22x6cm", precio: "$3,800"},
+        {tamaño: "Con logo y cinta: 18x24x6cm", precio: "$3,800"},
+        {tamaño: "Con logo y cinta: 20x26x7cm", precio: "$4,200"}
+      ],
+      imagenes: ["img/libro01.jpeg", "img/libro02.png"]
+    },
+    {
+      id: 55,
+      nombre: "Empaques doble pared, borde de 1cm",
+      descripcion: "Disponible en color blanco, resistentes y elegantes",
+      categoria: "empaques",
+      imagen: "img/borde01.jpeg",
+      esNuevaColeccion: false,
+      variantes: [
+        {tamaño: "Sin ventana: 10x10x5cm", precio: "$3,500"},
+        {tamaño: "Sin ventana: 10x13x5cm", precio: "$3,500"},
+        {tamaño: "Sin ventana: 15x19x6cm", precio: "$4,200"},
+        {tamaño: "Sin ventana: 20x25x6cm", precio: "$5,200"},
+        {tamaño: "Con ventana: 10x10x5cm", precio: "$3,900"},
+        {tamaño: "Con ventana: 10x13x5cm", precio: "$3,900"},
+        {tamaño: "Con ventana: 15x19x6cm", precio: "$4,600"},
+        {tamaño: "Con ventana: 20x25x6cm", precio: "$5,600"}
+      ],
+      imagenes: ["img/borde01.jpeg", "img/empaque21.png", "img/empaque22.png"]
+    },
+    {
+      id: 56,
+      nombre: "Empaques 3 separaciones",
+      descripcion: "Disponible en color blanco, ideal para chocolates, galletas...",
+      categoria: "empaques",
+      imagen: "img/3separaciones2.jpg",
+      esNuevaColeccion: false,
+      variantes: [
+        {tamaño: "Sin ventana: 6x18x5cm", precio: "$2,500"},
+        {tamaño: "Sin ventana: 8x24x5cm", precio: "$3,000"},
+        {tamaño: "Sin ventana: 10x30x6cm", precio: "$3,900"},
+        {tamaño: "Con ventana: 6x18x5cm", precio: "$2,900"},
+        {tamaño: "Con ventana: 8x24x5cm", precio: "$3,500"},
+        {tamaño: "Con ventana: 10x30x6cm", precio: "$4,400"}
+      ],
+      imagenes: ["img/3separaciones2.jpg", "img/3separaciones.png"]
+    },
+    {
+      id: 57,
+      nombre: "Empaques para cupcakes",
+      descripcion: "Disponible en color blanco, se recomienda que verifiques las medidas con base a tus productos",
+      categoria: "empaques",
+      imagen: "img/cupcakes.png",
+      esNuevaColeccion: false,
+      variantes: [
+        {tamaño: "Sin ventana: 6 cupcakes (24x16x10cm)", precio: "$3,800"},
+        {tamaño: "Sin ventana: 12 cupcakes (33x26x10cm)", precio: "$5,500"},
+        {tamaño: "Con ventana: 6 cupcakes (24x16x10cm)", precio: "$4,400"},
+        {tamaño: "Con ventana: 12 cupcakes (33x26x10cm)", precio: "$6,100"}
+      ],
+      imagenes: ["img/cupcakes.png"]
+    },
+    {
+      id: 58,
+      nombre: "Dulcera",
+      descripcion: "Disponible en color blanco",
+      categoria: "empaques",
+      imagen: "img/dulcera1.jpeg",
+      esNuevaColeccion: false,
+      variantes: [
+        {tamaño: "Tamaño mediano", precio: "$5,000"}
+      ],
+      imagenes: ["img/dulcera1.jpeg", "img/dulcera2.png"]
     }
+  ];

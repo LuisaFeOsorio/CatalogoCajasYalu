@@ -32,7 +32,86 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
+    /* Agrega estos estilos al CSS */
+    .variant-price-section {
+      margin-bottom: 25px;
+      padding: 15px;
+      background: white;
+      border-radius: 10px;
+      border: 2px solid var(--lila-claro);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    }
 
+    .variant-title {
+      color: var(--lila);
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--lila-medio);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .variant-title i {
+      font-size: 1rem;
+    }
+
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 0;
+    }
+
+    .price-table th {
+      text-align: left;
+      padding: 12px 15px;
+      background: var(--lila-claro);
+      color: var(--negro);
+      font-weight: 600;
+      border-bottom: 2px solid var(--lila-medio);
+      font-size: 0.9rem;
+    }
+
+    .price-table td {
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--borde);
+      font-size: 0.95rem;
+    }
+
+    .price-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .price-table .rango-destacado {
+      background: linear-gradient(135deg, rgba(176, 140, 230, 0.1) 0%, rgba(208, 184, 240, 0.1) 100%);
+      font-weight: 600;
+    }
+
+    .price-table .rango-destacado td:first-child {
+      color: var(--lila);
+      position: relative;
+    }
+
+    .price-table .rango-destacado td:first-child:before {
+      content: "★";
+      color: #ffc107;
+      margin-right: 8px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .variant-price-section {
+        padding: 12px;
+      }
+
+      .price-table th,
+      .price-table td {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+      }
+    }
     .container {
       max-width: 1200px;
     }
@@ -65,7 +144,7 @@
       line-height: 1.6;
     }
 
-    /* Tabuladores - MEJORADOS */
+    /* Tabuladores */
     .nav-tabs {
       border-bottom: 2px solid var(--borde);
       margin-bottom: 40px;
@@ -121,398 +200,18 @@
       box-shadow: 0 2px 8px rgba(176, 140, 230, 0.3);
     }
 
-    /* Tarjetas de producto - FORMATO CUADRADO PERFECTO */
-    .product-card {
-      background: var(--blanco);
-      border: 1px solid var(--borde);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 2px 8px var(--sombra);
-    }
-
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 24px var(--sombra-hover);
-      border-color: var(--lila-medio);
-    }
-
-    /* Estilos para resaltar nuevas colecciones */
-    .product-card.nueva-coleccion {
-      position: relative;
-      border: 2px solid var(--lila);
-      box-shadow: 0 8px 25px rgba(176, 140, 230, 0.2);
-    }
-
-    .product-card.nueva-coleccion:hover {
-      box-shadow: 0 15px 35px rgba(176, 140, 230, 0.3);
-    }
-
-    .badge-nueva {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
-      color: white;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      z-index: 10;
-      box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4);
-      }
-      70% {
-        box-shadow: 0 0 0 8px rgba(255, 107, 107, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
-      }
-    }
-
-    /* IMAGENES SIEMPRE CUADRADAS - SOLUCIÓN DEFINITIVA */
-    .product-image-container {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      overflow: hidden;
-      background-color: var(--gris-medio);
-      position: relative;
-    }
-
-    .product-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-
-    .product-card:hover .product-image {
-      transform: scale(1.05);
-    }
-
-    .product-info {
-      padding: 24px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .product-category {
-      color: var(--lila);
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      margin-bottom: 10px;
-      display: inline-block;
-      padding: 4px 10px;
-      background: rgba(176, 140, 230, 0.1);
-      border-radius: 20px;
-      width: fit-content;
-    }
-
-    .product-title {
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin-bottom: 12px;
-      color: var(--negro);
-      line-height: 1.4;
-    }
-
-    .product-description {
-      color: var(--gris-texto);
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-      line-height: 1.6;
-      flex: 1;
-    }
-
-    .price-range {
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: var(--negro);
-      margin-bottom: 20px;
-      padding: 10px 0;
-      border-top: 1px solid var(--borde);
-      border-bottom: 1px solid var(--borde);
-    }
-
-    .btn-view-details {
-      background: linear-gradient(135deg, var(--lila) 0%, var(--lila-medio) 100%);
-      color: var(--blanco);
-      border: none;
-      border-radius: 8px;
-      padding: 12px 24px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      width: 100%;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      cursor: pointer;
-      margin-top: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .btn-view-details:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(176, 140, 230, 0.3);
-    }
-
-    /* Productos ocultos inicialmente */
-    .product-tab {
-      display: none;
-      animation: fadeIn 0.5s ease;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    .product-tab.active {
-      display: block;
-    }
-
-    /* =========================================== */
-    /* ESTILOS PARA EL MODAL - PERFECTAMENTE CUADRADO */
-    /* =========================================== */
-    .modal-image-container {
-      width: 100%;
-      height: 400px;
-      background-color: var(--gris-medio);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-    }
-
-    #modalMainImage {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      display: block;
-      transition: transform 0.5s ease;
-      border-radius: 8px;
-    }
-
-    /* Miniaturas del modal */
-    .modal-thumbnails {
-      display: flex;
-      gap: 10px;
-      padding: 10px 0;
-      overflow-x: auto;
-      scrollbar-width: thin;
-      scrollbar-color: var(--lila) var(--gris-claro);
-    }
-
-    .modal-thumbnails::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    .modal-thumbnails::-webkit-scrollbar-track {
-      background: var(--gris-claro);
-      border-radius: 3px;
-    }
-
-    .modal-thumbnails::-webkit-scrollbar-thumb {
-      background: var(--lila);
-      border-radius: 3px;
-    }
-
-    .modal-thumbnail {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 8px;
-      cursor: pointer;
-      border: 3px solid transparent;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      aspect-ratio: 1 / 1;
-      background-color: var(--gris-medio);
-      flex-shrink: 0;
-    }
-
-    .modal-thumbnail:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .modal-thumbnail.active {
-      border-color: var(--lila);
-      box-shadow: 0 0 0 3px rgba(176, 140, 230, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Contenido del modal */
-    .modal-price-highlight {
-      color: var(--lila);
-      font-weight: 700;
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-    }
-
-    .variant-item {
-      padding: 12px 15px;
-      border-bottom: 1px solid var(--borde);
-      transition: all 0.2s ease;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .variant-item:hover {
-      background-color: var(--gris-claro);
-      border-radius: 6px;
-      transform: translateX(5px);
-    }
-
-    .variant-item:last-child {
-      border-bottom: none;
-    }
-
-    .variant-size {
-      font-weight: 500;
-      color: var(--negro);
-      font-size: 0.95rem;
-    }
-
-    .variant-price {
-      color: var(--lila);
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-
-    /* Ajustes específicos para móvil - DISEÑO 50/50 PERFECTO */
-    @media (max-width: 768px) {
-      .modal-dialog {
-        margin: 0;
-        max-width: 100%;
-        height: 100vh;
-      }
-
-      .modal-content {
-        height: 100vh;
-        border-radius: 0;
-        border: none;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .modal-header {
-        position: sticky;
-        top: 0;
-        background: var(--blanco);
-        z-index: 1050;
-        border-bottom: 1px solid var(--borde);
-        padding: 1rem;
-      }
-
-      .modal-body {
-        padding: 0;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-      }
-
-      /* CONTENEDOR DE IMAGEN - 50% DE ALTURA EXACTA */
-      .modal-body .col-12:first-child {
-        height: 50vh;
-        min-height: 50vh;
-        max-height: 50vh;
-        padding: 15px 15px 0 15px;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .modal-image-container {
-        height: calc(50vh - 100px);
-        border-radius: 12px;
-        flex: 1;
-      }
-
-      #modalMainImage {
-        max-height: calc(50vh - 100px);
-      }
-
-      /* Miniaturas en móvil */
-      .modal-thumbnails {
-        padding: 12px 0;
-        margin-top: 8px;
-      }
-
-      .modal-thumbnail {
-        width: 70px;
-        height: 70px;
-      }
-
-      /* CONTENIDO DE DESCRIPCIÓN - 50% DE ALTURA EXACTA */
-      .modal-body .col-12:last-child {
-        height: 50vh;
-        min-height: 50vh;
-        max-height: 50vh;
-        overflow-y: auto;
-        padding: 20px;
-        background: var(--blanco);
-        border-top: 1px solid var(--borde);
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .modal-header .btn-close {
-        position: static;
-        margin: 0;
-        font-size: 1.2rem;
-      }
-
-      /* Mejoras para el contenido en móvil */
-      .modal-price-highlight {
-        font-size: 1.6rem;
-      }
-
-      .variant-item {
-        padding: 10px 12px;
-      }
-
-      #btnContactar {
-        padding: 14px;
-        font-size: 1rem;
-        position: sticky;
-        bottom: 0;
-        background: linear-gradient(135deg, var(--lila) 0%, var(--lila-medio) 100%);
-        border: none;
-      }
-    }
-    /* ESTILOS ELEGANTES PARA PRODUCTOS - VERSIÓN FUNCIONAL */
+    /* Tarjetas de producto simplificadas */
     .product-col {
       padding: 10px;
       transition: transform 0.3s ease;
+      margin-bottom: 25px;
     }
 
     .product-col:hover {
       transform: translateY(-8px);
     }
 
-    .product-card-elegant {
+    .product-card {
       background: white;
       border-radius: 16px;
       overflow: hidden;
@@ -521,107 +220,34 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      position: relative;
       border: 1px solid rgba(230, 230, 230, 0.5);
+      cursor: pointer;
     }
 
-    .product-card-elegant:hover {
+    .product-card:hover {
       box-shadow: 0 12px 28px rgba(128, 0, 128, 0.15);
       border-color: var(--lila-claro);
     }
 
-    /* Contenedor de imagen con efecto overlay */
-    .product-image-wrapper {
+    .product-image-container {
       position: relative;
       height: 240px;
       overflow: hidden;
       background: linear-gradient(135deg, #f9f7ff 0%, #f0ebfa 100%);
-      cursor: pointer;
     }
 
-    .product-image-elegant {
+    .product-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: all 0.6s ease;
     }
 
-    .product-card-elegant:hover .product-image-elegant {
+    .product-card:hover .product-image {
       transform: scale(1.08);
     }
 
-    /* Botón de detalles en la imagen */
-    .img-details-btn {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.9);
-      border: none;
-      border-radius: 50%;
-      color: var(--lila);
-      font-size: 0.9rem;
-      cursor: pointer;
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: all 0.3s ease;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .product-image-wrapper:hover .img-details-btn {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .img-details-btn:hover {
-      background: white;
-      color: var(--lila-claro);
-      transform: scale(1.1);
-    }
-
-    .image-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to top, rgba(106, 13, 173, 0.7), transparent 50%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-bottom: 20px;
-    }
-
-    .product-image-wrapper:hover .image-overlay {
-      opacity: 1;
-    }
-
-    .quick-view {
-      color: white;
-      font-size: 0.9rem;
-      font-weight: 500;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      padding: 8px 16px;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      transform: translateY(20px);
-      transition: transform 0.3s ease;
-    }
-
-    .product-image-wrapper:hover .quick-view {
-      transform: translateY(0);
-    }
-
-    /* Información del producto */
-    .product-info-elegant {
+    .product-info {
       padding: 22px;
       flex-grow: 1;
       display: flex;
@@ -643,11 +269,6 @@
       text-overflow: ellipsis;
     }
 
-    .price-tag {
-      margin-top: auto;
-      margin-bottom: 18px;
-    }
-
     .price-value {
       font-size: 1.3rem;
       font-weight: 700;
@@ -657,10 +278,10 @@
       -webkit-text-fill-color: transparent;
       display: inline-block;
       padding: 2px 0;
+      margin-bottom: 15px;
     }
 
-    /* Botón elegante */
-    .btn-elegant-details {
+    .btn-details {
       background: linear-gradient(135deg, var(--lila), var(--lila-claro));
       color: white;
       border: none;
@@ -676,238 +297,160 @@
       position: relative;
       overflow: hidden;
       z-index: 1;
+      margin-top: auto;
     }
 
-    .btn-elegant-details::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, var(--lila-claro), var(--lila));
-      transition: left 0.4s ease;
-      z-index: -1;
-    }
-
-    .btn-elegant-details:hover {
+    .btn-details:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 15px rgba(128, 0, 128, 0.25);
     }
 
-    .btn-elegant-details:hover::before {
-      left: 0;
+    .product-tab {
+      display: none;
+      animation: fadeIn 0.5s ease;
     }
 
-    .btn-elegant-details i {
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .product-tab.active {
+      display: block;
+    }
+
+    /* Modal mejorado para precios por cantidad */
+    .modal-header {
+      background: linear-gradient(135deg, var(--lila-claro) 0%, var(--lila-medio) 100%);
+      color: var(--negro);
+    }
+
+    .price-section {
+      background: var(--gris-claro);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    .price-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--lila-medio);
+    }
+
+    .price-badge {
+      background: linear-gradient(135deg, var(--lila) 0%, var(--lila-medio) 100%);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .price-table th {
+      text-align: left;
+      padding: 12px 15px;
+      background: var(--lila-claro);
+      color: var(--negro);
+      font-weight: 600;
+      border-bottom: 2px solid var(--lila-medio);
+    }
+
+    .price-table td {
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--borde);
+    }
+
+    .price-table tr:hover {
+      background: rgba(176, 140, 230, 0.05);
+    }
+
+    .price-highlight {
+      color: var(--lila);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .quantity-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      padding: 10px;
+      background: rgba(176, 140, 230, 0.1);
+      border-radius: 8px;
       font-size: 0.9rem;
-      transition: transform 0.3s ease;
     }
 
-    .btn-elegant-details:hover i {
-      transform: translateX(3px);
+    .quantity-info i {
+      color: var(--lila);
     }
 
-    /* Efecto de click en toda la tarjeta */
-    .product-card-elegant {
-      cursor: default;
+    .modal-image-container {
+      width: 100%;
+      height: 300px;
+      background-color: var(--gris-medio);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 15px;
     }
 
-    /* Hacer que toda la tarjeta sea más interactiva */
-    .product-image-wrapper {
+    #modalMainImage {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Miniaturas */
+    .modal-thumbnails {
+      display: flex;
+      gap: 10px;
+      padding: 10px 0;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--lila) var(--gris-claro);
+    }
+
+    .modal-thumbnail {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
       cursor: pointer;
+      border: 3px solid transparent;
+      transition: all 0.3s ease;
+      background-color: var(--gris-medio);
+      flex-shrink: 0;
     }
 
-    /* Asegurar que los botones funcionen correctamente */
-    .btn-elegant-details, .img-details-btn {
-      cursor: pointer;
-    }
-
-    /* Mejorar el efecto hover de la imagen */
-    .product-image-wrapper::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(106, 13, 173, 0);
-      transition: background 0.3s ease;
-      pointer-events: none;
-    }
-
-    .product-image-wrapper:hover::after {
-      background: rgba(106, 13, 173, 0.1);
+    .modal-thumbnail:hover,
+    .modal-thumbnail.active {
+      border-color: var(--lila);
+      transform: scale(1.05);
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .product-image-wrapper {
-        height: 200px;
-      }
-
-      .product-info-elegant {
-        padding: 18px;
-      }
-
-      .product-name {
-        font-size: 1.05rem;
-      }
-
-      .price-value {
-        font-size: 1.2rem;
-      }
-
-      .btn-elegant-details {
-        padding: 12px 16px;
-        font-size: 0.9rem;
-      }
-
-      .img-details-btn {
-        opacity: 1; /* Mostrar siempre en móvil */
-        transform: translateY(0);
-      }
-    }
-    /* Para desktop - DISEÑO LADO A LADO ELEGANTE */
-    @media (min-width: 768px) {
-      .modal-dialog {
-        max-width: 900px;
-      }
-
-      .modal-image-container {
-        height: 450px;
-        border-radius: 16px;
-      }
-
-      .modal-body .row {
-        display: flex;
-        align-items: stretch;
-        min-height: 500px;
-      }
-
-      .modal-body .col-md-6:first-child {
-        padding-right: 25px;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .modal-body .col-md-6:last-child {
-        padding-left: 25px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      .modal-thumbnails {
-        justify-content: center;
-        flex-wrap: wrap;
-        padding: 15px 0;
-      }
-
-      /* Mejoras estéticas desktop */
-      .modal-header {
-        padding: 1.5rem 1.5rem 1rem;
-        border-bottom: 1px solid var(--borde);
-      }
-
-      .modal-header .modal-title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--negro);
-      }
-
-      .modal-header .btn-close {
-        font-size: 1.3rem;
-      }
-    }
-
-    /* Estilos adicionales para el contenido del modal */
-    #modalProductDescription {
-      color: var(--gris-texto);
-      line-height: 1.7;
-      margin-bottom: 25px;
-      font-size: 1.05rem;
-    }
-
-    #modalAdditionalInfo {
-      color: var(--gris-texto);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    #btnContactar {
-      background: linear-gradient(135deg, var(--lila) 0%, var(--lila-medio) 100%);
-      border: none;
-      padding: 14px 20px;
-      font-weight: 600;
-      font-size: 1.05rem;
-      border-radius: 10px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      margin-top: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    #btnContactar:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(176, 140, 230, 0.4);
-    }
-
-    /* Mejoras para los grupos de variantes */
-    .variants-list {
-      background: var(--gris-claro);
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-
-    .variant-header {
-      font-weight: 600;
-      color: var(--lila);
-      margin: 15px 0 10px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid rgba(176, 140, 230, 0.2);
-    }
-
-    /* Animación de entrada del modal */
-    @keyframes modalSlideIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    .modal.fade .modal-dialog {
-      animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* =========================================== */
-    /* ESTILOS RESPONSIVE PARA EL GRID DE PRODUCTOS */
-    /* =========================================== */
-    .product-col {
-      margin-bottom: 25px;
-    }
-
-    /* Para móvil - 2 columnas */
-    @media (max-width: 768px) {
-      .product-col {
-        width: 50%;
-        float: left;
-      }
-
       .page-title {
         font-size: 2.2rem;
       }
 
       .page-subtitle {
         font-size: 1rem;
-        padding: 0 10px;
       }
 
       .nav-tabs .nav-link {
@@ -915,67 +458,46 @@
         font-size: 0.9rem;
       }
 
-      .product-tab .row {
-        margin: 0 -8px;
-      }
-
       .product-col {
-        padding: 0 8px;
+        width: 50%;
+        float: left;
       }
 
-      .product-info {
-        padding: 18px;
+      .product-image-container {
+        height: 200px;
       }
 
-      .product-title {
-        font-size: 1.1rem;
+      .price-table {
+        font-size: 0.9rem;
       }
 
-      .price-range {
-        font-size: 1.2rem;
+      .price-table th,
+      .price-table td {
+        padding: 8px 10px;
       }
     }
 
-    /* Para tablet - 3 columnas */
     @media (min-width: 769px) and (max-width: 991px) {
       .product-col {
         width: 33.333%;
         float: left;
       }
-
-      .product-tab .row {
-        margin: 0 -12px;
-      }
-
-      .product-col {
-        padding: 0 12px;
-      }
     }
 
-    /* Para desktop - 4 columnas */
     @media (min-width: 992px) {
       .product-col {
         width: 25%;
         float: left;
       }
-
-      .product-tab .row {
-        margin: 0 -15px;
-      }
-
-      .product-col {
-        padding: 0 15px;
-      }
     }
 
-    /* Clearfix para el grid */
+    /* Clearfix */
     .product-tab .row:after {
       content: "";
       display: table;
       clear: both;
     }
 
-    /* Footer mejorado */
     footer {
       margin-top: 60px;
       padding-top: 30px;
@@ -990,58 +512,6 @@
     footer p {
       margin: 0;
       font-weight: 500;
-    }
-
-    /* Mejoras de accesibilidad y enfoque */
-    .btn-view-details:focus,
-    .btn-outline-lila:focus,
-    .modal-thumbnail:focus,
-    #btnContactar:focus {
-      outline: 3px solid rgba(176, 140, 230, 0.4);
-      outline-offset: 2px;
-    }
-
-    /* Suavizar scroll */
-    .modal-body .col-12:last-child {
-      scroll-behavior: smooth;
-    }
-
-    /* Estados de carga para imágenes */
-    .product-image-container,
-    .modal-image-container {
-      position: relative;
-    }
-
-    .product-image-container.loading::after,
-    .modal-image-container.loading::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(90deg,
-      var(--gris-medio) 0%,
-      var(--gris-claro) 50%,
-      var(--gris-medio) 100%);
-      background-size: 200% 100%;
-      animation: loading 1.5s infinite;
-      z-index: 2;
-      border-radius: inherit;
-    }
-
-    .product-image.loaded + .product-image-container::before,
-    #modalMainImage.loaded + .modal-image-container::before {
-      display: none;
-    }
-
-    @keyframes loading {
-      0% {
-        background-position: 200% 0;
-      }
-      100% {
-        background-position: -200% 0;
-      }
     }
   </style>
 </head>
@@ -1066,36 +536,25 @@
   </ul>
 
   <div id="tabContent">
-
     <div class="product-tab active" id="arreglos">
-      <div class="row g-3" id="productos-arreglos">
-
-      </div>
+      <div class="row g-3" id="productos-arreglos"></div>
     </div>
-
-    <!-- Tabulador Joyería -->
     <div class="product-tab" id="joyeria">
-      <div class="row g-3" id="productos-joyeria">
-        <!-- Los productos de joyería se cargarán aquí dinámicamente -->
-      </div>
+      <div class="row g-3" id="productos-joyeria"></div>
     </div>
-
-    <!-- Tabulador Empaques -->
     <div class="product-tab" id="empaques">
-      <div class="row g-3" id="productos-empaques">
-        <!-- Los productos de empaques se cargarán aquí dinámicamente -->
-      </div>
+      <div class="row g-3" id="productos-empaques"></div>
     </div>
   </div>
 
-  <footer class="text-center mt-5 pt-4 border-top" style="color: var(--gris-texto); font-size: 0.9rem;">
-    <p>Catálogo cajas yalu.</p>
+  <footer class="text-center mt-5 pt-4 border-top">
+    <p>Catálogo cajas yalu</p>
   </footer>
 </div>
 
 <!-- Modal para detalles del producto -->
 <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-fullscreen-md-down">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalProductTitle">Detalles del Producto</h5>
@@ -1103,46 +562,49 @@
       </div>
       <div class="modal-body">
         <div class="row">
-          <div class="col-12 col-md-6">
+          <!-- Columna de imágenes -->
+          <div class="col-md-6">
             <div class="modal-image-container">
               <img id="modalMainImage" src="" alt="" class="img-fluid">
             </div>
-            <div class="modal-thumbnails" id="modalThumbnails">
-              <!-- Miniaturas se cargarán aquí -->
-            </div>
+            <div class="modal-thumbnails" id="modalThumbnails"></div>
           </div>
-          <!-- Columna para contenido -->
-          <div class="col-12 col-md-6">
+
+          <!-- Columna de información -->
+          <div class="col-md-6">
             <div class="product-details-container">
-              <!-- Nombre y descripción -->
-              <div class="mb-4">
-                <h3 id="modalProductName" class="modal-price-highlight mb-2"></h3>
-                <p id="modalProductDescription" class="text-muted"></p>
-              </div>
-              <!-- Variantes de precios -->
-              <div class="mb-4">
-                <h6 class="text-muted mb-3">
-                  <i class="fas fa-ruler-combined me-2"></i>Tamaños y Precios
-                </h6>
-                <div id="modalVariants" class="variants-list">
-                  <!-- Se llenará con JavaScript -->
+              <h3 id="modalProductName" class="mb-3"></h3>
+              <p id="modalProductDescription" class="text-muted mb-4"></p>
+
+              <!-- Sección de precios por cantidad -->
+              <!-- Reemplaza esta sección en el modal -->
+              <div class="price-section">
+                <div class="price-header">
+                  <h5 class="mb-0"><i class="fas fa-tags me-2"></i>Precios por Cantidad</h5>
+                  <span class="price-badge">OFERTA AL POR MAYOR</span>
+                </div>
+
+                <div class="quantity-info">
+                  <i class="fas fa-info-circle"></i>
+                  <span>Precios especiales desde 6 unidades y para grandes cantidades</span>
+                </div>
+
+                <!-- Contenedor para las tablas de precios por variante -->
+                <div id="priceTablesContainer">
+                  <!-- Las tablas se generarán dinámicamente con JavaScript -->
                 </div>
               </div>
-              <!-- Información adicional -->
+              <!-- Variantes de tamaño -->
               <div class="mb-4">
                 <h6 class="text-muted mb-3">
-                  <i class="fas fa-info-circle me-2"></i>Información adicional
+                  <i class="fas fa-ruler-combined me-2"></i>Tamaños Disponibles
                 </h6>
-                <p id="modalAdditionalInfo" class="small text-muted">
-                  • Producto de alta calidad<br>
-                  • Personalizable según preferencias<br>
-                  • Tiempo de entrega: a estimar<br>
-                  • Envíos a todo el país
-                </p>
+                <div id="modalVariants" class="variants-list"></div>
               </div>
 
-              <button class="btn btn-lg w-100 mt-4" id="btnContactar">
-                <i class="fas fa-whatsapp me-2"></i>Consultar Disponibilidad por WhatsApp
+              <!-- Botón de contacto -->
+              <button class="btn btn-lg w-100 mt-4" id="btnContactar" style="background: linear-gradient(135deg, var(--lila) 0%, var(--lila-medio) 100%); color: white; border: none;">
+                <i class="fab fa-whatsapp me-2"></i>Solicitar Cotización por WhatsApp
               </button>
             </div>
           </div>
@@ -1943,6 +1405,7 @@
     }
   ];
 
+
   let productModal = null;
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -1955,86 +1418,42 @@
     tabLinks.forEach(link => {
       link.addEventListener('click', function (e) {
         e.preventDefault();
-        console.log('Click en tab:', this.getAttribute('data-tab'));
+        const tabId = this.getAttribute('data-tab');
 
-        // Remover clase active de todos los tabs
+        // Remover clase active de todos
         tabLinks.forEach(tab => tab.classList.remove('active'));
         document.querySelectorAll('.product-tab').forEach(tab => tab.classList.remove('active'));
 
-        // Agregar clase active al tab clickeado
+        // Activar tab seleccionado
         this.classList.add('active');
-
-        // Mostrar el contenido del tab correspondiente
-        const tabId = this.getAttribute('data-tab');
-        const tabElement = document.getElementById(tabId);
-
-        if (tabElement) {
-          tabElement.classList.add('active');
-          console.log('Tab activado:', tabId);
-        } else {
-          console.error('No se encontró el tab con id:', tabId);
-        }
+        document.getElementById(tabId).classList.add('active');
       });
     });
 
-    // Configurar botón de contacto en modal
+    // Configurar botón de WhatsApp
     document.getElementById('btnContactar').addEventListener('click', function () {
       const productoNombre = document.getElementById('modalProductName').textContent;
-      const mensaje = `Hola, estoy interesado en el producto: ${productoNombre}. ¿Podrían darme más información?`;
+      const mensaje = `Hola, estoy interesado en el producto: ${productoNombre}. ¿Podrían darme más información sobre precios al por mayor?`;
       const numeroWhatsApp = "573007276599";
-
       window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`, '_blank');
     });
 
-    // EVENT DELEGATION PARA BOTONES "VER DETALLES"
-    // EVENT DELEGATION PARA BOTONES "VER DETALLES" - Versión mejorada
+    // Event delegation para clics en productos
     document.getElementById('tabContent').addEventListener('click', function(e) {
-      // Capturar clics en el botón principal
-      const btnDetalles = e.target.closest('.btn-elegant-details');
-      if (btnDetalles) {
-        const productId = parseInt(btnDetalles.getAttribute('data-product-id'));
-        console.log('Click en Ver detalles - Producto ID:', productId);
-        mostrarDetallesProducto(productId);
-        return;
-      }
-
-      // Capturar clics en el botón de la imagen
-      const imgBtn = e.target.closest('.img-details-btn');
-      if (imgBtn) {
-        const productId = parseInt(imgBtn.getAttribute('data-product-id'));
-        console.log('Click en imagen - Producto ID:', productId);
-        mostrarDetallesProducto(productId);
-        return;
-      }
-
-      // Capturar clics en la imagen misma (opcional)
-      const imageWrapper = e.target.closest('.product-image-wrapper');
-      if (imageWrapper) {
-        const btn = imageWrapper.querySelector('.btn-elegant-details') ||
-          imageWrapper.querySelector('.img-details-btn');
-        if (btn) {
-          const productId = parseInt(btn.getAttribute('data-product-id'));
-          console.log('Click en imagen completa - Producto ID:', productId);
-          mostrarDetallesProducto(productId);
-        }
-        return;
-      }
-    });
-
-// También puedes agregar este manejador para hacer toda la tarjeta clickeable (opcional)
-    document.querySelectorAll('.product-card-elegant').forEach(card => {
-      card.addEventListener('click', function(e) {
-        // Evitar que se dispare cuando se hace clic en botones
-        if (e.target.closest('button') || e.target.tagName === 'BUTTON') {
-          return;
-        }
-
-        const btn = this.querySelector('.btn-elegant-details');
+      const card = e.target.closest('.product-card');
+      if (card) {
+        const btn = card.querySelector('.btn-details');
         if (btn) {
           const productId = parseInt(btn.getAttribute('data-product-id'));
           mostrarDetallesProducto(productId);
         }
-      });
+      }
+
+      const btn = e.target.closest('.btn-details');
+      if (btn) {
+        const productId = parseInt(btn.getAttribute('data-product-id'));
+        mostrarDetallesProducto(productId);
+      }
     });
 
     // Cargar productos
@@ -2043,22 +1462,18 @@
 
   // Función para crear una tarjeta de producto
   function crearTarjetaProducto(producto) {
-    // Validación básica
     if (!producto) return '';
 
     const nombre = producto.nombre || 'Producto sin nombre';
     const imagen = producto.imagen || 'https://via.placeholder.com/400x400?text=Imagen+no+disponible';
 
-    // Calcular precio mínimo
+    // Calcular precio mínimo para mostrar en la tarjeta
     let precioTexto = "Consultar precio";
-    if (producto.variantes && Array.isArray(producto.variantes)) {
+    if (producto.variantes && producto.variantes.length > 0) {
       const precios = producto.variantes
-        .filter(v => v && v.precio)
-        .map(v => {
-          const precioNum = parseInt(v.precio.toString().replace(/[^0-9]/g, ''));
-          return isNaN(precioNum) ? 0 : precioNum;
-        })
-        .filter(p => p > 0);
+        .filter(v => v.precio && v.precio !== "")
+        .map(v => parseInt(v.precio.replace(/[^0-9]/g, '')))
+        .filter(p => !isNaN(p) && p > 0);
 
       if (precios.length > 0) {
         const precioMin = Math.min(...precios);
@@ -2067,214 +1482,198 @@
     }
 
     return `
-  <div class="product-col">
-    <div class="product-card-elegant">
-      <!-- Contenedor de imagen con efecto overlay -->
-      <div class="product-image-wrapper">
-        <img src="${imagen}" alt="${nombre}" class="product-image-elegant">
-        <div class="image-overlay">
-          <span class="quick-view">Ver producto</span>
+      <div class="product-col">
+        <div class="product-card">
+          <div class="product-image-container">
+            <img src="${imagen}" alt="${nombre}" class="product-image">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">${nombre}</h3>
+            <div class="price-tag">
+              <span class="price-value">${precioTexto}</span>
+            </div>
+            <button class="btn-details" data-product-id="${producto.id}">
+              <i class="fas fa-search me-2"></i>Ver Precios por Cantidad
+            </button>
+          </div>
         </div>
-        <!-- Botón de detalles en la imagen (opcional) -->
-        <button class="img-details-btn" data-product-id="${producto.id}">
-          <i class="fas fa-expand"></i>
-        </button>
       </div>
-
-      <!-- Información del producto -->
-      <div class="product-info-elegant">
-        <h3 class="product-name">${nombre}</h3>
-        <div class="price-tag">
-          <span class="price-value">${precioTexto}</span>
-        </div>
-        <button class="btn-elegant-details" data-product-id="${producto.id}">
-          <i class="fas fa-search me-2"></i>Ver detalles
-        </button>
-      </div>
-    </div>
-  </div>
-  `;
+    `;
   }
-  // Función para cargar productos en las 3 categorías
+
+  // Función para cargar productos
   function cargarProductos() {
-    console.log('=== DIAGNÓSTICO DE CARGA ===');
-    console.log('Total productos:', productos.length);
-
-    // Verificar categorías únicas
-    const categorias = [...new Set(productos.map(p => p.categoria))];
-    console.log('Categorías encontradas:', categorias);
-
-    // Contar por categoría
-    const conteo = {};
-    productos.forEach(p => {
-      conteo[p.categoria] = (conteo[p.categoria] || 0) + 1;
-    });
-    console.log('Productos por categoría:', conteo);
-
-    // Verificar primeros productos
-    console.log('Primeros 3 productos:');
-    productos.slice(0, 3).forEach(p => {
-      console.log(`- ${p.nombre} (${p.categoria})`);
-    });
-
-    // Limpiar contenedores
     const contenedores = {
       'arreglos': document.getElementById('productos-arreglos'),
       'joyeria': document.getElementById('productos-joyeria'),
       'empaques': document.getElementById('productos-empaques')
     };
 
-    // Limpiar todos
+    // Limpiar contenedores
     Object.values(contenedores).forEach(contenedor => {
       if (contenedor) contenedor.innerHTML = '';
     });
 
-
-    // Cargar productos
+    // Cargar productos en sus categorías
     productos.forEach(producto => {
       const tarjeta = crearTarjetaProducto(producto);
-      conteo[producto.categoria]++;
-
-      // Agregar al contenedor correspondiente
       if (contenedores[producto.categoria]) {
         contenedores[producto.categoria].innerHTML += tarjeta;
-      } else {
-        console.warn(`Producto ${producto.id} (${producto.nombre}) tiene categoría no válida: "${producto.categoria}"`);
       }
     });
-
-    console.log('Productos cargados por categoría:', conteo);
-    console.log(`Total productos: ${productos.length}`);
   }
 
-  function mostrarDetallesProducto(productId) {
-    console.log('Mostrando detalles del producto ID:', productId);
+  // Función para calcular precios por cantidad - VERSIÓN SIMPLIFICADA
+  function calcularPreciosPorCantidad(precioBase) {
+    // Extraer el valor numérico del precio
+    const precioNum = parseInt(precioBase.replace(/[^0-9]/g, ''));
+    if (isNaN(precioNum)) return [];
 
+    const precios = [];
+
+
+
+    const precio6a36 = Math.round(precioNum);
+    precios.push({
+      cantidad: "6 a 36 unidades",
+      unitario: `$${precio6a36.toLocaleString()}`,
+      destacado: true,
+      tipo: "rango1"
+    });
+
+    // Precio más de 36 unidades (10% descuento)
+    const precioMas36 = Math.round(precioNum * 0.90);
+    precios.push({
+      cantidad: "Más de 36 unidades",
+      unitario: `$${precioMas36.toLocaleString()}`,
+      destacado: true,
+      tipo: "rango2"
+    });
+
+    return precios;
+  }
+
+  // Función principal para mostrar detalles del producto
+  function mostrarDetallesProducto(productId) {
     const producto = productos.find(p => p.id === productId);
 
-    if (producto) {
-      console.log('Producto encontrado:', producto.nombre);
+    if (!producto) {
+      alert('Producto no encontrado');
+      return;
+    }
 
-      // Llenar modal con datos del producto
-      document.getElementById('modalProductTitle').textContent = producto.nombre;
-      document.getElementById('modalProductName').textContent = producto.nombre;
-      document.getElementById('modalProductDescription').textContent = producto.descripcion;
+    // Llenar información básica
+    document.getElementById('modalProductTitle').textContent = producto.nombre;
+    document.getElementById('modalProductName').textContent = producto.nombre;
+    document.getElementById('modalProductDescription').textContent = producto.descripcion;
 
-      // Llenar variantes
-      const variantsContainer = document.getElementById('modalVariants');
-      variantsContainer.innerHTML = '';
+    // Configurar imágenes
+    const mainImage = document.getElementById('modalMainImage');
+    const thumbnailsContainer = document.getElementById('modalThumbnails');
 
+    if (producto.imagenes && producto.imagenes.length > 0) {
+      mainImage.src = producto.imagenes[0];
+      mainImage.alt = producto.nombre;
+
+      thumbnailsContainer.innerHTML = '';
+      producto.imagenes.forEach((img, index) => {
+        const thumbnail = document.createElement('img');
+        thumbnail.src = img;
+        thumbnail.alt = `${producto.nombre} - vista ${index + 1}`;
+        thumbnail.className = 'modal-thumbnail' + (index === 0 ? ' active' : '');
+
+        thumbnail.addEventListener('click', function() {
+          mainImage.src = img;
+          document.querySelectorAll('.modal-thumbnail').forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+        });
+
+        thumbnailsContainer.appendChild(thumbnail);
+      });
+    } else {
+      mainImage.src = producto.imagen;
+      thumbnailsContainer.innerHTML = '';
+    }
+
+    // Llenar variantes de tamaño
+    const variantsContainer = document.getElementById('modalVariants');
+    variantsContainer.innerHTML = '';
+
+    if (producto.variantes && producto.variantes.length > 0) {
       producto.variantes.forEach(variante => {
-        const div = document.createElement('div');
-        div.className = 'variant-item';
-
-        // Si no tiene precio, mostrar solo el tamaño como título
-        if (variante.precio) {
+        if (variante.precio && variante.precio !== "") {
+          const div = document.createElement('div');
+          div.className = 'd-flex justify-content-between align-items-center p-2 border-bottom';
           div.innerHTML = `
-            <span class="variant-size">${variante.tamaño}</span>
-            <span class="variant-price">${variante.precio}</span>
+            <span>${variante.tamaño}</span>
+            <span class="fw-bold text-lila">${variante.precio}</span>
           `;
-        } else {
-          div.innerHTML = `
-            <span class="variant-size fw-bold text-uppercase" style="color: var(--lila);">
-              ${variante.tamaño}
-            </span>
-          `;
-          div.style.background = 'transparent';
-          div.style.border = 'none';
-          div.style.padding = '8px 0';
+          variantsContainer.appendChild(div);
         }
+      });
+    }
 
-        variantsContainer.appendChild(div);
+    const priceTablesContainer = document.getElementById('priceTablesContainer');
+    priceTablesContainer.innerHTML = '';
+
+    if (producto.variantes && producto.variantes.length > 0) {
+      producto.variantes.forEach((variante, index) => {
+        if (variante.precio && variante.precio !== "" && variante.tamaño && variante.tamaño !== "") {
+          // Crear sección para cada variante
+          const section = document.createElement('div');
+          section.className = 'variant-price-section';
+
+          // Título de la variante
+          const title = document.createElement('div');
+          title.className = 'variant-title';
+          title.innerHTML = `
+        <i class="fas fa-ruler"></i>
+        ${variante.tamaño} - Precio base: <span class="ms-2 fw-bold">${variante.precio}</span>
+      `;
+
+          // Calcular precios por cantidad para esta variante
+          const preciosPorCantidad = calcularPreciosPorCantidad(variante.precio);
+
+          // Crear tabla
+          const table = document.createElement('table');
+          table.className = 'price-table mt-2';
+          table.innerHTML = `
+        <thead>
+          <tr>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${preciosPorCantidad.map(precio => `
+            <tr class="${precio.destacado ? 'rango-destacado' : ''}">
+              <td>${precio.cantidad}</td>
+              <td class="fw-bold">${precio.unitario}</td>
+
+            </tr>
+          `).join('')}
+        </tbody>
+      `;
+
+          // Agregar elementos al contenedor
+          section.appendChild(title);
+          section.appendChild(table);
+          priceTablesContainer.appendChild(section);
+        }
       });
 
-      // Configurar imágenes
-      const mainImage = document.getElementById('modalMainImage');
-      const thumbnailsContainer = document.getElementById('modalThumbnails');
-
-      if (producto.imagenes && producto.imagenes.length > 0) {
-        mainImage.src = producto.imagenes[0];
-        mainImage.alt = producto.nombre;
-
-        thumbnailsContainer.innerHTML = '';
-        producto.imagenes.forEach((img, index) => {
-          const thumbnail = document.createElement('img');
-          thumbnail.src = img;
-          thumbnail.alt = `${producto.nombre} - vista ${index + 1}`;
-          thumbnail.className = 'modal-thumbnail' + (index === 0 ? ' active' : '');
-
-          // Agregar manejador de error para imágenes
-          thumbnail.onerror = function () {
-            this.src = 'https://via.placeholder.com/80x80?text=Imagen+no+disponible';
-          };
-
-          thumbnail.addEventListener('click', function () {
-            // Cambiar imagen principal
-            mainImage.src = img;
-            mainImage.style.opacity = '0.7';
-
-            // Pequeña animación
-            setTimeout(() => {
-              mainImage.style.opacity = '1';
-              mainImage.style.transform = 'scale(1.02)';
-            }, 50);
-
-            setTimeout(() => {
-              mainImage.style.transform = 'scale(1)';
-            }, 200);
-
-            // Actualizar miniaturas activas
-            document.querySelectorAll('.modal-thumbnail').forEach(thumb => {
-              thumb.classList.remove('active');
-            });
-            this.classList.add('active');
-          });
-
-          thumbnailsContainer.appendChild(thumbnail);
-        });
-      } else {
-        mainImage.src = producto.imagen;
-        mainImage.alt = producto.nombre;
-        thumbnailsContainer.innerHTML = '';
+      // Si no hay variantes con precios, mostrar mensaje
+      if (priceTablesContainer.children.length === 0) {
+        priceTablesContainer.innerHTML = `
+      <div class="alert alert-info">
+        <i class="fas fa-info-circle me-2"></i>
+        Consulta los precios por cantidad para este producto
+      </div>
+    `;
       }
-
-      // Agregar manejador de error para imagen principal
-      mainImage.onerror = function () {
-        this.src = 'https://via.placeholder.com/400x400?text=Imagen+no+disponible';
-      };
-
-      // Configurar botón de WhatsApp
-      const btnContactar = document.getElementById('btnContactar');
-      const mensaje = `Hola, estoy interesado en el producto: ${producto.nombre}. ¿Podrían darme más información?`;
-      const numeroWhatsApp = "573007276599";
-
-      btnContactar.onclick = function () {
-        window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`, '_blank');
-      };
-
-      // Mostrar modal
-      productModal.show();
-      console.log('Modal mostrado');
-
-      // Ajustes para móvil después de que el modal se muestre
-      setTimeout(() => {
-        if (window.innerWidth < 768) {
-          const imageCol = document.querySelector('.modal-body .col-12:first-child');
-          const contentCol = document.querySelector('.modal-body .col-12:last-child');
-
-          if (imageCol && contentCol) {
-            // Asegurar alturas exactas
-            const windowHeight = window.innerHeight;
-            imageCol.style.height = Math.floor(windowHeight * 0.5) + 'px';
-            contentCol.style.height = Math.floor(windowHeight * 0.5) + 'px';
-            contentCol.style.maxHeight = Math.floor(windowHeight * 0.5) + 'px';
-          }
-        }
-      }, 100);
-    } else {
-      console.error('Producto no encontrado con ID:', productId);
-      alert('Error: Producto no encontrado');
     }
+    // Mostrar modal
+    productModal.show();
   }
 </script>
 </body>
