@@ -577,29 +577,16 @@
               <p id="modalProductDescription" class="text-muted mb-4"></p>
 
               <!-- Sección de precios por cantidad -->
-              <!-- Reemplaza esta sección en el modal -->
               <div class="price-section">
                 <div class="price-header">
                   <h5 class="mb-0"><i class="fas fa-tags me-2"></i>Precios por Cantidad</h5>
                   <span class="price-badge">OFERTA AL POR MAYOR</span>
                 </div>
 
-                <div class="quantity-info">
-                  <i class="fas fa-info-circle"></i>
-                  <span>Precios especiales desde 6 unidades y para grandes cantidades</span>
-                </div>
-
                 <!-- Contenedor para las tablas de precios por variante -->
                 <div id="priceTablesContainer">
                   <!-- Las tablas se generarán dinámicamente con JavaScript -->
                 </div>
-              </div>
-              <!-- Variantes de tamaño -->
-              <div class="mb-4">
-                <h6 class="text-muted mb-3">
-                  <i class="fas fa-ruler-combined me-2"></i>Tamaños Disponibles
-                </h6>
-                <div id="modalVariants" class="variants-list"></div>
               </div>
 
               <!-- Botón de contacto -->
@@ -1595,24 +1582,7 @@
       thumbnailsContainer.innerHTML = '';
     }
 
-    // Llenar variantes de tamaño
-    const variantsContainer = document.getElementById('modalVariants');
-    variantsContainer.innerHTML = '';
-
-    if (producto.variantes && producto.variantes.length > 0) {
-      producto.variantes.forEach(variante => {
-        if (variante.precio && variante.precio !== "") {
-          const div = document.createElement('div');
-          div.className = 'd-flex justify-content-between align-items-center p-2 border-bottom';
-          div.innerHTML = `
-            <span>${variante.tamaño}</span>
-            <span class="fw-bold text-lila">${variante.precio}</span>
-          `;
-          variantsContainer.appendChild(div);
-        }
-      });
-    }
-
+    // Generar tablas de precios por cantidad PARA CADA VARIANTE
     const priceTablesContainer = document.getElementById('priceTablesContainer');
     priceTablesContainer.innerHTML = '';
 
@@ -1623,13 +1593,13 @@
           const section = document.createElement('div');
           section.className = 'variant-price-section';
 
-          // Título de la variante
+          // Título de la variante - SOLO EL TAMAÑO, sin "Precio base:"
           const title = document.createElement('div');
           title.className = 'variant-title';
           title.innerHTML = `
-        <i class="fas fa-ruler"></i>
-        ${variante.tamaño} - Precio base: <span class="ms-2 fw-bold">${variante.precio}</span>
-      `;
+            <i class="fas fa-ruler"></i>
+            ${variante.tamaño}
+          `;
 
           // Calcular precios por cantidad para esta variante
           const preciosPorCantidad = calcularPreciosPorCantidad(variante.precio);
@@ -1638,22 +1608,21 @@
           const table = document.createElement('table');
           table.className = 'price-table mt-2';
           table.innerHTML = `
-        <thead>
-          <tr>
-            <th>Cantidad</th>
-            <th>Precio Unitario</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${preciosPorCantidad.map(precio => `
-            <tr class="${precio.destacado ? 'rango-destacado' : ''}">
-              <td>${precio.cantidad}</td>
-              <td class="fw-bold">${precio.unitario}</td>
-
-            </tr>
-          `).join('')}
-        </tbody>
-      `;
+            <thead>
+              <tr>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${preciosPorCantidad.map(precio => `
+                <tr class="${precio.destacado ? 'rango-destacado' : ''}">
+                  <td>${precio.cantidad}</td>
+                  <td class="fw-bold">${precio.unitario}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          `;
 
           // Agregar elementos al contenedor
           section.appendChild(title);
@@ -1665,16 +1634,18 @@
       // Si no hay variantes con precios, mostrar mensaje
       if (priceTablesContainer.children.length === 0) {
         priceTablesContainer.innerHTML = `
-      <div class="alert alert-info">
-        <i class="fas fa-info-circle me-2"></i>
-        Consulta los precios por cantidad para este producto
-      </div>
-    `;
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle me-2"></i>
+            Consulta los precios por cantidad para este producto
+          </div>
+        `;
       }
     }
+
     // Mostrar modal
     productModal.show();
   }
+
 </script>
 </body>
 </html>
