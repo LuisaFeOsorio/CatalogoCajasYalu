@@ -1228,8 +1228,8 @@
       variantes: [
         {tamaño: "13cm de diámetro x 5-7 cm de alto", precio: "$5,600"},
         {tamaño: "16cm de diámetro x 5-7 cm de alto", precio: "$7,100"},
-        {tamaño: "20cm de diámetro x 5-7 cm de alto", precio: "$8,600"},
-        {tamaño: "25cm de diámetro x 5-7 cm de alto", precio: "$10,600"}
+        {tamaño: "20cm de diámetro x 5-7 cm de alto", precio: "$8,000"},
+        {tamaño: "25cm de diámetro x 5-7 cm de alto", precio: "$9,500"}
       ],
       esNuevaColeccion: false,
       esCilindro: true,
@@ -2195,57 +2195,43 @@
       const section = document.createElement('div');
       section.className = 'variant-price-section';
 
-      // Mostrar cada variante con su precio (una por línea)
-      producto.variantes.forEach((variante, index) => {
-        if (variante.tamaño && variante.tamaño !== "") {
-          const varianteDiv = document.createElement('div');
-          varianteDiv.className = 'modal-variant-item mb-2';
+      // Verificar si viene de la página de cilindros o si es un producto normal
+      // PARA TODOS LOS PRODUCTOS: Mostrar SOLO las tablas de precios por cantidad
 
-          // Crear línea para tamaño y precio
-          const tamañoPrecioDiv = document.createElement('div');
-          tamañoPrecioDiv.className = 'd-flex justify-content-between align-items-center';
+      // Agregar título para precios por cantidad
+      const tituloPrecios = document.createElement('h5');
+      tituloPrecios.className = 'mb-4';
+      tituloPrecios.style.color = 'var(--lila)';
+      tituloPrecios.innerHTML = '<i class="fas fa-tags me-2"></i>Precios por Cantidad';
+      section.appendChild(tituloPrecios);
 
-          const tamañoSpan = document.createElement('span');
-          tamañoSpan.className = 'variant-size-modal';
-          tamañoSpan.textContent = variante.tamaño;
-
-          const precioSpan = document.createElement('span');
-          precioSpan.className = 'variant-price-modal';
-          precioSpan.textContent = variante.precio || 'Consultar';
-
-          tamañoPrecioDiv.appendChild(tamañoSpan);
-          tamañoPrecioDiv.appendChild(precioSpan);
-          varianteDiv.appendChild(tamañoPrecioDiv);
-
-          section.appendChild(varianteDiv);
-        }
-      });
-
-      // Agregar botón para ver precios por cantidad
-      const buttonContainer = document.createElement('div');
-      buttonContainer.className = 'text-center mt-4';
-
-      const verPreciosBtn = document.createElement('button');
-      verPreciosBtn.className = 'btn btn-lg price-toggle-btn';
-      verPreciosBtn.style.cssText = 'background: linear-gradient(135deg, var(--lila) 0%, var(--lila-medio) 100%); color: white; border: none; padding: 12px 30px; border-radius: 10px; font-weight: 600;';
-      verPreciosBtn.innerHTML = '<i class="fas fa-tags me-2"></i>Ver Precios por Cantidad';
-
-      // Crear un contenedor para las tablas (oculto inicialmente)
-      const tablasContainer = document.createElement('div');
-      tablasContainer.id = 'tablasPreciosCantidad';
-      tablasContainer.style.display = 'none';
-      tablasContainer.className = 'mt-4';
-
-      // Generar las tablas de precios por cantidad
+      // Generar las tablas de precios por cantidad directamente
       producto.variantes.forEach((variante, index) => {
         if (variante.tamaño && variante.tamaño !== "" && variante.precio && variante.precio !== "") {
           const varianteSection = document.createElement('div');
           varianteSection.className = 'mb-4';
 
-          // Título de la variante
+          // Título de la variante con su precio base
           const titulo = document.createElement('div');
-          titulo.className = 'variant-title mb-3';
-          titulo.innerHTML = `<i class="fas fa-ruler me-2"></i>${variante.tamaño}`;
+          titulo.className = 'variant-title mb-2';
+
+          if (variante.tamaño) {
+            titulo.innerHTML = `
+            <div class="d-flex justify-content-between align-items-center">
+              <span><i class="fas fa-ruler me-2"></i>${variante.tamaño}</span>
+              <span class="text-muted" style="font-size: 0.9rem;">Precio base: ${variante.precio}</span>
+            </div>
+          `;
+          } else {
+            // Si no hay tamaño específico (para productos sin variantes de tamaño)
+            titulo.innerHTML = `
+            <div class="d-flex justify-content-between align-items-center">
+              <span><i class="fas fa-box me-2"></i>${producto.nombre}</span>
+              <span class="text-muted" style="font-size: 0.9rem;">Precio base: ${variante.precio}</span>
+            </div>
+          `;
+          }
+
           varianteSection.appendChild(titulo);
 
           // Calcular precios por cantidad
@@ -2273,29 +2259,20 @@
             varianteSection.appendChild(table);
           }
 
-          tablasContainer.appendChild(varianteSection);
+          section.appendChild(varianteSection);
+
+          // Agregar separador entre variantes (excepto la última)
+          if (index < producto.variantes.length - 1) {
+            const separator = document.createElement('div');
+            separator.className = 'my-3';
+            separator.innerHTML = '<hr style="border-color: var(--lila); opacity: 0.2;">';
+            section.appendChild(separator);
+          }
         }
       });
 
-      // Evento para el botón
-      verPreciosBtn.addEventListener('click', function() {
-        if (tablasContainer.style.display === 'none') {
-          tablasContainer.style.display = 'block';
-          verPreciosBtn.innerHTML = '<i class="fas fa-times me-2"></i>Ocultar Precios por Cantidad';
-          verPreciosBtn.style.background = 'linear-gradient(135deg, var(--gris-texto) 0%, #6c757d 100%)';
-        } else {
-          tablasContainer.style.display = 'none';
-          verPreciosBtn.innerHTML = '<i class="fas fa-tags me-2"></i>Ver Precios por Cantidad';
-          verPreciosBtn.style.background = 'linear-gradient(135deg, var(--lila) 0%, var(--lila-medio) 100%)';
-        }
-      });
-
-      buttonContainer.appendChild(verPreciosBtn);
-
-      // Agregar todo al contenedor
+      // Agregar sección al contenedor principal
       priceTablesContainer.appendChild(section);
-      priceTablesContainer.appendChild(buttonContainer);
-      priceTablesContainer.appendChild(tablasContainer);
 
       // Si no hay variantes con precios, mostrar mensaje
       if (priceTablesContainer.children.length === 0) {
@@ -2306,6 +2283,14 @@
         </div>
       `;
       }
+    } else {
+      // Si el producto no tiene variantes
+      priceTablesContainer.innerHTML = `
+      <div class="alert alert-warning">
+        <i class="fas fa-exclamation-circle me-2"></i>
+        Este producto no tiene información de precios disponible
+      </div>
+    `;
     }
 
     // Mostrar modal
