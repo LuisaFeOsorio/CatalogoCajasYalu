@@ -137,7 +137,12 @@
       display: flex;
       flex-direction: column;
     }
-
+    /* Estilo para separador entre con/sin tapa */
+    .price-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(179, 65, 108, 0.3), transparent);
+      margin: 0.8rem 0;
+    }
     .product-image {
       width: 100%;
       aspect-ratio: 1/1;
@@ -487,8 +492,10 @@
       nombre: "Corazón Forrado",
       descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
       categoria: "arreglos",
-      imagen: "img/corazonrojo1.png",
+      imagen: "img/CoraRosa2.png",
       imagenes: [
+        "img/CoraRosa2.png",
+        "img/CoraRosa1.png",
         "img/corazonrojo1.png",
         "img/corazonrojo2.png",
         "img/corazonrojo3.png",
@@ -497,40 +504,167 @@
         "img/CorazonForrado5.jpeg"
       ],
       variantes: [
-        {tamaño: "20cm ancho x 10cm alto", precio: "$8,500"},
-        {tamaño: "25cm ancho x 10cm alto", precio: "$10,000"},
-        {tamaño: "30cm ancho x 10cm alto", precio: "$13,000"}
-      ]
+        {tamaño: "20cm ancho x 10cm alto", precio: "$8,500", tipo: "con tapa"},
+        {tamaño: "25cm ancho x 10cm alto", precio: "$10,000", tipo: "con tapa"},
+        {tamaño: "30cm ancho x 10cm alto", precio: "$13,000", tipo: "con tapa"},
+
+        {tamaño: "20cm ancho x 10cm alto", precio: "$7,000", tipo: "sin tapa"},
+        {tamaño: "25cm ancho x 10cm alto", precio: "$8,500", tipo: "sin tapa"},
+        {tamaño: "30cm ancho x 10cm alto", precio: "$11,000", tipo: "sin tapa"}
+      ],
+      esConTapas: true
     },
     {
       id: 2,
       nombre: "Cilindro Forrado 13cm",
       descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
       categoria: "arreglos",
-      imagen: "img/cil.png",
+      imagen: "img/CilindroRosa00.png",
       imagenes: [
-        "img/cil.png",
+        "img/CilindroRosa00.png",
+        "img/cilindrogranderojo1.png",
         "img/cil2.png",
         "img/cilflor.png",
         "img/minicilindros1.png",
-        "img/cilindrogranderojo1.png",
+        "img/cil.png",
         "img/cilindrogranderojo2.png",
-        "img/cilindrogranderojo3.png",
-        "img/CilindroForrado6.jpeg",
-        "img/Cilindro33.png",
-        "img/Cilindro44.png"
+        "img/cilindrogranderojo3.png"
+
       ],
       variantes: [
-        {tamaño: "8cm x 8cm alto", precio: "$4,500"},
-        {tamaño: "13cm x 10cm alto", precio: "$6,000"},
-        {tamaño: "16cm x 13cm alto", precio: "$7,500"},
-        {tamaño: "20cm x 13cm alto", precio: "$9,000"},
-        {tamaño: "25cm x 13cm alto", precio: "$11,000"}
+        {tamaño: "8cm x 8cm alto", precio: "$4,500", tipo: "con tapa"},
+        {tamaño: "13cm x 10cm alto", precio: "$6,000", tipo: "con tapa"},
+        {tamaño: "16cm x 13cm alto", precio: "$7,500", tipo: "con tapa"},
+        {tamaño: "20cm x 13cm alto", precio: "$9,000", tipo: "con tapa"},
+        {tamaño: "25cm x 13cm alto", precio: "$11,000", tipo: "con tapa"},
+
+        {tamaño: "8cm x 8cm alto", precio: "$3,000", tipo: "sin tapa"},
+        {tamaño: "13cm x 10cm alto", precio: "$4,000", tipo: "sin tapa"},
+        {tamaño: "16cm x 13cm alto", precio: "$6,000", tipo: "sin tapa"},
+        {tamaño: "20cm x 13cm alto", precio: "$7,500", tipo: "sin tapa"},
+        {tamaño: "25cm x 13cm alto", precio: "$9,500", tipo: "sin tapa"}
+
+      ],
+      esConTapas: true
+    },
+
+    {
+      id: 40,
+      nombre: "Lonchera Decorada",
+      descripcion: "Se puede personalizar el diseño",
+      categoria: "arreglos",
+      imagen: "img/loncheraMama.png",
+      imagenes: [
+        "img/loncheraMama.png",
+      ],
+      variantes: [
+        {tamaño: "17cm de Ancho x 10cm de profundo x 15cm de alto", precio: "$4,000"},
+        {tamaño: "23cm de Ancho x 15cm de profundo x 15cm de alto", precio: "$4,500"}
+      ]
+    },
+    {
+      id: 120,
+      nombre: "Sobre",
+      descripcion: "Caja tipo sobre, se puede personalizar tamaño y color",
+      categoria: "arreglos",
+      imagen: "img/sobre.png",
+      imagenes: [
+        "img/sobre.png",
+      ],
+      variantes: [
+        {tamaño: "15cm de Ancho x 10cm de profundo x 15cm de alto", precio: "$5,000"},
+        {tamaño: "20cm de Ancho x 15cm de profundo x 15cm de alto", precio: "$5,500"}
+      ]
+    },
+    {
+      id: 200,
+      nombre: "Caja Coquette",
+      descripcion: "Caja con base de borde, acetato de buena calidad, se pueden personalizar los colores del moño y cinta",
+      categoria: "arreglos",
+      imagen: "img/CajaCoquette.png",
+      imagenes: [
+        "img/CajaCoquette.png",
+        "img/CajaCoquette2.png"
+      ],
+      variantes: [
+        {tamaño: "25cm de Ancho x 20cm de profundo x 15cm de alto", precio: "$8,000"}
+      ]
+    },
+    {
+      id: 20,
+      nombre: "Cofre",
+      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes",
+      categoria: "arreglos",
+      imagen: "img/cofre1.jpeg",
+      imagenes: [
+        "img/cofre1.jpeg"
+      ],
+      variantes: [
+        {tamaño: "Mediano: 23x17x15cm", precio: "$13,000"},
+        {tamaño: "Grande: 30x20x15cm", precio: "$15,000"}
+      ]
+    },
+    {
+      id: 15,
+      nombre: "Ancheta Amor",
+      descripcion: "Base en cartón rígido, forrados en variedad de colores",
+      categoria: "arreglos",
+      imagen: "img/anchetaamor1.png",
+      imagenes: [
+        "img/anchetaamor1.png",
+        "img/anchetaamor2.png"
+      ],
+      variantes: [
+        {tamaño: "13x15x10cm", precio: "$5,500"}
+      ]
+    },
+    {
+      id: 201,
+      nombre: "Canasta Corazón",
+      descripcion: "Caja sencilla sin forrar",
+      categoria: "arreglos",
+      imagen: "img/CanastaCorazon3.png",
+      imagenes: [
+        "img/CanastaCorazon3.png",
+        "img/CanastaCorazon.png"
+      ],
+      variantes: [
+        {tamaño: "15x8x18cm", precio: "$2,000"}
+      ]
+    },
+    {
+      id: 3,
+      nombre: "I love u",
+      descripcion: "Doble capa de cartón blanco en base y tapa, resistente, ideal para flores, chocolates...",
+      categoria: "arreglos",
+      imagen: "img/loveu1.jpeg",
+      imagenes: [
+        "img/loveu1.jpeg",
+        "img/loveu.png",
+        "img/loveu2.jpeg"
+      ],
+      variantes: [
+        {tamaño: "50x18x5cm", precio: "$13,000"}
+      ]
+    },
+    {
+      id: 18,
+      nombre: "Mom",
+      descripcion: "Base de letras en cartón rígido, doble capa de cartón blanco",
+      categoria: "arreglos",
+      imagen: "img/mom1.jpeg",
+      imagenes: [
+        "img/mom1.jpeg",
+        "img/mom2.jpeg",
+        "img/mom3.jpeg"
+      ],
+      variantes: [
+        {tamaño: "53x18x5cm", precio: "$13,000"}
       ]
     },
     {
       id: 14,
-      nombre: "Cuadrada",
+      nombre: "Cuadrada Forrada",
       descripcion: "Base en cartón rígido, laterales en maule 305gr, resistentes y elegantes, ideal para flores, arreglos...",
       categoria: "arreglos",
       imagen: "img/cuamorada1.png",
@@ -547,6 +681,8 @@
         {tamaño: "25x25x13cm", precio: "$10,000"}
       ]
     },
+
+
     {
       id: 82,
       nombre: "Cilindro SIN FORRAR 7cm ventana",
@@ -582,6 +718,20 @@
       ]
     },
     {
+      id: 35,
+      nombre: "Ancheta Esmoquin",
+      descripcion: "Base en cartón rígido, sin forrar con decoración",
+      categoria: "arreglos",
+      imagen: "img/Esmoquin3.png",
+      imagenes: [
+        "img/Esmoquin3.png",
+        "img/Esmoquin2.png",
+      ],
+      variantes: [
+        {tamaño: "13x13x10cm", precio: "$4,000"}
+      ]
+    },
+    {
       id: 94,
       nombre: "Amor",
       descripcion: "Caja sencilla, cartón de 305gr",
@@ -596,36 +746,7 @@
         {tamaño: "30x15x5-7cm CON BASE", precio: "$5,000"}
       ]
     },
-    {
-      id: 3,
-      nombre: "I love u",
-      descripcion: "Doble capa de cartón blanco en base y tapa, resistente, ideal para flores, chocolates...",
-      categoria: "arreglos",
-      imagen: "img/loveu1.jpeg",
-      imagenes: [
-        "img/loveu1.jpeg",
-        "img/loveu.png",
-        "img/loveu2.jpeg"
-      ],
-      variantes: [
-        {tamaño: "50x18x5cm", precio: "$13,000"}
-      ]
-    },
-    {
-      id: 18,
-      nombre: "Mom",
-      descripcion: "Base de letras en cartón rígido, doble capa de cartón blanco",
-      categoria: "arreglos",
-      imagen: "img/mom1.jpeg",
-      imagenes: [
-        "img/mom1.jpeg",
-        "img/mom2.jpeg",
-        "img/mom3.jpeg"
-      ],
-      variantes: [
-        {tamaño: "53x18x5cm", precio: "$13,000"}
-      ]
-    },
+
     {
       id: 4,
       nombre: "Cajón de amor",
@@ -794,64 +915,22 @@
         {tamaño: "30cm ancho x 10cm alto", precio: "$8,000"}
       ]
     },
-    {
-      id: 89,
-      nombre: "Corazones sin forrar bajo con ventana",
-      descripcion: "Corazones de cartón sin forrar con ventana",
-      categoria: "arreglos",
-      imagen: "img/coraventanachat1.png",
-      imagenes: [
-        "img/coraventanachat1.png"
-      ],
-      variantes: [
-        {tamaño: "20cm ancho x 5-7cm", precio: "$5,500"},
-        {tamaño: "25cm ancho x 5-7cm", precio: "$6,500"},
-        {tamaño: "30cm ancho x 5-7cm", precio: "$8,000"}
-      ]
-    },
-    {
-      id: 15,
-      nombre: "Ancheta Amor",
-      descripcion: "Base en cartón rígido, forrados en variedad de colores",
-      categoria: "arreglos",
-      imagen: "img/anchetaamor1.png",
-      imagenes: [
-        "img/anchetaamor1.png",
-        "img/anchetaamor2.png"
-      ],
-      variantes: [
-        {tamaño: "13x15x10cm", precio: "$5,500"}
-      ]
-    },
-    {
-      id: 20,
-      nombre: "Cofre",
-      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes",
-      categoria: "arreglos",
-      imagen: "img/cofre1.jpeg",
-      imagenes: [
-        "img/cofre1.jpeg",
-        "img/cofre2.jpeg"
-      ],
-      variantes: [
-        {tamaño: "Mediano: 23x17x15cm", precio: "$13,000"},
-        {tamaño: "Grande: 30x20x15cm", precio: "$15,000"}
-      ]
-    },
-    {
-      id: 16,
-      nombre: "Ancheta",
-      descripcion: "Base en cartón rígido, variedad de colores",
-      categoria: "arreglos",
-      imagen: "img/acheta1.png",
-      imagenes: [
-        "img/acheta1.png",
-        "img/acheta2.png"
-      ],
-      variantes: [
-        {tamaño: "13x13x10cm", precio: "$4,500"}
-      ]
-    },
+    //**{
+      //id: 89,
+    //nombre: "Corazones sin forrar bajo con ventana",
+      //descripcion: "Corazones de cartón sin forrar con ventana",
+      //categoria: "arreglos",
+     // imagen: "img/coraventanachat1.png",
+      //imagenes: [
+        //"img/coraventanachat1.png"
+      //],
+      //variantes: [
+        //{tamaño: "20cm ancho x 5-7cm", precio: "$5,500"},
+        //{tamaño: "25cm ancho x 5-7cm", precio: "$6,500"},
+        //{tamaño: "30cm ancho x 5-7cm", precio: "$8,000"}
+      //]
+    //},
+  //*
     {
       id: 17,
       nombre: "Dulcera",
@@ -877,8 +956,8 @@
         "img/librobroche2.jpeg"
       ],
       variantes: [
-        {tamaño: "Mediano: 25x20x8cm", precio: "$10,000"},
-        {tamaño: "Grande: 30x25x8cm", precio: "$11,500"}
+        {tamaño: "Mediano: 25x20x8cm", precio: "$11,000"},
+        {tamaño: "Grande: 30x25x8cm", precio: "$12,000"}
       ]
     },
     {
@@ -1071,20 +1150,7 @@
         {tamaño: "24x30x13cm", precio: "$5,000"}
       ]
     },
-    {
-      id: 35,
-      nombre: "Ancheta Esmoquin",
-      descripcion: "Base en cartón rígido, sin forrar con decoración",
-      categoria: "arreglos",
-      imagen: "img/anchetahombre1.png",
-      imagenes: [
-        "img/anchetahombre1.png",
-        "img/anchetahombre2.png"
-      ],
-      variantes: [
-        {tamaño: "13x13x10cm", precio: "$4,000"}
-      ]
-    },
+
     {
       id: 36,
       nombre: "Cilindro Esmoquin",
@@ -1344,27 +1410,77 @@
   function crearModalProducto(producto) {
     const imagenes = producto.imagenes || [producto.imagen];
 
-    let preciosHTML = '';
-    if (producto.variantes && producto.variantes.length > 0) {
-      preciosHTML += `
-          <div class="price-table">
-            <div class="price-header">
-              <div>Tamaño</div>
-              <div class="price-value">6+ und</div>
-              <div class="price-value">24+ und</div>
-            </div>
+    // Verificar si el producto tiene opción con/sin tapa
+    const tieneTapas = producto.esConTapas === true;
+
+    // Separar variantes por tipo
+    const variantesConTapa = producto.variantes?.filter(v => v.tipo === "con tapa") || [];
+    const variantesSinTapa = producto.variantes?.filter(v => v.tipo === "sin tapa") || [];
+
+    // Función para generar tabla de precios
+    function generarTablaPrecios(variantes, titulo, icono) {
+      if (!variantes.length) return '';
+
+      let html = `
+      <div style="margin-bottom: 1rem;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; padding-left: 4px;">
+          <i class="${icono}" style="color: #B3416C; font-size: 0.9rem;"></i>
+          <span style="font-weight: 600; font-size: 0.8rem; color: #B3416C; letter-spacing: 0.5px;">${titulo}</span>
+        </div>
+        <div class="price-table" style="margin-bottom: 0;">
+          <div class="price-header">
+            <div>Tamaño</div>
+            <div class="price-value">6+ und</div>
+            <div class="price-value">24+ und</div>
+          </div>
+    `;
+
+      variantes.forEach(variante => {
+        if (variante.tamaño && variante.precio) {
+          const precios = calcularPreciosPorCantidad(variante.precio);
+          html += `
+          <div class="price-row">
+            <div class="price-size">${variante.tamaño}</div>
+            <div class="price-value">${precios.precio6}</div>
+            <div class="price-value">${precios.precio24}</div>
+          </div>
         `;
+        }
+      });
+
+      html += `</div></div>`;
+      return html;
+    }
+
+    // Generar HTML de precios
+    let preciosHTML = '';
+
+    if (tieneTapas && variantesConTapa.length > 0 && variantesSinTapa.length > 0) {
+      // Mostrar secciones separadas
+      preciosHTML += generarTablaPrecios(variantesConTapa, "CON TAPA", "fas fa-box");
+      preciosHTML += `<div style="height: 1px; background: rgba(179, 65, 108, 0.15); margin: 0.8rem 0;"></div>`;
+      preciosHTML += generarTablaPrecios(variantesSinTapa, "SIN TAPA", "far fa-square");
+    } else if (producto.variantes && producto.variantes.length > 0) {
+      // Mostrar tabla normal (sin separación)
+      preciosHTML += `
+      <div class="price-table">
+        <div class="price-header">
+          <div>Tamaño</div>
+          <div class="price-value">6+ und</div>
+          <div class="price-value">24+ und</div>
+        </div>
+    `;
 
       producto.variantes.forEach(variante => {
         if (variante.tamaño && variante.precio) {
           const precios = calcularPreciosPorCantidad(variante.precio);
           preciosHTML += `
-              <div class="price-row">
-                <div class="price-size">${variante.tamaño}</div>
-                <div class="price-value">${precios.precio6}</div>
-                <div class="price-value">${precios.precio24}</div>
-              </div>
-            `;
+          <div class="price-row">
+            <div class="price-size">${variante.tamaño}</div>
+            <div class="price-value">${precios.precio6}</div>
+            <div class="price-value">${precios.precio24}</div>
+          </div>
+        `;
         }
       });
 
@@ -1372,37 +1488,37 @@
     }
 
     return `
-        <div class="modal" id="modal-${producto.id}">
-          <div class="modal-content">
-            <a href="#" class="modal-cerrar"><i class="fas fa-times"></i></a>
+    <div class="modal" id="modal-${producto.id}">
+      <div class="modal-content">
+        <a href="#" class="modal-cerrar"><i class="fas fa-times"></i></a>
 
-            <div class="modal-gallery" id="gallery-${producto.id}">
-              <div class="modal-imagen-principal">
-                <img id="modal-img-${producto.id}" src="${imagenes[0]}" alt="${producto.nombre}" onerror="this.src='https://via.placeholder.com/400x400?text=YALU'">
-              </div>
+        <div class="modal-gallery" id="gallery-${producto.id}">
+          <div class="modal-imagen-principal">
+            <img id="modal-img-${producto.id}" src="${imagenes[0]}" alt="${producto.nombre}" onerror="this.src='https://via.placeholder.com/400x400?text=YALU'">
+          </div>
 
-              <div class="modal-nav-arrows">
-                <button class="modal-nav-arrow prev" id="modal-prev-${producto.id}" ${imagenes.length <= 1 ? 'disabled' : ''}>
-                  <i class="fas fa-chevron-left"></i>
-                </button>
-                <span class="modal-counter" id="modal-counter-${producto.id}">1/${imagenes.length}</span>
-                <button class="modal-nav-arrow next" id="modal-next-${producto.id}" ${imagenes.length <= 1 ? 'disabled' : ''}>
-                  <i class="fas fa-chevron-right"></i>
-                </button>
-              </div>
-            </div>
-
-            <div class="modal-titulo">${producto.nombre}</div>
-            <div class="modal-descripcion">${producto.descripcion}</div>
-
-            ${preciosHTML || '<p style="text-align:center; padding:1rem;">Consultar precios</p>'}
-
-            <button class="btn-cotizar" onclick="window.open('https://wa.me/573001234567?text=Hola%2C%20me%20interesa%20${encodeURIComponent(producto.nombre)}', '_blank')">
-              <i class="fab fa-whatsapp"></i> Cotizar por WhatsApp
+          <div class="modal-nav-arrows">
+            <button class="modal-nav-arrow prev" id="modal-prev-${producto.id}" ${imagenes.length <= 1 ? 'disabled' : ''}>
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <span class="modal-counter" id="modal-counter-${producto.id}">1/${imagenes.length}</span>
+            <button class="modal-nav-arrow next" id="modal-next-${producto.id}" ${imagenes.length <= 1 ? 'disabled' : ''}>
+              <i class="fas fa-chevron-right"></i>
             </button>
           </div>
         </div>
-      `;
+
+        <div class="modal-titulo">${producto.nombre}</div>
+        <div class="modal-descripcion">${producto.descripcion}</div>
+
+        ${preciosHTML || '<p style="text-align:center; padding:1rem; color:#999;">Consultar precios</p>'}
+
+        <button class="btn-cotizar" onclick="window.open('https://wa.me/573007276599?text=Hola%2C%20me%20interesa%20${encodeURIComponent(producto.nombre)}%20para%20mayorista', '_blank')">
+          <i class="fab fa-whatsapp"></i> Cotizar por WhatsApp
+        </button>
+      </div>
+    </div>
+  `;
   }
 
   function inicializarModales() {
