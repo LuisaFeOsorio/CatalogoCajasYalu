@@ -20,7 +20,7 @@
     body {
       background-color: #FFFFFF;
       font-family: 'Inter', sans-serif;
-      color: #2D2D2D;
+      color: #1A1A1A;
     }
 
     .container {
@@ -29,7 +29,7 @@
       padding: 1rem;
     }
 
-    /* ===== LOGO YALU ===== */
+    /* ===== LOGO YALU - Estilo Día del Padre ===== */
     .header {
       display: flex;
       flex-direction: column;
@@ -42,7 +42,7 @@
       font-family: 'Inter', sans-serif;
       font-size: 4.5rem;
       font-weight: 800;
-      color: #B3416C;
+      color: #0A1A2F;
       line-height: 1;
       letter-spacing: -2px;
       margin-bottom: 0.2rem;
@@ -50,34 +50,41 @@
 
     .logo-sub {
       font-size: 0.8rem;
-      font-weight: 400;
-      color: #0e0e0e;
+      font-weight: 500;
+      color: #0A1A2F;
       opacity: 0.7;
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .info-header {
       text-align: center;
       font-size: 0.75rem;
-      color: #666;
+      color: #4A627A;
       margin-bottom: 1rem;
       line-height: 1.6;
+      background: #F5F7FA;
+      padding: 8px 16px;
+      border-radius: 40px;
+      display: inline-block;
+      width: auto;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .info-header i {
-      color: #B3416C;
+      color: #2C5F8A;
       margin: 0 4px;
     }
 
-    /* ===== PESTAÑAS ===== */
+    /* ===== PESTAÑAS - Azul elegante ===== */
     .tabs {
       display: flex;
       justify-content: center;
       gap: 2rem;
       margin: 2rem 0 2rem 0;
-      border-bottom: 1px solid #F3E0E8;
+      border-bottom: 1px solid #E2E8F0;
       padding-bottom: 0.8rem;
     }
 
@@ -86,7 +93,7 @@
       border: none;
       font-size: 1rem;
       font-weight: 500;
-      color: #999;
+      color: #8A9CB0;
       cursor: pointer;
       padding: 0.5rem 0;
       position: relative;
@@ -94,7 +101,7 @@
     }
 
     .tab.active {
-      color: #B3416C;
+      color: #1E3A5F;
       font-weight: 600;
     }
 
@@ -105,7 +112,7 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: #B3416C;
+      background: #2C5F8A;
       border-radius: 2px;
     }
 
@@ -132,27 +139,36 @@
     /* Tarjeta de producto */
     .product-card {
       background: white;
-      border-radius: 16px;
+      border-radius: 20px;
       padding: 0.8rem 0.6rem 0.8rem 0.6rem;
       display: flex;
       flex-direction: column;
+      transition: all 0.2s ease;
+      border: 1px solid #EDF2F7;
     }
-    /* Estilo para separador entre con/sin tapa */
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.1);
+      border-color: #CBD5E0;
+    }
+
     .price-divider {
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(179, 65, 108, 0.3), transparent);
+      background: linear-gradient(90deg, transparent, #2C5F8A, transparent);
       margin: 0.8rem 0;
     }
+
     .product-image {
       width: 100%;
       aspect-ratio: 1/1;
-      background: #F9EFF7;
-      border-radius: 12px;
+      background: #F7FAFC;
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 2.5rem;
-      color: #B3416C;
+      color: #1A3A5F;
       margin-bottom: 0.6rem;
       position: relative;
       overflow: hidden;
@@ -168,26 +184,27 @@
       position: absolute;
       bottom: 4px;
       right: 6px;
-      background: rgba(255,255,255,0.9);
-      color: #B3416C;
+      background: rgba(255, 255, 255, 0.95);
+      color: #2C5F8A;
       font-size: 0.55rem;
       padding: 2px 5px;
       border-radius: 20px;
-      border: 1px solid #F9EFF7;
+      border: 1px solid #CBD5E0;
+      font-weight: 500;
     }
 
     .product-title {
       font-size: 0.95rem;
       font-weight: 600;
       margin-bottom: 0.2rem;
-      color: #2D2D2D;
+      color: #1A1A2E;
       line-height: 1.3;
     }
 
     .product-price {
       font-size: 1rem;
-      font-weight: 600;
-      color: #B3416C;
+      font-weight: 700;
+      color: #1E3A5F;
       margin: 0.1rem 0 0.5rem 0;
       display: flex;
       align-items: baseline;
@@ -196,14 +213,13 @@
 
     .product-price small {
       font-size: 0.65rem;
-      font-weight: 400;
-      color: #B3416C;
-      opacity: 0.7;
+      font-weight: 500;
+      color: #6B7B8F;
     }
 
-    /* Botón Ver más - MAGENTA OSCURO */
+    /* Botón Ver más - Azul sobrio */
     .btn-ver-mas {
-      background: #B3416C;
+      background: #1E3A5F;
       border: none;
       color: white;
       padding: 0.5rem 0.3rem;
@@ -229,7 +245,7 @@
     }
 
     .btn-ver-mas:hover {
-      opacity: 0.9;
+      background: #0F2A44;
       transform: translateY(-1px);
     }
 
@@ -241,8 +257,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(3px);
+      background: rgba(15, 25, 35, 0.95);
+      backdrop-filter: blur(4px);
       z-index: 1000;
       align-items: center;
       justify-content: center;
@@ -258,7 +274,7 @@
       max-width: 500px;
       border-radius: 28px;
       padding: 1.8rem 1.2rem;
-      box-shadow: 0 10px 30px rgba(179, 65, 108, 0.08);
+      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.2);
       position: relative;
       max-height: 90vh;
       overflow-y: auto;
@@ -269,7 +285,7 @@
       top: 10px;
       right: 15px;
       font-size: 1.6rem;
-      color: #B3416C;
+      color: #2C5F8A;
       text-decoration: none;
       width: 40px;
       height: 40px;
@@ -278,6 +294,10 @@
       justify-content: center;
       opacity: 0.7;
       z-index: 10;
+    }
+
+    .modal-cerrar:hover {
+      opacity: 1;
     }
 
     .modal-gallery {
@@ -291,10 +311,11 @@
       width: 80%;
       max-width: 280px;
       aspect-ratio: 1/1;
-      background: #F9EFF7;
+      background: #F7FAFC;
       border-radius: 20px;
       overflow: hidden;
       margin: 0 auto 0.8rem auto;
+      border: 1px solid #E2E8F0;
     }
 
     .modal-imagen-principal img {
@@ -315,9 +336,9 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: #F9EFF7;
-      border: 1px solid #B3416C;
-      color: #B3416C;
+      background: #EDF2F7;
+      border: 1px solid #CBD5E0;
+      color: #1E3A5F;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -327,8 +348,9 @@
     }
 
     .modal-nav-arrow:hover {
-      background: #B3416C;
+      background: #1E3A5F;
       color: white;
+      border-color: #1E3A5F;
     }
 
     .modal-nav-arrow.disabled {
@@ -339,33 +361,35 @@
 
     .modal-counter {
       font-size: 0.8rem;
-      color: #B3416C;
+      color: #4A627A;
       min-width: 50px;
       text-align: center;
+      font-weight: 500;
     }
 
     .modal-titulo {
       font-size: 1.5rem;
       font-weight: 700;
-      color: #B3416C;
+      color: #0A1A2F;
       margin-bottom: 0.3rem;
       text-align: center;
     }
 
     .modal-descripcion {
-      color: #666;
+      color: #5A6E85;
       font-size: 0.8rem;
       margin-bottom: 1rem;
       line-height: 1.5;
       text-align: center;
     }
 
-    /* Tabla de precios compacta */
+    /* Tabla de precios compacta - Azul */
     .price-table {
-      background: #F9EFF7;
+      background: #F7FAFC;
       border-radius: 16px;
       padding: 0.8rem;
       margin: 1rem 0;
+      border: 1px solid #E2E8F0;
     }
 
     .price-header {
@@ -373,10 +397,12 @@
       grid-template-columns: 2fr 1fr 1fr;
       padding: 0.5rem 0.5rem;
       font-size: 0.7rem;
-      font-weight: 600;
-      color: #B3416C;
-      border-bottom: 1px solid rgba(179, 65, 108, 0.2);
+      font-weight: 700;
+      color: #1E3A5F;
+      border-bottom: 1px solid #CBD5E0;
       margin-bottom: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .price-row {
@@ -384,7 +410,7 @@
       grid-template-columns: 2fr 1fr 1fr;
       padding: 0.4rem 0.5rem;
       font-size: 0.75rem;
-      border-bottom: 1px dashed rgba(179, 65, 108, 0.1);
+      border-bottom: 1px dashed #E2E8F0;
     }
 
     .price-row:last-child {
@@ -393,17 +419,17 @@
 
     .price-size {
       font-weight: 500;
-      color: #2D2D2D;
+      color: #2D3A4B;
     }
 
     .price-value {
-      font-weight: 600;
-      color: #B3416C;
+      font-weight: 700;
+      color: #1E3A5F;
       text-align: right;
     }
 
     .btn-cotizar {
-      background: #B3416C;
+      background: #1E3A5F;
       color: white;
       border: none;
       padding: 0.9rem;
@@ -418,25 +444,31 @@
       cursor: pointer;
       min-height: 48px;
       margin-top: 0.5rem;
+      transition: all 0.2s;
+    }
+
+    .btn-cotizar:hover {
+      background: #0F2A44;
+      transform: translateY(-1px);
     }
 
     /* ===== FOOTER ===== */
     .footer {
       margin-top: 3rem;
       padding: 1.5rem 0;
-      border-top: 1px solid #F3E0E8;
+      border-top: 1px solid #E2E8F0;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
-      color: #B3416C;
+      color: #4A627A;
       font-size: 0.75rem;
-      opacity: 0.7;
       text-align: center;
     }
 
     .footer i {
       margin: 0 4px;
+      color: #2C5F8A;
     }
 
     .product-tab {
@@ -445,6 +477,34 @@
 
     .product-tab.active {
       display: block;
+    }
+
+    /* Detalle adicional: badge de temporada opcional */
+    .season-badge {
+      background: #1E3A5F;
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 30px;
+      display: inline-block;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Scroll elegante */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #EDF2F7;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #2C5F8A;
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -488,15 +548,52 @@
 <script>
   const productos = [
     {
+      id: 361,
+      nombre: "Bandeja dia del padre",
+      descripcion: "Viene en color blanco, base con borde de 1 cm, resistente, puedes personalizar la frase y el color",
+      categoria: "arreglos",
+      imagen: "img/bandejaPadre1.jpg",
+      imagenes: [
+        "img/bandejaPadre1.jpg"
+      ],
+      variantes: [
+        {tamaño: "20cmx x 25cm x 5 cm de alto (Acetato 10 cm de alto)", precio: "$7,000"},
+        {tamaño: "25cmx x 30cm x 5 cm de alto (Acetato 10 cm de alto)", precio: "$8,000"}
+      ]
+    },
+    {
+      id: 129,
+      nombre: "Acetato cuadrada",
+      descripcion: "Disponible en múltiples colores o sin forrar(blanco)",
+      categoria: "arreglos",
+      esConForro:true,
+      imagen: "img/cuadradaAcetato1.jpeg",
+      imagenes: [
+        "img/cuadradaAcetato1.jpeg",
+        "img/cuadradaAcetato2.jpeg",
+      ],
+      variantes: [
+        {tamaño: "15cm x 15cm x 20cm", precio: "$9,000", tipo: "forrada"},
+        {tamaño: "20cm x 20cm x 25cm", precio: "$12,000", tipo: "forrada"},
+        {tamaño: "24cm x 24cm x 30cm", precio: "$13,000", tipo: "forrada"},
+
+        {tamaño: "15cm x 15cm x 20cm", precio: "$7,000", tipo: "sin forrar"},
+        {tamaño: "20cm x 20cm x 25cm", precio: "$10,000", tipo: "sin forrar"},
+        {tamaño: "24cm x 24cm x 30cm", precio: "$11,000", tipo: "sin forrar"}
+
+      ],
+      esConTapas: true
+    },
+    {
       id: 1,
       nombre: "Corazón Forrado",
       descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
       categoria: "arreglos",
-      imagen: "img/CoraRosa2.png",
+      imagen: "img/coranegro.png",
       imagenes: [
+        "img/coranegro.png",
         "img/CoraRosa2.png",
         "img/CoraRosa1.png",
-        "img/corazonrojo1.png",
         "img/corazonrojo2.png",
         "img/corazonrojo3.png",
         "img/CorazónForrado1.jpg",
@@ -515,20 +612,34 @@
       esConTapas: true
     },
     {
+      id: 363,
+      nombre: "Caja Vitrina",
+      descripcion: "Viene en color blanco, base en cartón industrial, muy resistente y elegante.",
+      categoria: "arreglos",
+      imagen: "img/cajaVitrina.png",
+      imagenes: [
+        "img/cajaVitrina.png"
+      ],
+      variantes: [
+        {tamaño: "15cm x 15cm x 15cm de alto", precio: "$11,000"},
+        {tamaño: "20cm x 20cm x 20cm de alto", precio: "$12,000"},
+        {tamaño: "24cm x 24cm x 20cm de alto", precio: "$13,000"}
+      ]
+    },
+    {
       id: 2,
       nombre: "Cilindro Forrado 13cm",
       descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
       categoria: "arreglos",
-      imagen: "img/CilindroRosa00.png",
+      imagen:  "img/cilindronegro.png",
       imagenes: [
-        "img/CilindroRosa00.png",
+        "img/cilindronegro.png",
         "img/cilindrogranderojo1.png",
         "img/cil2.png",
         "img/cilflor.png",
         "img/minicilindros1.png",
         "img/cil.png",
         "img/cilindrogranderojo2.png",
-        "img/cilindrogranderojo3.png"
 
       ],
       variantes: [
@@ -538,7 +649,6 @@
         {tamaño: "20cm x 13cm alto", precio: "$9,000", tipo: "con tapa"},
         {tamaño: "25cm x 13cm alto", precio: "$11,000", tipo: "con tapa"},
 
-        {tamaño: "8cm x 8cm alto", precio: "$3,000", tipo: "sin tapa"},
         {tamaño: "13cm x 10cm alto", precio: "$4,000", tipo: "sin tapa"},
         {tamaño: "16cm x 13cm alto", precio: "$6,000", tipo: "sin tapa"},
         {tamaño: "20cm x 13cm alto", precio: "$7,500", tipo: "sin tapa"},
@@ -546,6 +656,110 @@
 
       ],
       esConTapas: true
+    },
+    {
+      id: 35,
+      nombre: "Ancheta Esmoquin",
+      descripcion: "Base en cartón rígido, sin forrar con decoración",
+      categoria: "arreglos",
+      imagen: "img/Esmoquin3.png",
+      imagenes: [
+        "img/Esmoquin3.png",
+        "img/Esmoquin2.png",
+      ],
+      variantes: [
+        {tamaño: "13x13x10cm", precio: "$4,000"}
+      ]
+    },
+    {
+      id: 6,
+      nombre: "Cilindro Forrado 7cm",
+      descripcion: "Cilindros de cartón forrados, ideales para detalles, desayunos sorpresa",
+      categoria: "arreglos",
+      imagen: "img/cilindroBajoAbierto.jpeg",
+      imagenes: [
+        "img/cilindroBajoAbierto.jpeg",
+        "img/cilindroBajoCerrado.jpeg",
+      ],
+      variantes: [
+        {tamaño: "13cm x 5-7cm", precio: "$5,600"},
+        {tamaño: "16cm x 5-7cm", precio: "$7,100"},
+        {tamaño: "20cm x 5-7cm", precio: "$8,000"},
+        {tamaño: "25cm x 5-7cm", precio: "$9,500"}
+      ]
+    },
+
+    {
+      id: 20,
+      nombre: "Cofre",
+      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes",
+      categoria: "arreglos",
+      imagen: "img/cofreNegro.png",
+      imagenes: [
+        "img/cofreNegro.png"
+      ],
+      variantes: [
+        {tamaño: "Mediano: 23x17x15cm", precio: "$13,000"},
+        {tamaño: "Grande: 30x20x15cm", precio: "$15,000"}
+      ]
+    },
+    {
+      id: 36,
+      nombre: "Cilindro Esmoquin",
+      descripcion: "Base en cartón rígido, forrados en variedad de colores",
+      categoria: "arreglos",
+      imagen: "img/cilindroesmoquinn.jpeg",
+      imagenes: [
+        "img/cilindroesmoquinn.jpeg",
+        "img/cilindroesmoquin.jpg"
+      ],
+      variantes: [
+        {tamaño: "17cm ø x 13cm alto", precio: "$7,000"}
+      ]
+    },
+    {
+      id: 9,
+      nombre: "Libro",
+      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes",
+      categoria: "arreglos",
+      imagen: "img/libronegro.jpeg",
+      imagenes: [
+        "img/libronegro.jpeg",
+        "img/cuadradarosa2.png",
+      ],
+      variantes: [
+        {tamaño: "Mediano: 20x25x8cm", precio: "$8,000"},
+        {tamaño: "Grande: 25x30x8cm", precio: "$10,000"}
+      ]
+    },
+    {
+      id: 31,
+      nombre: "Carrito Corona",
+      descripcion: "Se puede personalizar la impresión",
+      categoria: "arreglos",
+      imagen: "img/corona1.jpeg",
+      imagenes: [
+        "img/corona1.jpeg",
+        "img/corona2.jpeg",
+        "img/carritoejemplo.png"
+      ],
+      variantes: [
+        {tamaño: "13x18x9cm", precio: "$7,500"}
+      ]
+    },
+    {
+      id: 230,
+      nombre: "Reloj",
+      descripcion: "Disponible en múltiples colores. Precio solo la caja",
+      categoria: "arreglos",
+      imagen: "img/Relojnuevo.png",
+      imagenes: [
+        "img/Relojnuevo.png",
+        "img/reloj2.jpeg"
+      ],
+      variantes: [
+        {tamaño: "7,5x8,5x7cm", precio: "$4,000"}
+      ]
     },
 
     {
@@ -605,20 +819,7 @@
         {tamaño: "25cm de Ancho x 20cm de profundo x 15cm de alto", precio: "$8,000"}
       ]
     },
-    {
-      id: 20,
-      nombre: "Cofre",
-      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes",
-      categoria: "arreglos",
-      imagen: "img/cofre1.jpeg",
-      imagenes: [
-        "img/cofre1.jpeg"
-      ],
-      variantes: [
-        {tamaño: "Mediano: 23x17x15cm", precio: "$13,000"},
-        {tamaño: "Grande: 30x20x15cm", precio: "$15,000"}
-      ]
-    },
+
     {
       id: 15,
       nombre: "Ancheta Amor",
@@ -732,20 +933,7 @@
         {tamaño: "25x25x5-7cm", precio: "$3,800"}
       ]
     },
-    {
-      id: 35,
-      nombre: "Ancheta Esmoquin",
-      descripcion: "Base en cartón rígido, sin forrar con decoración",
-      categoria: "arreglos",
-      imagen: "img/Esmoquin3.png",
-      imagenes: [
-        "img/Esmoquin3.png",
-        "img/Esmoquin2.png",
-      ],
-      variantes: [
-        {tamaño: "13x13x10cm", precio: "$4,000"}
-      ]
-    },
+
     {
       id: 94,
       nombre: "Amor",
@@ -834,21 +1022,7 @@
         {tamaño: "Corazón 25cm", precio: "$8,000"}
       ]
     },
-    {
-      id: 9,
-      nombre: "Libro",
-      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes",
-      categoria: "arreglos",
-      imagen: "img/cuadradarosa1.png",
-      imagenes: [
-        "img/cuadradarosa1.png",
-        "img/cuadradarosa2.png",
-      ],
-      variantes: [
-        {tamaño: "Mediano: 20x25x8cm", precio: "$8,000"},
-        {tamaño: "Grande: 25x30x8cm", precio: "$10,000"}
-      ]
-    },
+
     {
       id: 19,
       nombre: "Buffet",
@@ -863,23 +1037,7 @@
         {tamaño: "34x26x6cm", precio: "$9,000"}
       ]
     },
-    {
-      id: 6,
-      nombre: "Cilindro Forrado 7cm",
-      descripcion: "Cilindros de cartón forrados, ideales para detalles, desayunos sorpresa",
-      categoria: "arreglos",
-      imagen: "img/cilindroBajoAbierto.jpeg",
-      imagenes: [
-        "img/cilindroBajoAbierto.jpeg",
-        "img/cilindroBajoCerrado.jpeg",
-      ],
-      variantes: [
-        {tamaño: "13cm x 5-7cm", precio: "$5,600"},
-        {tamaño: "16cm x 5-7cm", precio: "$7,100"},
-        {tamaño: "20cm x 5-7cm", precio: "$8,000"},
-        {tamaño: "25cm x 5-7cm", precio: "$9,500"}
-      ]
-    },
+
     {
       id: 11,
       nombre: "Cilindro Forrado 7cm CON VENTANA",
@@ -975,20 +1133,7 @@
         {tamaño: "Grande: 30x25x8cm", precio: "$12,000"}
       ]
     },
-    {
-      id: 23,
-      nombre: "Reloj",
-      descripcion: "Disponible en múltiples colores. Precio solo la caja",
-      categoria: "joyeria",
-      imagen: "img/Relojnuevo.png",
-      imagenes: [
-        "img/Relojnuevo.png",
-        "img/reloj2.jpeg"
-      ],
-      variantes: [
-        {tamaño: "7,5x8,5x7cm", precio: "$4,000"}
-      ]
-    },
+
     {
       id: 27,
       nombre: "Estilo 1",
@@ -1096,21 +1241,7 @@
         {tamaño: "CON VENTANA - 10x10x4cm", precio: "$2,900"}
       ]
     },
-    {
-      id: 31,
-      nombre: "Carrito Corona",
-      descripcion: "Se puede personalizar la impresión",
-      categoria: "arreglos",
-      imagen: "img/corona1.jpeg",
-      imagenes: [
-        "img/corona1.jpeg",
-        "img/corona2.jpeg",
-        "img/carritoejemplo.png"
-      ],
-      variantes: [
-        {tamaño: "13x18x9cm", precio: "$7,500"}
-      ]
-    },
+
     {
       id: 32,
       nombre: "Bolsa blanca",
@@ -1166,20 +1297,6 @@
       ]
     },
 
-    {
-      id: 36,
-      nombre: "Cilindro Esmoquin",
-      descripcion: "Base en cartón rígido, forrados en variedad de colores",
-      categoria: "arreglos",
-      imagen: "img/cilindroesmoquin.jpg",
-      imagenes: [
-        "img/cilindroesmoquin.jpg",
-        "img/cilindroesmoquin2.jpg"
-      ],
-      variantes: [
-        {tamaño: "17cm ø x 13cm alto", precio: "$7,000"}
-      ]
-    },
     {
       id: 50,
       nombre: "Empaques pequeños",
@@ -1337,7 +1454,7 @@
 
     const precioBase = Math.round(precioNum / 100) * 100;
     const precio6 = precioBase;
-    const precio24 = Math.round(precioBase * 0.9 / 100) * 100;
+    const precio24 = Math.round(precioBase * 0.95 / 100) * 100;
 
     return {
       precio6: `$${precio6.toLocaleString('es-ES')}`,
@@ -1425,14 +1542,15 @@
   function crearModalProducto(producto) {
     const imagenes = producto.imagenes || [producto.imagen];
 
-    // Verificar si el producto tiene opción con/sin tapa
     const tieneTapas = producto.esConTapas === true;
+    const tieneForros = producto.esConForro === true;
 
-    // Separar variantes por tipo
     const variantesConTapa = producto.variantes?.filter(v => v.tipo === "con tapa") || [];
     const variantesSinTapa = producto.variantes?.filter(v => v.tipo === "sin tapa") || [];
 
-    // Función para generar tabla de precios
+    const variantesForrada = producto.variantes?.filter(v => v.tipo === "forrada") || [];
+    const variantesSinForrar = producto.variantes?.filter(v => v.tipo === "sin forrar") || [];
+
     function generarTablaPrecios(variantes, titulo, icono) {
       if (!variantes.length) return '';
 
@@ -1467,16 +1585,22 @@
       return html;
     }
 
-    // Generar HTML de precios
     let preciosHTML = '';
 
-    if (tieneTapas && variantesConTapa.length > 0 && variantesSinTapa.length > 0) {
-      // Mostrar secciones separadas
+    // 📦 CASO TAPAS
+    if (tieneTapas && variantesConTapa.length && variantesSinTapa.length) {
       preciosHTML += generarTablaPrecios(variantesConTapa, "CON TAPA", "fas fa-box");
       preciosHTML += `<div style="height: 1px; background: rgba(179, 65, 108, 0.15); margin: 0.8rem 0;"></div>`;
       preciosHTML += generarTablaPrecios(variantesSinTapa, "SIN TAPA", "far fa-square");
-    } else if (producto.variantes && producto.variantes.length > 0) {
-      // Mostrar tabla normal (sin separación)
+    }
+    // 🧵 CASO FORRADAS / SIN FORRAR
+    else if (tieneForros && variantesForrada.length && variantesSinForrar.length) {
+      preciosHTML += generarTablaPrecios(variantesForrada, "FORRADA", "fas fa-ribbon");
+      preciosHTML += `<div style="height: 1px; background: rgba(179, 65, 108, 0.15); margin: 0.8rem 0;"></div>`;
+      preciosHTML += generarTablaPrecios(variantesSinForrar, "SIN FORRAR", "far fa-square");
+    }
+    // 🔘 CASO NORMAL (sin separación)
+    else if (producto.variantes?.length) {
       preciosHTML += `
       <div class="price-table">
         <div class="price-header">
@@ -1511,7 +1635,6 @@
           <div class="modal-imagen-principal">
             <img id="modal-img-${producto.id}" src="${imagenes[0]}" alt="${producto.nombre}" onerror="this.src='https://via.placeholder.com/400x400?text=YALU'">
           </div>
-
           <div class="modal-nav-arrows">
             <button class="modal-nav-arrow prev" id="modal-prev-${producto.id}" ${imagenes.length <= 1 ? 'disabled' : ''}>
               <i class="fas fa-chevron-left"></i>
