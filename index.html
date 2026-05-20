@@ -1587,26 +1587,25 @@
 
     let preciosHTML = '';
 
-    // 📦 CASO TAPAS
     if (tieneTapas && variantesConTapa.length && variantesSinTapa.length) {
       preciosHTML += generarTablaPrecios(variantesConTapa, "CON TAPA", "fas fa-box");
       preciosHTML += `<div style="height: 1px; background: rgba(179, 65, 108, 0.15); margin: 0.8rem 0;"></div>`;
       preciosHTML += generarTablaPrecios(variantesSinTapa, "SIN TAPA", "far fa-square");
     }
-    // 🧵 CASO FORRADAS / SIN FORRAR
+
     else if (tieneForros && variantesForrada.length && variantesSinForrar.length) {
       preciosHTML += generarTablaPrecios(variantesForrada, "FORRADA", "fas fa-ribbon");
       preciosHTML += `<div style="height: 1px; background: rgba(179, 65, 108, 0.15); margin: 0.8rem 0;"></div>`;
       preciosHTML += generarTablaPrecios(variantesSinForrar, "SIN FORRAR", "far fa-square");
     }
-    // 🔘 CASO NORMAL (sin separación)
+
     else if (producto.variantes?.length) {
       preciosHTML += `
       <div class="price-table">
         <div class="price-header">
           <div>Tamaño</div>
-          <div class="price-value">6+ und</div>
-          <div class="price-value">24+ und</div>
+          <div class="price-value">+6 unidades</div>
+            <div class="price-value">+24 unidades</div>
         </div>
     `;
 
