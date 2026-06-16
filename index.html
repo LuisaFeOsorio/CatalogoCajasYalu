@@ -18,9 +18,9 @@
     }
 
     body {
-      background-color: #FFFFFF;
+      background-color: #FFF8F9;
       font-family: 'Inter', sans-serif;
-      color: #1A1A1A;
+      color: #2D2D2D;
     }
 
     .container {
@@ -29,20 +29,21 @@
       padding: 1rem;
     }
 
-    /* ===== LOGO YALU - Estilo Día del Padre ===== */
+    /* ===== LOGO YALU - Estilo Amor & Amistad ===== */
     .header {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       margin: 1.5rem 0 1rem 0;
+      position: relative;
     }
 
     .logo {
       font-family: 'Inter', sans-serif;
       font-size: 4.5rem;
       font-weight: 800;
-      color: #0A1A2F;
+      color: #2D2D2D;
       line-height: 1;
       letter-spacing: -2px;
       margin-bottom: 0.2rem;
@@ -51,20 +52,40 @@
     .logo-sub {
       font-size: 0.8rem;
       font-weight: 500;
-      color: #0A1A2F;
-      opacity: 0.7;
+      color: #D43F6B;
       letter-spacing: 2px;
       text-transform: uppercase;
       margin-bottom: 1rem;
     }
 
+    /* Badge de temporada con corazón */
+    .season-badge {
+      background: #FFE4EC;
+      color: #D43F6B;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      letter-spacing: 0.5px;
+      border: 1px solid #F0B8CC;
+    }
+
+    .season-badge i {
+      font-size: 0.7rem;
+      color: #E85D8C;
+    }
+
     .info-header {
       text-align: center;
       font-size: 0.75rem;
-      color: #4A627A;
-      margin-bottom: 1rem;
+      color: #6B4E5A;
+      margin-bottom: 0.5rem;
       line-height: 1.6;
-      background: #F5F7FA;
+      background: #FFEDF2;
       padding: 8px 16px;
       border-radius: 40px;
       display: inline-block;
@@ -74,17 +95,17 @@
     }
 
     .info-header i {
-      color: #2C5F8A;
+      color: #D43F6B;
       margin: 0 4px;
     }
 
-    /* ===== PESTAÑAS - Azul elegante ===== */
+    /* ===== PESTAÑAS ===== */
     .tabs {
       display: flex;
       justify-content: center;
       gap: 2rem;
       margin: 2rem 0 2rem 0;
-      border-bottom: 1px solid #E2E8F0;
+      border-bottom: 1px solid #F0CCD8;
       padding-bottom: 0.8rem;
     }
 
@@ -93,7 +114,7 @@
       border: none;
       font-size: 1rem;
       font-weight: 500;
-      color: #8A9CB0;
+      color: #B87A92;
       cursor: pointer;
       padding: 0.5rem 0;
       position: relative;
@@ -101,7 +122,7 @@
     }
 
     .tab.active {
-      color: #1E3A5F;
+      color: #D43F6B;
       font-weight: 600;
     }
 
@@ -112,7 +133,7 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: #2C5F8A;
+      background: #D43F6B;
       border-radius: 2px;
     }
 
@@ -144,31 +165,31 @@
       display: flex;
       flex-direction: column;
       transition: all 0.2s ease;
-      border: 1px solid #EDF2F7;
+      border: 1px solid #F0CCD8;
     }
 
     .product-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.1);
-      border-color: #CBD5E0;
+      box-shadow: 0 12px 24px -12px rgba(212, 63, 107, 0.25);
+      border-color: #D43F6B;
     }
 
     .price-divider {
       height: 1px;
-      background: linear-gradient(90deg, transparent, #2C5F8A, transparent);
+      background: linear-gradient(90deg, transparent, #D43F6B, transparent);
       margin: 0.8rem 0;
     }
 
     .product-image {
       width: 100%;
       aspect-ratio: 1/1;
-      background: #F7FAFC;
+      background: #FFF0F5;
       border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 2.5rem;
-      color: #1A3A5F;
+      color: #D43F6B;
       margin-bottom: 0.6rem;
       position: relative;
       overflow: hidden;
@@ -185,11 +206,11 @@
       bottom: 4px;
       right: 6px;
       background: rgba(255, 255, 255, 0.95);
-      color: #2C5F8A;
+      color: #D43F6B;
       font-size: 0.55rem;
       padding: 2px 5px;
       border-radius: 20px;
-      border: 1px solid #CBD5E0;
+      border: 1px solid #F0B8CC;
       font-weight: 500;
     }
 
@@ -197,14 +218,14 @@
       font-size: 0.95rem;
       font-weight: 600;
       margin-bottom: 0.2rem;
-      color: #1A1A2E;
+      color: #2D2D2D;
       line-height: 1.3;
     }
 
     .product-price {
       font-size: 1rem;
       font-weight: 700;
-      color: #1E3A5F;
+      color: #D43F6B;
       margin: 0.1rem 0 0.5rem 0;
       display: flex;
       align-items: baseline;
@@ -214,12 +235,12 @@
     .product-price small {
       font-size: 0.65rem;
       font-weight: 500;
-      color: #6B7B8F;
+      color: #B87A92;
     }
 
-    /* Botón Ver más - Azul sobrio */
+    /* Botón Ver más */
     .btn-ver-mas {
-      background: #1E3A5F;
+      background: #D43F6B;
       border: none;
       color: white;
       padding: 0.5rem 0.3rem;
@@ -245,8 +266,9 @@
     }
 
     .btn-ver-mas:hover {
-      background: #0F2A44;
+      background: #B8355C;
       transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(212, 63, 107, 0.3);
     }
 
     /* ===== MODAL ===== */
@@ -257,7 +279,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(15, 25, 35, 0.95);
+      background: rgba(45, 45, 45, 0.9);
       backdrop-filter: blur(4px);
       z-index: 1000;
       align-items: center;
@@ -274,7 +296,7 @@
       max-width: 500px;
       border-radius: 28px;
       padding: 1.8rem 1.2rem;
-      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 20px 35px -10px rgba(212, 63, 107, 0.25);
       position: relative;
       max-height: 90vh;
       overflow-y: auto;
@@ -285,7 +307,7 @@
       top: 10px;
       right: 15px;
       font-size: 1.6rem;
-      color: #2C5F8A;
+      color: #D43F6B;
       text-decoration: none;
       width: 40px;
       height: 40px;
@@ -311,11 +333,11 @@
       width: 80%;
       max-width: 280px;
       aspect-ratio: 1/1;
-      background: #F7FAFC;
+      background: #FFF0F5;
       border-radius: 20px;
       overflow: hidden;
       margin: 0 auto 0.8rem auto;
-      border: 1px solid #E2E8F0;
+      border: 1px solid #F0CCD8;
     }
 
     .modal-imagen-principal img {
@@ -336,9 +358,9 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: #EDF2F7;
-      border: 1px solid #CBD5E0;
-      color: #1E3A5F;
+      background: #FFF0F5;
+      border: 1px solid #D43F6B;
+      color: #D43F6B;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -348,9 +370,9 @@
     }
 
     .modal-nav-arrow:hover {
-      background: #1E3A5F;
+      background: #D43F6B;
       color: white;
-      border-color: #1E3A5F;
+      border-color: #D43F6B;
     }
 
     .modal-nav-arrow.disabled {
@@ -361,7 +383,7 @@
 
     .modal-counter {
       font-size: 0.8rem;
-      color: #4A627A;
+      color: #B87A92;
       min-width: 50px;
       text-align: center;
       font-weight: 500;
@@ -370,26 +392,26 @@
     .modal-titulo {
       font-size: 1.5rem;
       font-weight: 700;
-      color: #0A1A2F;
+      color: #2D2D2D;
       margin-bottom: 0.3rem;
       text-align: center;
     }
 
     .modal-descripcion {
-      color: #5A6E85;
+      color: #6B4E5A;
       font-size: 0.8rem;
       margin-bottom: 1rem;
       line-height: 1.5;
       text-align: center;
     }
 
-    /* Tabla de precios compacta - Azul */
+    /* Tabla de precios */
     .price-table {
-      background: #F7FAFC;
+      background: #FFF0F5;
       border-radius: 16px;
       padding: 0.8rem;
       margin: 1rem 0;
-      border: 1px solid #E2E8F0;
+      border: 1px solid #F0CCD8;
     }
 
     .price-header {
@@ -398,8 +420,8 @@
       padding: 0.5rem 0.5rem;
       font-size: 0.7rem;
       font-weight: 700;
-      color: #1E3A5F;
-      border-bottom: 1px solid #CBD5E0;
+      color: #D43F6B;
+      border-bottom: 1px solid #F0B8CC;
       margin-bottom: 0.3rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -410,7 +432,7 @@
       grid-template-columns: 2fr 1fr 1fr;
       padding: 0.4rem 0.5rem;
       font-size: 0.75rem;
-      border-bottom: 1px dashed #E2E8F0;
+      border-bottom: 1px dashed #F0CCD8;
     }
 
     .price-row:last-child {
@@ -419,17 +441,17 @@
 
     .price-size {
       font-weight: 500;
-      color: #2D3A4B;
+      color: #4A3540;
     }
 
     .price-value {
       font-weight: 700;
-      color: #1E3A5F;
+      color: #D43F6B;
       text-align: right;
     }
 
     .btn-cotizar {
-      background: #1E3A5F;
+      background: #D43F6B;
       color: white;
       border: none;
       padding: 0.9rem;
@@ -447,28 +469,33 @@
       transition: all 0.2s;
     }
 
+    .btn-cotizar i {
+      color: white;
+    }
+
     .btn-cotizar:hover {
-      background: #0F2A44;
-      transform: translateY(-1px);
+      background: #B8355C;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(212, 63, 107, 0.3);
     }
 
     /* ===== FOOTER ===== */
     .footer {
       margin-top: 3rem;
       padding: 1.5rem 0;
-      border-top: 1px solid #E2E8F0;
+      border-top: 1px solid #F0CCD8;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
-      color: #4A627A;
+      color: #B87A92;
       font-size: 0.75rem;
       text-align: center;
     }
 
     .footer i {
       margin: 0 4px;
-      color: #2C5F8A;
+      color: #D43F6B;
     }
 
     .product-tab {
@@ -479,31 +506,35 @@
       display: block;
     }
 
-    /* Detalle adicional: badge de temporada opcional */
-    .season-badge {
-      background: #1E3A5F;
-      color: white;
-      font-size: 0.65rem;
-      font-weight: 500;
-      padding: 4px 12px;
-      border-radius: 30px;
-      display: inline-block;
-      margin-bottom: 8px;
-      letter-spacing: 0.5px;
+    /* Corazones decorativos en el header (opcional) */
+    .heart-decoration {
+      position: absolute;
+      font-size: 1.2rem;
+      opacity: 0.3;
     }
 
-    /* Scroll elegante */
+    .heart-left {
+      left: 5%;
+      top: 20%;
+    }
+
+    .heart-right {
+      right: 5%;
+      top: 20%;
+    }
+
+    /* Scroll */
     ::-webkit-scrollbar {
       width: 6px;
     }
 
     ::-webkit-scrollbar-track {
-      background: #EDF2F7;
+      background: #FFF0F5;
       border-radius: 10px;
     }
 
     ::-webkit-scrollbar-thumb {
-      background: #2C5F8A;
+      background: #D43F6B;
       border-radius: 10px;
     }
   </style>
@@ -513,9 +544,15 @@
   <div class="header">
     <div class="logo">yalu</div>
     <div class="logo-sub">cajas y empaques</div>
+
+    <!-- Badge de temporada con corazón -->
+    <div class="season-badge">
+      <i class="fas fa-heart"></i> AMOR & AMISTAD <i class="fas fa-heart"></i>
+    </div>
+
     <div class="info-header">
       <i class="fas fa-truck"></i> Envíos a todo el país · <i class="fas fa-box"></i> Venta mínima 6 unidades<br>
-      <i class="fas fa-paint-brush"></i> Fabricación 100% personalizable
+      <i class="fas fa-paint-brush"></i> Fabricación 100% personalizable, elige el color de tu gusto
     </div>
   </div>
 
@@ -548,17 +585,331 @@
 <script>
   const productos = [
     {
+      id: 1,
+      nombre: "Corazón Forrado",
+      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen:     "img/corazonrojo3.png",
+      imagenes: [
+        "img/corazonrojo3.png",
+        "img/coranegro.png",
+        "img/CoraRosa2.png",
+        "img/CoraRosa1.png",
+        "img/corazonrojo2.png",
+        "img/CorazónForrado1.jpg",
+        "img/CorazonForrado4.jpeg",
+        "img/CorazonForrado5.jpeg"
+      ],
+      variantes: [
+        {tamaño: "20cm ancho x 10cm alto", precio: "$8,500", tipo: "con tapa"},
+        {tamaño: "25cm ancho x 10cm alto", precio: "$10,000", tipo: "con tapa"},
+        {tamaño: "30cm ancho x 10cm alto", precio: "$13,000", tipo: "con tapa"},
+
+        {tamaño: "20cm ancho x 10cm alto", precio: "$7,000", tipo: "sin tapa"},
+        {tamaño: "25cm ancho x 10cm alto", precio: "$8,500", tipo: "sin tapa"},
+        {tamaño: "30cm ancho x 10cm alto", precio: "$11,000", tipo: "sin tapa"}
+      ],
+      esConTapas: true
+    },
+    {
+      id: 3,
+      nombre: "I love u",
+      descripcion: "Doble capa de cartón blanco en base y tapa, resistente, ideal para flores, chocolates...",
+      categoria: "arreglos",
+      imagen: "img/loveu1.jpeg",
+      imagenes: [
+        "img/loveu1.jpeg",
+        "img/loveu.png",
+        "img/loveu2.jpeg"
+      ],
+      variantes: [
+        {tamaño: "50x18x5cm", precio: "$13,000"}
+      ]
+    },
+
+    {
+      id: 2,
+      nombre: "Cilindro Forrado 13cm",
+      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
+      categoria: "arreglos",
+      imagen:  "img/cilindrogranderojo1.png",
+      imagenes: [
+        "img/cilindrogranderojo1.png",
+        "img/cilindronegro.png",
+        "img/cil2.png",
+        "img/cilflor.png",
+        "img/minicilindros1.png",
+        "img/cil.png",
+        "img/cilindrogranderojo2.png",
+
+      ],
+      variantes: [
+        {tamaño: "13cm x 10cm alto", precio: "$6,000", tipo: "con tapa"},
+        {tamaño: "16cm x 13cm alto", precio: "$7,500", tipo: "con tapa"},
+        {tamaño: "20cm x 13cm alto", precio: "$9,000", tipo: "con tapa"},
+        {tamaño: "25cm x 13cm alto", precio: "$11,000", tipo: "con tapa"},
+
+        {tamaño: "13cm x 10cm alto", precio: "$4,000", tipo: "sin tapa"},
+        {tamaño: "16cm x 13cm alto", precio: "$6,000", tipo: "sin tapa"},
+        {tamaño: "20cm x 13cm alto", precio: "$7,500", tipo: "sin tapa"},
+        {tamaño: "25cm x 13cm alto", precio: "$9,500", tipo: "sin tapa"}
+
+      ],
+      esConTapas: true
+    },
+
+    {
+      id: 358,
+      nombre: "Ancheta Amor",
+      descripcion: "Base en cartón rígido, sin forrar con decoración, muy resistentes",
+      categoria: "arreglos",
+      imagen: "img/felizdiaamor.png",
+      imagenes: [
+        "img/felizdiaamor.png",
+      ],
+      variantes: [
+        {tamaño: "13x13x10cm", precio: "$4,000"}
+      ]
+    },
+    {
+      id: 93,
+      nombre: "Cuadrada con sticker",
+      descripcion: "Cartón de 305g, cajas sencillas",
+      categoria: "arreglos",
+      imagen: "img/boton1.png",
+      imagenes: [
+        "img/boton1.png",
+        "img/boton2.png",
+        "img/boton3.png",
+      ],
+      variantes: [
+        {tamaño: "20x20x5-7cm", precio: "$3,500"},
+        {tamaño: "25x25x5-7cm", precio: "$3,800"}
+      ]
+    },
+    {
       id: 361,
-      nombre: "Bandeja dia del padre",
+      nombre: "Bandeja",
       descripcion: "Viene en color blanco, base con borde de 1 cm, resistente, puedes personalizar la frase y el color",
       categoria: "arreglos",
-      imagen: "img/bandejaPadre1.jpg",
+      imagen: "img/bandejaTeAmo.png",
       imagenes: [
-        "img/bandejaPadre1.jpg"
+        "img/bandejaTeAmo.png"
       ],
       variantes: [
         {tamaño: "20cmx x 25cm x 5 cm de alto (Acetato 10 cm de alto)", precio: "$7,000"},
         {tamaño: "25cmx x 30cm x 5 cm de alto (Acetato 10 cm de alto)", precio: "$8,000"}
+      ]
+    },
+    {
+      id: 200,
+      nombre: "Caja Coquette",
+      descripcion: "Caja con base de borde, acetato de buena calidad, se pueden personalizar los colores del moño y cinta",
+      categoria: "arreglos",
+      imagen: "img/coquetaRoja.png",
+      imagenes: [
+        "img/coquetaRoja.png",
+        "img/CajaCoquette2.png"
+      ],
+      variantes: [
+        {tamaño: "25cm de Ancho x 20cm de profundo x 15cm de alto", precio: "$8,000"}
+      ]
+    },
+    {
+      id: 94,
+      nombre: "Amor",
+      descripcion: "Caja sencilla, cartón de 305gr",
+      categoria: "arreglos",
+      imagen: "img/amor2.png",
+      imagenes: [
+        "img/amor2.png",
+        "img/amor1.png",
+      ],
+      variantes: [
+        {tamaño: "30x15x5-7cm", precio: "$4,500"},
+        {tamaño: "30x15x5-7cm CON BASE", precio: "$5,000"}
+      ]
+    },
+
+    {
+      id: 4,
+      nombre: "Cajón de amor",
+      descripcion: "Cartón blanco de 300gr, ideal para flores eternas y chocolates en el cajón",
+      categoria: "arreglos",
+      imagen: "img/cajon1.png",
+      imagenes: [
+        "img/cajon1.png",
+        "img/cajon2.png",
+      ],
+      variantes: [
+        {tamaño: "15cm x 20cm alto", precio: "$10,000"}
+      ]
+    },
+    {
+      id: 9,
+      nombre: "Libro",
+      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes",
+      categoria: "arreglos",
+      imagen:  "img/cuadradarosa2.png",
+      imagenes: [
+        "img/cuadradarosa2.png",
+        "img/libronegro.jpeg",
+
+      ],
+      variantes: [
+        {tamaño: "Mediano: 20x25x8cm", precio: "$8,000"},
+        {tamaño: "Grande: 25x30x8cm", precio: "$10,000"}
+      ]
+    },
+    {
+      id: 99,
+      nombre: "Cilindro con moño",
+      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes",
+      categoria: "arreglos",
+      imagen:  "img/cilindroMoñoRojo.png",
+      imagenes: [
+        "img/cilindroMoñoRojo.png",
+
+      ],
+      variantes: [
+        {tamaño: "Pequeño: 13cm x 10cm de alto", precio: "$4,500"},
+        {tamaño: "Mediano: 16cm x 13cm de alto", precio: "$6,500"}
+      ]
+    },
+
+    {
+      id: 10,
+      nombre: "Cajón Corazón",
+      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes",
+      categoria: "arreglos",
+      imagen: "img/cajoncorazon1.png",
+      imagenes: [
+        "img/cajoncorazon1.png",
+        "img/cajoncorazon2.png",
+        "img/cajoncorazon3.png"
+      ],
+      variantes: [
+        {tamaño: "Cajón 26x18cm, Corazón 24cm ", precio: "$14,000"}
+      ]
+    },
+    {
+      id: 120,
+      nombre: "Sobre",
+      descripcion: "Caja tipo sobre, se puede personalizar tamaño y color",
+      categoria: "arreglos",
+      imagen: "img/sobrerojo.png",
+      imagenes: [
+        "img/sobrerojo.png",
+      ],
+      variantes: [
+        {tamaño: "15cm de Ancho x 10cm de profundo x 15cm de alto", precio: "$5,000"},
+        {tamaño: "20cm de Ancho x 15cm de profundo x 15cm de alto", precio: "$5,500"}
+      ]
+    },
+    {
+      id: 90,
+      nombre: "Bandeja de Parales",
+      descripcion: "La puedes personalizar en diseños, colores y letreros que gustes. Precio incluye la decoración. Base de Cartón, tiene doble capa, quedan resistentes",
+      categoria: "arreglos",
+      imagen: "img/bandejaParalesAmor.png",
+      imagenes: [
+        "img/bandejaParalesAmor.png"
+      ],
+      variantes: [
+        {tamaño: "20cm de Ancho x 16cm de profundo x 5cm de alto", precio: "$6,000"},
+        {tamaño: "25cm de Ancho x 20cm de profundo x 5cm de alto", precio: "$6,500"},
+        {tamaño: "30cm de Ancho x 25cm de profundo x 5cm de alto", precio: "$7,000"}
+      ]
+    },
+    {
+      id: 7,
+      nombre: "Libro Corazón #1",
+      descripcion: "Base corazón en cartón rígido, libro con doble capa de cartón blanco de 300gr",
+      categoria: "arreglos",
+      imagen: "img/librocorazon2.jpeg",
+      imagenes: [
+        "img/librocorazon2.jpeg",
+        "img/librocorazon1.jpeg",
+        "img/librocorazon3.jpeg"
+      ],
+      variantes: [
+        {tamaño: "Corazón 25cm ø", precio: "$8,000"}
+      ]
+    },
+    {
+      id: 8,
+      nombre: "Libro Corazón #2",
+      descripcion: "Base corazón en cartón rígido, libro con doble capa de cartón blanco de 300gr",
+      categoria: "arreglos",
+      imagen: "img/librocorazon22.png",
+      imagenes: [
+        "img/librocorazon22.png",
+        "img/librocorazon23.png"
+      ],
+      variantes: [
+        {tamaño: "Corazón 25cm", precio: "$8,000"}
+      ]
+    },
+
+    {
+      id: 19,
+      nombre: "Buffet",
+      descripcion: "Caja con borde de 1cm incluye separadores, salseros y tapa con ventana",
+      categoria: "arreglos",
+      imagen: "img/buffet.jpeg",
+      imagenes: [
+        "img/buffet.jpeg",
+        "img/buffet2.jpeg"
+      ],
+      variantes: [
+        {tamaño: "34x26x6cm", precio: "$9,000"}
+      ]
+    },
+
+    {
+      id: 6,
+      nombre: "Cilindro Forrado 7cm",
+      descripcion: "Cilindros de cartón forrados, ideales para detalles, desayunos sorpresa",
+      categoria: "arreglos",
+      imagen: "img/cilindroBajoAbierto.jpeg",
+      imagenes: [
+        "img/cilindroBajoAbierto.jpeg",
+        "img/cilindroBajoCerrado.jpeg",
+      ],
+      variantes: [
+        {tamaño: "13cm x 5-7cm", precio: "$5,600"},
+        {tamaño: "16cm x 5-7cm", precio: "$7,100"},
+        {tamaño: "20cm x 5-7cm", precio: "$8,000"},
+        {tamaño: "25cm x 5-7cm", precio: "$9,500"}
+      ]
+    },
+    {
+      id: 15,
+      nombre: "Ancheta Amor",
+      descripcion: "Base en cartón rígido, forrados en variedad de colores",
+      categoria: "arreglos",
+      imagen: "img/anchetaamor1.png",
+      imagenes: [
+        "img/anchetaamor1.png",
+        "img/anchetaamor2.png"
+      ],
+      variantes: [
+        {tamaño: "13x15x10cm", precio: "$5,500"}
+      ]
+    },
+     {
+      id: 20,
+      nombre: "Cofre",
+      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes",
+      categoria: "arreglos",
+      imagen: "img/cofreNegro.png",
+      imagenes: [
+        "img/cofreNegro.png",
+      ],
+      variantes: [
+        {tamaño: "Pequeño: 19x15x13cm", precio: "$10,000"},
+        {tamaño: "Mediano: 23x17x15cm", precio: "$13,000"},
+        {tamaño: "Grande: 30x20x15cm", precio: "$15,000"}
       ]
     },
     {
@@ -584,79 +935,7 @@
       ],
       esConTapas: true
     },
-    {
-      id: 1,
-      nombre: "Corazón Forrado",
-      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
-      categoria: "arreglos",
-      imagen: "img/coranegro.png",
-      imagenes: [
-        "img/coranegro.png",
-        "img/CoraRosa2.png",
-        "img/CoraRosa1.png",
-        "img/corazonrojo2.png",
-        "img/corazonrojo3.png",
-        "img/CorazónForrado1.jpg",
-        "img/CorazonForrado4.jpeg",
-        "img/CorazonForrado5.jpeg"
-      ],
-      variantes: [
-        {tamaño: "20cm ancho x 10cm alto", precio: "$8,500", tipo: "con tapa"},
-        {tamaño: "25cm ancho x 10cm alto", precio: "$10,000", tipo: "con tapa"},
-        {tamaño: "30cm ancho x 10cm alto", precio: "$13,000", tipo: "con tapa"},
 
-        {tamaño: "20cm ancho x 10cm alto", precio: "$7,000", tipo: "sin tapa"},
-        {tamaño: "25cm ancho x 10cm alto", precio: "$8,500", tipo: "sin tapa"},
-        {tamaño: "30cm ancho x 10cm alto", precio: "$11,000", tipo: "sin tapa"}
-      ],
-      esConTapas: true
-    },
-    {
-      id: 363,
-      nombre: "Caja Vitrina",
-      descripcion: "Viene en color blanco, base en cartón industrial, muy resistente y elegante.",
-      categoria: "arreglos",
-      imagen: "img/cajaVitrina.png",
-      imagenes: [
-        "img/cajaVitrina.png"
-      ],
-      variantes: [
-        {tamaño: "15cm x 15cm x 15cm de alto", precio: "$11,000"},
-        {tamaño: "20cm x 20cm x 20cm de alto", precio: "$12,000"},
-        {tamaño: "24cm x 24cm x 20cm de alto", precio: "$13,000"}
-      ]
-    },
-    {
-      id: 2,
-      nombre: "Cilindro Forrado 13cm",
-      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes, ideal para flores, arreglos...",
-      categoria: "arreglos",
-      imagen:  "img/cilindronegro.png",
-      imagenes: [
-        "img/cilindronegro.png",
-        "img/cilindrogranderojo1.png",
-        "img/cil2.png",
-        "img/cilflor.png",
-        "img/minicilindros1.png",
-        "img/cil.png",
-        "img/cilindrogranderojo2.png",
-
-      ],
-      variantes: [
-        {tamaño: "8cm x 8cm alto", precio: "$4,500", tipo: "con tapa"},
-        {tamaño: "13cm x 10cm alto", precio: "$6,000", tipo: "con tapa"},
-        {tamaño: "16cm x 13cm alto", precio: "$7,500", tipo: "con tapa"},
-        {tamaño: "20cm x 13cm alto", precio: "$9,000", tipo: "con tapa"},
-        {tamaño: "25cm x 13cm alto", precio: "$11,000", tipo: "con tapa"},
-
-        {tamaño: "13cm x 10cm alto", precio: "$4,000", tipo: "sin tapa"},
-        {tamaño: "16cm x 13cm alto", precio: "$6,000", tipo: "sin tapa"},
-        {tamaño: "20cm x 13cm alto", precio: "$7,500", tipo: "sin tapa"},
-        {tamaño: "25cm x 13cm alto", precio: "$9,500", tipo: "sin tapa"}
-
-      ],
-      esConTapas: true
-    },
     {
       id: 35,
       nombre: "Ancheta Esmoquin",
@@ -671,38 +950,8 @@
         {tamaño: "13x13x10cm", precio: "$4,000"}
       ]
     },
-    {
-      id: 6,
-      nombre: "Cilindro Forrado 7cm",
-      descripcion: "Cilindros de cartón forrados, ideales para detalles, desayunos sorpresa",
-      categoria: "arreglos",
-      imagen: "img/cilindroBajoAbierto.jpeg",
-      imagenes: [
-        "img/cilindroBajoAbierto.jpeg",
-        "img/cilindroBajoCerrado.jpeg",
-      ],
-      variantes: [
-        {tamaño: "13cm x 5-7cm", precio: "$5,600"},
-        {tamaño: "16cm x 5-7cm", precio: "$7,100"},
-        {tamaño: "20cm x 5-7cm", precio: "$8,000"},
-        {tamaño: "25cm x 5-7cm", precio: "$9,500"}
-      ]
-    },
 
-    {
-      id: 20,
-      nombre: "Cofre",
-      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes",
-      categoria: "arreglos",
-      imagen: "img/cofreNegro.png",
-      imagenes: [
-        "img/cofreNegro.png"
-      ],
-      variantes: [
-        {tamaño: "Mediano: 23x17x15cm", precio: "$13,000"},
-        {tamaño: "Grande: 30x20x15cm", precio: "$15,000"}
-      ]
-    },
+
     {
       id: 36,
       nombre: "Cilindro Esmoquin",
@@ -717,21 +966,7 @@
         {tamaño: "17cm ø x 13cm alto", precio: "$7,000"}
       ]
     },
-    {
-      id: 9,
-      nombre: "Libro",
-      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes",
-      categoria: "arreglos",
-      imagen: "img/libronegro.jpeg",
-      imagenes: [
-        "img/libronegro.jpeg",
-        "img/cuadradarosa2.png",
-      ],
-      variantes: [
-        {tamaño: "Mediano: 20x25x8cm", precio: "$8,000"},
-        {tamaño: "Grande: 25x30x8cm", precio: "$10,000"}
-      ]
-    },
+
     {
       id: 31,
       nombre: "Carrito Corona",
@@ -776,93 +1011,7 @@
         {tamaño: "23cm de Ancho x 15cm de profundo x 15cm de alto", precio: "$4,500"}
       ]
     },
-    {
-      id: 90,
-      nombre: "Bandeja de Parales",
-      descripcion: "La puedes personalizar en diseños, colores y letreros que gustes. Precio incluye la decoración. Base de Cartón, tiene doble capa, quedan resistentes",
-      categoria: "arreglos",
-      imagen: "img/AnchetaParales.png",
-      imagenes: [
-        "img/AnchetaParales.png",
-        "img/AnchetaParales2.jpg",
-      ],
-      variantes: [
-        {tamaño: "20cm de Ancho x 16cm de profundo x 5cm de alto", precio: "$6,000"},
-        {tamaño: "25cm de Ancho x 20cm de profundo x 5cm de alto", precio: "$6,500"}
-      ]
-    },
-    {
-      id: 120,
-      nombre: "Sobre",
-      descripcion: "Caja tipo sobre, se puede personalizar tamaño y color",
-      categoria: "arreglos",
-      imagen: "img/sobre.png",
-      imagenes: [
-        "img/sobre.png",
-      ],
-      variantes: [
-        {tamaño: "15cm de Ancho x 10cm de profundo x 15cm de alto", precio: "$5,000"},
-        {tamaño: "20cm de Ancho x 15cm de profundo x 15cm de alto", precio: "$5,500"}
-      ]
-    },
-    {
-      id: 200,
-      nombre: "Caja Coquette",
-      descripcion: "Caja con base de borde, acetato de buena calidad, se pueden personalizar los colores del moño y cinta",
-      categoria: "arreglos",
-      imagen: "img/CajaCoquette.png",
-      imagenes: [
-        "img/CajaCoquette.png",
-        "img/CajaCoquette2.png"
-      ],
-      variantes: [
-        {tamaño: "25cm de Ancho x 20cm de profundo x 15cm de alto", precio: "$8,000"}
-      ]
-    },
 
-    {
-      id: 15,
-      nombre: "Ancheta Amor",
-      descripcion: "Base en cartón rígido, forrados en variedad de colores",
-      categoria: "arreglos",
-      imagen: "img/anchetaamor1.png",
-      imagenes: [
-        "img/anchetaamor1.png",
-        "img/anchetaamor2.png"
-      ],
-      variantes: [
-        {tamaño: "13x15x10cm", precio: "$5,500"}
-      ]
-    },
-    {
-      id: 201,
-      nombre: "Canasta Corazón",
-      descripcion: "Caja sencilla sin forrar",
-      categoria: "arreglos",
-      imagen: "img/CanastaCorazon3.png",
-      imagenes: [
-        "img/CanastaCorazon3.png",
-        "img/CanastaCorazon.png"
-      ],
-      variantes: [
-        {tamaño: "15x8x18cm", precio: "$2,000"}
-      ]
-    },
-    {
-      id: 3,
-      nombre: "I love u",
-      descripcion: "Doble capa de cartón blanco en base y tapa, resistente, ideal para flores, chocolates...",
-      categoria: "arreglos",
-      imagen: "img/loveu1.jpeg",
-      imagenes: [
-        "img/loveu1.jpeg",
-        "img/loveu.png",
-        "img/loveu2.jpeg"
-      ],
-      variantes: [
-        {tamaño: "50x18x5cm", precio: "$13,000"}
-      ]
-    },
     {
       id: 18,
       nombre: "Mom",
@@ -917,126 +1066,6 @@
         {tamaño: "25cm x 7cm alto", precio: "$7,500"}
       ]
     },
-    {
-      id: 93,
-      nombre: "Cuadrada con sticker",
-      descripcion: "Cartón de 305g, cajas sencillas",
-      categoria: "arreglos",
-      imagen: "img/boton1.png",
-      imagenes: [
-        "img/boton1.png",
-        "img/boton2.png",
-        "img/boton3.png",
-      ],
-      variantes: [
-        {tamaño: "20x20x5-7cm", precio: "$3,500"},
-        {tamaño: "25x25x5-7cm", precio: "$3,800"}
-      ]
-    },
-
-    {
-      id: 94,
-      nombre: "Amor",
-      descripcion: "Caja sencilla, cartón de 305gr",
-      categoria: "arreglos",
-      imagen: "img/amor2.png",
-      imagenes: [
-        "img/amor2.png",
-        "img/amor1.png",
-      ],
-      variantes: [
-        {tamaño: "30x15x5-7cm", precio: "$4,500"},
-        {tamaño: "30x15x5-7cm CON BASE", precio: "$5,000"}
-      ]
-    },
-
-    {
-      id: 4,
-      nombre: "Cajón de amor",
-      descripcion: "Cartón blanco de 300gr, ideal para flores eternas y chocolates en el cajón",
-      categoria: "arreglos",
-      imagen: "img/cajon1.png",
-      imagenes: [
-        "img/cajon1.png",
-        "img/cajon2.png",
-      ],
-      variantes: [
-        {tamaño: "15cm x 20cm alto", precio: "$10,000"}
-      ]
-    },
-    {
-      id: 5,
-      nombre: "Ventana de amor",
-      descripcion: "Base en cartón rígido, variedad de colores, resistentes y elegantes",
-      categoria: "arreglos",
-      imagen: "img/12.png",
-      imagenes: [
-        "img/12.png",
-        "img/13.png",
-      ],
-      variantes: [
-        {tamaño: "25cm x 10cm alto", precio: "$9,500"}
-      ]
-    },
-    {
-      id: 10,
-      nombre: "Cajón Corazón",
-      descripcion: "Cajón en cartón rígido, muy resistentes y elegantes",
-      categoria: "arreglos",
-      imagen: "img/cajoncorazon1.png",
-      imagenes: [
-        "img/cajoncorazon1.png",
-        "img/cajoncorazon2.png",
-        "img/cajoncorazon3.png"
-      ],
-      variantes: [
-        {tamaño: "Cajón 26x18cm, Corazón 24cm ", precio: "$14,000"}
-      ]
-    },
-    {
-      id: 7,
-      nombre: "Libro Corazón #1",
-      descripcion: "Base corazón en cartón rígido, libro con doble capa de cartón blanco de 300gr",
-      categoria: "arreglos",
-      imagen: "img/librocorazon2.jpeg",
-      imagenes: [
-        "img/librocorazon2.jpeg",
-        "img/librocorazon1.jpeg",
-        "img/librocorazon3.jpeg"
-      ],
-      variantes: [
-        {tamaño: "Corazón 25cm ø", precio: "$8,000"}
-      ]
-    },
-    {
-      id: 8,
-      nombre: "Libro Corazón #2",
-      descripcion: "Base corazón en cartón rígido, libro con doble capa de cartón blanco de 300gr",
-      categoria: "arreglos",
-      imagen: "img/librocorazon22.png",
-      imagenes: [
-        "img/librocorazon22.png",
-        "img/librocorazon23.png"
-      ],
-      variantes: [
-        {tamaño: "Corazón 25cm", precio: "$8,000"}
-      ]
-    },
-
-    {
-      id: 19,
-      nombre: "Buffet",
-      descripcion: "Caja con borde de 1cm incluye separadores, salseros y tapa con ventana",
-      categoria: "arreglos",
-      imagen: "img/buffet.jpeg",
-      imagenes: [
-        "img/buffet.jpeg",
-        "img/buffet2.jpeg"
-      ],
-      variantes: [
-        {tamaño: "34x26x6cm", precio: "$9,000"}
-      ]
-    },
 
     {
       id: 11,
@@ -1072,22 +1101,7 @@
         {tamaño: "25cm x 13cm alto", precio: "$7,800"}
       ]
     },
-    {
-      id: 22,
-      nombre: "Corazones sin forrar",
-      descripcion: "Corazones de cartón sin forrar, ideales para personalizar",
-      categoria: "arreglos",
-      imagen: "img/corasinforrar2.jpeg",
-      imagenes: [
-        "img/corasinforrar2.jpeg",
-        "img/corasinforrar.jpeg"
-      ],
-      variantes: [
-        {tamaño: "20cm ancho x 10cm alto", precio: "$5,500"},
-        {tamaño: "25cm ancho x 10cm alto", precio: "$6,500"},
-        {tamaño: "30cm ancho x 10cm alto", precio: "$8,000"}
-      ]
-    },
+
     //**{
       //id: 89,
     //nombre: "Corazones sin forrar bajo con ventana",
